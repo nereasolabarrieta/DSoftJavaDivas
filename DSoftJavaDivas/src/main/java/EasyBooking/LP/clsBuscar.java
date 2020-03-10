@@ -22,7 +22,7 @@ import com.toedter.calendar.JSpinnerDateEditor;
 
 import javax.swing.JButton;
 
-public class clsPrincipal extends JFrame {
+public class clsBuscar extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNumViajeros;
@@ -36,7 +36,7 @@ public class clsPrincipal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					clsPrincipal frame = new clsPrincipal();
+					clsBuscar frame = new clsBuscar();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +50,7 @@ public class clsPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public clsPrincipal() {
+	public clsBuscar() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
