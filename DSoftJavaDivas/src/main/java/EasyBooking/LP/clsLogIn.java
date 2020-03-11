@@ -39,7 +39,8 @@ public class clsLogIn extends JFrame {
 	 * Create the frame.
 	 */
 	public clsLogIn() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\workspace\\Java_Divas\\Java_Divas\\src\\main\\java\\Easybooking\\Img\\Avion.jpg"));
+		//hay q poner ruta relativa 
+		setIconImage(Toolkit.getDefaultToolkit().getImage(clsPrincipal.class.getResource("/EasyBooking/Img/Avion.jpg")));
 		setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		setTitle("EasyBooking");
 		setForeground(Color.BLACK);
@@ -51,6 +52,7 @@ public class clsLogIn extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		this.setLocationRelativeTo(null);
 		
 		JButton EntrarConFacebook = new JButton();
 		EntrarConFacebook.setLocation(417, 286);
