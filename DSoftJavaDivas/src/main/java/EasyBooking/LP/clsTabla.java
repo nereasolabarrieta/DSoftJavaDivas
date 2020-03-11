@@ -39,7 +39,6 @@ public class clsTabla extends JPanel {
 		table = new JTable(ListaVuelos.size(),1);
 		table.setBounds(50, 33, 952, 480);
 		table.setRowHeight(20);
-		
 		add(table);
 		
 		
