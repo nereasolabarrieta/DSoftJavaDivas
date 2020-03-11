@@ -80,7 +80,7 @@ public class clsPago extends JFrame {
 		
 		JRadioButton rdbtnTarjetaCredito = new JRadioButton("Tarjeta de crédito o débito");
 		rdbtnTarjetaCredito.setFont(new Font("Tahoma", Font.PLAIN, 21));
-		rdbtnTarjetaCredito.setBounds(146, 96, 311, 29);
+		rdbtnTarjetaCredito.setBounds(146, 96, 293, 29);
 		contentPane.add(rdbtnTarjetaCredito);
 			
 		JLabel lblNmeroDeTarjeta = new JLabel("Número de tarjeta");
@@ -113,16 +113,6 @@ public class clsPago extends JFrame {
 		lblFechaDeCaducidad.setBounds(184, 292, 190, 20);
 		contentPane.add(lblFechaDeCaducidad);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(184, 328, 42, 26);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
-		
-		textField_3 = new JTextField();
-		textField_3.setBounds(241, 328, 42, 26);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
-		
 		JLabel lblCdigoDeSeguridad = new JLabel("Código de seguridad");
 		lblCdigoDeSeguridad.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblCdigoDeSeguridad.setBounds(184, 370, 206, 20);
@@ -137,7 +127,7 @@ public class clsPago extends JFrame {
 		
 		JRadioButton rdbtnPaypal = new JRadioButton("Paypal");
 		rdbtnPaypal.setFont(new Font("Tahoma", Font.PLAIN, 21));
-		rdbtnPaypal.setBounds(146, 444, 336, 29);
+		rdbtnPaypal.setBounds(146, 481, 98, 29);
 		contentPane.add(rdbtnPaypal);
 		
 		bttnPago.add(rdbtnPaypal);
@@ -145,21 +135,48 @@ public class clsPago extends JFrame {
 		
 		JButton btnPagar = new JButton("Pagar");
 		btnPagar.setForeground(Color.BLUE);
-		btnPagar.setBounds(650, 518, 115, 29);
+		btnPagar.setBounds(581, 604, 115, 29);
 		contentPane.add(btnPagar);
 		
 		JLabel lblTuInformacinPersonal = new JLabel("Tu información personal está \r\nprotegida y encriptada");
 		lblTuInformacinPersonal.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblTuInformacinPersonal.setBounds(421, 32, 521, 29);
+		lblTuInformacinPersonal.setBounds(421, 35, 521, 29);
 		contentPane.add(lblTuInformacinPersonal);
+	
 		
-		JList list = new JList();
-		list.setBounds(237, 380, -59, -29);
-		contentPane.add(list);
+		Choice choiceCaducidad = new Choice();
+		choiceCaducidad.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		choiceCaducidad.setBounds(184, 330, 64, 25);
+		choiceCaducidad.add("1");choiceCaducidad.add("2");choiceCaducidad.add("3");choiceCaducidad.add("4");
+		choiceCaducidad.add("5");choiceCaducidad.add("6");choiceCaducidad.add("7");choiceCaducidad.add("8");
+		choiceCaducidad.add("9");choiceCaducidad.add("9");choiceCaducidad.add("10");choiceCaducidad.add("11");
+		choiceCaducidad.add("12");
+		contentPane.add(choiceCaducidad);
 		
-		Choice choice = new Choice();
-		choice.setBounds(230, 328, 28, 26);
-		contentPane.add(choice);
+		JLabel lblFotoTarjeta = new JLabel();
+		lblFotoTarjeta.setIcon( new ImageIcon("C:\\workspace\\DSoftJavaDivas\\src\\main\\java\\Easybooking\\Img\\tarjeta.png")  );
+		lblFotoTarjeta.setBounds( 431, 85, 311, 60);
+		contentPane.add(lblFotoTarjeta);
+	
+		
+		JLabel lblFotoPaypal = new JLabel();
+		lblFotoPaypal.setIcon( new ImageIcon("C:\\workspace\\DSoftJavaDivas\\src\\main\\java\\Easybooking\\Img\\PayPal.png")  );
+		lblFotoPaypal.setBounds( 243, 469, 311, 60);
+		contentPane.add(lblFotoPaypal);
+		
+		Choice choiceCaducidadAnyo = new Choice();
+		choiceCaducidadAnyo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		choiceCaducidadAnyo.setBounds(264, 330, 64, 26);
+		choiceCaducidadAnyo.add("2020");choiceCaducidadAnyo.add("2021");choiceCaducidadAnyo.add("2022");
+		choiceCaducidadAnyo.add("2023");choiceCaducidadAnyo.add("2024");choiceCaducidadAnyo.add("2025");
+		choiceCaducidadAnyo.add("2026");choiceCaducidadAnyo.add("2027");choiceCaducidadAnyo.add("2028");	
+		choiceCaducidadAnyo.add("2029");choiceCaducidadAnyo.add("2030");choiceCaducidadAnyo.add("2031");
+		choiceCaducidadAnyo.add("2032");choiceCaducidadAnyo.add("2033");choiceCaducidadAnyo.add("2034");
+		choiceCaducidadAnyo.add("2035");choiceCaducidadAnyo.add("2036");choiceCaducidadAnyo.add("2037");
+		choiceCaducidadAnyo.add("2038");choiceCaducidadAnyo.add("2039");choiceCaducidadAnyo.add("2040");
+		contentPane.add(choiceCaducidadAnyo);
+		
+		
 		
 
 	}
