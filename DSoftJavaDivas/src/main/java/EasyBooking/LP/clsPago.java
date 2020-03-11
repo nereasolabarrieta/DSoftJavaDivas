@@ -15,11 +15,16 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import java.awt.Choice;
 import java.awt.List;
+import java.awt.Toolkit;
 import java.awt.Color;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+
 import javax.swing.SwingConstants;
 import javax.swing.JList;
 
@@ -52,7 +57,10 @@ public class clsPago extends JFrame {
 	 * Create the frame.
 	 */
 	public clsPago() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\workspace\\Java_Divas\\Java_Divas\\src\\main\\java\\Easybooking\\Img\\Avion.jpg"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("EasyBooking");
+		setLocationRelativeTo(null);
 		setBounds(100, 100, 1300, 740);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -64,20 +72,19 @@ public class clsPago extends JFrame {
 		contentPane.add(scrollPane);
 		
 		JLabel lblcmoTeGustara = new JLabel("¿Cómo te gustaría pagar?");
-		lblcmoTeGustara.setBounds(146, 36, 194, 20);
+		lblcmoTeGustara.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		lblcmoTeGustara.setBounds(146, 36, 260, 25);
 		contentPane.add(lblcmoTeGustara);
 		
 		ButtonGroup bttnPago = new ButtonGroup();
 		
-		JRadioButton rdbtnTarjetaCredito = new JRadioButton("New radio button");
-		rdbtnTarjetaCredito.setBounds(146, 96, 27, 29);
+		JRadioButton rdbtnTarjetaCredito = new JRadioButton("Tarjeta de crédito o débito");
+		rdbtnTarjetaCredito.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		rdbtnTarjetaCredito.setBounds(146, 96, 311, 29);
 		contentPane.add(rdbtnTarjetaCredito);
-		
-		JLabel lblNewLabel = new JLabel("Tarjeta de crédito o débito");
-		lblNewLabel.setBounds(184, 100, 271, 20);
-		contentPane.add(lblNewLabel);
-		
+			
 		JLabel lblNmeroDeTarjeta = new JLabel("Número de tarjeta");
+		lblNmeroDeTarjeta.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblNmeroDeTarjeta.setBounds(184, 136, 206, 20);
 		contentPane.add(lblNmeroDeTarjeta);
 		
@@ -90,6 +97,7 @@ public class clsPago extends JFrame {
 		txtA.setColumns(10);
 		
 		JLabel lblNombreDelTitular = new JLabel("Nombre del titular de la tarjeta");
+		lblNombreDelTitular.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblNombreDelTitular.setBounds(184, 214, 349, 20);
 		contentPane.add(lblNombreDelTitular);
 		
@@ -101,6 +109,7 @@ public class clsPago extends JFrame {
 		txtDebeCoincidirCon.setColumns(10);
 		
 		JLabel lblFechaDeCaducidad = new JLabel("Fecha de caducidad");
+		lblFechaDeCaducidad.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblFechaDeCaducidad.setBounds(184, 292, 190, 20);
 		contentPane.add(lblFechaDeCaducidad);
 		
@@ -115,6 +124,7 @@ public class clsPago extends JFrame {
 		textField_3.setColumns(10);
 		
 		JLabel lblCdigoDeSeguridad = new JLabel("Código de seguridad");
+		lblCdigoDeSeguridad.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblCdigoDeSeguridad.setBounds(184, 370, 206, 20);
 		contentPane.add(lblCdigoDeSeguridad);
 		
@@ -125,16 +135,13 @@ public class clsPago extends JFrame {
 		contentPane.add(txtCvv);
 		txtCvv.setColumns(10);
 		
-		JRadioButton rdbtnPaypal = new JRadioButton("New radio button");
-		rdbtnPaypal.setBounds(146, 444, 27, 29);
+		JRadioButton rdbtnPaypal = new JRadioButton("Paypal");
+		rdbtnPaypal.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		rdbtnPaypal.setBounds(146, 444, 336, 29);
 		contentPane.add(rdbtnPaypal);
 		
 		bttnPago.add(rdbtnPaypal);
 		bttnPago.add(rdbtnTarjetaCredito);
-		
-		JLabel lblPaypal = new JLabel("PayPal");
-		lblPaypal.setBounds(184, 448, 69, 20);
-		contentPane.add(lblPaypal);
 		
 		JButton btnPagar = new JButton("Pagar");
 		btnPagar.setForeground(Color.BLUE);
@@ -142,8 +149,8 @@ public class clsPago extends JFrame {
 		contentPane.add(btnPagar);
 		
 		JLabel lblTuInformacinPersonal = new JLabel("Tu información personal está \r\nprotegida y encriptada");
-		lblTuInformacinPersonal.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblTuInformacinPersonal.setBounds(421, 32, 421, 29);
+		lblTuInformacinPersonal.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblTuInformacinPersonal.setBounds(421, 32, 521, 29);
 		contentPane.add(lblTuInformacinPersonal);
 		
 		JList list = new JList();
