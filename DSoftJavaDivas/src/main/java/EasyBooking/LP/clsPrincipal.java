@@ -4,7 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.Image;
+import java.awt.ScrollPane;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -24,10 +26,14 @@ import javax.swing.JSeparator;
 import javax.swing.JSlider;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
 
 public class clsPrincipal extends JFrame {
 
 	private JPanel contentPane;
+	JScrollPane scrollPane;
+	JPanel PscrollPane;
+	
 
 	/**
 	 * Launch the application.
@@ -60,12 +66,12 @@ public class clsPrincipal extends JFrame {
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		this.setLocationRelativeTo(null);
+		contentPane.setLayout(null);
 		
 		JPanel pArriba = new JPanel();
-		pArriba.setBackground(new Color(0, 0, 128));
 		pArriba.setBounds(0, 0, 1278, 159);
+		pArriba.setBackground(new Color(0, 0, 128));
 		contentPane.add(pArriba);
 		pArriba.setLayout(null);
 		
@@ -143,8 +149,8 @@ public class clsPrincipal extends JFrame {
 		pArriba.add(lblBuscar);
 		
 		JPanel pIzquierda= new JPanel();
-		pIzquierda.setBackground(new Color(0, 0, 128));
 		pIzquierda.setBounds(0, 155, 218, 529);
+		pIzquierda.setBackground(new Color(0, 0, 128));
 		contentPane.add(pIzquierda);
 		pIzquierda.setLayout(null);
 		
@@ -222,12 +228,42 @@ public class clsPrincipal extends JFrame {
 		comboBox.setBounds(15, 461, 173, 30);
 		pIzquierda.add(comboBox);
 		
-
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(218, 155, 1060, 529);
+		contentPane.add(scrollPane);
+		
+		PscrollPane = new JPanel();
+		scrollPane.setViewportView(PscrollPane);
+		PscrollPane.setLayout(null);
+		InsertarJPanel();
+		PscrollPane.repaint();
+		scrollPane.repaint();
 		
 
 		
+
 		
 		
 		
+		
+	}
+	/**
+	 * Método para insertar el panel de clsJPanelVuelo
+	 */
+	public void InsertarJPanel()
+	{
+		int y=0;
+		for( int i=0; i<5; i++)
+		{
+			clsJPanelVuelo vuelo=new clsJPanelVuelo();
+			GridBagConstraints gbc_lblFoto = new GridBagConstraints();
+			gbc_lblFoto.ipadx = 1064;
+			gbc_lblFoto.ipady = 254;
+			gbc_lblFoto.gridx = 0;
+			gbc_lblFoto.gridy = y;
+			y=y+254;
+			PscrollPane.add(vuelo, gbc_lblFoto);
+			
+		}
 	}
 }
