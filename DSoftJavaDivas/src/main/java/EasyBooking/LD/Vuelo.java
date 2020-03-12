@@ -1,4 +1,4 @@
-package EasyBooking.LN;
+package EasyBooking.LD;
 
 public class Vuelo {
 

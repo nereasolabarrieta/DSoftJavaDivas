@@ -4,9 +4,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
-
-import EasyBooking.LN.Vuelo;
 import javax.swing.JTable;
+
+import EasyBooking.LD.Vuelo;
 
 public class clsTabla extends JPanel {
 	private JTable table;
