@@ -14,7 +14,7 @@ public class clsJPanelVuelo extends JPanel {
 	 * Create the panel.
 	 */
 	public clsJPanelVuelo() {
-		setBorder(new LineBorder(new Color(0, 0, 0), 5));
+		setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		setSize(1064,254);
 		setBackground(Color.WHITE);
 		setForeground(Color.WHITE);
@@ -36,9 +36,9 @@ public class clsJPanelVuelo extends JPanel {
 		add(lblLinea);
 		
 		JPanel panelDeArriba = new JPanel();
-		panelDeArriba.setBorder(new LineBorder(new Color(0, 0, 0), 6));
+		panelDeArriba.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panelDeArriba.setBackground(Color.WHITE);
-		panelDeArriba.setBounds(682, 0, 382, 253);
+		panelDeArriba.setBounds(682, 0, 382, 254);
 		add(panelDeArriba);
 		panelDeArriba.setLayout(null);
 		

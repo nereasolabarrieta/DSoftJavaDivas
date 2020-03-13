@@ -2,6 +2,7 @@ package EasyBooking.LP;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -28,6 +29,8 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 
 public class clsPrincipal extends JFrame {
 
@@ -132,7 +135,7 @@ public class clsPrincipal extends JFrame {
 		lblDestino.setBounds(475, 76, 93, 20);
 		pArriba.add(lblDestino);
 		
-		JLabel lblAeropuerto_destino = new JLabel("SF, CA");
+		JLabel lblAeropuerto_destino = new JLabel("New York");
 		lblAeropuerto_destino.setForeground(Color.WHITE);
 		lblAeropuerto_destino.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblAeropuerto_destino.setBounds(570, 76, 69, 20);
@@ -235,12 +238,15 @@ public class clsPrincipal extends JFrame {
 		contentPane.add(pCentro);
 		pCentro.setLayout(new BorderLayout(0, 0));
 		
-		scrollPane = new JScrollPane();
+		PscrollPane = new JPanel();
+		scrollPane = new JScrollPane(PscrollPane);
 		pCentro.add(scrollPane, BorderLayout.CENTER);
 		
-		PscrollPane = new JPanel();
+		
 		scrollPane.setViewportView(PscrollPane);
-		PscrollPane.setLayout(null);
+		scrollPane .getViewport().setView(PscrollPane);
+		
+
 
 	
 		InsertarJPanel();
@@ -264,28 +270,16 @@ public class clsPrincipal extends JFrame {
 		{
 			clsJPanelVuelo vuelo=new clsJPanelVuelo();
 			vuelo.setVisible(true);
+			PscrollPane.setLayout(null);
 			PscrollPane.add(vuelo);
 			vuelo.setLocation(0, y);
 			
 			y=y+254;
+
 			
 		}
+
 		PscrollPane.repaint();
 	}
-	public void InsertarPanel()
-	{
-		int y=0;
-		for( int i=0; i<5; i++)
-		{
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.MAGENTA);
-		panel.setSize(200, 200);
-		panel.setLocation(0, y);
-		y=y+254;
-		PscrollPane.add(panel);
-	
-		}
-		contentPane.repaint();
-		
-	}
+
 }
