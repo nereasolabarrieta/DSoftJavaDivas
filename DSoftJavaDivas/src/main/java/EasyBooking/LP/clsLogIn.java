@@ -18,6 +18,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.border.LineBorder;
 
 public class clsLogIn extends JFrame {
 
@@ -60,14 +62,14 @@ public class clsLogIn extends JFrame {
 		this.setLocationRelativeTo(null);
 		
 		JButton EntrarConFacebook = new JButton();
-		EntrarConFacebook.setLocation(417, 286);
+		EntrarConFacebook.setLocation(418, 309);
 		EntrarConFacebook.setSize(445,66);
 		ImageIcon Facebook = new ImageIcon(clsLogIn.class.getResource("/EasyBooking/Img/Facebook.JPG"));
 		EntrarConFacebook.setIcon(Facebook);
 		contentPane.add(EntrarConFacebook);
 		
 		JButton EntrarConGoogle = new JButton();
-		EntrarConGoogle.setLocation(417, 425);
+		EntrarConGoogle.setLocation(418, 448);
 		EntrarConGoogle.setSize(445,66);
 		ImageIcon Google= new ImageIcon(clsLogIn.class.getResource("/EasyBooking/Img/Google.JPG"));
 		EntrarConGoogle.setIcon(Google);
@@ -75,13 +77,14 @@ public class clsLogIn extends JFrame {
 		contentPane.add(EntrarConGoogle);
 		
 		JPanel pCentro = new JPanel();
+		pCentro.setBorder(new LineBorder(Color.LIGHT_GRAY, 3));
 		pCentro.setBackground(Color.WHITE);
-		pCentro.setBounds(309, 179, 654, 420);
+		pCentro.setBounds(310, 202, 654, 420);
 		contentPane.add(pCentro);
 		pCentro.setLayout(null);
 		
 		JLabel lblO = new JLabel("o");
-		lblO.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblO.setFont(new Font("Tahoma", Font.BOLD, 23));
 		lblO.setBounds(91, 200, 484, 30);
 		pCentro.add(lblO);
 		lblO.setHorizontalAlignment(SwingConstants.CENTER);
