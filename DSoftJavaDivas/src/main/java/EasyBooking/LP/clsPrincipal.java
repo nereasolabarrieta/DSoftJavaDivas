@@ -27,12 +27,14 @@ import javax.swing.JSlider;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
+import javax.swing.JScrollBar;
 
 public class clsPrincipal extends JFrame {
 
 	private JPanel contentPane;
-	JScrollPane scrollPane;
-	JPanel PscrollPane;
+	private JScrollPane scrollPane;
+	private JPanel PscrollPane;
+	
 	
 
 	/**
@@ -228,13 +230,19 @@ public class clsPrincipal extends JFrame {
 		comboBox.setBounds(15, 461, 173, 30);
 		pIzquierda.add(comboBox);
 		
+		JPanel pCentro = new JPanel();
+		pCentro.setBounds(215, 155, 1063, 529);
+		contentPane.add(pCentro);
+		pCentro.setLayout(new BorderLayout(0, 0));
+		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(218, 155, 1060, 529);
-		contentPane.add(scrollPane);
+		pCentro.add(scrollPane, BorderLayout.CENTER);
 		
 		PscrollPane = new JPanel();
 		scrollPane.setViewportView(PscrollPane);
 		PscrollPane.setLayout(null);
+
+	
 		InsertarJPanel();
 
 		
@@ -255,19 +263,29 @@ public class clsPrincipal extends JFrame {
 		for( int i=0; i<5; i++)
 		{
 			clsJPanelVuelo vuelo=new clsJPanelVuelo();
-			/**GridBagConstraints gbc_lblFoto = new GridBagConstraints();
-			gbc_lblFoto.ipadx = 1064;
-			gbc_lblFoto.ipady = 254;
-			gbc_lblFoto.gridx = 0;
-			gbc_lblFoto.gridy = y;
-			y=y+254;
-			PscrollPane.add(vuelo, gbc_lblFoto);**/
+			vuelo.setVisible(true);
 			PscrollPane.add(vuelo);
 			vuelo.setLocation(0, y);
-			PscrollPane.repaint();
-			PscrollPane.setVisible(true);
+			
 			y=y+254;
 			
 		}
+		PscrollPane.repaint();
+	}
+	public void InsertarPanel()
+	{
+		int y=0;
+		for( int i=0; i<5; i++)
+		{
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.MAGENTA);
+		panel.setSize(200, 200);
+		panel.setLocation(0, y);
+		y=y+254;
+		PscrollPane.add(panel);
+	
+		}
+		contentPane.repaint();
+		
 	}
 }

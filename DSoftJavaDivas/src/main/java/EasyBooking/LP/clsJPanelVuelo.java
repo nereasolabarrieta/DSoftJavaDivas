@@ -15,6 +15,7 @@ public class clsJPanelVuelo extends JPanel {
 	 */
 	public clsJPanelVuelo() {
 		setBorder(new LineBorder(new Color(0, 0, 0), 5));
+		setSize(1064,254);
 		setBackground(Color.WHITE);
 		setForeground(Color.WHITE);
 		setLayout(null);
@@ -49,7 +50,7 @@ public class clsJPanelVuelo extends JPanel {
 		JButton btnVerVuelos = new JButton("VER VUELO ");
 		btnVerVuelos.setBounds(120, 127, 156, 36);
 		panelDeArriba.add(btnVerVuelos);
-		btnVerVuelos.setBackground(Color.BLUE);
+		btnVerVuelos.setBackground(new Color(0, 0, 128));
 		btnVerVuelos.setForeground(Color.WHITE);
 		btnVerVuelos.setFont(new Font("Tahoma", Font.BOLD, 18));
 		
