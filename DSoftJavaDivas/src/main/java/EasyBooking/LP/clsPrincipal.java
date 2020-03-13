@@ -236,8 +236,7 @@ public class clsPrincipal extends JFrame {
 		scrollPane.setViewportView(PscrollPane);
 		PscrollPane.setLayout(null);
 		InsertarJPanel();
-		PscrollPane.repaint();
-		scrollPane.repaint();
+
 		
 
 		
@@ -256,13 +255,18 @@ public class clsPrincipal extends JFrame {
 		for( int i=0; i<5; i++)
 		{
 			clsJPanelVuelo vuelo=new clsJPanelVuelo();
-			GridBagConstraints gbc_lblFoto = new GridBagConstraints();
+			/**GridBagConstraints gbc_lblFoto = new GridBagConstraints();
 			gbc_lblFoto.ipadx = 1064;
 			gbc_lblFoto.ipady = 254;
 			gbc_lblFoto.gridx = 0;
 			gbc_lblFoto.gridy = y;
 			y=y+254;
-			PscrollPane.add(vuelo, gbc_lblFoto);
+			PscrollPane.add(vuelo, gbc_lblFoto);**/
+			PscrollPane.add(vuelo);
+			vuelo.setLocation(0, y);
+			PscrollPane.repaint();
+			PscrollPane.setVisible(true);
+			y=y+254;
 			
 		}
 	}
