@@ -156,7 +156,7 @@ public class clsPago extends JFrame {
 		
 		ButtonGroup bttnPago = new ButtonGroup();
 		
-		JRadioButton rdbtnTarjetaCredito = new JRadioButton("Tarjeta de crédito o débito");
+		JRadioButton rdbtnTarjetaCredito = new JRadioButton("Tarjeta de credito o debito");
 		rdbtnTarjetaCredito.setBackground(new Color(255, 255, 255));
 		rdbtnTarjetaCredito.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		rdbtnTarjetaCredito.setBounds(79, 219, 263, 29);
@@ -190,7 +190,7 @@ public class clsPago extends JFrame {
 		lblFechaDeCaducidad.setBounds(136, 423, 162, 20);
 		contentPane.add(lblFechaDeCaducidad);
 		
-		JLabel lblCdigoDeSeguridad = new JLabel("Código de seguridad");
+		JLabel lblCdigoDeSeguridad = new JLabel("Codigo de seguridad");
 		lblCdigoDeSeguridad.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblCdigoDeSeguridad.setBounds(316, 423, 206, 20);
 		contentPane.add(lblCdigoDeSeguridad);
