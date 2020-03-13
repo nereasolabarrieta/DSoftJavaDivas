@@ -162,7 +162,7 @@ public class clsPago extends JFrame {
 		rdbtnTarjetaCredito.setBounds(79, 219, 263, 29);
 		contentPane.add(rdbtnTarjetaCredito);
 			
-		JLabel lblNmeroDeTarjeta = new JLabel("Número de tarjeta");
+		JLabel lblNmeroDeTarjeta = new JLabel("Numero de tarjeta");
 		lblNmeroDeTarjeta.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNmeroDeTarjeta.setBounds(136, 267, 206, 20);
 		contentPane.add(lblNmeroDeTarjeta);
