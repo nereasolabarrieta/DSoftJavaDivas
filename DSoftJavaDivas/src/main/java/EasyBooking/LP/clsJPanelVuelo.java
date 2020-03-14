@@ -69,18 +69,6 @@ public class clsJPanelVuelo extends JPanel {
 		lblLogoCompania.setBounds(15, 72, 181, 91);
 		add(lblLogoCompania);
 		
-		JLabel lblNumeroEscalas = new JLabel("2");
-		lblNumeroEscalas.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNumeroEscalas.setForeground(Color.RED);
-		lblNumeroEscalas.setBounds(357, 180, 69, 20);
-		add(lblNumeroEscalas);
-		
-		JLabel lblEscalas = new JLabel("Escalas");
-		lblEscalas.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblEscalas.setForeground(Color.RED);
-		lblEscalas.setBounds(378, 180, 69, 20);
-		add(lblEscalas);
-		
 		JLabel lblQuedanDisponibles = new JLabel("Quedan        disponibles");
 		lblQuedanDisponibles.setForeground(Color.GRAY);
 		lblQuedanDisponibles.setFont(new Font("Tahoma", Font.ITALIC, 16));

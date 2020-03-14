@@ -88,7 +88,7 @@ public class clsPago extends JFrame {
 		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
 		lblLogo.setIcon(icono);
 		
-		JLabel lblcomoQuieresPagar = new JLabel("¿COMO QUIERES PAGAR?");
+		JLabel lblcomoQuieresPagar = new JLabel("\u00BFCOMO QUIERES PAGAR?");
 		lblcomoQuieresPagar.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblcomoQuieresPagar.setForeground(Color.WHITE);
 		lblcomoQuieresPagar.setBounds(520, 43, 238, 72);
@@ -123,7 +123,7 @@ public class clsPago extends JFrame {
 		lblHoraVuelta.setBounds(149, 156, 69, 20);
 		pDerecha.add(lblHoraVuelta);
 		
-		JLabel lblPrecio = new JLabel("229,30€");
+		JLabel lblPrecio = new JLabel("229,30");
 		lblPrecio.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblPrecio.setForeground(new Color(255, 255, 255));
 		lblPrecio.setHorizontalAlignment(SwingConstants.CENTER);
