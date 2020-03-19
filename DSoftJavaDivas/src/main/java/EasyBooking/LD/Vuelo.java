@@ -1,24 +1,24 @@
 package EasyBooking.LD;
 
+import java.util.Date;
+
 public class Vuelo {
 
-	private String codigo;
-	private String origen; // poner tipo Aeropuerto
-	private String destino; // poner tipo Aeropuerto
-	private String avion;  // poner tipo avion
+	private String codVuelo;
+	private Aeropuerto origen;
+	private Aeropuerto destino; 
+	private Aerolinea aerolinea;
+	private Avion avion; 
 	private double duracion;
-	private String hora_salida; //poner tipo date
-	private String hora_llegada; //poner tipo date 
+	private Date hora_salida;
+	private Date hora_llegada; 
 	private double precio;
+
 	
-	
-	
-	
-	
-	public Vuelo(String codigo, String origen, String destino, String avion, double duracion, String hora_salida,
-			String hora_llegada, double precio) {
+	public Vuelo(String codigo, Aeropuerto origen, Aeropuerto destino,Aerolinea aerolinea, Avion avion, double duracion, Date hora_salida,
+			Date hora_llegada, double precio) {
 		super();
-		this.codigo = codigo;
+		this.codVuelo = codigo;
 		this.origen = origen;
 		this.destino = destino;
 		this.avion = avion;
@@ -26,30 +26,31 @@ public class Vuelo {
 		this.hora_salida = hora_salida;
 		this.hora_llegada = hora_llegada;
 		this.precio = precio;
+		this.aerolinea = aerolinea;
 	}
-	
-	public String getCodigo() {
-		return codigo;
+
+	public String getCodVuelo() {
+		return codVuelo;
 	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setCodVuelo(String codVuelo) {
+		this.codVuelo = codVuelo;
 	}
-	public String getOrigen() {
+	public Aeropuerto getOrigen() {
 		return origen;
 	}
-	public void setOrigen(String origen) {
+	public void setOrigen(Aeropuerto origen) {
 		this.origen = origen;
 	}
-	public String getDestino() {
+	public Aeropuerto getDestino() {
 		return destino;
 	}
-	public void setDestino(String destino) {
+	public void setDestino(Aeropuerto destino) {
 		this.destino = destino;
 	}
-	public String getAvion() {
+	public Avion getAvion() {
 		return avion;
 	}
-	public void setAvion(String avion) {
+	public void setAvion(Avion avion) {
 		this.avion = avion;
 	}
 	public double getDuracion() {
@@ -58,16 +59,16 @@ public class Vuelo {
 	public void setDuracion(double duracion) {
 		this.duracion = duracion;
 	}
-	public String getHora_salida() {
+	public Date getHora_salida() {
 		return hora_salida;
 	}
-	public void setHora_salida(String hora_salida) {
+	public void setHora_salida(Date hora_salida) {
 		this.hora_salida = hora_salida;
 	}
-	public String getHora_llegada() {
+	public Date getHora_llegada() {
 		return hora_llegada;
 	}
-	public void setHora_llegada(String hora_llegada) {
+	public void setHora_llegada(Date hora_llegada) {
 		this.hora_llegada = hora_llegada;
 	}
 	public double getPrecio() {
@@ -76,9 +77,15 @@ public class Vuelo {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+
+	public Aerolinea getAerolinea() {
+		return aerolinea;
+	}
+
+	public void setAerolinea(Aerolinea aerolinea) {
+		this.aerolinea = aerolinea;
+	}
 	
-	
-	
-	
+
 	 
 }

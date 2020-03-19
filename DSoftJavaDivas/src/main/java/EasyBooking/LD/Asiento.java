@@ -1,5 +1,20 @@
 package EasyBooking.LD;
 
 public class Asiento {
+	private String codAsiento;
+	private boolean disponible;
+	public String getCodAsiento() {
+		return codAsiento;
+	}
+	public void setCodAsiento(String codAsiento) {
+		this.codAsiento = codAsiento;
+	}
+	public boolean isDisponible() {
+		return disponible;
+	}
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
+	}
+	
 
 }
