@@ -45,7 +45,11 @@
             <artifactId>datanucleus-rdbms</artifactId>
             <version>[5.1.6, 5.9)</version>
         </dependency>
-        
+                <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.45</version>
+        </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>javax.jdo</artifactId>
@@ -58,5 +62,4 @@
         	<version>[1.2.17, )</version>
         </dependency>
   </dependencies>
-
 </project>
