@@ -2,8 +2,12 @@ package EasyBooking.LD;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
 
+@PersistenceCapable
 public class Reserva {
+	@PrimaryKey
 	private String codReserva;
 	private Usuario usuario;
 	private Vuelo vuelo;

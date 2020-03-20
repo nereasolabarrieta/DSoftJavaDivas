@@ -1,6 +1,11 @@
 package EasyBooking.LD;
 
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
+
+@PersistenceCapable
 public class Aerolinea {
+	@PrimaryKey
 	private String codAerolinea;
 	private String nomAerolimea;
 	public String getCodAerolinea() {

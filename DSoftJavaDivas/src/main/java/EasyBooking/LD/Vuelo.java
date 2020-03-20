@@ -1,9 +1,12 @@
 package EasyBooking.LD;
 
 import java.util.Date;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
 
+@PersistenceCapable
 public class Vuelo {
-
+	@PrimaryKey
 	private String codVuelo;
 	private Aeropuerto origen;
 	private Aeropuerto destino; 

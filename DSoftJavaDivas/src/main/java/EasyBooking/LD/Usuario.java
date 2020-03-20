@@ -1,6 +1,10 @@
 package EasyBooking.LD;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
 
+@PersistenceCapable
 public class Usuario {
+	@PrimaryKey
 	private String dniUsuario;
 	private String nomUsuario;
 	private String metodoPago;

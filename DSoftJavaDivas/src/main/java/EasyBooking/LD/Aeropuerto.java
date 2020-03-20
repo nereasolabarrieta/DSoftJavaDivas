@@ -1,6 +1,11 @@
 package EasyBooking.LD;
 
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
+
+@PersistenceCapable
 public class Aeropuerto {
+	@PrimaryKey
 	private String codAeropuerto;
 	private String nomAeropuerto;
 	public String getCodAeropuerto() {

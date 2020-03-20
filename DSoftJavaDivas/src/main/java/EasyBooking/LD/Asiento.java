@@ -1,6 +1,11 @@
 package EasyBooking.LD;
 
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
+
+@PersistenceCapable
 public class Asiento {
+	@PrimaryKey
 	private String codAsiento;
 	private boolean disponible;
 	public String getCodAsiento() {
