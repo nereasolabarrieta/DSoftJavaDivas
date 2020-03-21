@@ -8,6 +8,13 @@ public class Asiento {
 	@PrimaryKey
 	private String codAsiento;
 	private boolean disponible;
+	
+		
+	public Asiento(String codAsiento, boolean disponible) {
+		super();
+		this.codAsiento = codAsiento;
+		this.disponible = disponible;
+	}
 	public String getCodAsiento() {
 		return codAsiento;
 	}

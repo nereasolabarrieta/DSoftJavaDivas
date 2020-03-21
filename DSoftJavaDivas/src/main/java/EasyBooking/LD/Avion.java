@@ -7,9 +7,18 @@ import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 public class Avion {
+	
 	@PrimaryKey
 	private String codAvion;
 	private Set<Asiento> asientos = new HashSet<Asiento>();
+	
+	
+	
+	public Avion(String codAvion, Set<Asiento> asientos) {
+		super();
+		this.codAvion = codAvion;
+		this.asientos = asientos;
+	}
 	public String getCodAvion() {
 		return codAvion;
 	}

@@ -5,9 +5,18 @@ import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 public class Aerolinea {
+	
 	@PrimaryKey
 	private String codAerolinea;
 	private String nomAerolimea;
+	
+	
+	public Aerolinea(String codAerolinea, String nomAerolimea) {
+		super();
+		this.codAerolinea = codAerolinea;
+		this.nomAerolimea = nomAerolimea;
+	}
+	
 	public String getCodAerolinea() {
 		return codAerolinea;
 	}

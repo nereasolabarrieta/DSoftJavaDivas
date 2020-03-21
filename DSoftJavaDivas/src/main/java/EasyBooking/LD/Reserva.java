@@ -7,11 +7,22 @@ import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 public class Reserva {
+	
 	@PrimaryKey
 	private String codReserva;
 	private Usuario usuario;
 	private Vuelo vuelo;
 	private Set<Viajero> viajeros =new HashSet<Viajero>();
+
+	
+	
+	public Reserva(String codReserva, Usuario usuario, Vuelo vuelo, Set<Viajero> viajeros) {
+		super();
+		this.codReserva = codReserva;
+		this.usuario = usuario;
+		this.vuelo = vuelo;
+		this.viajeros = viajeros;
+	}
 
 	public String getCodReserva() {
 		return codReserva;

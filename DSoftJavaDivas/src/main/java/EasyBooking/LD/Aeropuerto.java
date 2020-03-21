@@ -5,9 +5,18 @@ import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 public class Aeropuerto {
+	
 	@PrimaryKey
 	private String codAeropuerto;
 	private String nomAeropuerto;
+	
+	
+	
+	public Aeropuerto(String codAeropuerto, String nomAeropuerto) {
+		super();
+		this.codAeropuerto = codAeropuerto;
+		this.nomAeropuerto = nomAeropuerto;
+	}
 	public String getCodAeropuerto() {
 		return codAeropuerto;
 	}

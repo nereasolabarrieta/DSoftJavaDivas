@@ -9,6 +9,17 @@ public class Usuario {
 	private String nomUsuario;
 	private String metodoPago;
 	private Aeropuerto aeropuerto;
+	
+	
+	
+	public Usuario(String dniUsuario, String nomUsuario, String metodoPago, Aeropuerto aeropuerto) {
+		super();
+		this.dniUsuario = dniUsuario;
+		this.nomUsuario = nomUsuario;
+		this.metodoPago = metodoPago;
+		this.aeropuerto = aeropuerto;
+	}
+	
 	public String getDniUsuario() {
 		return dniUsuario;
 	}

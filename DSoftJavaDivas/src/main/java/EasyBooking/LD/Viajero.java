@@ -11,6 +11,15 @@ public class Viajero {
 	private String dniViajero;
 	private String nomViajero;
 	private Set<Reserva> reservas = new HashSet<Reserva>();
+	
+	
+	
+	public Viajero(String dniViajero, String nomViajero, Set<Reserva> reservas) {
+		super();
+		this.dniViajero = dniViajero;
+		this.nomViajero = nomViajero;
+		this.reservas = reservas;
+	}
 	public String getDniViajero() {
 		return dniViajero;
 	}
