@@ -1,0 +1,189 @@
+10:47:07,714 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.2) para el API "JDO" utilisando el JRE "{2}"
+10:47:08,406 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\workspace\DSoftJavaDivas\DSoftJavaDivas\target\classes\EasyBooking\LD\Aerolinea.class" con definicion enhanced
+10:47:08,408 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Aerolinea
+10:47:08,418 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\workspace\DSoftJavaDivas\DSoftJavaDivas\target\classes\EasyBooking\LD\Aeropuerto.class" con definicion enhanced
+10:47:08,420 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Aeropuerto
+10:47:08,427 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\workspace\DSoftJavaDivas\DSoftJavaDivas\target\classes\EasyBooking\LD\Reserva.class" con definicion enhanced
+10:47:08,429 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Reserva
+10:47:08,437 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\workspace\DSoftJavaDivas\DSoftJavaDivas\target\classes\EasyBooking\LD\Usuario.class" con definicion enhanced
+10:47:08,439 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Usuario
+10:47:08,448 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\workspace\DSoftJavaDivas\DSoftJavaDivas\target\classes\EasyBooking\LD\Viajero.class" con definicion enhanced
+10:47:08,454 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Viajero
+10:47:08,455 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 5 clases. Tiempos : input=573 ms, enhance=146 ms, total=719 ms. Compruebe el LOG para los detalles
+10:47:48,428 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.2) para el API "JDO" utilisando el JRE "{2}"
+10:47:48,946 (main) INFO  [DataNucleus.Enhancer] - La clase "EasyBooking.LD.Aerolinea" esta enhanced.
+10:47:48,947 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Aerolinea
+10:47:48,950 (main) INFO  [DataNucleus.Enhancer] - La clase "EasyBooking.LD.Aeropuerto" esta enhanced.
+10:47:48,950 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Aeropuerto
+10:47:48,953 (main) INFO  [DataNucleus.Enhancer] - La clase "EasyBooking.LD.Reserva" esta enhanced.
+10:47:48,953 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Reserva
+10:47:48,958 (main) INFO  [DataNucleus.Enhancer] - La clase "EasyBooking.LD.Usuario" esta enhanced.
+10:47:48,960 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Usuario
+10:47:48,963 (main) INFO  [DataNucleus.Enhancer] - La clase "EasyBooking.LD.Viajero" esta enhanced.
+10:47:48,964 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Viajero
+10:47:48,965 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 5 clases. Tiempos : input=451 ms, enhance=67 ms, total=518 ms. Compruebe el LOG para los detalles
+10:56:50,352 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (versión 5.2.2) para el API "JDO" utilisando el JRE "{2}"
+10:56:50,980 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\workspace\DSoftJavaDivas\DSoftJavaDivas\target\classes\EasyBooking\LD\Aerolinea.class" con definicion enhanced
+10:56:50,982 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Aerolinea
+10:56:50,991 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\workspace\DSoftJavaDivas\DSoftJavaDivas\target\classes\EasyBooking\LD\Aeropuerto.class" con definicion enhanced
+10:56:50,994 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Aeropuerto
+10:56:51,006 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\workspace\DSoftJavaDivas\DSoftJavaDivas\target\classes\EasyBooking\LD\Reserva.class" con definicion enhanced
+10:56:51,008 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Reserva
+10:56:51,020 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\workspace\DSoftJavaDivas\DSoftJavaDivas\target\classes\EasyBooking\LD\Usuario.class" con definicion enhanced
+10:56:51,024 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Usuario
+10:56:51,041 (main) INFO  [DataNucleus.Enhancer] - Escribiendo el archivo de clase "C:\workspace\DSoftJavaDivas\DSoftJavaDivas\target\classes\EasyBooking\LD\Viajero.class" con definicion enhanced
+10:56:51,054 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : EasyBooking.LD.Viajero
+10:56:51,059 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer ha terminado con exito para 5 clases. Tiempos : input=452 ms, enhance=233 ms, total=685 ms. Compruebe el LOG para los detalles
+10:57:24,293 (main) INFO  [DataNucleus.SchemaTool] - DataNucleus SchemaTool : Creación del esquema para clases
+10:57:24,296 (main) INFO  [DataNucleus.SchemaTool] - DataNucleus SchemaTool : Classpath
+10:57:24,298 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\datanucleus\datanucleus-maven-plugin\5.0.2\datanucleus-maven-plugin-5.0.2.jar
+10:57:24,299 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\codehaus\plexus\plexus-utils\3.0.8\plexus-utils-3.0.8.jar
+10:57:24,299 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\apache\maven\maven-artifact\3.0.4\maven-artifact-3.0.4.jar
+10:57:24,300 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\apache\maven\maven-plugin-api\3.0.4\maven-plugin-api-3.0.4.jar
+10:57:24,300 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\apache\maven\maven-model\3.0.4\maven-model-3.0.4.jar
+10:57:24,300 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\sonatype\sisu\sisu-inject-plexus\2.3.0\sisu-inject-plexus-2.3.0.jar
+10:57:24,301 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\codehaus\plexus\plexus-component-annotations\1.5.5\plexus-component-annotations-1.5.5.jar
+10:57:24,301 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\sonatype\sisu\sisu-inject-bean\2.3.0\sisu-inject-bean-2.3.0.jar
+10:57:24,301 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\sonatype\sisu\sisu-guice\3.1.0\sisu-guice-3.1.0-no_aop.jar
+10:57:24,301 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\sonatype\sisu\sisu-guava\0.9.9\sisu-guava-0.9.9.jar
+10:57:24,301 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\codehaus\plexus\plexus-container-default\1.5.5\plexus-container-default-1.5.5.jar
+10:57:24,302 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\codehaus\plexus\plexus-classworlds\2.2.2\plexus-classworlds-2.2.2.jar
+10:57:24,302 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\apache\xbean\xbean-reflect\3.4\xbean-reflect-3.4.jar
+10:57:24,302 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\log4j\log4j\1.2.12\log4j-1.2.12.jar
+10:57:24,302 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\commons-logging\commons-logging-api\1.1\commons-logging-api-1.1.jar
+10:57:24,302 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\com\google\collections\google-collections\1.0\google-collections-1.0.jar
+10:57:24,303 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\junit\junit\3.8.2\junit-3.8.2.jar
+10:57:24,303 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\workspace\DSoftJavaDivas\DSoftJavaDivas\target\classes
+10:57:24,303 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\com\toedter\jcalendar\1.4\jcalendar-1.4.jar
+10:57:24,303 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\datanucleus\datanucleus-core\5.2.2\datanucleus-core-5.2.2.jar
+10:57:24,304 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\datanucleus\datanucleus-api-jdo\5.2.3\datanucleus-api-jdo-5.2.3.jar
+10:57:24,304 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\datanucleus\datanucleus-rdbms\5.2.2\datanucleus-rdbms-5.2.2.jar
+10:57:24,304 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\mysql\mysql-connector-java\5.1.45\mysql-connector-java-5.1.45.jar
+10:57:24,304 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\org\datanucleus\javax.jdo\3.2.0-m13\javax.jdo-3.2.0-m13.jar
+10:57:24,305 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\javax\transaction\transaction-api\1.1\transaction-api-1.1.jar
+10:57:24,305 (main) INFO  [DataNucleus.SchemaTool] - >>  C:\Users\Alumno\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar
+10:57:25,667 (main) ERROR [DataNucleus.Datastore.Schema] - La inicialización del base de datos ha fallado.
+Must specify port after ':' in connection string
+org.datanucleus.exceptions.NucleusDataStoreException: Must specify port after ':' in connection string
+	at org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl.getConnection(ConnectionFactoryImpl.java:518)
+	at org.datanucleus.store.rdbms.RDBMSStoreManager.<init>(RDBMSStoreManager.java:288)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.datanucleus.plugin.NonManagedPluginRegistry.createExecutableExtension(NonManagedPluginRegistry.java:651)
+	at org.datanucleus.plugin.PluginManager.createExecutableExtension(PluginManager.java:295)
+	at org.datanucleus.NucleusContextHelper.createStoreManagerForProperties(NucleusContextHelper.java:140)
+	at org.datanucleus.PersistenceNucleusContextImpl.initialise(PersistenceNucleusContextImpl.java:445)
+	at org.datanucleus.store.schema.SchemaTool.getNucleusContextForMode(SchemaTool.java:729)
+	at org.datanucleus.store.schema.SchemaTool.main(SchemaTool.java:300)
+Caused by: java.sql.SQLException: Must specify port after ':' in connection string
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.NonRegisteringDriver.parseHostPortPair(NonRegisteringDriver.java:219)
+	at com.mysql.jdbc.NonRegisteringDriver.parseURL(NonRegisteringDriver.java:687)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:321)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.DriverManagerConnectionFactory.createConnection(DriverManagerConnectionFactory.java:79)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:254)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:864)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:434)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:362)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:132)
+	at org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl.getConnection(ConnectionFactoryImpl.java:501)
+	... 11 more
+Nested Throwables StackTrace:
+java.sql.SQLException: Must specify port after ':' in connection string
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.NonRegisteringDriver.parseHostPortPair(NonRegisteringDriver.java:219)
+	at com.mysql.jdbc.NonRegisteringDriver.parseURL(NonRegisteringDriver.java:687)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:321)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.DriverManagerConnectionFactory.createConnection(DriverManagerConnectionFactory.java:79)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:254)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:864)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:434)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:362)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:132)
+	at org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl.getConnection(ConnectionFactoryImpl.java:501)
+	at org.datanucleus.store.rdbms.RDBMSStoreManager.<init>(RDBMSStoreManager.java:288)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.datanucleus.plugin.NonManagedPluginRegistry.createExecutableExtension(NonManagedPluginRegistry.java:651)
+	at org.datanucleus.plugin.PluginManager.createExecutableExtension(PluginManager.java:295)
+	at org.datanucleus.NucleusContextHelper.createStoreManagerForProperties(NucleusContextHelper.java:140)
+	at org.datanucleus.PersistenceNucleusContextImpl.initialise(PersistenceNucleusContextImpl.java:445)
+	at org.datanucleus.store.schema.SchemaTool.getNucleusContextForMode(SchemaTool.java:729)
+	at org.datanucleus.store.schema.SchemaTool.main(SchemaTool.java:300)
+10:57:25,671 (main) ERROR [DataNucleus.Datastore] - Exception thrown creating StoreManager : Must specify port after ':' in connection string
+10:57:25,671 (main) ERROR [DataNucleus.SchemaTool] - Error creating NucleusContext
+Must specify port after ':' in connection string
+org.datanucleus.exceptions.NucleusDataStoreException: Must specify port after ':' in connection string
+	at org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl.getConnection(ConnectionFactoryImpl.java:518)
+	at org.datanucleus.store.rdbms.RDBMSStoreManager.<init>(RDBMSStoreManager.java:288)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.datanucleus.plugin.NonManagedPluginRegistry.createExecutableExtension(NonManagedPluginRegistry.java:651)
+	at org.datanucleus.plugin.PluginManager.createExecutableExtension(PluginManager.java:295)
+	at org.datanucleus.NucleusContextHelper.createStoreManagerForProperties(NucleusContextHelper.java:140)
+	at org.datanucleus.PersistenceNucleusContextImpl.initialise(PersistenceNucleusContextImpl.java:445)
+	at org.datanucleus.store.schema.SchemaTool.getNucleusContextForMode(SchemaTool.java:729)
+	at org.datanucleus.store.schema.SchemaTool.main(SchemaTool.java:300)
+Caused by: java.sql.SQLException: Must specify port after ':' in connection string
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.NonRegisteringDriver.parseHostPortPair(NonRegisteringDriver.java:219)
+	at com.mysql.jdbc.NonRegisteringDriver.parseURL(NonRegisteringDriver.java:687)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:321)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.DriverManagerConnectionFactory.createConnection(DriverManagerConnectionFactory.java:79)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:254)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:864)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:434)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:362)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:132)
+	at org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl.getConnection(ConnectionFactoryImpl.java:501)
+	... 11 more
+Nested Throwables StackTrace:
+java.sql.SQLException: Must specify port after ':' in connection string
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:965)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:898)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:887)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:861)
+	at com.mysql.jdbc.NonRegisteringDriver.parseHostPortPair(NonRegisteringDriver.java:219)
+	at com.mysql.jdbc.NonRegisteringDriver.parseURL(NonRegisteringDriver.java:687)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:321)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.DriverManagerConnectionFactory.createConnection(DriverManagerConnectionFactory.java:79)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:254)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:864)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:434)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:362)
+	at org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:132)
+	at org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl.getConnection(ConnectionFactoryImpl.java:501)
+	at org.datanucleus.store.rdbms.RDBMSStoreManager.<init>(RDBMSStoreManager.java:288)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.datanucleus.plugin.NonManagedPluginRegistry.createExecutableExtension(NonManagedPluginRegistry.java:651)
+	at org.datanucleus.plugin.PluginManager.createExecutableExtension(PluginManager.java:295)
+	at org.datanucleus.NucleusContextHelper.createStoreManagerForProperties(NucleusContextHelper.java:140)
+	at org.datanucleus.PersistenceNucleusContextImpl.initialise(PersistenceNucleusContextImpl.java:445)
+	at org.datanucleus.store.schema.SchemaTool.getNucleusContextForMode(SchemaTool.java:729)
+	at org.datanucleus.store.schema.SchemaTool.main(SchemaTool.java:300)
