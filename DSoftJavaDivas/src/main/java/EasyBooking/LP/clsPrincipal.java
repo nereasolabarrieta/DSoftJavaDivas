@@ -261,7 +261,7 @@ public class clsPrincipal extends JFrame {
 		
 	}
 	/**
-	 * Método para insertar el panel de clsJPanelVuelo
+	 * Metodo para insertar el panel de clsJPanelVuelo
 	 */
 	public void InsertarJPanel()
 	{
