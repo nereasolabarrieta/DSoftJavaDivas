@@ -10,7 +10,7 @@ public class Viajero {
 	@PrimaryKey
 	private String dniViajero;
 	private String nomViajero;
-	private Set<Reserva> reservas = new HashSet<Reserva>();
+	
 	
 	
 	
