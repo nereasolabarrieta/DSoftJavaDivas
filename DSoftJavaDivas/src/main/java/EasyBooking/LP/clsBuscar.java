@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -17,6 +18,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 
 import javax.swing.JTextField;
@@ -164,12 +167,38 @@ public class clsBuscar extends JFrame {
 		txtNumViajeros.setBounds(556, 201, 43, 26);
 		pIzquierda.add(txtNumViajeros);
 		txtNumViajeros.setColumns(2);
+		txtNumViajeros.setText("0");
 		
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.setForeground(new Color(255, 255, 255));
 		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnBuscar.setBackground(new Color(0, 0, 128));
 		btnBuscar.setBounds(849, 405, 126, 43);
+		btnBuscar.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				boolean estado_rdbtn=rdbtnIdaVuelta.isSelected();
+				String viajeros=txtNumViajeros.getText();
+				int precio = slFiltroPrecio.getValue();
+				System.out.println(estado_rdbtn);
+				System.out.println(viajeros);
+				System.out.println(precio);
+			
+				if(estado_rdbtn=false||viajeros.equals("0")||precio==0)
+				{
+					JOptionPane.showMessageDialog(null,"Por favor, rellene todos los campos");
+					return ;
+				}
+				else
+				{
+					clsPrincipal a = new clsPrincipal();
+					a.setVisible(true);
+					setVisible(false);
+					
+				}
+			}
+		});
 		pIzquierda.add(btnBuscar);
 		
 		JPanel pNorte = new JPanel();
