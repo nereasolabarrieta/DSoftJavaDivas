@@ -9,12 +9,14 @@
   <packaging>jar</packaging>
 
   <name>DSoftJavaDivas</name>
-  <url>http://maven.apache.org</url>
+<url>http://www.datanucleus.org</url>
 
-  <properties>
+  
+    <properties>
         <config.files.dir>src/main/resources</config.files.dir>
         <encoding>UTF-8</encoding>
     </properties>
+
   
 
   <dependencies>
@@ -65,7 +67,7 @@
         	<version>[1.2.17, )</version>
         </dependency>
   </dependencies>
-<build>
+    <build>
         <sourceDirectory>src/main/java</sourceDirectory>
         <testSourceDirectory>src/test/java</testSourceDirectory>
 

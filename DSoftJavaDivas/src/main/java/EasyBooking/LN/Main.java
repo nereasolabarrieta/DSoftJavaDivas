@@ -23,7 +23,7 @@ public class Main {
             {
 			    transaction.begin();
 			    
-			    //Escribir código BD
+			    //Escribir codigo BD
 			    
 			    transaction.commit();
 			    
@@ -53,7 +53,7 @@ public class Main {
             {
 			    transaction.begin();
 	
-			    //Escribir código BD
+			    //Escribir codigo BD
 	
 			    transaction.commit();
 			}
