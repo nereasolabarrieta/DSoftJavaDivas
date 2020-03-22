@@ -5,7 +5,7 @@ import java.util.Set;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
-@PersistenceCapable
+
 public class Avion {
 	
 	@PrimaryKey

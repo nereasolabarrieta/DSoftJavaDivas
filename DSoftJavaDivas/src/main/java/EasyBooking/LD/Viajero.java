@@ -18,7 +18,7 @@ public class Viajero {
 		super();
 		this.dniViajero = dniViajero;
 		this.nomViajero = nomViajero;
-		this.reservas = reservas;
+
 	}
 	public String getDniViajero() {
 		return dniViajero;
@@ -32,11 +32,6 @@ public class Viajero {
 	public void setNomViajero(String nomViajero) {
 		this.nomViajero = nomViajero;
 	}
-	public Set<Reserva> getReservas() {
-		return reservas;
-	}
-	public void setReservas(Set<Reserva> reservas) {
-		this.reservas = reservas;
-	}
+
 	
 }

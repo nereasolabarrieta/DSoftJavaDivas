@@ -6,7 +6,7 @@ import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
-@PersistenceCapable
+
 public class Vuelo {
 	@PrimaryKey
 	private String codVuelo;
