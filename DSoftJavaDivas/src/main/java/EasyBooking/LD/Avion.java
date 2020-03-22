@@ -8,7 +8,7 @@ import javax.jdo.annotations.PrimaryKey;
 
 public class Avion {
 	
-	@PrimaryKey
+
 	private String codAvion;
 	private Set<Asiento> asientos = new HashSet<Asiento>();
 	

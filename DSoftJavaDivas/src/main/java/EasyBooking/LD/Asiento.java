@@ -5,7 +5,7 @@ import javax.jdo.annotations.PrimaryKey;
 
 
 public class Asiento {
-	@PrimaryKey
+
 	private String codAsiento;
 	private boolean disponible;
 	

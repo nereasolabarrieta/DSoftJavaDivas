@@ -10,7 +10,10 @@ public class Usuario {
 	private String metodoPago;
 	private Aeropuerto aeropuerto;
 	
-	
+	public enum metodoPago
+	{
+		Paypal,Visa;
+	}
 	
 	public Usuario(String dniUsuario, String nomUsuario, String metodoPago, Aeropuerto aeropuerto) {
 		super();
