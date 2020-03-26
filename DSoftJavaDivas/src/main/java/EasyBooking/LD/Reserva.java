@@ -12,14 +12,16 @@ public class Reserva {
 	private String codReserva;
 	private Usuario usuario;
 	private Vuelo vuelo;
+	private Aerolinea aerolinea;
 	private Set<Viajero> viajeros =new HashSet<Viajero>();
 
 	
 	
-	public Reserva(String codReserva, Usuario usuario, Vuelo vuelo, Set<Viajero> viajeros) {
+	public Reserva(String codReserva, Usuario usuario, Vuelo vuelo,Aerolinea aerolinea, Set<Viajero> viajeros) {
 		super();
 		this.codReserva = codReserva;
 		this.usuario = usuario;
+		this.aerolinea = aerolinea;
 		this.vuelo = vuelo;
 		this.viajeros = viajeros;
 	}
@@ -54,6 +56,14 @@ public class Reserva {
 
 	public void setVuelo(Vuelo vuelo) {
 		this.vuelo = vuelo;
+	}
+
+	public Aerolinea getAerolinea() {
+		return aerolinea;
+	}
+
+	public void setAerolinea(Aerolinea aerolinea) {
+		this.aerolinea = aerolinea;
 	}
 	
 	
