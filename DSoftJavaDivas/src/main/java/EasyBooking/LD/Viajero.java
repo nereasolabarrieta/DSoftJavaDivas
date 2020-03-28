@@ -1,5 +1,8 @@
 package EasyBooking.LD;
+import javax.jdo.annotations.Element;
+import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import java.util.HashSet;
@@ -7,6 +10,13 @@ import java.util.Set;
 
 @PersistenceCapable
 public class Viajero {
+	
+	 @Persistent(table="RESERVA_VIAJERO") // Con esto creamos una 3a tabla
+	 @Join(column="VIAJERO_ID") //anyadimos la columna de viajero
+	 @Element(column="RESERVA_ID") //anyadimos la columna de reserva
+	 private Set<Reserva> Lista_Reservas; //pero no lo usamos: lo guarda directamente
+	
+	
 	@PrimaryKey
 	private String dniViajero;
 	private String nomViajero;
@@ -14,7 +24,7 @@ public class Viajero {
 	
 	
 	
-	public Viajero(String dniViajero, String nomViajero, Set<Reserva> reservas) {
+	public Viajero(String dniViajero, String nomViajero) {
 		super();
 		this.dniViajero = dniViajero;
 		this.nomViajero = nomViajero;

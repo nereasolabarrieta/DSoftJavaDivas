@@ -116,7 +116,7 @@ public class clsServidor extends JFrame
             	else
             	{
             		
-            		Main.AnyadirAeropuerto(txtCodAeropuerto.getText(),txtNomAeropuerto.getText());
+            		Main.AnyadirAeropuerto_1(txtCodAeropuerto.getText(),txtNomAeropuerto.getText());
             	}
 			}
 		});

@@ -7,15 +7,11 @@ public class Usuario {
 	@PrimaryKey
 	private String dniUsuario;
 	private String nomUsuario;
-	private String metodoPago;
+	private metodoPago metodoPago;
 	private Aeropuerto aeropuerto;
+
 	
-	public enum metodoPago
-	{
-		Paypal,Visa;
-	}
-	
-	public Usuario(String dniUsuario, String nomUsuario, String metodoPago, Aeropuerto aeropuerto) {
+	public Usuario(String dniUsuario, String nomUsuario, metodoPago metodoPago, Aeropuerto aeropuerto) {
 		super();
 		this.dniUsuario = dniUsuario;
 		this.nomUsuario = nomUsuario;
@@ -35,10 +31,10 @@ public class Usuario {
 	public void setNomUsuario(String nomUsuario) {
 		this.nomUsuario = nomUsuario;
 	}
-	public String getMetodoPago() {
+	public metodoPago getMetodoPago() {
 		return metodoPago;
 	}
-	public void setMetodoPago(String metodoPago) {
+	public void setMetodoPago(metodoPago metodoPago) {
 		this.metodoPago = metodoPago;
 	}
 	public Aeropuerto getAeropuerto() {

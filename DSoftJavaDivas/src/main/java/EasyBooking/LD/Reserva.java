@@ -3,6 +3,7 @@ package EasyBooking.LD;
 import java.util.HashSet;
 import java.util.Set;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
@@ -11,18 +12,18 @@ public class Reserva {
 	@PrimaryKey
 	private String codReserva;
 	private Usuario usuario;
-	private Vuelo vuelo;
 	private Aerolinea aerolinea;
-	private Set<Viajero> viajeros =new HashSet<Viajero>();
+	private Vuelo vuelo;
+	@Persistent(mappedBy="Lista_Reservas")
+	private Set<Viajero> viajeros;
 
 	
 	
-	public Reserva(String codReserva, Usuario usuario, Vuelo vuelo,Aerolinea aerolinea, Set<Viajero> viajeros) {
+	public Reserva(String codReserva, Usuario usuario, Set<Viajero> viajeros, Aerolinea aerolinea ) {
 		super();
 		this.codReserva = codReserva;
 		this.usuario = usuario;
-		this.aerolinea = aerolinea;
-		this.vuelo = vuelo;
+		this.aerolinea=aerolinea;
 		this.viajeros = viajeros;
 	}
 
@@ -58,13 +59,7 @@ public class Reserva {
 		this.vuelo = vuelo;
 	}
 
-	public Aerolinea getAerolinea() {
-		return aerolinea;
-	}
 
-	public void setAerolinea(Aerolinea aerolinea) {
-		this.aerolinea = aerolinea;
-	}
 	
 	
 }

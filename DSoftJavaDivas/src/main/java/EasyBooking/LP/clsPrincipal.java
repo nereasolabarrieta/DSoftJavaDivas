@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JLabel;
@@ -21,6 +22,9 @@ import javax.swing.JRadioButton;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import com.toedter.calendar.JDayChooser;
+
+import EasyBooking.LD.Vuelo;
+
 import com.toedter.calendar.JDateChooser;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
@@ -37,6 +41,7 @@ public class clsPrincipal extends JFrame {
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JPanel PscrollPane;
+	private ArrayList<Vuelo>Lista_vuelos;
 	
 	
 
@@ -266,13 +271,13 @@ public class clsPrincipal extends JFrame {
 	public void InsertarJPanel()
 	{
 		int y=0;
-		for( int i=0; i<5; i++)
+		for( int i=0; i<Lista_vuelos.size(); i++)
 		{
-			clsJPanelVuelo vuelo=new clsJPanelVuelo();
-			vuelo.setVisible(true);
+			clsJPanelVuelo panel=new clsJPanelVuelo();
+			panel.setVisible(true);
 			PscrollPane.setLayout(null);
-			PscrollPane.add(vuelo);
-			vuelo.setLocation(0, y);
+			PscrollPane.add(panel);
+			panel.setLocation(0, y);
 			
 			y=y+254;
 

@@ -31,9 +31,12 @@ import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 
+import EasyBooking.LD.Aeropuerto;
+
 import javax.swing.JButton;
 import javax.swing.SpinnerDateModel;
 import java.util.Date;
+import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.SwingConstants;
 import javax.swing.DefaultComboBoxModel;
@@ -43,6 +46,7 @@ public class clsBuscar extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNumViajeros;
 	private JDateChooser datechooser;
+	private ArrayList<Aeropuerto>Lista_Aeropuerto;
 
 	/**
 	 * Launch the application.
@@ -114,6 +118,7 @@ public class clsBuscar extends JFrame {
 		pIzquierda.add(lblNewLabel);
 		
 		JComboBox comboBox = new JComboBox();
+		//Aqui habria que poner el nombre de lso aeropuertos leidos de la BD
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"BIO"}));
 		comboBox.setSelectedIndex(0);
 		comboBox.setBounds(483, 37, 297, 26);
