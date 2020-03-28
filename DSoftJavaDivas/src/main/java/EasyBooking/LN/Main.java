@@ -86,18 +86,6 @@ public class Main {
 			    AnyadirReserva(reser3);
 			    
 			    
-			    
-			    //Escribir codigo BD
-			    //escribir
-//			    Aeropuerto nuevo= new Aeropuerto("B", "Loiu");
-//			    persistentManager.makePersistent(nuevo);
-			    //borrar
-			    //Aeropuerto a = persistentManager.getObjectById(Aeropuerto.class, "BIL");
-			   // persistentManager.deletePersistent(a);
-			    //Editar
-			  //Aeropuerto a = persistentManager.getObjectById(Aeropuerto.class, "BIL");
-			    //a.setNomAeropuerto("Biarritz");
-			    
 			    transaction.commit();
 			    
 			}
@@ -176,7 +164,89 @@ public class Main {
 	}
 	public static void AnyadirAeropuerto_1 (String cod, String nom)
 	{
+		PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		
+		//Insert data in the DB
+		persistentManager = persistentManagerFactory.getPersistenceManager();				
+		transaction = persistentManager.currentTransaction();				
+		
+		try
+        {
 		Aeropuerto nuevo = new Aeropuerto(cod, nom);
+		persistentManager.makePersistent(nuevo);
+        }
+		catch(Exception ex)
+		{
+			System.err.println("* Exception inserting data into db: " + ex.getMessage());
+		}
+		
+		finally
+		{		    
+			if (transaction.isActive()) 
+			{
+		        transaction.rollback();
+		    }
+		    
+		    persistentManager.close();
+		}
+		
+	}
+	public static void EliminarAeropuerto (String cod)
+	{
+		PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		
+		//Delete data in the DB
+		persistentManager = persistentManagerFactory.getPersistenceManager();				
+		transaction = persistentManager.currentTransaction();				
+		
+		try
+        {
+			Aeropuerto eliminar = persistentManager.getObjectById(Aeropuerto.class, cod);
+			persistentManager.deletePersistent(eliminar);
+        }
+		catch(Exception ex)
+		{
+			System.err.println("* Exception deleting data from db: " + ex.getMessage());
+		}
+		
+		finally
+		{		    
+			if (transaction.isActive()) 
+			{
+		        transaction.rollback();
+		    }
+		    
+		    persistentManager.close();
+		}
+		
+	}
+	public static void ModificarAeropuerto (String cod, String nom)
+	{
+		PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		
+		//Modify data in the DB
+		persistentManager = persistentManagerFactory.getPersistenceManager();				
+		transaction = persistentManager.currentTransaction();				
+		
+		try
+        {
+		Aeropuerto a = persistentManager.getObjectById(Aeropuerto.class, cod);
+	    a.setNomAeropuerto(nom);
+        }
+		catch(Exception ex)
+		{
+			System.err.println("* Exception modifying data from db: " + ex.getMessage());
+		}
+		
+		finally
+		{		    
+			if (transaction.isActive()) 
+			{
+		        transaction.rollback();
+		    }
+		    
+		    persistentManager.close();
+		}
 	}
 
 

@@ -127,7 +127,14 @@ public class Servidor extends JFrame
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				
+				if(txtCodAeropuerto.getText().equals("")|| txtNomAeropuerto.getText().equals(""))
+            	{
+            		JOptionPane.showMessageDialog(null,"Por favor, rellene el campo de código");
+            	}
+            	else
+            	{
+            		Main.ModificarAeropuerto(txtCodAeropuerto.getText(),txtNomAeropuerto.getText());
+            	}
 			}
 		});
 		button.setBounds(513, 334, 115, 29);
@@ -137,6 +144,14 @@ public class Servidor extends JFrame
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
+				if(txtCodAeropuerto.getText().equals("") || txtNomAeropuerto.getText().equals(""))
+            	{
+            		JOptionPane.showMessageDialog(null,"Por favor, rellene todos los campos.");
+            	}
+            	else
+            	{
+            		Main.EliminarAeropuerto(txtCodAeropuerto.getText());
+            	}
 				
 			}
 		});
