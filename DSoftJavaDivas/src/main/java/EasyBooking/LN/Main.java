@@ -1,9 +1,12 @@
 package EasyBooking.LN;
+
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
+
+import EasyBooking.LD.Aeropuerto;
 
 
 
@@ -24,6 +27,15 @@ public class Main {
 			    transaction.begin();
 			    
 			    //Escribir codigo BD
+			    //escribir
+			    //Aeropuerto nuevo= new Aeropuerto("BIL", "Loiu");
+			    //persistentManager.makePersistent(nuevo);
+			    //borrar
+			    //Aeropuerto a = persistentManager.getObjectById(Aeropuerto.class, "BIL");
+			   // persistentManager.deletePersistent(a);
+			    //Editar
+			  //Aeropuerto a = persistentManager.getObjectById(Aeropuerto.class, "BIL");
+			    //a.setNomAeropuerto("Biarritz");
 			    
 			    transaction.commit();
 			    
@@ -79,5 +91,11 @@ public class Main {
 			System.err.println("* Exception: " + ex.getMessage());
 		}
 	}
+	
+	public static void AnyadirAeropuerto (String codAeropuerto, String nomAeropuerto)
+	{
+		
+	}
+
 
 }

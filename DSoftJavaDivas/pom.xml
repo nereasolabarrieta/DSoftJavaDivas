@@ -170,7 +170,7 @@
         </plugins>
     </build>
     <profiles>
-        <!-- run as 'mvn exec:java -Pserver' -->
+        <!-- run as 'mvn exec:java -PventanaPrincipal' -->
         <profile>
             <id>ventanaPrincipal</id>
             <build>
@@ -192,7 +192,7 @@
         </profile>
 
         <profile>
-            <!-- run as 'mvn exec:java -Pclient' -->
+            <!-- run as 'mvn exec:java -Pbd' -->
             <id>bd</id>
             <build>
                 <plugins>
