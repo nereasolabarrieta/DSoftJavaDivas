@@ -193,8 +193,8 @@
         </profile>
 
         <profile>
-            <!-- run as 'mvn exec:java -Pbd' -->
-            <id>bd</id>
+            <!-- run as 'mvn exec:java -PServidor' -->
+            <id>Servidor</id>
             <build>
                 <plugins>
                     <plugin>
