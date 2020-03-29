@@ -35,6 +35,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.FlowLayout;
 
 public class Principal extends JFrame {
 
@@ -250,11 +251,19 @@ public class Principal extends JFrame {
 		
 		scrollPane.setViewportView(PscrollPane);
 		scrollPane .getViewport().setView(PscrollPane);
+		GridBagLayout gbl_PscrollPane = new GridBagLayout();
+		gbl_PscrollPane.columnWidths = new int[]{0};
+		gbl_PscrollPane.rowHeights = new int[]{0};
+		gbl_PscrollPane.columnWeights = new double[]{Double.MIN_VALUE};
+		gbl_PscrollPane.rowWeights = new double[]{Double.MIN_VALUE};
+		PscrollPane.setLayout(gbl_PscrollPane);
 		
 
 
 	
 		InsertarJPanel();
+		PscrollPane.repaint();
+		scrollPane.repaint();
 
 		
 
@@ -269,22 +278,31 @@ public class Principal extends JFrame {
 	 * Metodo para insertar el panel de clsJPanelVuelo
 	 */
 	public void InsertarJPanel()
-	{
-		int y=0;
-		for( int i=0; i<Lista_vuelos.size(); i++)
+	{	int x=0;
+		int y=50;
+		for( int i=0; i<10; i++)
 		{
-			JPanelVuelo panel=new JPanelVuelo();
+		/**	JPanelVuelo panel=new JPanelVuelo();
 			panel.setVisible(true);
 			PscrollPane.setLayout(null);
 			PscrollPane.add(panel);
 			panel.setLocation(0, y);
 			
-			y=y+254;
+			y=y+254; **/
+			JPanelVuelo panel=new JPanelVuelo();
+			panel.setVisible(true);
+			GridBagConstraints gbc_lblFoto = new GridBagConstraints();
+			gbc_lblFoto.ipadx = 1058;
+			gbc_lblFoto.ipady = 265;
+			gbc_lblFoto.gridx = x;
+			gbc_lblFoto.gridy = y;
+			PscrollPane.add(panel, gbc_lblFoto);
 
+			y=y+265;
 			
 		}
 
-		PscrollPane.repaint();
+
 	}
 
 }

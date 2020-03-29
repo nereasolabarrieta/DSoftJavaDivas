@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.border.LineBorder;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -14,8 +16,8 @@ public class JPanelVuelo extends JPanel {
 	 * Create the panel.
 	 */
 	public JPanelVuelo() {
-		setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		setSize(1064,254);
+		setBorder(new LineBorder(new Color(0, 0, 0)));
+		setSize(1064,265);
 		setBackground(Color.WHITE);
 		setForeground(Color.WHITE);
 		setLayout(null);
@@ -36,9 +38,9 @@ public class JPanelVuelo extends JPanel {
 		add(lblLinea);
 		
 		JPanel panelDeArriba = new JPanel();
-		panelDeArriba.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panelDeArriba.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelDeArriba.setBackground(Color.WHITE);
-		panelDeArriba.setBounds(682, 0, 382, 254);
+		panelDeArriba.setBounds(682, 0, 382, 265);
 		add(panelDeArriba);
 		panelDeArriba.setLayout(null);
 		

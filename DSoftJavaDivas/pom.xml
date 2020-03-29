@@ -170,47 +170,5 @@
 
         </plugins>
     </build>
-    <profiles>
-        <!-- run as 'mvn exec:java -PventanaPrincipal' -->
-        <profile>
-            <id>ventanaPrincipal</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.2.1</version>
-                        <configuration>
-                            <mainClass>EasyBooking.LP.clsPrincipal</mainClass>
-                            <arguments>
-                                <argument>${server.hostname}</argument>
-                                <argument>${server.port}</argument>
-                            </arguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
 
-        <profile>
-            <!-- run as 'mvn exec:java -PServidor' -->
-            <id>Servidor</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.2.1</version>
-                        <configuration>
-                            <mainClass>EasyBooking.LN.Main</mainClass>
-                            <arguments>
-                                <argument>${server.hostname}</argument>
-                                <argument>${server.port}</argument>
-                            </arguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
