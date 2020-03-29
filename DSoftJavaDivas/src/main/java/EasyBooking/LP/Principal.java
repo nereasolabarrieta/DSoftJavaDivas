@@ -282,13 +282,6 @@ public class Principal extends JFrame {
 		int y=50;
 		for( int i=0; i<10; i++)
 		{
-		/**	JPanelVuelo panel=new JPanelVuelo();
-			panel.setVisible(true);
-			PscrollPane.setLayout(null);
-			PscrollPane.add(panel);
-			panel.setLocation(0, y);
-			
-			y=y+254; **/
 			JPanelVuelo panel=new JPanelVuelo();
 			panel.setVisible(true);
 			GridBagConstraints gbc_lblFoto = new GridBagConstraints();
