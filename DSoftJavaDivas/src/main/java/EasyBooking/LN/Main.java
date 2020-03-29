@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
@@ -235,10 +236,31 @@ public class Main {
 		persistentManager = persistentManagerFactory.getPersistenceManager();				
 		transaction = persistentManager.currentTransaction();				
 		
+		Extent<Aeropuerto> extent = persistentManager.getExtent(Aeropuerto.class, false);
+		List<Aeropuerto> aeropuertos = new ArrayList<Aeropuerto>();
+		String codModificar=cod;
+		for (Aeropuerto p : extent) 
+		{
+		  aeropuertos.add(p);
+		}
+		extent.closeAll();
+		
 		try
         {
-			Aeropuerto eliminar = persistentManager.getObjectById(Aeropuerto.class, cod);
-			persistentManager.deletePersistent(eliminar);
+			
+			for (Aeropuerto p: aeropuertos)
+			{
+				String codNuevo=p.getCodAeropuerto();
+					if(codNuevo.equals(codModificar))
+					{
+						Aeropuerto eliminar = persistentManager.getObjectById(Aeropuerto.class, cod);
+						persistentManager.deletePersistent(eliminar);
+					}
+					else
+					{
+						System.out.println("No coincide");
+					}
+			}
         }
 		catch(Exception ex)
 		{
@@ -259,15 +281,34 @@ public class Main {
 	public static void ModificarAeropuerto (String cod, String nom)
 	{
 		PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		
 		//Modify data in the DB
 		persistentManager = persistentManagerFactory.getPersistenceManager();				
 		transaction = persistentManager.currentTransaction();				
+		Extent<Aeropuerto> extent = persistentManager.getExtent(Aeropuerto.class, false);
+		List<Aeropuerto> aeropuertos = new ArrayList<Aeropuerto>();
+		String codModificar=cod;
+		for (Aeropuerto p : extent) 
+		{
+		  aeropuertos.add(p);
+		}
+		extent.closeAll();
 		
 		try
         {
-		Aeropuerto a = persistentManager.getObjectById(Aeropuerto.class, cod);
-	    a.setNomAeropuerto(nom);
+			
+			for (Aeropuerto p: aeropuertos)
+			{
+				String codNuevo=p.getCodAeropuerto();
+					if(codNuevo.equals(codModificar))
+					{
+						Aeropuerto a = persistentManager.getObjectById(Aeropuerto.class, cod);
+						a.setNomAeropuerto(nom);
+					}
+					else
+					{
+						System.out.println("No coincide");
+					}
+			}
         }
 		catch(Exception ex)
 		{
@@ -284,6 +325,7 @@ public class Main {
 		    persistentManager.close();
 		}
 	}
+	
 	public static void LeerVuelosBD()
 	{
 	}
