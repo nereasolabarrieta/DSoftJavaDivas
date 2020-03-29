@@ -2,6 +2,7 @@ package EasyBooking.LN;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.jdo.JDOHelper;
@@ -13,9 +14,11 @@ import javax.jdo.Transaction;
 import EasyBooking.LD.Aerolinea;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Asiento;
+import EasyBooking.LD.Avion;
 import EasyBooking.LD.Reserva;
 import EasyBooking.LD.Usuario;
 import EasyBooking.LD.Viajero;
+import EasyBooking.LD.Vuelo;
 import EasyBooking.LD.metodoPago;
 
 
@@ -29,6 +32,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		try
         {
+		
 			PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 			
 			//Insert data in the DB
@@ -40,6 +44,7 @@ public class Main {
 			    transaction.begin();
 			   
 			    //Anyadirinfo();
+				
 			    
 			    transaction.commit();
 			    
@@ -145,6 +150,51 @@ public class Main {
 		    persistentManager.makePersistent(reser1);
 		    persistentManager.makePersistent(reser2);
 		    persistentManager.makePersistent(reser3);
+		   
+		    Set<Asiento>Lista_asiento=new HashSet<Asiento>();
+		    Asiento asiento1 = new Asiento("1A", true);
+		    Asiento asiento2 = new Asiento("1B", true);
+		    Asiento asiento3 = new Asiento("1C", true);
+		    Asiento asiento4 = new Asiento("1D", true);
+		    Asiento asiento5 = new Asiento("1E", true);
+		    Asiento asiento6 = new Asiento("1F", true);
+		    Asiento asiento7 = new Asiento("2A", true);
+		    Asiento asiento8 = new Asiento("2B", true);
+		    Asiento asiento9 = new Asiento("2C", true);
+		    Asiento asiento10= new Asiento("2D", true);
+		    Asiento asiento11 = new Asiento("2E", true);
+		    Asiento asiento12 = new Asiento("2F", true);
+		    persistentManager.makePersistent(asiento1);
+		    persistentManager.makePersistent(asiento2);
+		    persistentManager.makePersistent(asiento3);
+		    persistentManager.makePersistent(asiento4);
+		    persistentManager.makePersistent(asiento5);
+		    persistentManager.makePersistent(asiento6);
+		    persistentManager.makePersistent(asiento7);
+		    persistentManager.makePersistent(asiento8);
+		    persistentManager.makePersistent(asiento9);
+		    persistentManager.makePersistent(asiento10);
+		    persistentManager.makePersistent(asiento11);
+		    persistentManager.makePersistent(asiento12);
+		    
+		    Lista_asiento.add(asiento1);
+		    Lista_asiento.add(asiento2);
+		    Lista_asiento.add(asiento3);
+		    Lista_asiento.add(asiento4);
+		    Lista_asiento.add(asiento5);
+		    Lista_asiento.add(asiento6);
+		    Lista_asiento.add(asiento7);
+		    Lista_asiento.add(asiento8);
+		    Lista_asiento.add(asiento9);
+		    Lista_asiento.add(asiento10);
+		    Lista_asiento.add(asiento11);
+		    Lista_asiento.add(asiento12);
+		    
+		    Avion avion1 = new Avion("02X45672J",Lista_asiento);
+		    persistentManager.makePersistent(avion1);
+		    
+		    //No consigo escribir DATE
+		   // Vuelo vueloMadridMallorca = new Vuelo("1",Madrid,Mallorca,Iberia,avion1,"20/04/2020","20/04/2020",40);
 	}
 	
 
@@ -234,6 +284,8 @@ public class Main {
 		    persistentManager.close();
 		}
 	}
-
+	public static void LeerVuelosBD()
+	{
+	}
 
 }
