@@ -12,6 +12,8 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+
+
 import EasyBooking.LD.Aerolinea;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Asiento;
@@ -272,9 +274,35 @@ public class Main {
 	
 	public static void LeerVuelosBD()
 	{
-		Query q = persistentManager.newQuery("select from Reserva " +
-                "where Aerolinea == Iberia ");
+		try
+        {
+//		    transaction.begin();
+//		  
+//			Query<Viajero> q = persistentManager.newQuery("select from" + Viajero.class.getName());
+//			for (Viajero v: q.executeList())
+//			{
+//				System.out.println("El nombre del viajero es " + v.getNomViajero());
+//			}
+//		
+//		    
+//		    transaction.commit();
+			
+		}
+
+        catch(Exception ex)
+		{
+			System.err.println("* Exception reading data from db: " + ex.getMessage());
+		}
 		
+		finally
+		{		    
+			if (transaction.isActive()) 
+			{
+		        transaction.rollback();
+		    }
+		    
+		    persistentManager.close();
+		}
 
 
 	}
