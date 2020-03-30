@@ -60,8 +60,7 @@ public class Servidor extends JFrame
 	 */
 	public Servidor() 
 	{
-		System.out.println("entra");
-		//setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(Servidor.class.getResource("/EasyBooking/Img/Avion.jpg")));
 		setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		setTitle("EasyBooking");
 		setForeground(Color.BLACK);
@@ -72,8 +71,8 @@ public class Servidor extends JFrame
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		this.setLocationRelativeTo(null);
+		contentPane.setLayout(null);
 		
 		JPanel pIzquierda = new JPanel();
 		pIzquierda.setForeground(new Color(255, 255, 255));
@@ -171,10 +170,10 @@ public class Servidor extends JFrame
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setBounds(15, 16, 202, 73);
-		//ImageIcon fot = new ImageIcon(Buscar.class.getResource("/EasyBooking/Img/logo.png"));
-		//Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
-		//lblLogo.setIcon(icono);
-		//pNorte.add(lblLogo);
+//		ImageIcon fot = new ImageIcon(Servidor.class.getResource("/EasyBooking/Img/logo.png"));
+//		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
+//		lblLogo.setIcon(icono);
+		pNorte.add(lblLogo);
 		
 		
 	}
