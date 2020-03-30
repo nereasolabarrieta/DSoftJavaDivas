@@ -212,6 +212,19 @@ public class Main {
 		}
 		
 	}
+	public static List<Aeropuerto> VisualizarAeropuertos()
+	{
+	
+		Extent<Aeropuerto> extent = persistentManager.getExtent(Aeropuerto.class, false);
+		List<Aeropuerto> aeropuertos = new ArrayList<Aeropuerto>();
+		
+		for (Aeropuerto p : extent) 
+		{
+		  aeropuertos.add(p);
+		}
+		extent.closeAll();
+		return aeropuertos;
+	}
 	public static void ModificarAeropuerto (String cod, String nom)
 	{
 	

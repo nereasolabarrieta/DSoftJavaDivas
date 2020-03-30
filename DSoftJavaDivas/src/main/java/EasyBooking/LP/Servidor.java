@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -29,6 +30,7 @@ import javax.swing.border.EmptyBorder;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 
+import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LN.Main;
 
 public class Servidor extends JFrame 
@@ -174,6 +176,22 @@ public class Servidor extends JFrame
 //		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
 //		lblLogo.setIcon(icono);
 		pNorte.add(lblLogo);
+		
+		JButton btn_visualizar = new JButton("Visualizar aeropuertos");
+		btn_visualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				List<Aeropuerto> aeropuertos = Main.VisualizarAeropuertos();
+				for(Aeropuerto a: aeropuertos)
+            	{
+            		JOptionPane.showMessageDialog(null,a.getNomAeropuerto());
+            	}
+            
+				
+			}
+		});
+		btn_visualizar.setBounds(480, 400, 200, 29);
+		pIzquierda.add(btn_visualizar);
 		
 		
 	}
