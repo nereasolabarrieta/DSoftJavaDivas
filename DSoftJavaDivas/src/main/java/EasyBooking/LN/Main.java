@@ -21,6 +21,7 @@ import EasyBooking.LD.Usuario;
 import EasyBooking.LD.Viajero;
 import EasyBooking.LD.Vuelo;
 import EasyBooking.LD.metodoPago;
+import EasyBooking.LP.Servidor;
 
 
 
@@ -28,83 +29,24 @@ public class Main {
 
 	private static PersistenceManager persistentManager;
 	private static Transaction transaction;
+	private static 	PersistenceManagerFactory persistentManagerFactory;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		try
-        {
 		
-			PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-			
-			//Insert data in the DB
-			persistentManager = persistentManagerFactory.getPersistenceManager();				
-			transaction = persistentManager.currentTransaction();				
-			
-			try
-            {
-			    transaction.begin();
-			   
-			    //Anyadirinfo();
-				
-			    
-			    transaction.commit();
-			    
-			}
-
-            catch(Exception ex)
-			{
-				System.err.println("* Exception inserting data into db: " + ex.getMessage());
-			}
-			
-			finally
-			{		    
-				if (transaction.isActive()) 
-				{
-			        transaction.rollback();
-			    }
-			    
-			    persistentManager.close();
-			}
-			
-			
-			//Select data using a Query
-			persistentManager = persistentManagerFactory.getPersistenceManager();
-			transaction = persistentManager.currentTransaction();
-				
-			try
-            {
-			    transaction.begin();
-	
-			    //Escribir codigo BD
-	
-			    transaction.commit();
-			}
-
-			catch(Exception ex)
-			{
-				System.err.println("* Exception executing a query: " + ex.getMessage());
-			}
-
-			finally 
-			{
-				if (transaction.isActive())
-				{
-			        transaction.rollback();
-			    }
-	
-			    persistentManager.close();
-			}
-		}
-
-		catch (Exception ex)
-        {
-			System.err.println("* Exception: " + ex.getMessage());
-		}
+		persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		//Insert data in the DB
+		persistentManager = persistentManagerFactory.getPersistenceManager();				
+		transaction = persistentManager.currentTransaction();		
+		
+		Servidor s = new Servidor();
+		s.setVisible(true);
+		
 	}
 	
 	public static void AnyadirInfo ()
 	{
-		 Aeropuerto Madrid = new Aeropuerto ("MDR","MADRID");
+		 	Aeropuerto Madrid = new Aeropuerto ("MDR","MADRID");
 		    Aeropuerto Mallorca = new Aeropuerto ("PLM","PALMA DE MALLORCA");
 		    persistentManager.makePersistent(Madrid);
 		    persistentManager.makePersistent(Mallorca);
@@ -152,47 +94,47 @@ public class Main {
 		    persistentManager.makePersistent(reser2);
 		    persistentManager.makePersistent(reser3);
 		   
-		    Set<Asiento>Lista_asiento=new HashSet<Asiento>();
-		    Asiento asiento1 = new Asiento("1A", true);
-		    Asiento asiento2 = new Asiento("1B", true);
-		    Asiento asiento3 = new Asiento("1C", true);
-		    Asiento asiento4 = new Asiento("1D", true);
-		    Asiento asiento5 = new Asiento("1E", true);
-		    Asiento asiento6 = new Asiento("1F", true);
-		    Asiento asiento7 = new Asiento("2A", true);
-		    Asiento asiento8 = new Asiento("2B", true);
-		    Asiento asiento9 = new Asiento("2C", true);
-		    Asiento asiento10= new Asiento("2D", true);
-		    Asiento asiento11 = new Asiento("2E", true);
-		    Asiento asiento12 = new Asiento("2F", true);
-		    persistentManager.makePersistent(asiento1);
-		    persistentManager.makePersistent(asiento2);
-		    persistentManager.makePersistent(asiento3);
-		    persistentManager.makePersistent(asiento4);
-		    persistentManager.makePersistent(asiento5);
-		    persistentManager.makePersistent(asiento6);
-		    persistentManager.makePersistent(asiento7);
-		    persistentManager.makePersistent(asiento8);
-		    persistentManager.makePersistent(asiento9);
-		    persistentManager.makePersistent(asiento10);
-		    persistentManager.makePersistent(asiento11);
-		    persistentManager.makePersistent(asiento12);
-		    
-		    Lista_asiento.add(asiento1);
-		    Lista_asiento.add(asiento2);
-		    Lista_asiento.add(asiento3);
-		    Lista_asiento.add(asiento4);
-		    Lista_asiento.add(asiento5);
-		    Lista_asiento.add(asiento6);
-		    Lista_asiento.add(asiento7);
-		    Lista_asiento.add(asiento8);
-		    Lista_asiento.add(asiento9);
-		    Lista_asiento.add(asiento10);
-		    Lista_asiento.add(asiento11);
-		    Lista_asiento.add(asiento12);
-		    
-		    Avion avion1 = new Avion("02X45672J",Lista_asiento);
-		    persistentManager.makePersistent(avion1);
+//		    Set<Asiento>Lista_asiento=new HashSet<Asiento>();
+//		    Asiento asiento1 = new Asiento("1A", true);
+//		    Asiento asiento2 = new Asiento("1B", true);
+//		    Asiento asiento3 = new Asiento("1C", true);
+//		    Asiento asiento4 = new Asiento("1D", true);
+//		    Asiento asiento5 = new Asiento("1E", true);
+//		    Asiento asiento6 = new Asiento("1F", true);
+//		    Asiento asiento7 = new Asiento("2A", true);
+//		    Asiento asiento8 = new Asiento("2B", true);
+//		    Asiento asiento9 = new Asiento("2C", true);
+//		    Asiento asiento10= new Asiento("2D", true);
+//		    Asiento asiento11 = new Asiento("2E", true);
+//		    Asiento asiento12 = new Asiento("2F", true);
+//		    persistentManager.makePersistent(asiento1);
+//		    persistentManager.makePersistent(asiento2);
+//		    persistentManager.makePersistent(asiento3);
+//		    persistentManager.makePersistent(asiento4);
+//		    persistentManager.makePersistent(asiento5);
+//		    persistentManager.makePersistent(asiento6);
+//		    persistentManager.makePersistent(asiento7);
+//		    persistentManager.makePersistent(asiento8);
+//		    persistentManager.makePersistent(asiento9);
+//		    persistentManager.makePersistent(asiento10);
+//		    persistentManager.makePersistent(asiento11);
+//		    persistentManager.makePersistent(asiento12);
+//		    
+//		    Lista_asiento.add(asiento1);
+//		    Lista_asiento.add(asiento2);
+//		    Lista_asiento.add(asiento3);
+//		    Lista_asiento.add(asiento4);
+//		    Lista_asiento.add(asiento5);
+//		    Lista_asiento.add(asiento6);
+//		    Lista_asiento.add(asiento7);
+//		    Lista_asiento.add(asiento8);
+//		    Lista_asiento.add(asiento9);
+//		    Lista_asiento.add(asiento10);
+//		    Lista_asiento.add(asiento11);
+//		    Lista_asiento.add(asiento12);
+//		    
+//		    Avion avion1 = new Avion("02X45672J",Lista_asiento);
+//		    persistentManager.makePersistent(avion1);
 		    
 		    //No consigo escribir DATE
 		   // Vuelo vueloMadridMallorca = new Vuelo("1",Madrid,Mallorca,Iberia,avion1,"20/04/2020","20/04/2020",40);
@@ -201,11 +143,7 @@ public class Main {
 
 	public static void AnyadirAeropuerto_1 (String cod, String nom)
 	{
-		PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		
-		//Insert data in the DB
-		persistentManager = persistentManagerFactory.getPersistenceManager();				
-		transaction = persistentManager.currentTransaction();				
+				
 		
 		try
         {
@@ -230,11 +168,7 @@ public class Main {
 	}
 	public static void EliminarAeropuerto (String cod)
 	{
-		PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		
-		//Delete data in the DB
-		persistentManager = persistentManagerFactory.getPersistenceManager();				
-		transaction = persistentManager.currentTransaction();				
+			
 		
 		Extent<Aeropuerto> extent = persistentManager.getExtent(Aeropuerto.class, false);
 		List<Aeropuerto> aeropuertos = new ArrayList<Aeropuerto>();
@@ -280,10 +214,7 @@ public class Main {
 	}
 	public static void ModificarAeropuerto (String cod, String nom)
 	{
-		PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		//Modify data in the DB
-		persistentManager = persistentManagerFactory.getPersistenceManager();				
-		transaction = persistentManager.currentTransaction();				
+	
 		Extent<Aeropuerto> extent = persistentManager.getExtent(Aeropuerto.class, false);
 		List<Aeropuerto> aeropuertos = new ArrayList<Aeropuerto>();
 		String codModificar=cod;

@@ -58,8 +58,10 @@ public class Servidor extends JFrame
 	/**
 	 * Create the frame.
 	 */
-	public Servidor() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
+	public Servidor() 
+	{
+		System.out.println("entra");
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
 		setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		setTitle("EasyBooking");
 		setForeground(Color.BLACK);
@@ -80,11 +82,11 @@ public class Servidor extends JFrame
 		contentPane.add(pIzquierda);
 		pIzquierda.setLayout(null);
 		
-		JLabel label_1 = new JLabel("Nombre de aeropuerto: ");
-		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		label_1.setBounds(170, 203, 286, 20);
-		pIzquierda.add(label_1);
+		JLabel lblNom_aeropuerto = new JLabel("Nombre de aeropuerto: ");
+		lblNom_aeropuerto.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNom_aeropuerto.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNom_aeropuerto.setBounds(170, 203, 286, 20);
+		pIzquierda.add(lblNom_aeropuerto);
 		
 		txtNomAeropuerto = new JTextField();
 		txtNomAeropuerto.setBounds(495, 201, 162, 26);
@@ -93,11 +95,11 @@ public class Servidor extends JFrame
 		txtNomAeropuerto.setText("");
 		
 
-		JLabel label_2 = new JLabel("Codigo de aeropuerto: ");
-		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		label_2.setBounds(265, 255, 191, 20);
-		pIzquierda.add(label_2);
+		JLabel lbl_codigo_aero = new JLabel("Codigo de aeropuerto: ");
+		lbl_codigo_aero.setHorizontalAlignment(SwingConstants.RIGHT);
+		lbl_codigo_aero.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lbl_codigo_aero.setBounds(265, 255, 191, 20);
+		pIzquierda.add(lbl_codigo_aero);
 		
 		txtCodAeropuerto = new JTextField();
 		txtCodAeropuerto.setText("");
@@ -105,8 +107,8 @@ public class Servidor extends JFrame
 		txtCodAeropuerto.setBounds(495, 253, 162, 26);
 		pIzquierda.add(txtCodAeropuerto);
 		
-		JButton btnAadir = new JButton("Anyadir");
-		btnAadir.addActionListener(new ActionListener() {
+		JButton btnAnyadir = new JButton("Anyadir");
+		btnAnyadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
 				if(txtCodAeropuerto.getText().equals("") || txtNomAeropuerto.getText().equals(""))
@@ -117,14 +119,16 @@ public class Servidor extends JFrame
             	{
             		
             		Main.AnyadirAeropuerto_1(txtCodAeropuerto.getText(),txtNomAeropuerto.getText());
+            		txtCodAeropuerto.setText("");
+            		txtNomAeropuerto.setText("");
             	}
 			}
 		});
-		btnAadir.setBounds(207, 334, 115, 29);
-		pIzquierda.add(btnAadir);
+		btnAnyadir.setBounds(207, 334, 115, 29);
+		pIzquierda.add(btnAnyadir);
 		
-		JButton button = new JButton("Modificar");
-		button.addActionListener(new ActionListener() {
+		JButton btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
 				if(txtCodAeropuerto.getText().equals("")|| txtNomAeropuerto.getText().equals(""))
@@ -137,11 +141,11 @@ public class Servidor extends JFrame
             	}
 			}
 		});
-		button.setBounds(513, 334, 115, 29);
-		pIzquierda.add(button);
+		btnModificar.setBounds(513, 334, 115, 29);
+		pIzquierda.add(btnModificar);
 		
-		JButton button_1 = new JButton("Eliminar");
-		button_1.addActionListener(new ActionListener() {
+		JButton btn_eliminar = new JButton("Eliminar");
+		btn_eliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
 				if(txtCodAeropuerto.getText().equals("") || txtNomAeropuerto.getText().equals(""))
@@ -155,8 +159,8 @@ public class Servidor extends JFrame
 				
 			}
 		});
-		button_1.setBounds(837, 334, 115, 29);
-		pIzquierda.add(button_1);
+		btn_eliminar.setBounds(837, 334, 115, 29);
+		pIzquierda.add(btn_eliminar);
 		
 		
 		JPanel pNorte = new JPanel();
@@ -167,10 +171,10 @@ public class Servidor extends JFrame
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setBounds(15, 16, 202, 73);
-		ImageIcon fot = new ImageIcon(Buscar.class.getResource("/EasyBooking/Img/logo.png"));
-		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
-		lblLogo.setIcon(icono);
-		pNorte.add(lblLogo);
+		//ImageIcon fot = new ImageIcon(Buscar.class.getResource("/EasyBooking/Img/logo.png"));
+		//Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
+		//lblLogo.setIcon(icono);
+		//pNorte.add(lblLogo);
 		
 		
 	}
