@@ -38,7 +38,7 @@ public class Main {
 		//Insert data in the DB
 		persistentManager = persistentManagerFactory.getPersistenceManager();				
 		transaction = persistentManager.currentTransaction();		
-		
+		LeerVuelosBD();
 		Servidor s = new Servidor();
 		s.setVisible(true);
 		
@@ -272,6 +272,11 @@ public class Main {
 	
 	public static void LeerVuelosBD()
 	{
+		Query q = persistentManager.newQuery("select from Reserva " +
+                "where Aerolinea == Iberia ");
+		
+
+
 	}
 
 }
