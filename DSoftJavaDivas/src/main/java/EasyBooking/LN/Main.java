@@ -40,7 +40,7 @@ public class Main {
 		//Insert data in the DB
 		persistentManager = persistentManagerFactory.getPersistenceManager();				
 		transaction = persistentManager.currentTransaction();		
-		LeerVuelosBD();
+		SelectNombreViajeros();
 		Servidor s = new Servidor();
 		s.setVisible(true);
 		
@@ -145,12 +145,13 @@ public class Main {
 
 	public static void AnyadirAeropuerto_1 (String cod, String nom)
 	{
-				
-		
+		List<Aeropuerto> aeropuertos = VisualizarAeropuertos();
+		String codAnyadir=cod;	
 		try
         {
-		Aeropuerto nuevo = new Aeropuerto(cod, nom);
-		persistentManager.makePersistent(nuevo);
+			Aeropuerto nuevo = new Aeropuerto(cod, nom);
+			persistentManager.makePersistent(nuevo);
+
         }
 		catch(Exception ex)
 		{
@@ -164,22 +165,14 @@ public class Main {
 		        transaction.rollback();
 		    }
 		    
-		    persistentManager.close();
+		    //persistentManager.close();
 		}
 		
 	}
 	public static void EliminarAeropuerto (String cod)
 	{
-			
-		
-		Extent<Aeropuerto> extent = persistentManager.getExtent(Aeropuerto.class, false);
-		List<Aeropuerto> aeropuertos = new ArrayList<Aeropuerto>();
-		String codModificar=cod;
-		for (Aeropuerto p : extent) 
-		{
-		  aeropuertos.add(p);
-		}
-		extent.closeAll();
+		List<Aeropuerto> aeropuertos = VisualizarAeropuertos();
+		String codEliminar=cod;
 		
 		try
         {
@@ -187,7 +180,7 @@ public class Main {
 			for (Aeropuerto p: aeropuertos)
 			{
 				String codNuevo=p.getCodAeropuerto();
-					if(codNuevo.equals(codModificar))
+					if(codNuevo.equals(codEliminar))
 					{
 						Aeropuerto eliminar = persistentManager.getObjectById(Aeropuerto.class, cod);
 						persistentManager.deletePersistent(eliminar);
@@ -210,10 +203,11 @@ public class Main {
 		        transaction.rollback();
 		    }
 		    
-		    persistentManager.close();
+		    //persistentManager.close();
 		}
 		
 	}
+	
 	public static List<Aeropuerto> VisualizarAeropuertos()
 	{
 	
@@ -227,18 +221,12 @@ public class Main {
 		extent.closeAll();
 		return aeropuertos;
 	}
+	
 	public static void ModificarAeropuerto (String cod, String nom)
 	{
-	
-		Extent<Aeropuerto> extent = persistentManager.getExtent(Aeropuerto.class, false);
-		List<Aeropuerto> aeropuertos = new ArrayList<Aeropuerto>();
+		List<Aeropuerto> aeropuertos = VisualizarAeropuertos();
 		String codModificar=cod;
-		for (Aeropuerto p : extent) 
-		{
-		  aeropuertos.add(p);
-		}
-		extent.closeAll();
-		
+
 		try
         {
 			
@@ -268,24 +256,28 @@ public class Main {
 		        transaction.rollback();
 		    }
 		    
-		    persistentManager.close();
+		    //persistentManager.close();
 		}
 	}
 	
-	public static void LeerVuelosBD()
+	public static void SelectNombreViajeros()
 	{
 		try
         {
-//		    transaction.begin();
-//		  
-//			Query<Viajero> q = persistentManager.newQuery("select from" + Viajero.class.getName());
-//			for (Viajero v: q.executeList())
-//			{
-//				System.out.println("El nombre del viajero es " + v.getNomViajero());
-//			}
-//		
-//		    
-//		    transaction.commit();
+		    transaction.begin();
+		  
+		    @SuppressWarnings("rawtypes")
+			Query q = persistentManager.newQuery("select nomViajero from " + Viajero.class.getName());
+		    @SuppressWarnings("unchecked")
+			List<String> nombres = (List<String>) q.execute();
+		    
+			for (String a: nombres)
+			{
+				System.out.println("El nombre del viajero es " + a);
+			}
+		
+		    
+		    transaction.commit();
 			
 		}
 
@@ -301,10 +293,10 @@ public class Main {
 		        transaction.rollback();
 		    }
 		    
-		    persistentManager.close();
+		    //persistentManager.close();
 		}
 
-
 	}
+
 
 }

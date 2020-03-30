@@ -53,8 +53,7 @@ public class Servidor extends JFrame
 				}
 			}
 		});
-		
-		
+			
 	}
 
 	/**
@@ -177,7 +176,7 @@ public class Servidor extends JFrame
 //		lblLogo.setIcon(icono);
 		pNorte.add(lblLogo);
 		
-		JButton btn_visualizar = new JButton("Visualizar aeropuertos");
+		/*JButton btn_visualizar = new JButton("Visualizar aeropuertos");
 		btn_visualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -192,7 +191,7 @@ public class Servidor extends JFrame
 		});
 		btn_visualizar.setBounds(480, 400, 200, 29);
 		pIzquierda.add(btn_visualizar);
-		
+		*/
 		
 	}
 }
