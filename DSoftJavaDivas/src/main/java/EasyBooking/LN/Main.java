@@ -275,10 +275,8 @@ public class Main {
 			{
 				System.out.println("El nombre del viajero es " + a);
 			}
-		
-		    
-		    transaction.commit();
-			
+		 
+		    transaction.commit();	
 		}
 
         catch(Exception ex)
@@ -293,9 +291,7 @@ public class Main {
 		        transaction.rollback();
 		    }
 		    
-		    //persistentManager.close();
 		}
-
 	}
 
 
