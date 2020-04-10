@@ -8,8 +8,10 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Stream;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -143,7 +145,10 @@ public class Servidor extends JFrame
 		});
 		btnModificar.setBounds(513, 334, 115, 29);
 		pIzquierda.add(btnModificar);
+		String a = "0";
+		Stream<Long> lista = Arrays.stream(a.split("")).map(Long::parseLong);
 		
+		int num =0;
 		JButton btn_eliminar = new JButton("Eliminar");
 		btn_eliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 

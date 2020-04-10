@@ -29,14 +29,6 @@ public class GestorBD {
 	private static Transaction transaction;
 	
 	/**
-	 * Metodo para leer vuelos de la BD
-	 */
-	public void LeerVuelosBD()
-	{
-		
-	}
-	
-	/**
 	 * Metodo para leer Aerolineas de la BD
 	 */
 	public void LeerAerolineasBD()
@@ -52,23 +44,7 @@ public class GestorBD {
 	{
 		
 	}
-	
-	/**
-	 * Metodo para leer asientos de la BD
-	 */
-	public void LeerAsientosBD()
-	{
-		
-	}
-	
-	/**
-	 * Metodo para leer aviones de la BD
-	 */
-	public void LeerListaAvionBD()
-	{
-		
-	}
-	
+
 	/**
 	 * Metodo para leer reservas de la BD
 	 */
@@ -92,14 +68,11 @@ public class GestorBD {
 	{
 		
 	}
-
-	
-	
-	
-	/**
-	 * Metodo para crear un vuelo
-	 */
-	public static void crearVuelo()
+	public void crearReserva()
+	{
+		
+	}
+	public void crearViajero()
 	{
 		
 	}

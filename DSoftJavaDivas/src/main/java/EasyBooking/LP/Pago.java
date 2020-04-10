@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.BDController;
+
 import javax.swing.JTable;
 import javax.swing.JRadioButton;
 import javax.swing.JLabel;
@@ -16,6 +19,8 @@ import javax.swing.JToggleButton;
 import java.awt.Choice;
 import java.awt.List;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 
 import javax.swing.ButtonGroup;
@@ -28,6 +33,8 @@ import java.awt.Image;
 
 import javax.swing.SwingConstants;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.JTextArea;
@@ -40,6 +47,7 @@ public class Pago extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField txtCvv;
+	private BDController controller;
 
 	/**
 	 * Launch the application.
