@@ -13,7 +13,7 @@ import EasyBooking.LD.Aerolinea;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Vuelo;
 
-public class Gestor {
+public class GestorBD {
 
 	//leer las tablas de bd. : usuario, reserva, viajero, aerolinea, aeropuerto, 
 	//crear los arraylist que faltan metiendo datos inventados-vuelo, avion, asientos,. 
