@@ -3,7 +3,7 @@
 Proyecto grupal de Diseño del Software ( 4º de ADE + Ingeniería informática ) 
 El proyecto denominado Easybooking, es una plataforma para buscar y reservar vuelos. 
 
-#Pasos para ejecutar
+# Pasos para ejecutar
 
 1. mvn clean 
 2. mvn compile
