@@ -21,31 +21,24 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
+import Controller.Controller;
+
 public class LogIn extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LogIn frame = new LogIn();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	private Controller controller;
 	/**
 	 * Create the frame.
+	 * @param controller 
 	 */
-	public LogIn() {
-		//hay q poner ruta relativa 
+	public LogIn(Controller controller) {
+		this.controller = controller;
+		initComponents();
+		this.setVisible(true);
+		
+	}
+	public void initComponents()
+	{
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
 		setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		setTitle("EasyBooking");

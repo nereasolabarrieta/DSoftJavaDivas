@@ -31,6 +31,7 @@ import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 
+import Controller.Controller;
 import EasyBooking.LD.Aeropuerto;
 
 import javax.swing.JButton;
@@ -47,29 +48,19 @@ public class Buscar extends JFrame {
 	private JTextField txtNumViajeros;
 	private JDateChooser datechooser;
 	private ArrayList<Aeropuerto>Lista_Aeropuerto;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Buscar frame = new Buscar();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		
-		
-	}
-
+	private Controller controller;
 	/**
 	 * Create the frame.
+	 * @param controller 
 	 */
-	public Buscar() {
+	public Buscar(Controller controller) {
+		this.controller = controller;
+		initComponents();
+		this.setVisible(true);
+		
+	}
+	public void initComponents()
+	{
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
 		setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		setTitle("EasyBooking");
@@ -197,7 +188,7 @@ public class Buscar extends JFrame {
 				}
 				else
 				{
-					Principal a = new Principal();
+					Principal a = new Principal(controller);
 					a.setVisible(true);
 					setVisible(false);
 					

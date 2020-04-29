@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Controller.BDController;
+import Controller.Controller;
 
 import javax.swing.JTable;
 import javax.swing.JRadioButton;
@@ -44,31 +44,20 @@ public class Pago extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtA;
 	private JTextField txtDebeCoincidirCon;
-	private JTextField textField_2;
-	private JTextField textField_3;
 	private JTextField txtCvv;
-	private BDController controller;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Pago frame = new Pago();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	private Controller controller;
 	/**
 	 * Create the frame.
+	 * @param controller 
 	 */
-	public Pago() {
+	public Pago(Controller controller) {
+		this.controller = controller;
+		initComponents();
+		this.setVisible(true);
+		
+	}
+	public void initComponents()
+	{
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
 		setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		setTitle("EasyBooking");

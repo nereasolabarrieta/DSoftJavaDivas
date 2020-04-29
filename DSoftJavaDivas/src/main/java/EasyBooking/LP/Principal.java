@@ -23,6 +23,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import com.toedter.calendar.JDayChooser;
 
+import Controller.Controller;
 import EasyBooking.LD.Vuelo;
 
 import com.toedter.calendar.JDateChooser;
@@ -43,29 +44,19 @@ public class Principal extends JFrame {
 	private JScrollPane scrollPane;
 	private JPanel PscrollPane;
 	private ArrayList<Vuelo>Lista_vuelos;
-	
-	
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Principal frame = new Principal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	private Controller controller;
 	/**
 	 * Create the frame.
+	 * @param controller 
 	 */
-	public Principal() {
+	public Principal(Controller controller) {
+		this.controller = controller;
+		initComponents();
+		this.setVisible(true);
+		
+	}
+	public void initComponents()
+	{
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
 		setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		setTitle("EasyBooking");
