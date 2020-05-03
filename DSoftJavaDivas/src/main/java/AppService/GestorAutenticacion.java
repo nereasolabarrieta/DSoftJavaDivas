@@ -3,7 +3,11 @@ package AppService;
 import EasyBooking.LD.Usuario;
 
 public class GestorAutenticacion {
-
+	
+	public GestorAutenticacion()
+	{
+		
+	}
 	public void RegistrarUsuario(Usuario u1){
 		
 	}

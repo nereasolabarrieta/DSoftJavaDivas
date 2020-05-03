@@ -7,6 +7,11 @@ import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Vuelo;
 
 public class GestorVuelos {
+	
+	public GestorVuelos()
+	{
+		
+	}
 	public List<Vuelo> getVuelos(){
 		return null;
 		
