@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import EasyBooking.LD.Aeropuerto;
+import EasyBooking.LD.Usuario;
 import EasyBooking.LD.Vuelo;
 
 public interface itfFachada extends Remote{
@@ -16,4 +17,7 @@ public interface itfFachada extends Remote{
 	public void Pagar(double precio, String cod_vuelo)throws RemoteException;
 	public void Buscar(String origen, String destino, Date fecha);
 	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio);
+	public void RegistrarUsuario(Usuario u1);
+	public void LogInUsuario(Usuario u1);
+	public void LogOut(Usuario u1);
 }

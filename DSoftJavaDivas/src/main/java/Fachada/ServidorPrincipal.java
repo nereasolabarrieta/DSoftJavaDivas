@@ -11,6 +11,7 @@ import AppService.GestorAutenticacion;
 import AppService.GestorPago;
 import AppService.GestorVuelos;
 import EasyBooking.LD.Aeropuerto;
+import EasyBooking.LD.Usuario;
 import EasyBooking.LD.Vuelo;
 
 
@@ -95,6 +96,24 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 
 	@Override
 	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void RegistrarUsuario(Usuario u1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void LogInUsuario(Usuario u1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void LogOut(Usuario u1) {
 		// TODO Auto-generated method stub
 		
 	}
