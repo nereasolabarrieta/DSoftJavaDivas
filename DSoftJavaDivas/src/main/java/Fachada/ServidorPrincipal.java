@@ -68,55 +68,55 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	public List<Vuelo> getVuelos() throws RemoteException {
 		// TODO Auto-generated method stub
 		
-		return null;
+		return GVuelos.getVuelos();
 	}
 
 	@Override
 	public List<Aeropuerto> getAeropuerto() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return GVuelos.getAeropuerto();
 	}
 
 	@Override
 	public void newReserva(String Aeropuerto_Salida, String Aeropuerto_llegada) throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		GVuelos.newReserva(Aeropuerto_Salida, Aeropuerto_llegada);
 	}
 
 	@Override
 	public void Pagar(double precio, String cod_vuelo) throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		GPago.Pagar(precio, cod_vuelo);
 	}
 
 	@Override
 	public void Buscar(String origen, String destino, Date fecha) {
 		// TODO Auto-generated method stub
-		
+		GVuelos.Buscar(origen, destino, fecha);
 	}
 
 	@Override
 	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio) {
 		// TODO Auto-generated method stub
-		
+		GVuelos.AplicarFiltro(origen, destino, fecha, min_precio, max_precio);
 	}
 
 	@Override
 	public void RegistrarUsuario(Usuario u1) {
 		// TODO Auto-generated method stub
-		
+		GAutenticacion.RegistrarUsuario(u1);
 	}
 
 	@Override
 	public void LogInUsuario(Usuario u1) {
 		// TODO Auto-generated method stub
-		
+		GAutenticacion.LogInUsuario(u1);
 	}
 
 	@Override
 	public void LogOut(Usuario u1) {
 		// TODO Auto-generated method stub
-		
+		GAutenticacion.LogOut(u1);
 	}
 	
 	
