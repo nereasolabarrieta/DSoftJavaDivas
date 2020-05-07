@@ -1,17 +1,12 @@
 package Gateway;
 
+import java.awt.List;
 import java.util.Date;
 
 import EasyBooking.LD.Usuario;
 
-public class Gateway implements itfGateway
+public class GatewayVuelos implements itfGatewayVuelos
 {
-
-	@Override
-	public void Pagar(double precio, String cod_vuelo) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void Buscar(String origen, String destino, Date fecha) {
@@ -26,22 +21,9 @@ public class Gateway implements itfGateway
 	}
 
 	@Override
-	public void RegistrarUsuario(Usuario u1) {
+	public List getVuelos() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
-
-	@Override
-	public void LogInUsuario(Usuario u1) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void LogOutUsuario(Usuario u1) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 
 }
