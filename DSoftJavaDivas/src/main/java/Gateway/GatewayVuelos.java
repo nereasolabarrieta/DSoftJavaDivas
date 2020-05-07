@@ -1,6 +1,6 @@
 package Gateway;
 
-import java.awt.List;
+import java.util.List;
 import java.util.Date;
 
 import EasyBooking.LD.Usuario;
