@@ -5,7 +5,7 @@ import java.util.Date;
 
 import EasyBooking.LD.Usuario;
 
-public class GatewayVuelos implements itfGatewayVuelos
+public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 {
 
 	@Override

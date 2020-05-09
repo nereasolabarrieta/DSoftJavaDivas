@@ -1,6 +1,6 @@
 package Gateway;
 
-public class GatewayPago implements itfGatewayPago
+public class GatewayPago extends Gateway implements itfGatewayPago
 {
 
 	@Override

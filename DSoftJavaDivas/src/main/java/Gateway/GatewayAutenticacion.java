@@ -4,7 +4,7 @@ import java.util.Date;
 
 import EasyBooking.LD.Usuario;
 
-public class GatewayAutenticacion implements itfGatewayAutenticacion
+public class GatewayAutenticacion extends Gateway implements itfGatewayAutenticacion 
 {
 
 	@Override
