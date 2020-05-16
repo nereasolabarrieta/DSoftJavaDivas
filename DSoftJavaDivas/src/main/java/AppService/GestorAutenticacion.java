@@ -8,13 +8,13 @@ public class GestorAutenticacion {
 	{
 		
 	}
-	public void RegistrarUsuario(Usuario u1){
+	public void RegistrarUsuario(String nombre, String ape, String email){
 		
 	}
-	public void LogInUsuario(Usuario u1){
+	public void LogInUsuario(String email, String contrasena){
 		
 	}
-	public void LogOut(Usuario u1)
+	public void LogOut()
 	{
 		
 	}

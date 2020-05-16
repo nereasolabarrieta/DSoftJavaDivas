@@ -102,21 +102,28 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	}
 
 	@Override
-	public void RegistrarUsuario(Usuario u1) {
+	public void RegistrarUsuario(String nombre, String ape, String email) {
 		// TODO Auto-generated method stub
-		GAutenticacion.RegistrarUsuario(u1);
+		GAutenticacion.RegistrarUsuario(nombre, ape, email);
+	}
+
+
+
+	@Override
+	public void LogInUsuario(String email, String contrasena) {
+		// TODO Auto-generated method stub
+		GAutenticacion.LogInUsuario(email, contrasena);
 	}
 
 	@Override
-	public void LogInUsuario(Usuario u1) {
-		// TODO Auto-generated method stub
-		GAutenticacion.LogInUsuario(u1);
+	public void LogOut() {
+		GAutenticacion.LogOut();
+		
 	}
 
 	@Override
-	public void LogOut(Usuario u1) {
-		// TODO Auto-generated method stub
-		GAutenticacion.LogOut(u1);
+	public void newViajero(String dni, String nombre) {
+		
 	}
 	
 	

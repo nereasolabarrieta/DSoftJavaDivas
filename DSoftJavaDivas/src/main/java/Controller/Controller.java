@@ -47,17 +47,17 @@ public class Controller {
 		rsl.getService().AplicarFiltro(origen, destino, fecha, min_precio, max_precio);
 	}
 	
-	public void RegistrarUsuario(Usuario u1)
+	public void RegistrarUsuario(String nom, String ape, String email)
 	{
-		rsl.getService().RegistrarUsuario(u1);
+		rsl.getService().RegistrarUsuario(nom, ape, email);
 	}
-	public void LogInUsuario(Usuario u1)
+	public void LogInUsuario(String email, String contrasena)
 	{
-		rsl.getService().LogInUsuario(u1);
+		rsl.getService().LogInUsuario(email, contrasena);
 	}
-	public void LogOut(Usuario u1)
+	public void LogOut()
 	{
-		rsl.getService().LogOut(u1);
+		rsl.getService().LogOut();
 	}
 	
 }
