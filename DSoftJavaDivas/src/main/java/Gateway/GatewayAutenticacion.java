@@ -8,25 +8,25 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 {
 
 	@Override
-	public void RegistrarUsuario(Usuario u1) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void LogInUsuario(Usuario u1) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void LogOutUsuario(Usuario u1) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void Existe(Usuario u1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void RegistrarUsuario(String nom, String ape, String email) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void LogInUsuario(String email, String contraseña) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void LogOutUsuario() {
 		// TODO Auto-generated method stub
 		
 	}
