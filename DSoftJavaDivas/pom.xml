@@ -248,9 +248,9 @@
         </plugins>
     </build>
     <profiles>
-        <!-- run as 'mvn exec:java -PventanaPrincipal' -->
+        <!-- run as 'mvn exec:java -PPrincipal' -->
         <profile>
-            <id>ventanaPrincipal</id>
+            <id>Principal</id>
             <build>
                 <plugins>
                     <plugin>
@@ -259,7 +259,7 @@
                         <version>1.2.1</version>
                         <configuration>
                             <mainClass>EasyBooking.LN.mainCliente</mainClass>
-				              <systemProperties>
+				     <systemProperties>
 				      <systemProperty>
 				        <key>security/java.policy</key>
 				        <value>java.policy</value>
