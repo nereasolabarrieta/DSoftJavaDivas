@@ -5,9 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import EasyBooking.LD.Aeropuerto;
-import EasyBooking.LD.Usuario;
 import EasyBooking.LD.Vuelo;
-import EasyBooking.LP.LogIn;
+import EasyBooking.LP.Register;
 import Remote.ServiceLocator;
 
 public class Controller {
@@ -18,7 +17,7 @@ public class Controller {
 	{
 		rsl = new ServiceLocator();
 		rsl.setService();
-		new LogIn(this);
+		new Register(this);
 	}
 	//Falta la implementacion de todos los métodos de la fachada así
 	public List<Vuelo> getVuelos() throws RemoteException {
@@ -47,9 +46,9 @@ public class Controller {
 		rsl.getService().AplicarFiltro(origen, destino, fecha, min_precio, max_precio);
 	}
 	
-	public void RegistrarUsuario(String nom, String ape, String email)
+	public void RegistrarUsuario(String nom, String ape, String email, String password)
 	{
-		rsl.getService().RegistrarUsuario(nom, ape, email);
+		rsl.getService().RegistrarUsuario(nom, ape, email, password);
 	}
 	public void LogInUsuario(String email, String contrasena)
 	{

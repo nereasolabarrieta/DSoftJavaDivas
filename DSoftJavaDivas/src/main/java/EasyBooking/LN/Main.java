@@ -60,14 +60,14 @@ public class Main {
 		    persistentManager.makePersistent(Ryanair);
 		    persistentManager.makePersistent(Vueling);
 	
-		    Usuario usu1 = new Usuario("14231223Y", "Mikel", metodoPago.Paypal, Madrid);
-		    Usuario usu2 = new Usuario("24231223Y", "Maria", metodoPago.Visa, Mallorca);
-		    Usuario usu3 = new Usuario("34231223Y", "Jon", metodoPago.Visa, Mallorca);
-		    Usuario usu4 = new Usuario("44231223Y", "Leire", metodoPago.Paypal, Madrid);
-		    persistentManager.makePersistent(usu1);
-		    persistentManager.makePersistent(usu2);
-		    persistentManager.makePersistent(usu3);
-		    persistentManager.makePersistent(usu4);
+//		    Usuario usu1 = new Usuario("14231223Y", "Mikel", metodoPago.Paypal, Madrid);
+//		    Usuario usu2 = new Usuario("24231223Y", "Maria", metodoPago.Visa, Mallorca);
+//		    Usuario usu3 = new Usuario("34231223Y", "Jon", metodoPago.Visa, Mallorca);
+//		    Usuario usu4 = new Usuario("44231223Y", "Leire", metodoPago.Paypal, Madrid);
+//		    persistentManager.makePersistent(usu1);
+//		    persistentManager.makePersistent(usu2);
+//		    persistentManager.makePersistent(usu3);
+//		    persistentManager.makePersistent(usu4);
 
 		    
 		    Viajero viaj1 = new Viajero("12341234R", "Enara");
@@ -83,19 +83,19 @@ public class Main {
 		    persistentManager.makePersistent(viaj5);
 		    persistentManager.makePersistent(viaj6);
 
-		    Set<Viajero>Lista_viajero=new HashSet<Viajero>();
-		    Lista_viajero.add(viaj1);
-		    Reserva reser1 =new Reserva("1", usu1, Lista_viajero,Iberia);
-		    Lista_viajero.add(viaj3);
-		    Lista_viajero.add(viaj4);
-		    Reserva reser2 =new Reserva("2", usu2, Lista_viajero,Ryanair);
-		    Lista_viajero.add(viaj5);
-		    Lista_viajero.add(viaj6);
-		    Reserva reser3 =new Reserva("3", usu3, Lista_viajero,Vueling);
-		    persistentManager.makePersistent(reser1);
-		    persistentManager.makePersistent(reser2);
-		    persistentManager.makePersistent(reser3);
-		   
+//		    Set<Viajero>Lista_viajero=new HashSet<Viajero>();
+//		    Lista_viajero.add(viaj1);
+//		    Reserva reser1 =new Reserva("1", usu1, Lista_viajero,Iberia);
+//		    Lista_viajero.add(viaj3);
+//		    Lista_viajero.add(viaj4);
+//		    Reserva reser2 =new Reserva("2", usu2, Lista_viajero,Ryanair);
+//		    Lista_viajero.add(viaj5);
+//		    Lista_viajero.add(viaj6);
+//		    Reserva reser3 =new Reserva("3", usu3, Lista_viajero,Vueling);
+//		    persistentManager.makePersistent(reser1);
+//		    persistentManager.makePersistent(reser2);
+//		    persistentManager.makePersistent(reser3);
+//		   
 //		    Set<Asiento>Lista_asiento=new HashSet<Asiento>();
 //		    Asiento asiento1 = new Asiento("1A", true);
 //		    Asiento asiento2 = new Asiento("1B", true);

@@ -17,7 +17,7 @@ public interface itfFachada extends Remote{
 	public void Pagar(double precio, String cod_vuelo)throws RemoteException;
 	public void Buscar(String origen, String destino, Date fecha);
 	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio);
-	public void RegistrarUsuario(String nom, String ape, String email);
+	public void RegistrarUsuario(String nom, String ape, String email, String password);
 	public void LogInUsuario(String email, String contrasena);
 	public void LogOut();
 	public void newViajero(String dni, String nombre);

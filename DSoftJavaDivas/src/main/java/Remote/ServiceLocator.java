@@ -9,9 +9,9 @@ public class ServiceLocator {
 	private itfFachada fachada;
 	 public void setService() 
 	    {  
-	    	String ip = "";
-			String port = "";
-			String serviceName = "";
+	    	String ip = "127.0.0.1";
+			String port = "5000";
+			String serviceName = "EasyBooking";
 	    		
 			
 			if (System.getSecurityManager() == null) 
