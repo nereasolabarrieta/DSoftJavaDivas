@@ -10,6 +10,7 @@ import java.util.List;
 import AppService.GestorAutenticacion;
 import AppService.GestorPago;
 import AppService.GestorVuelos;
+import DAO.DAO;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Usuario;
 import EasyBooking.LD.Vuelo;
@@ -22,8 +23,9 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	private GestorAutenticacion GAutenticacion;
 	private GestorPago GPago;
 	private GestorVuelos GVuelos;
+	private DAO dao;
 	
-	protected ServidorPrincipal(GestorAutenticacion GAutenticacion,GestorPago GPago,GestorVuelos GVuelos) throws RemoteException {
+	protected ServidorPrincipal(GestorAutenticacion GAutenticacion,GestorPago GPago,GestorVuelos GVuelos, DAO dao) throws RemoteException {
 		super();
 		this.GAutenticacion=GAutenticacion;
 		this.GPago=GPago;
@@ -52,8 +54,9 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 			GestorAutenticacion GAutenticacion = new GestorAutenticacion();
 			GestorPago GPago = new GestorPago();
 			GestorVuelos GVuelos = new GestorVuelos();
+			DAO dao =new DAO();
 			//Naming.rebind(name, objServer);
-			itfFachada objServer = new ServidorPrincipal(GAutenticacion, GPago, GVuelos);
+			itfFachada objServer = new ServidorPrincipal(GAutenticacion, GPago, GVuelos, dao);
 			registry.rebind(name, objServer);
 			System.out.println("* Server '" + name + "' active and waiting...");			
 		} 

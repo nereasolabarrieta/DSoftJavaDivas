@@ -19,11 +19,12 @@ public class Reserva {
 
 	
 	
-	public Reserva(String codReserva, Usuario usuario, Set<Viajero> viajeros, Aerolinea aerolinea ) {
+	public Reserva(String codReserva, Usuario usuario, Set<Viajero> viajeros, Aerolinea aerolinea, Vuelo vuelo ) {
 		super();
 		this.codReserva = codReserva;
 		this.usuario = usuario;
 		this.aerolinea=aerolinea;
+		this.vuelo=vuelo;
 		this.viajeros = viajeros;
 	}
 
@@ -57,6 +58,14 @@ public class Reserva {
 
 	public void setVuelo(Vuelo vuelo) {
 		this.vuelo = vuelo;
+	}
+	
+	public Aerolinea getAerolinea() {
+		return aerolinea;
+	}
+
+	public void setAerolinea(Aerolinea aerolinea) {
+		this.aerolinea = aerolinea;
 	}
 
 
