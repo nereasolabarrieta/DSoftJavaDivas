@@ -42,7 +42,7 @@ public class Register extends JFrame {
 		}
 		public void initComponents()
 		{
-			setIconImage(Toolkit.getDefaultToolkit().getImage(Register.class.getResource("/EasyBooking/Img/Avion.jpg")));
+			//setIconImage(Toolkit.getDefaultToolkit().getImage(Register.class.getResource("/EasyBooking/Img/Avion.jpg")));
 			setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 			setTitle("EasyBooking");
 			setForeground(Color.BLACK);
@@ -65,9 +65,9 @@ public class Register extends JFrame {
 			JLabel lblLogo = new JLabel();
 			lblLogo.setBounds(0, 0, 185, 64);
 			pArriba.add(lblLogo);
-			ImageIcon fot = new ImageIcon(Register.class.getResource("/EasyBooking/Img/logo.png"));
-			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
-			lblLogo.setIcon(icono);
+	//		ImageIcon fot = new ImageIcon(Register.class.getResource("/EasyBooking/Img/logo.png"));
+	//		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
+		//	lblLogo.setIcon(icono);
 			
 			JButton btnRegistro = new JButton("REGISTRAR");
 			btnRegistro.setBounds(377, 116, 142, 43);
@@ -80,6 +80,9 @@ public class Register extends JFrame {
 			
 			JButton btnLogin = new JButton("ENTRAR");
 			btnLogin.setBounds(518, 117, 142, 43);
+			btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			btnLogin.setIcon(null);
+			btnLogin.setSelectedIcon(null);
 			pArriba.add(btnLogin);
 			btnLogin.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {

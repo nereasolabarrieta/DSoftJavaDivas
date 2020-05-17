@@ -16,7 +16,7 @@
         <config.files.dir>src/main/resources</config.files.dir>
         <config.files.sec>security</config.files.sec>
         <encoding>UTF-8</encoding>
-     
+     <policy.file>security/java.policy</policy.file>
     </properties>
   
 
@@ -259,12 +259,12 @@
                         <version>1.2.1</version>
                         <configuration>
                             <mainClass>EasyBooking.LN.mainCliente</mainClass>
-              
-                                     <systemProperties>
-						      <systemProperty>
-						        <value>${config.files.sec}/java.policy</value>
-						      </systemProperty>
-						    </systemProperties>
+				              <systemProperties>
+				      <systemProperty>
+				        <key>security/java.policy</key>
+				        <value>java.policy</value>
+				      </systemProperty>
+				    </systemProperties>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -281,8 +281,13 @@
                         <artifactId>exec-maven-plugin</artifactId>
                         <version>1.2.1</version>
                         <configuration>
-                            <mainClass>EasyBooking.LN.Main</mainClass>
-                           
+                            <mainClass>Fachada.ServidorPrincipal</mainClass>
+                             <systemProperties>
+				      <systemProperty>
+				        <key>security/java.policy</key>
+				        <value>java.policy</value>
+				      </systemProperty>
+				    </systemProperties>
                                     
                         </configuration>
                     </plugin>

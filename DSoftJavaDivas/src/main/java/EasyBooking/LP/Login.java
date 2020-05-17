@@ -37,7 +37,7 @@ public class Login extends JFrame {
 		}
 		public void initComponents()
 		{
-			setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/EasyBooking/Img/Avion.jpg")));
+//			setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/EasyBooking/Img/Avion.jpg")));
 			setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 			setTitle("EasyBooking");
 			setForeground(Color.BLACK);
@@ -60,9 +60,9 @@ public class Login extends JFrame {
 			JLabel lblLogo = new JLabel();
 			lblLogo.setBounds(0, 0, 185, 64);
 			pArriba.add(lblLogo);
-			ImageIcon fot = new ImageIcon(Login.class.getResource("/EasyBooking/Img/logo.png"));
-			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
-			lblLogo.setIcon(icono);
+//			ImageIcon fot = new ImageIcon(Login.class.getResource("/EasyBooking/Img/logo.png"));
+//			Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
+//			lblLogo.setIcon(icono);
 			
 			JButton btnRegistro = new JButton("REGISTRAR");
 			btnRegistro.setBounds(377, 116, 142, 43);
@@ -70,8 +70,7 @@ public class Login extends JFrame {
 			btnRegistro.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			btnRegistro.setIcon(null);
 			btnRegistro.setSelectedIcon(null);
-			btnRegistro.setBackground(new Color(0, 153, 255));
-			btnRegistro.setForeground(Color.WHITE);
+;
 			btnRegistro.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Register r = new Register(controller);
@@ -80,6 +79,11 @@ public class Login extends JFrame {
 			});
 			
 			JButton btnLogin = new JButton("ENTRAR");
+			btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			btnLogin.setIcon(null);
+			btnLogin.setSelectedIcon(null);
+			btnLogin.setBackground(new Color(0, 153, 255));
+			btnLogin.setForeground(Color.WHITE);
 			btnLogin.setBounds(518, 117, 142, 43);
 			pArriba.add(btnLogin);
 		
@@ -100,6 +104,7 @@ public class Login extends JFrame {
 			
 			JButton btnRegistrar = new JButton("Entrar");
 			btnRegistrar.setBackground(Color.WHITE);
+			
 			btnRegistrar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 

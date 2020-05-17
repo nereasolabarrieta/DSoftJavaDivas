@@ -54,9 +54,6 @@ public class Controller {
 	{
 		rsl.getService().LogInUsuario(email, contrasena);
 	}
-	public void LogOut()
-	{
-		rsl.getService().LogOut();
-	}
+
 	
 }

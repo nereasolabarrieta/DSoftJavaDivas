@@ -19,6 +19,6 @@ public interface itfFachada extends Remote{
 	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio);
 	public void RegistrarUsuario(String nom, String ape, String email, String password);
 	public void LogInUsuario(String email, String contrasena);
-	public void LogOut();
 	public void newViajero(String dni, String nombre);
+	void LogOut();
 }
