@@ -14,6 +14,11 @@ public class Usuario implements Print{
 	private String newPassword;
 	private metodoPago metodoPago;
 	private Aeropuerto aeropuerto;
+	private double cantidad_total;
+	private String concepto;
+	private double moneda;
+	
+	
 	public Usuario(String email, String contrasena)
 	{
 		super();
@@ -32,6 +37,22 @@ public class Usuario implements Print{
 		this.setPassword(password);
 		this.setNewPassword(newPassword);
 	}
+	public Usuario(String nomUsuario, String ape, String email, double cantidad_total, String concepto, double moneda)
+	{
+		super();
+		this.nomUsuario=nomUsuario;
+		this.ape=ape;
+		this.email=email;
+		this.cantidad_total=cantidad_total;
+		this.concepto=concepto;
+		this.moneda=moneda;
+		
+	}
+    public Usuario(String email, double cantidad_total, String concepto) {
+        this.email = email;
+        this.cantidad_total = cantidad_total;
+        this.concepto = concepto;
+    }
 
 	public String getNomUsuario() {
 		return nomUsuario;
@@ -68,16 +89,41 @@ public class Usuario implements Print{
 		this.email = email;
 	}
 
-	@Override
-	public void print() {
-		// TODO Auto-generated method stub
-		
-	}
+
 	public String getNewPassword() {
 		return newPassword;
 	}
 	public void setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
 	}
+	public String getApe() {
+		return ape;
+	}
+	public void setApe(String ape) {
+		this.ape = ape;
+	}
+	public double getCantidad_total() {
+		return cantidad_total;
+	}
+	public void setCantidad_total(double cantidad_total) {
+		this.cantidad_total = cantidad_total;
+	}
+	public String getConcepto() {
+		return concepto;
+	}
+	public void setConcepto(String concepto) {
+		this.concepto = concepto;
+	}
+	public double getMoneda() {
+		return moneda;
+	}
+	public void setMoneda(double moneda) {
+		this.moneda = moneda;
+	}
 
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		
+	}
 }
