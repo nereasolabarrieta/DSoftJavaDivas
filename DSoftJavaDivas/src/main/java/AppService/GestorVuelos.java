@@ -3,10 +3,17 @@ package AppService;
 import java.util.Date;
 import java.util.List;
 
+import DAO.itfDAO;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Vuelo;
+import Gateway.Gateway;
+import Gateway.itfGatewayVuelos;
 
 public class GestorVuelos {
+	
+	itfDAO DAO;
+	itfGatewayVuelos gateVuelos;
+	Gateway gateGeneral;
 	
 	public GestorVuelos()
 	{

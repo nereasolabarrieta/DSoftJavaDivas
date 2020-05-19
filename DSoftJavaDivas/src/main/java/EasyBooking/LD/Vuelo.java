@@ -1,5 +1,9 @@
 package EasyBooking.LD;
 
+import java.awt.Graphics;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
 import java.util.Date;
 
 import javax.jdo.annotations.ForeignKey;
@@ -33,6 +37,9 @@ public class Vuelo {
 		this.precio = precio;
 		this.aerolinea = aerolinea;
 	}
+
+	
+	
 
 	public String getCodVuelo() {
 		return codVuelo;
@@ -89,6 +96,13 @@ public class Vuelo {
 
 	public void setAerolinea(Aerolinea aerolinea) {
 		this.aerolinea = aerolinea;
+	}
+
+	@Override
+	public String toString() {
+		return "Vuelo [codVuelo=" + codVuelo + ", origen=" + origen + ", destino=" + destino + ", aerolinea="
+				+ aerolinea + ", avion=" + avion + ", duracion=" + duracion + ", hora_salida=" + hora_salida
+				+ ", hora_llegada=" + hora_llegada + ", precio=" + precio + "]";
 	}
 	
 

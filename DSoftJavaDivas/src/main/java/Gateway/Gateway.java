@@ -47,6 +47,8 @@ public class Gateway {
 
 		try {
 			c3.makeGetRequest("/");
+			c3.makeGetRequest("/Airlines/search_flights");
+			
 
 			// todo c1.makePostRequest("This is a client super complex message to send to server");
 		} catch (Exception e) {

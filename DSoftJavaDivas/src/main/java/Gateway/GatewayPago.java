@@ -7,9 +7,7 @@ import ServiciosExternos.RestClient;
 
 public class GatewayPago extends Gateway implements itfGatewayPago
 {
-	static String ip = "192.168.6.31";
-	static String port = "5001";
-	static String serviceName = "DeustoPay";
+
 	private String path = "/";
 	private RestClient<Usuario> client ;
 	private Response response;

@@ -1,16 +1,17 @@
 package DTO;
 
+import EasyBooking.LD.Usuario;
+
 public class UsuarioAssembler 
 {
-	public void assembleToUsuarioDTO() 
+	public UsuarioDTO assembleToUsuarioDTO(Usuario u) 
 	{
-		
+
+		UsuarioDTO uDTO = new UsuarioDTO(u.getNomUsuario(),u.getEmail());
+		return uDTO;
 	}
 	
-	public void assembleToUsuario()
-	{
-		
-	}
+
 	
 
 }

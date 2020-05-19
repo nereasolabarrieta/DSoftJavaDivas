@@ -10,9 +10,7 @@ import ServiciosExternos.RestClient;
 
 public class GatewayAutenticacion extends Gateway implements itfGatewayAutenticacion 
 {
-	static String ip = "192.168.6.31";
-	static String port = "5000";
-	static String serviceName = "DeustoAuth";
+
 	private String path = "/";
 	private RestClient<Usuario> client ;
 	private Response response;
