@@ -132,11 +132,14 @@
             <artifactId>json-simple</artifactId>
             <version>1.1</version>
         </dependency>
-        <dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
+		<dependency>
 		    <groupId>javax.ws.rs</groupId>
 		    <artifactId>javax.ws.rs-api</artifactId>
-		    <version>2.1</version>
+		    <version>2.1.1</version>
 		</dependency>
+
   </dependencies>
     <build>
       <sourceDirectory>src/main/java</sourceDirectory>
@@ -169,6 +172,9 @@
                   <target>
                      <ant antfile="${basedir}/build.xml">
                         <target name="server"/>
+                     </ant>
+                     <ant antfile="${basedir}/build.xml">
+                        <target name="client"/>
                      </ant>
                   </target>
                </configuration>

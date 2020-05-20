@@ -2,22 +2,29 @@
 <project basedir="." default="help" name="DSoftJavaDivas">    
 	<property environment="env"/>
 	<property name="source.dir" location="src/main/java"/>
+	
    	<property name="build.dir" location="target/classes"/>
-	<property name="server.port" value="1099"/> 
-	<property name="classpath" location="target/classes"/>
+	<property name="lib.dir" location="lib"/>
+
 	<property name="server.IP" value="127.0.0.1"/> 
 	<property name="server.Name" value="HelloServer"/>
+	<property name="server.port" value="1099"/> 
 	<property name="policy.file.server" location="src/main/java/securityServer/java.policy"/>	
 	<property name="policy.file.client" location="src/main/java/securityCliente/java.policy"/>	
 	
-
+    <path id="full.classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+        <pathelement location="${build.dir}"/>    	
+    </path>
 	
 	<target name="help">
 		<echo>Usage: ant [build | client]</echo>
 	</target>	
 
 	<target name="client" description="Runs the Client">
-		<java classname="EasyBooking.LN.mainCliente" classpath="${classpath}" fork="true">
+		<java classname="EasyBooking.LN.mainCliente" classpathref="full.classpath" fork="true">
 			<jvmarg value="-Djava.security.policy=${policy.file.client}"/>			
         	<arg value="${server.IP}"/> 
 	 		<arg value="${server.port}"/> 
@@ -25,7 +32,7 @@
         </java>
     </target>
 	<target name="server" description="Runs the Server">
-		<java classname="Fachada.ServidorPrincipal" classpath="${classpath}" fork="true">
+		<java classname="Fachada.ServidorPrincipal" classpathref="full.classpath" fork="true">
 			<jvmarg value="-Djava.rmi.server.codebase=file:${build.dir}"/>
 			<jvmarg value="-Djava.security.policy=${policy.file.server}"/>			
         	<arg value="${server.IP}"/> 
