@@ -1,6 +1,6 @@
 # DSoftJavaDivas
 
-Proyecto grupal de Diseño del Software ( 4º de ADE + Ingeniería informática ) 
+Proyecto grupal de Diseno del Software ( 4º de ADE + Ingenieria informatica ) 
 El proyecto denominado Easybooking, es una plataforma para buscar y reservar vuelos. 
 
 # Pasos para ejecutar
