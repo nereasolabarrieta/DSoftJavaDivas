@@ -23,13 +23,12 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	private GestorAutenticacion GAutenticacion;
 	private GestorPago GPago;
 	private GestorVuelos GVuelos;
-	private DAO dao;
 	
-	protected ServidorPrincipal(GestorAutenticacion GAutenticacion,GestorPago GPago,GestorVuelos GVuelos, DAO dao) throws RemoteException {
+	public ServidorPrincipal() throws RemoteException {
 		super();
-		this.GAutenticacion=GAutenticacion;
-		this.GPago=GPago;
-		this.GVuelos=GVuelos;
+		this.GAutenticacion=new GestorAutenticacion();
+		this.GPago=new GestorPago();
+		this.GVuelos=new GestorVuelos();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -39,10 +38,12 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		String ip = "127.0.0.1";
 		String port = "1099";
 		String serviceName = "EasyBooking";
-		
-		if (args.length != 3) {
-			System.out.println("usage: java [policy] [codebase] server.Server [host] [port] [server]");
-			System.exit(0);
+		itfFachada objServer = null;
+		try {
+			objServer = new ServidorPrincipal();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 
 		if (System.getSecurityManager() == null) {
@@ -53,15 +54,8 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 
 		try 
 		{	
-		
+
 			Registry registry = LocateRegistry.createRegistry((Integer.valueOf(port)));
-			GestorPago GPago = new GestorPago();
-			GestorVuelos GVuelos = new GestorVuelos();
-			DAO dao = null;
-//			DAO dao =new DAO();
-			GestorAutenticacion GAutenticacion = new GestorAutenticacion(dao);
-			//Naming.rebind(name, objServer);
-			itfFachada objServer = new ServidorPrincipal(GAutenticacion, GPago, GVuelos, dao);
 			registry.rebind(name, objServer);
 			System.out.println("* Server '" + name + "' active and waiting...");			
 		} 

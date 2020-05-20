@@ -13,17 +13,14 @@ public class GestorAutenticacion {
 	itfGatewayAutenticacion gateway;
 	Gateway general;
 	
-	public GestorAutenticacion(DAO DAO	)
+	public GestorAutenticacion()
 	{
-		this.DAO = DAO;
-		general = new Gateway();
-		gateway= new GatewayAutenticacion();
-		general.crearConexion();
+		gateway = new GatewayAutenticacion();
 		
 	}
 	public void RegistrarUsuario(String nombre, String ape, String email, String password){
 		
-
+		
 		gateway.RegistrarUsuario(nombre,ape, email, password);
 		Usuario u = new Usuario(nombre, ape, email, password);
 		DAO.guardarObjeto(u);

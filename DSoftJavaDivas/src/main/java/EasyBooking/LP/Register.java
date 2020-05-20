@@ -19,6 +19,7 @@ import Controller.Controller;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 
 public class Register extends JFrame {
@@ -126,9 +127,14 @@ public class Register extends JFrame {
 						
 						if(nom !=null || ape !=null || email !=null || password !=null )
 						{
-							controller.RegistrarUsuario(nom, ape, email, password);
+							try {
+								controller.RegistrarUsuario(nom, ape, email, password);
+							} catch (RemoteException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 							Principal a = new Principal(controller);
-							
+							a.setVisible(true);
 						}
 						else
 						{

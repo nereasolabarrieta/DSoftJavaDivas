@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -16,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -26,7 +28,7 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private Controller controller;
 	private JTextField textEmail;
-	private JTextField textPassword;
+	private JPasswordField textPassword;
 
 
 	public Login(Controller controller) {
@@ -95,7 +97,7 @@ public class Login extends JFrame {
 			contentPane.add(textEmail);
 			textEmail.setColumns(10);
 			
-			textPassword = new JTextField();
+			textPassword = new JPasswordField();
 			textPassword.setBounds(535, 408, 207, 43);
 			contentPane.add(textPassword);
 			textPassword.setColumns(10);
@@ -114,7 +116,12 @@ public class Login extends JFrame {
 						
 						if( email !=null || password !=null )
 						{
-							controller.LogInUsuario(email, password);
+							try {
+								controller.LogInUsuario(email, password);
+							} catch (RemoteException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 							Principal a = new Principal(controller);
 							a.setVisible(true);
 							

@@ -38,19 +38,19 @@ public class Controller {
 		
 	}
 
-	public void Buscar(String origen, String destino, Date fecha) {
+	public void Buscar(String origen, String destino, Date fecha) throws RemoteException {
 		rsl.getService().Buscar(origen, destino, fecha);
 	}
 
-	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio) {
+	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio) throws RemoteException {
 		rsl.getService().AplicarFiltro(origen, destino, fecha, min_precio, max_precio);
 	}
 	
-	public void RegistrarUsuario(String nom, String ape, String email, String password)
+	public void RegistrarUsuario(String nom, String ape, String email, String password) throws RemoteException
 	{
 		rsl.getService().RegistrarUsuario(nom, ape, email, password);
 	}
-	public void LogInUsuario(String email, String contrasena)
+	public void LogInUsuario(String email, String contrasena) throws RemoteException
 	{
 		rsl.getService().LogInUsuario(email, contrasena);
 	}

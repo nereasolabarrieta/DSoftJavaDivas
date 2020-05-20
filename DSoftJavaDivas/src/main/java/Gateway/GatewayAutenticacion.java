@@ -10,16 +10,19 @@ import ServiciosExternos.RestClient;
 
 public class GatewayAutenticacion extends Gateway implements itfGatewayAutenticacion 
 {
-
+	private static String port = "5000";
+	private static String hostname = "192.168.6.31";
 	private String path = "/";
 	private RestClient<Usuario> client ;
 	private Response response;
-	
+	public GatewayAutenticacion()
+	{
+		
+	}
 	@Override
 	public void LogInUsuario(String email, String contrasena) {
-		 path = "/Authentication/Log_in";
-	        System.out.println("Trying POST at " + path + " (Log in service)");
-
+		 	path = "/Authentication/Log_in";
+		 	client = new RestClient<Usuario>(hostname, port);
 	        Response response = null;
 	        try {
 	            response =
@@ -42,7 +45,8 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 	@Override
 	public void RegistrarUsuario(String nom, String ape, String email, String passwordNew) {
 		path = "/Authentication/Create_user";
-        System.out.println("Trying POST at " + path + " (Create user)");
+	 	client = new RestClient<Usuario>(hostname, port);
+        System.out.println("Trying POST at " + path);
 
         PasswordJSON password = null;
         try {
@@ -52,9 +56,9 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
                     );
         }
         catch (Exception e) { e.printStackTrace(); e.toString(); }
-
+        System.out.println("HOLAAAAA");
         String reply = response.readEntity(String.class);
-
+        System.out.println("RESPONSE" + reply);
         // Create a JSONObject to parse the respond inside the Simple_pass_result
         try {
             password = new PasswordJSON(reply);

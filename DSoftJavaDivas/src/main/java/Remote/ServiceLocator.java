@@ -24,7 +24,6 @@ public class ServiceLocator {
 			{
 	    		Registry registry = LocateRegistry.getRegistry(((Integer.valueOf(port))));
 				String name = "//" + ip + ":" + port + "/" + serviceName;			
-				fachada = (itfFachada) java.rmi.Naming.lookup(name);
 				fachada = (itfFachada) registry.lookup(name);
 
 			} 

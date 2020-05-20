@@ -15,10 +15,10 @@ public interface itfFachada extends Remote{
 	public List<Aeropuerto> getAeropuerto()throws RemoteException;//ese vuelo luego habra que convertirlo en DTOVuelo
 	public void newReserva(String Aeropuerto_Salida, String Aeropuerto_llegada)throws RemoteException;
 	public void Pagar(double precio, String cod_vuelo)throws RemoteException;
-	public void Buscar(String origen, String destino, Date fecha);
-	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio);
-	public void RegistrarUsuario(String nom, String ape, String email, String password);
-	public void LogInUsuario(String email, String contrasena);
-	public void newViajero(String dni, String nombre);
-	void LogOut();
+	public void Buscar(String origen, String destino, Date fecha)throws RemoteException;
+	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio)throws RemoteException;
+	public void RegistrarUsuario(String nom, String ape, String email, String password)throws RemoteException;
+	public void LogInUsuario(String email, String contrasena)throws RemoteException;
+	public void newViajero(String dni, String nombre)throws RemoteException;
+	void LogOut()throws RemoteException;
 }
