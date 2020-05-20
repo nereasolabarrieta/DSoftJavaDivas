@@ -65,7 +65,7 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 
         try {
             response =
-                    client.makePostRequest(
+                    client.makePutRequest(
                             client.createInvocationBuilder(path), new Usuario(nom, email,password.getContent(),passwordNew)
                     );
         }

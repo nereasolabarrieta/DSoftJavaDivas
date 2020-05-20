@@ -13,9 +13,9 @@ public class GestorAutenticacion {
 	itfGatewayAutenticacion gateway;
 	Gateway general;
 	
-	public GestorAutenticacion()
+	public GestorAutenticacion(DAO DAO	)
 	{
-		DAO = new DAO();
+		this.DAO = DAO;
 		general = new Gateway();
 		gateway= new GatewayAutenticacion();
 		general.crearConexion();

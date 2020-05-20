@@ -36,6 +36,10 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		String ip = "127.0.0.1";
+		String port = "1099";
+		String serviceName = "EasyBooking";
+		
 		if (args.length != 3) {
 			System.out.println("usage: java [policy] [codebase] server.Server [host] [port] [server]");
 			System.exit(0);
@@ -45,16 +49,17 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 			System.setSecurityManager(new SecurityManager());
 		}
 
-		String name = "//" + args[0] + ":" + args[1] + "/" + args[2];
+		String name = "//" + ip + ":" +port + "/" + serviceName;
 
 		try 
 		{	
 		
-			Registry registry = LocateRegistry.createRegistry((Integer.valueOf(args[1])));
-			GestorAutenticacion GAutenticacion = new GestorAutenticacion();
+			Registry registry = LocateRegistry.createRegistry((Integer.valueOf(port)));
 			GestorPago GPago = new GestorPago();
 			GestorVuelos GVuelos = new GestorVuelos();
-			DAO dao =new DAO();
+			DAO dao = null;
+//			DAO dao =new DAO();
+			GestorAutenticacion GAutenticacion = new GestorAutenticacion(dao);
 			//Naming.rebind(name, objServer);
 			itfFachada objServer = new ServidorPrincipal(GAutenticacion, GPago, GVuelos, dao);
 			registry.rebind(name, objServer);

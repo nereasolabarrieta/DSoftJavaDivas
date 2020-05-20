@@ -1,0 +1,6 @@
+grant codeBase "file:../-" {
+    permission java.net.SocketPermission "*:1099-", "connect,accept,resolve";
+    permission java.net.SocketPermission "*:5000-", "connect,accept,resolve";
+    permission java.net.SocketPermission "*:5001-", "connect,accept,resolve";
+    permission java.net.SocketPermission "*:5002-", "connect,accept,resolve";
+};

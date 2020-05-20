@@ -11,7 +11,7 @@ public class ServiceLocator {
 	private itfFachada fachada;
 	 public void setService() throws RemoteException 
 	    {  
-	    	String ip = "localhost";
+	    	String ip = "127.0.0.1";
 			String port = "1099";
 			String serviceName = "EasyBooking";
 
@@ -22,10 +22,11 @@ public class ServiceLocator {
 	    	
 	    	try 
 			{
-				Registry registry = LocateRegistry.getRegistry(((Integer.valueOf(port))));
-				String name = "//" + ip + ":" + port + "/" + serviceName;	
-				System.out.println("* Server '" + name + "' active and waiting...");	
-				registry.rebind(name, fachada);
+	    		Registry registry = LocateRegistry.getRegistry(((Integer.valueOf(port))));
+				String name = "//" + ip + ":" + port + "/" + serviceName;			
+				fachada = (itfFachada) java.rmi.Naming.lookup(name);
+				fachada = (itfFachada) registry.lookup(name);
+
 			} 
 			catch (Exception e) 
 			{
