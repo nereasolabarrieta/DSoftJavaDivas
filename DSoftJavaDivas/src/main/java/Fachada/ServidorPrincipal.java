@@ -26,8 +26,9 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	
 	public ServidorPrincipal() throws RemoteException {
 		super();
-		this.GAutenticacion=new GestorAutenticacion();
-		this.GPago=new GestorPago();
+		System.out.println("ey estoy en el constructor y ahora voy a hacer los appservice jeeee");
+		//this.GAutenticacion=new GestorAutenticacion();
+		//this.GPago=new GestorPago();
 		this.GVuelos=new GestorVuelos();
 		// TODO Auto-generated constructor stub
 	}
@@ -39,6 +40,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		String port = "1099";
 		String serviceName = "EasyBooking";
 		itfFachada objServer = null;
+		System.out.println( "entro primero al servidor principal");
 		try {
 			objServer = new ServidorPrincipal();
 		} catch (RemoteException e1) {

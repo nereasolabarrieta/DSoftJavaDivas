@@ -5,7 +5,9 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 
-public class Flight_parameters implements Printable {
+import ServiciosExternos.Print;
+
+public class Flight_parameters implements Print {
 	
 	 private String airport_departure_name;
 	    private String airport_arrival_name;
@@ -84,17 +86,9 @@ public class Flight_parameters implements Printable {
 	    }
 
 	@Override
-	public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException 
-	{
-		System.out.println(
-                "Printing Flight_parameters" + "\n" +
-                 "Airport_departure_name: " + getAirport_departure_name() + "\n" +
-                 "Airport_arrival_name: " + getAirport_arrival_name() + "\n" +
-                 "free_seats: " + getFree_seats() + "\n" +
-                 "Price: " + getPrice() + "\n" +
-                 "Departure_date: " + getDeparture_date() + "\n"
-        );
-		return 0; 
+	public void print() {
+		// TODO Auto-generated method stub
+		
 	}
 		
 

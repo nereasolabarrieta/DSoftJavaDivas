@@ -84,23 +84,6 @@ public class Buscar extends JFrame {
 		contentPane.add(pIzquierda);
 		pIzquierda.setLayout(null);
 		
-		JLabel label_1 = new JLabel("Precio: ");
-		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		label_1.setBounds(393, 253, 139, 20);
-		pIzquierda.add(label_1);
-		
-		JSlider slFiltroPrecio = new JSlider();
-		slFiltroPrecio.setBackground(Color.WHITE);
-		slFiltroPrecio.setBounds(566, 253, 200, 61);
-		slFiltroPrecio.setValue(900);
-		slFiltroPrecio.setToolTipText("");
-		slFiltroPrecio.setPaintTicks(true);
-		slFiltroPrecio.setMajorTickSpacing(1000);
-		slFiltroPrecio.setPaintLabels(true);
-		slFiltroPrecio.setMaximum(1000);
-		pIzquierda.add(slFiltroPrecio);
-		
 		JLabel lblNewLabel = new JLabel("Origen:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -176,12 +159,11 @@ public class Buscar extends JFrame {
 			{
 				boolean estado_rdbtn=rdbtnIdaVuelta.isSelected();
 				String viajeros=txtNumViajeros.getText();
-				int precio = slFiltroPrecio.getValue();
 				System.out.println(estado_rdbtn);
 				System.out.println(viajeros);
-				System.out.println(precio);
+				System.out.println();
 			
-				if(estado_rdbtn=false||viajeros.equals("0")||precio==0)
+				if(estado_rdbtn=false||viajeros.equals("0"))
 				{
 					JOptionPane.showMessageDialog(null,"Por favor, rellene todos los campos");
 					return ;
