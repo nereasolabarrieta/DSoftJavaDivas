@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project basedir="." default="help" name="DSoftJavaDivas">    
+<project basedir="." name="DSoftJavaDivas">    
 	<property environment="env"/>
 	<property name="source.dir" location="src/main/java"/>
    	<property name="build.dir" location="target/classes"/>
-	<property name="maven.source.dir" location="/Users/Alumno/.m2/repository"/>
+	<property name="mvn.source.dir" location="/Users/Alumno/.m2/repository"/>
 	<property name="server.IP" value="127.0.0.1"/> 
 	<property name="server.Name" value="EB"/>
 	<property name="server.port" value="1099"/> 
 	<property name="policy.file.server" location="src/main/java/securityServer/java.policy"/>	
 	<property name="policy.file.client" location="src/main/java/securityCliente/java.policy"/>	
 	 <property name="log4j.file" location = "src/main/resources/log4j.properties" />
+	
 	<path id="full.classpath">
-	        <fileset dir="${maven.source.dir}">
+	        <fileset dir="${mvn.source.dir}">
 	      <include name="**/*.jar"/>
 	      <exclude name="**/5.2.3/**/*.jar" />
 	      <exclude name="**/5.2.1/**/*.jar" />
 	    </fileset>
 	        <pathelement location="${build.dir}"/>
 	  </path>
-
-	<target name="help">
-		<echo>Usage: ant [build | client]</echo>
-	</target>	
 
 	<target name="client" description="Runs the Client">
 		<java classname="EasyBooking.LN.mainCliente" classpathref="full.classpath" fork="true">
