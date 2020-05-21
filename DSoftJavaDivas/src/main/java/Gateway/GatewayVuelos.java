@@ -84,8 +84,12 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
         System.out.println( myFlightArray.get(0).getTotalSeats());
         System.out.println( myFlightArray.get(0).getPrice());
 
-    } catch (Exception e) { e.printStackTrace(); e.toString(); }
-    System.out.println(" no entro al try y por eso no imprimo julio");
+    } catch (Exception e) { 
+    	System.out.println(" entro al catch");
+    	e.printStackTrace();
+    	e.toString(); 
+    }
+    System.out.println(" Salgo del catch");
 	}
 	
 	

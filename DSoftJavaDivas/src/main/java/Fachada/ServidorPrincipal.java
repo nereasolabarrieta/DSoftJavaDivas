@@ -31,6 +31,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		//this.GPago=new GestorPago();
 		this.GVuelos=new GestorVuelos();
 		// TODO Auto-generated constructor stub
+		System.out.println("the end");
 	}
 
 	public static void main (String[] args) {
@@ -56,7 +57,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 
 		try 
 		{	
-
+			
 			Registry registry = LocateRegistry.createRegistry((Integer.valueOf(port)));
 			registry.rebind(name, objServer);
 			System.out.println("* Server '" + name + "' active and waiting...");			
