@@ -20,7 +20,7 @@ public class GestorVuelos {
 	{
 		System.out.println(" tu que he llegado a vuelos");
 		gateVuelos = new GatewayVuelos();
-		//gateVuelos.search_flights();
+		gateVuelos.search_flights();
 	}
 	
 	public List<Vuelo> getVuelos(){
