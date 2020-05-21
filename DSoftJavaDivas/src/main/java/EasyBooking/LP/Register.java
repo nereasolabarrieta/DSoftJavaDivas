@@ -70,6 +70,45 @@ public class Register extends JFrame {
 	//		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
 		//	lblLogo.setIcon(icono);
 			
+			JLabel lblNombre = new JLabel("Nombre");
+			lblNombre.setBounds(434, 224, 62, 20);
+			contentPane.add(lblNombre);
+			
+			JLabel lblEmail = new JLabel("Email");
+			lblEmail.setBounds(457, 366, 39, 20);
+			contentPane.add(lblEmail);
+			
+			JLabel lblContrasea = new JLabel("Password");
+			lblContrasea.setBounds(427, 437, 69, 20);
+			contentPane.add(lblContrasea);
+
+			
+			JLabel lblApellido = new JLabel("Apellido");
+			lblApellido.setBounds(434, 295, 62, 20);
+			contentPane.add(lblApellido);
+			
+			textNom = new JTextField();
+			textNom.setBounds(535, 213, 207, 43);
+			contentPane.add(textNom);
+			textNom.setColumns(10);
+			
+			textEmail = new JTextField();
+			textEmail.setBounds(535, 355, 207, 43);
+			contentPane.add(textEmail);
+			textEmail.setColumns(10);
+			
+			textPassword = new JTextField();
+			textPassword.setBounds(535, 426, 207, 43);
+			contentPane.add(textPassword);
+			textPassword.setColumns(10);
+			
+			
+			textApe = new JTextField();
+			textApe.setBounds(535, 284, 207, 43);
+			contentPane.add(textApe);
+			textApe.setColumns(10);
+
+			
 			JButton btnRegistro = new JButton("REGISTRAR");
 			btnRegistro.setBounds(377, 116, 142, 43);
 			pArriba.add(btnRegistro);
@@ -78,6 +117,22 @@ public class Register extends JFrame {
 			btnRegistro.setSelectedIcon(null);
 			btnRegistro.setBackground(new Color(0, 153, 255));
 			btnRegistro.setForeground(Color.WHITE);
+			btnRegistro.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent e) 
+				{
+					lblNombre.setVisible(true);
+					contentPane.add(textNom);
+					lblApellido.setText("Apellido");
+					lblEmail.setVisible(true);
+					contentPane.add(textEmail);
+					contentPane.revalidate();
+					contentPane.repaint();
+					//Login login = new Login(controller);
+					//login.setVisible(true);
+					
+				}
+			});
 			
 			JButton btnLogin = new JButton("ENTRAR");
 			btnLogin.setBounds(518, 117, 142, 43);
@@ -85,10 +140,20 @@ public class Register extends JFrame {
 			btnLogin.setIcon(null);
 			btnLogin.setSelectedIcon(null);
 			pArriba.add(btnLogin);
-			btnLogin.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Login login = new Login(controller);
-					login.setVisible(true);
+			
+			btnLogin.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent e) 
+				{
+					lblNombre.setVisible(false);
+					contentPane.remove(textNom);
+					lblApellido.setText("Email");
+					lblEmail.setVisible(false);
+					contentPane.remove(textEmail);
+					contentPane.revalidate();
+					contentPane.repaint();
+					//Login login = new Login(controller);
+					//login.setVisible(true);
 					
 				}
 			});
@@ -145,22 +210,6 @@ public class Register extends JFrame {
 			btnRegistrar.setBounds(568, 521, 142, 43);
 			contentPane.add(btnRegistrar);
 			
-			JLabel lblNombre = new JLabel("Nombre");
-			lblNombre.setBounds(434, 224, 62, 20);
-			contentPane.add(lblNombre);
-			
-			JLabel lblEmail = new JLabel("Email");
-			lblEmail.setBounds(457, 366, 39, 20);
-			contentPane.add(lblEmail);
-			
-			JLabel lblContrasea = new JLabel("Password");
-			lblContrasea.setBounds(427, 437, 69, 20);
-			contentPane.add(lblContrasea);
-
-			
-			JLabel lblApellido = new JLabel("Apellido");
-			lblApellido.setBounds(434, 295, 62, 20);
-			contentPane.add(lblApellido);
 			
 			JPanel panel = new JPanel();
 			panel.setBounds(378, 158, 470, 425);

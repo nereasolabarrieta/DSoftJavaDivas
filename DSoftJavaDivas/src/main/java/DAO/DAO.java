@@ -20,9 +20,9 @@ public class DAO implements itfDAO
 	private static 	PersistenceManagerFactory persistentManagerFactory;
 	public DAO()
 	{
-//		persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-//		persistentManager = persistentManagerFactory.getPersistenceManager();				
-//		transaction = persistentManager.currentTransaction();
+		persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		persistentManager = persistentManagerFactory.getPersistenceManager();				
+		transaction = persistentManager.currentTransaction();
 	}
 	@Override
 	public void guardarObjeto(Object objeto) 

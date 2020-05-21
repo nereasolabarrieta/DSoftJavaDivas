@@ -49,6 +49,7 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 * @param controller 
 	 */
+	
 	public Principal(Controller controller) {
 		this.controller = controller;
 		initComponents();
