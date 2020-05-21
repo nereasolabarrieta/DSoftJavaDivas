@@ -38,7 +38,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 	        try {
 	            response =
 	                    client.makePostRequest(
-	                            client.createInvocationBuilder(path) , new Flight_parameters("Tabarnia","Donostia", 100, 370)
+	                            client.createInvocationBuilder(path) , new Flight_parameters("Tabarnia","Bilbao")
 	                    );
 	        }
 	        catch (Exception e) { e.printStackTrace(); e.toString(); System.out.println("estoy entrando al catch y por eso te dan los demas errores guapa");}
