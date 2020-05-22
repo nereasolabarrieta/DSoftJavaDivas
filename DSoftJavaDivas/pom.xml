@@ -38,7 +38,7 @@
     <version>1.4</version>
 	</dependency>
 	
-	<dependency>
+		<dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
             <version>[5.1.6, 5.9)</version>
@@ -120,21 +120,7 @@
             <artifactId>jersey-media-json-jackson</artifactId>
             <version>2.29</version>
         </dependency>
-
-		<dependency>
-    		<groupId>org.slf4j</groupId>
-  			<artifactId>slf4j-api</artifactId>
-    		<version>2.0.0-alpha1</version>
-		</dependency>
-		
-		
-		<dependency>
-    		<groupId>org.slf4j</groupId>
-    		<artifactId>slf4j-log4j12</artifactId>
-    		<version>2.0.0-alpha1</version>
-    		<scope>test</scope>
-		</dependency>
-				
+        
 		<dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
@@ -153,6 +139,12 @@
 		    <artifactId>javax.ws.rs-api</artifactId>
 		    <version>2.1.1</version>
 		</dependency>
+		
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>2.0.0-alpha0</version>
+</dependency>
 
   </dependencies>
     <build>
@@ -210,6 +202,7 @@
                 <artifactId>ant-commons-net</artifactId>
                 <version>1.8.1</version>
                </dependency>
+
             </dependencies>
         </plugin>
         
