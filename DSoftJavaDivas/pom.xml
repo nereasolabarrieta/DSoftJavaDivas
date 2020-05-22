@@ -176,6 +176,9 @@
                      <ant antfile="${basedir}/build.xml">
                         <target name="client"/>
                      </ant>
+                      <ant antfile="${basedir}/build.xml">
+                        <target name="GestorVuelos"/>
+                     </ant>
                   </target>
                </configuration>
               </execution>
