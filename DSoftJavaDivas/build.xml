@@ -11,7 +11,7 @@
 	<property name="policy.file.client" location="src/main/java/securityCliente/java.policy"/>	
 	 <property name="log4j.file" location = "src/main/resources/log4j.properties" />
 	
-	<path id="full.classpath">
+	<path id="full.classpath" >
 	      <fileset dir="${mvn.source.dir}">
 	      <include name="**/*.jar"/>
 	      <exclude name="**/5.2.3/**/*.jar" />
@@ -21,7 +21,7 @@
 	  </path>
 
 	<target name="client" description="Runs the Client">
-		<java classname="EasyBooking.LN.mainCliente" classpathref="full.classpath" fork="false">
+		<java classname="EasyBooking.LN.mainCliente" classpathref="full.classpath" fork="true">
 			<jvmarg value="-Djava.security.policy=${policy.file.client}"/>			
         	<arg value="${server.IP}"/> 
 	 		<arg value="${server.port}"/> 
@@ -38,13 +38,13 @@
 			<arg value="${server.Name}"/> 
         </java>
     </target>
-	
 	<target name="GestorVuelos" description="Runs the GestorVuelos">
-			<java classname="AppService.GestorVuelos" classpathref="full.classpath" fork="true">
+			<java classname="AppService.GestorVuelos" classpathref="full.classpath" fork="false">
 				<jvmarg value="-Djava.security.policy=${policy.file.server}"/>	
 	        	<arg value="${server.IP}"/> 
 		 		<arg value="${server.port}"/> 
 				<arg value="${server.Name}"/> 
 	        </java>
 	    </target>
+
 </project>

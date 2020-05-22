@@ -27,8 +27,8 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	public ServidorPrincipal() throws RemoteException {
 		super();
 		System.out.println("ey estoy en el constructor y ahora voy a hacer los appservice jeeee");
-	//	this.GAutenticacion=new GestorAutenticacion();
-		//this.GPago=new GestorPago();
+		this.GAutenticacion=new GestorAutenticacion();
+		this.GPago=new GestorPago();
 		this.GVuelos=new GestorVuelos();
 		// TODO Auto-generated constructor stub
 		
