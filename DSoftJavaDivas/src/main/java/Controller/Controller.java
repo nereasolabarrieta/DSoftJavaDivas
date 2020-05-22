@@ -20,10 +20,10 @@ public class Controller {
 		new Register(this);
 	}
 	//Falta la implementacion de todos los métodos de la fachada así
-	public List<Vuelo> getVuelos() throws RemoteException {
-		
-		return rsl.getService().getVuelos();
-	}
+//	public List<Vuelo> getVuelos() throws RemoteException {
+//		
+//		return rsl.getService().getVuelos();
+//	}
 
 	public List<Aeropuerto> getAeropuerto() throws RemoteException {
 		return rsl.getService().getAeropuerto();

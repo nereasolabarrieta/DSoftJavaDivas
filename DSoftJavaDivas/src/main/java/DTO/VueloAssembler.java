@@ -11,11 +11,11 @@ public class VueloAssembler
 //Date hora_llegada, double precio
 {
 	
-	public static VueloDTO assembleToVueloDTO(Vuelo v)
-	{
-		VueloDTO vDTO= new VueloDTO( v.getCodVuelo(), v.getOrigen(), v.getDestino(), v.getAerolinea(), v.getDuracion(), v.getHora_salida(), v.getHora_llegada(), v.getPrecio());
-		return vDTO;
-	}
+//	public static VueloDTO assembleToVueloDTO(Vuelo v)
+//	{
+//		VueloDTO vDTO= new VueloDTO( v.getCodVuelo(), v.getOrigen(), v.getDestino(), v.getAerolinea(), v.getDuracion(), v.getHora_salida(), v.getPrecio());
+//		return vDTO;
+//	}
 	
 
 

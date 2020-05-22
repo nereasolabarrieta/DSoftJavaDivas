@@ -18,15 +18,13 @@ public class GestorVuelos {
 	
 	public GestorVuelos()
 	{
-		System.out.println(" tu que he llegado a vuelos");
 		gateVuelos = new GatewayVuelos();
-		gateVuelos.search_flights();
+		
 	}
 	
-	public List<Vuelo> getVuelos(){
+	public void getVuelos(){
 		
-		return null;
-		
+		gateVuelos.Buscar_vuelos("Bilbao", "Tabarnia");
 	}
 	public List<Aeropuerto> getAeropuerto(){
 		return null;
@@ -46,4 +44,12 @@ public class GestorVuelos {
 	{
 		
 	}
+	
+	public static void main(String[] args) {
+		
+		GestorVuelos g = new GestorVuelos();
+		g.getVuelos();
+	
+	}
+	
 }

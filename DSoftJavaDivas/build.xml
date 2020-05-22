@@ -38,4 +38,13 @@
 			<arg value="${server.Name}"/> 
         </java>
     </target>
+	
+	<target name="GestorVuelos" description="Runs the GestorVuelos">
+			<java classname="AppService.GestorVuelos" classpathref="full.classpath" fork="true">
+				<jvmarg value="-Djava.security.policy=${policy.file.server}"/>	
+	        	<arg value="${server.IP}"/> 
+		 		<arg value="${server.port}"/> 
+				<arg value="${server.Name}"/> 
+	        </java>
+	    </target>
 </project>

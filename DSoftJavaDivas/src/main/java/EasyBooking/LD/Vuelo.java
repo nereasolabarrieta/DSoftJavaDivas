@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.jdo.annotations.ForeignKey;
@@ -20,12 +21,13 @@ public class Vuelo {
 	private Avion avion; 
 	private double duracion;
 	private Date hora_salida;
-	private Date hora_llegada; 
-	private double precio;
+	private LocalDateTime hora_llegada; 
+	private long precio;
+	private String fecha;
 
 	
 	public Vuelo(String codigo, Aeropuerto origen, Aeropuerto destino,Aerolinea aerolinea, Avion avion, double duracion, Date hora_salida,
-			Date hora_llegada, double precio) {
+			LocalDateTime hora_llegada, long precio) {
 		super();
 		this.codVuelo = codigo;
 		this.origen = origen;
@@ -38,8 +40,21 @@ public class Vuelo {
 		this.aerolinea = aerolinea;
 	}
 
+
 	
-	
+
+	public Vuelo(String codVuelo, Aeropuerto origen, Aeropuerto destino, LocalDateTime hora_llegada, String Fecha,long precio) {
+		super();
+		this.codVuelo = codVuelo;
+		this.origen = origen;
+		this.destino = destino;
+		this.hora_llegada = hora_llegada;
+		this.precio = precio;
+		this.fecha=Fecha;
+	}
+
+
+
 
 	public String getCodVuelo() {
 		return codVuelo;
@@ -77,16 +92,11 @@ public class Vuelo {
 	public void setHora_salida(Date hora_salida) {
 		this.hora_salida = hora_salida;
 	}
-	public Date getHora_llegada() {
-		return hora_llegada;
-	}
-	public void setHora_llegada(Date hora_llegada) {
-		this.hora_llegada = hora_llegada;
-	}
-	public double getPrecio() {
+	
+	public long getPrecio() {
 		return precio;
 	}
-	public void setPrecio(double precio) {
+	public void setPrecio(long precio) {
 		this.precio = precio;
 	}
 

@@ -27,11 +27,11 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	public ServidorPrincipal() throws RemoteException {
 		super();
 		System.out.println("ey estoy en el constructor y ahora voy a hacer los appservice jeeee");
-		//this.GAutenticacion=new GestorAutenticacion();
+	//	this.GAutenticacion=new GestorAutenticacion();
 		//this.GPago=new GestorPago();
 		this.GVuelos=new GestorVuelos();
 		// TODO Auto-generated constructor stub
-		System.out.println("the end");
+		
 	}
 
 	public static void main (String[] args) {
@@ -41,7 +41,6 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		String port = "1099";
 		String serviceName = "EasyBooking";
 		itfFachada objServer = null;
-		System.out.println( "entro primero al servidor principal");
 		try {
 			objServer = new ServidorPrincipal();
 		} catch (RemoteException e1) {
@@ -69,12 +68,12 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		}
 	}
 
-	@Override
-	public List<Vuelo> getVuelos() throws RemoteException {
-		// TODO Auto-generated method stub
-		
-		return GVuelos.getVuelos();
-	}
+//	@Override
+//	public List<Vuelo> getVuelos() throws RemoteException {
+//		// TODO Auto-generated method stub
+//		
+//		return GVuelos.getVuelos();
+//	}
 
 	@Override
 	public List<Aeropuerto> getAeropuerto() throws RemoteException {

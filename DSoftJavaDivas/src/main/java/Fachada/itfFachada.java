@@ -11,7 +11,7 @@ import EasyBooking.LD.Vuelo;
 
 public interface itfFachada extends Remote{
 	
-	public List<Vuelo> getVuelos()throws RemoteException;//ese vuelo luego habra que convertirlo en DTOVuelo
+	//public List<Vuelo> getVuelos()throws RemoteException;//ese vuelo luego habra que convertirlo en DTOVuelo
 	public List<Aeropuerto> getAeropuerto()throws RemoteException;//ese vuelo luego habra que convertirlo en DTOVuelo
 	public void newReserva(String Aeropuerto_Salida, String Aeropuerto_llegada)throws RemoteException;
 	public void Pagar(double precio, String cod_vuelo)throws RemoteException;
