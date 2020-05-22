@@ -12,7 +12,7 @@
 	 <property name="log4j.file" location = "src/main/resources/log4j.properties" />
 	
 	<path id="full.classpath">
-	        <fileset dir="${mvn.source.dir}">
+	      <fileset dir="${mvn.source.dir}">
 	      <include name="**/*.jar"/>
 	      <exclude name="**/5.2.3/**/*.jar" />
 	      <exclude name="**/5.2.1/**/*.jar" />
