@@ -14,14 +14,14 @@ public class GatewayPago extends Gateway implements itfGatewayPago
 	private Response response;
 	
 	@Override
-	public void Pagar(double precio, String cod_vuelo) {
+	public void Pagar(String email, double cantidad_total, String concepto) {
 		// TODO Auto-generated method stub
 	       path = "/Payments/Make_payment";
 	       
         try {
             client.simplePrint(
                     client.makePostRequest(
-                            client.createInvocationBuilder(path) , new Usuario("inigo.lopezgazpio@deusto.es", 100, "Hello World Payment")
+                            client.createInvocationBuilder(path) , new Usuario(email, cantidad_total, concepto)
                     )
             );
         }
