@@ -21,7 +21,7 @@
 	  </path>
 
 	<target name="client" description="Runs the Client">
-		<java classname="EasyBooking.LN.mainCliente" classpathref="full.classpath" fork="true">
+		<java classname="EasyBooking.LN.mainCliente" classpathref="full.classpath" fork="false">
 			<jvmarg value="-Djava.security.policy=${policy.file.client}"/>			
         	<arg value="${server.IP}"/> 
 	 		<arg value="${server.port}"/> 
@@ -29,7 +29,7 @@
         </java>
     </target>
 	<target name="server" description="Runs the Server">
-		<java classname="Fachada.ServidorPrincipal" classpathref="full.classpath" fork="true">
+		<java classname="Fachada.ServidorPrincipal" classpathref="full.classpath" fork="false">
 		<jvmarg value="-Djava.rmi.server.codebase=file:${build.dir}"/> 
 			<jvmarg value="-Djava.security.policy=${policy.file.server}"/>	
 		    <jvmarg value="-Dlog4j.configuration=${log4j.file}"/>
