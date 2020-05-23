@@ -1,6 +1,7 @@
 package Controller;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -27,11 +28,11 @@ public class Controller {
 //		return rsl.getService().getVuelos();
 //	}
 
-	public Set<Aeropuerto> getAeropuertos() {
+	public ArrayList<Aeropuerto> getAeropuertos() {
 		System.out.println("HOLA 4");
 		
 		
-		Set<Aeropuerto> lista=null;
+		ArrayList<Aeropuerto> lista=null;
 		try {
 			lista = rsl.getService().getAeropuertos();
 		} catch (RemoteException e) {
@@ -41,7 +42,7 @@ public class Controller {
 			System.out.println(" sisi todo la shit que pone arriba es del catch del controller guapa");
 		}
 		
-		System.out.println("CONTROLLER"+lista.size());
+		System.out.println("CONTROLLER"+lista.get(0).getNomAeropuerto());
 		return lista;
 	}
 

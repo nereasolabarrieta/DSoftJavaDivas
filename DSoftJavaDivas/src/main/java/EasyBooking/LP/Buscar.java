@@ -50,7 +50,7 @@ public class Buscar extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNumViajeros;
 	private JDateChooser datechooser;
-	private Set<Aeropuerto>Lista_Aeropuerto;
+	private ArrayList<Aeropuerto>Lista_Aeropuerto;
 	private Controller controller;
 	/**
 	 * Create the frame.
@@ -63,7 +63,7 @@ public class Buscar extends JFrame {
 		System.out.println("HOLA 2");
 		System.out.println("HOLA 3");
 		Lista_Aeropuerto=this.controller.getAeropuertos();
-		System.out.println("ULTIMO PASO: "+Lista_Aeropuerto.size());
+		System.out.println("ULTIMO PASO: "+Lista_Aeropuerto.get(0).getNomAeropuerto());
 		initComponents();
 		this.setVisible(true);
 		

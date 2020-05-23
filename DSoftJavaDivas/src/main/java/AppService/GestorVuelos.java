@@ -1,5 +1,6 @@
 package AppService;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -28,12 +29,12 @@ public class GestorVuelos {
 		
 		gateVuelos.Buscar_vuelos("Bilbao", "Tabarnia");
 	}
-	public static Set<Aeropuerto> getAeropuerto()
+	public static ArrayList<Aeropuerto> getAeropuerto()
 	{
 		System.out.println("LEO AEROPUERTOS");
 		//DAO.guardarObjeto(gateVuelos.getAeropuertos());
-		 Set<Aeropuerto> lista= gateVuelos.getAeropuertos();
-		 System.out.println("GESTOR"+lista.size());
+		ArrayList<Aeropuerto> lista= gateVuelos.getAeropuertos();
+		 System.out.println("GESTOR"+lista.get(0).getNomAeropuerto());
 		 
 		 return lista;
 		

@@ -154,11 +154,11 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 
 
 	@Override
-	public Set<Aeropuerto> getAeropuertos() 
+	public ArrayList<Aeropuerto> getAeropuertos() 
 	{
 		System.out.println("ENTRO A AEROPUERTOS");
 		filtro= new Flight_parameters();
-		Set<Aeropuerto> Lista_aero=new HashSet<Aeropuerto>();
+		ArrayList<Aeropuerto> Lista_aero=new ArrayList<Aeropuerto>();
 		List<VuelosJSON> lista_json=search_flights();
 		lista_json.stream().forEach(element->
 		{
@@ -167,7 +167,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 			Lista_aero.add(origen);
 			Lista_aero.add(destino);
 		});
-		System.out.println("EL TAMANYO ES:"+Lista_aero.size());
+		System.out.println("GATEWAY:"+Lista_aero.get(0).getNomAeropuerto());
 		
 		return Lista_aero;
 	}

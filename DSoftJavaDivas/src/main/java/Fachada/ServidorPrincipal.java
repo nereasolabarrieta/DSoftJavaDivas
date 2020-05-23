@@ -4,7 +4,9 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -79,10 +81,11 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 //	}
 
 	@Override
-	public Set<Aeropuerto> getAeropuertos() throws RemoteException {
+	public ArrayList<Aeropuerto> getAeropuertos() throws RemoteException {
 		// TODO Auto-generated method stub
 		System.out.println("HOLA 5");
-		Set<Aeropuerto> lista = GVuelos.getAeropuerto();
+		//Set<Aeropuerto> lista = new HashSet<Aeropuerto>();
+		ArrayList<Aeropuerto> lista=GVuelos.getAeropuerto();
 		System.out.println("SERVIDOR_PRINC " + lista.size());
 		return lista;
 	}
