@@ -18,7 +18,7 @@ public class Controller {
 	{
 		rsl = new ServiceLocator();
 		rsl.setService();
-		new Register(this);
+		//new Register(this);
 	}
 	//Falta la implementacion de todos los métodos de la fachada así
 //	public List<Vuelo> getVuelos() throws RemoteException {

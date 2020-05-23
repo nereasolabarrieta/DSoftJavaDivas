@@ -29,7 +29,7 @@
         </java>
     </target>
 	<target name="server" description="Runs the Server">
-		<java classname="Fachada.ServidorPrincipal" classpathref="full.classpath" fork="false">
+		<java classname="Fachada.ServidorPrincipal" classpathref="full.classpath" fork="true">
 		<jvmarg value="-Djava.rmi.server.codebase=file:${build.dir}"/> 
 			<jvmarg value="-Djava.security.policy=${policy.file.server}"/>	
 		    <jvmarg value="-Dlog4j.configuration=${log4j.file}"/>
@@ -39,8 +39,9 @@
         </java>
     </target>
 	<target name="GestorVuelos" description="Runs the GestorVuelos">
-			<java classname="AppService.GestorVuelos" classpathref="full.classpath" fork="false">
+			<java classname="AppService.GestorVuelos" classpathref="full.classpath" fork="true">
 				<jvmarg value="-Djava.security.policy=${policy.file.server}"/>	
+				<jvmarg value="-Dlog4j.configuration=${log4j.file}"/>
 	        	<arg value="${server.IP}"/> 
 		 		<arg value="${server.port}"/> 
 				<arg value="${server.Name}"/> 
