@@ -16,8 +16,11 @@ public class Controller {
 	
 	public Controller() throws RemoteException 
 	{
+		System.out.println("HOLA 2");
 		rsl = new ServiceLocator();
+		System.out.println("HOLA 3");
 		rsl.setService();
+		System.out.println("HOLA 9");
 		//new Register(this);
 	}
 	//Falta la implementacion de todos los métodos de la fachada así

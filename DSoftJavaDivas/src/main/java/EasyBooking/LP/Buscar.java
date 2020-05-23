@@ -219,14 +219,16 @@ public class Buscar extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		
+		System.out.println("HOLA 1");
 		Controller c=null;
 		try {
 			c = new Controller();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
+			System.out.println("ENTRA AL CACTCH");
 			e.printStackTrace();
 		}
+		System.out.println("SALE DEL CATHC?");
 		Buscar b= new Buscar(c);
 	}
 }

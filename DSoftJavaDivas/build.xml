@@ -22,7 +22,8 @@
 
 	<target name="client" description="Runs the Client">
 		<java classname="EasyBooking.LN.mainCliente" classpathref="full.classpath" fork="true">
-			<jvmarg value="-Djava.security.policy=${policy.file.client}"/>			
+			<jvmarg value="-Djava.security.policy=${policy.file.client}"/>	
+			<jvmarg value="-Dlog4j.configuration=${log4j.file}"/>
         	<arg value="${server.IP}"/> 
 	 		<arg value="${server.port}"/> 
 			<arg value="${server.Name}"/> 
@@ -50,7 +51,8 @@
 	
 	<target name="Buscar" description="Buscar">
 				<java classname="EasyBooking.LP.Buscar" classpathref="full.classpath" fork="true">
-					<jvmarg value="-Djava.security.policy=${policy.file.client}"/>			
+					<jvmarg value="-Djava.security.policy=${policy.file.client}"/>	
+					<jvmarg value="-Dlog4j.configuration=${log4j.file}"/>
 					<arg value="${server.IP}"/> 
 					<arg value="${server.port}"/> 
 					<arg value="${server.Name}"/> 
