@@ -29,7 +29,7 @@ public class GestorVuelos {
 		
 		gateVuelos.Buscar_vuelos("Bilbao", "Tabarnia");
 	}
-	public static ArrayList<Aeropuerto> getAeropuerto()
+	public  ArrayList<Aeropuerto> getAeropuerto()
 	{
 		System.out.println("LEO AEROPUERTOS");
 		//DAO.guardarObjeto(gateVuelos.getAeropuertos());
@@ -59,7 +59,7 @@ public class GestorVuelos {
 		GestorVuelos g = new GestorVuelos();
 		//g.getVuelos();
 		System.out.println("main gv");
-		getAeropuerto();
+		g.getAeropuerto();
 	
 	}
 	

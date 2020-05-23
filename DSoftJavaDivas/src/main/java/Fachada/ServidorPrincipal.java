@@ -25,7 +25,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	private static final long serialVersionUID = 1L;
 	private GestorAutenticacion GAutenticacion;
 	private GestorPago GPago;
-	private GestorVuelos GVuelos;
+	private GestorVuelos GVuelos=null;
 	private DAO dao;
 	
 	public ServidorPrincipal() throws RemoteException {
@@ -80,13 +80,13 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 //		return GVuelos.getVuelos();
 //	}
 
-	@Override
-	public ArrayList<Aeropuerto> getAeropuertos() throws RemoteException {
+
+	public  ArrayList<Aeropuerto> getAeropuertos() throws RemoteException {
 		// TODO Auto-generated method stub
 		System.out.println("HOLA 5");
 		//Set<Aeropuerto> lista = new HashSet<Aeropuerto>();
 		ArrayList<Aeropuerto> lista=GVuelos.getAeropuerto();
-		System.out.println("SERVIDOR_PRINC " + lista.get(0).getNomAeropuerto());
+		System.out.println("SERVIDOR_PRINC " + lista.size());
 		return lista;
 	}
 
