@@ -81,7 +81,10 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	@Override
 	public Set<Aeropuerto> getAeropuertos() throws RemoteException {
 		// TODO Auto-generated method stub
-		return GVuelos.getAeropuerto();
+		System.out.println("HOLA 5");
+		Set<Aeropuerto> lista = GVuelos.getAeropuerto();
+		System.out.println("SERVIDOR_PRINC " + lista.size());
+		return lista;
 	}
 
 	@Override
@@ -131,6 +134,11 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	@Override
 	public void newViajero(String dni, String nombre) {
 		
+	}
+	
+	public void imprime()
+	{
+		System.out.println("LLEGA BIEN A LA FACHADA");
 	}
 	
 	

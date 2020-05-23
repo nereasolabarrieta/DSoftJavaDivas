@@ -58,9 +58,9 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
         JSONArray flightsArray = (JSONArray) myParser.parse( json_string );
 
         // Lambda expression to print array
-        flightsArray.stream().forEach(
-                element -> System.out.println(element)
-        );
+//        flightsArray.stream().forEach(
+//                element -> System.out.println(element)
+//        );
 
         // Lambda expression to map JSONObjects inside JSONArray to flight objects
         myFlightArray = (List) flightsArray.stream()
@@ -100,6 +100,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 	@Override
 	public void Buscar_vuelos(String origen, String destino) 
 	{
+		System.out.println("ENTRO EN BUSCAR VUELOS");
 		filtro= new Flight_parameters(origen,destino);
 		List<VuelosJSON> lista_json=search_flights();
 		System.out.println("HA LLEGADO AL PASO PREVIO A CONVERTIR EN OBJETOS");
@@ -155,8 +156,9 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 	@Override
 	public Set<Aeropuerto> getAeropuertos() 
 	{
+		System.out.println("ENTRO A AEROPUERTOS");
 		filtro= new Flight_parameters();
-		Set<Aeropuerto> Lista_aero=new HashSet();
+		Set<Aeropuerto> Lista_aero=new HashSet<Aeropuerto>();
 		List<VuelosJSON> lista_json=search_flights();
 		lista_json.stream().forEach(element->
 		{
@@ -165,6 +167,8 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 			Lista_aero.add(origen);
 			Lista_aero.add(destino);
 		});
+		System.out.println("EL TAMANYO ES:"+Lista_aero.size());
+		
 		return Lista_aero;
 	}
 	

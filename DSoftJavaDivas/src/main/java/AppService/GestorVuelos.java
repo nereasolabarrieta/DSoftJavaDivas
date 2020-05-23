@@ -31,9 +31,11 @@ public class GestorVuelos {
 	public static Set<Aeropuerto> getAeropuerto()
 	{
 		System.out.println("LEO AEROPUERTOS");
-		DAO.guardarObjeto(gateVuelos.getAeropuertos());
-		return gateVuelos.getAeropuertos();
+		//DAO.guardarObjeto(gateVuelos.getAeropuertos());
+		 Set<Aeropuerto> lista= gateVuelos.getAeropuertos();
+		 System.out.println("GESTOR"+lista.size());
 		 
+		 return lista;
 		
 	}
 	

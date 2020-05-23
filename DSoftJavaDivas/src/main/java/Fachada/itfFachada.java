@@ -22,4 +22,5 @@ public interface itfFachada extends Remote{
 	public void LogInUsuario(String email, String contrasena)throws RemoteException;
 	public void newViajero(String dni, String nombre)throws RemoteException;
 	void LogOut()throws RemoteException;
+	void imprime()throws RemoteException;
 }

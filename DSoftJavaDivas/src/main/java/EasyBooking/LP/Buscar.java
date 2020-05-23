@@ -57,13 +57,13 @@ public class Buscar extends JFrame {
 	 * @param controller 
 	 */
 	public Buscar(Controller controller) {
+		
+		System.out.println("HOLA 1");
 		this.controller = controller;
-		try {
-			Lista_Aeropuerto=this.controller.getAeropuertos();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.out.println("HOLA 2");
+		System.out.println("HOLA 3");
+		Lista_Aeropuerto=this.controller.getAeropuertos();
+		System.out.println("ULTIMO PASO: "+Lista_Aeropuerto.size());
 		initComponents();
 		this.setVisible(true);
 		
@@ -219,7 +219,7 @@ public class Buscar extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("HOLA 1");
+		
 		Controller c=null;
 		try {
 			c = new Controller();
@@ -228,7 +228,6 @@ public class Buscar extends JFrame {
 			System.out.println("ENTRA AL CACTCH");
 			e.printStackTrace();
 		}
-		System.out.println("SALE DEL CATHC?");
 		Buscar b= new Buscar(c);
 	}
 }

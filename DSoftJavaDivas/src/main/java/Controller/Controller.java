@@ -16,11 +16,9 @@ public class Controller {
 	
 	public Controller() throws RemoteException 
 	{
-		System.out.println("HOLA 2");
+		
 		rsl = new ServiceLocator();
-		System.out.println("HOLA 3");
 		rsl.setService();
-		System.out.println("HOLA 9");
 		//new Register(this);
 	}
 	//Falta la implementacion de todos los métodos de la fachada así
@@ -29,8 +27,22 @@ public class Controller {
 //		return rsl.getService().getVuelos();
 //	}
 
-	public Set<Aeropuerto> getAeropuertos() throws RemoteException {
-		return rsl.getService().getAeropuertos();
+	public Set<Aeropuerto> getAeropuertos() {
+		System.out.println("HOLA 4");
+		
+		
+		Set<Aeropuerto> lista=null;
+		try {
+			lista = rsl.getService().getAeropuertos();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			System.out.println("aqui fallas!!!!!!!");
+			e.printStackTrace();
+			System.out.println(" sisi todo la shit que pone arriba es del catch del controller guapa");
+		}
+		
+		System.out.println("CONTROLLER"+lista.size());
+		return lista;
 	}
 
 	public void newReserva(String Aeropuerto_Salida, String Aeropuerto_llegada) throws RemoteException {

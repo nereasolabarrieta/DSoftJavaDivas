@@ -6,6 +6,10 @@ import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable
 public class Aeropuerto {
 	
+	@Override
+	public String toString() {
+		return "Aeropuerto [codAeropuerto=" + codAeropuerto + ", nomAeropuerto=" + nomAeropuerto + "]";
+	}
 	@PrimaryKey
 	private String codAeropuerto;
 	private String nomAeropuerto;
