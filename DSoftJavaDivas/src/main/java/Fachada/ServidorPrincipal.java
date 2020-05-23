@@ -86,7 +86,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		System.out.println("HOLA 5");
 		//Set<Aeropuerto> lista = new HashSet<Aeropuerto>();
 		ArrayList<Aeropuerto> lista=GVuelos.getAeropuerto();
-		System.out.println("SERVIDOR_PRINC " + lista.size());
+		System.out.println("SERVIDOR_PRINC " + lista.get(0).getNomAeropuerto());
 		return lista;
 	}
 
