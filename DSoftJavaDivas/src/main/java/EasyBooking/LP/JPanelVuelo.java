@@ -65,11 +65,11 @@ public class JPanelVuelo extends JPanel {
 		lblNewYork.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewYork.setBounds(421, 144, 102, 20);
 		add(lblNewYork);
-		
-		JLabel lblLogoCompania = new JLabel("New label");
-		lblLogoCompania.setIcon(new ImageIcon(JPanelVuelo.class.getResource("/EasyBooking/Img/eDreams.jpg")));
-		lblLogoCompania.setBounds(15, 72, 181, 91);
-		add(lblLogoCompania);
+//		
+//		JLabel lblLogoCompania = new JLabel("New label");
+//		lblLogoCompania.setIcon(new ImageIcon(JPanelVuelo.class.getResource("/EasyBooking/Img/eDreams.jpg")));
+//		lblLogoCompania.setBounds(15, 72, 181, 91);
+//		add(lblLogoCompania);
 		
 		JLabel lblQuedanDisponibles = new JLabel("Quedan        disponibles");
 		lblQuedanDisponibles.setForeground(Color.GRAY);

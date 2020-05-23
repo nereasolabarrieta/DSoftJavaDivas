@@ -58,7 +58,7 @@ public class Principal extends JFrame {
 	}
 	public void initComponents()
 	{
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
 		setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		setTitle("EasyBooking");
 		setForeground(Color.BLACK);
@@ -78,12 +78,12 @@ public class Principal extends JFrame {
 		contentPane.add(pArriba);
 		pArriba.setLayout(null);
 		
-		JLabel lblLogo = new JLabel();
-		lblLogo.setBounds(0, 0, 185, 64);
-		pArriba.add(lblLogo);
-		ImageIcon fot = new ImageIcon(Principal.class.getResource("/EasyBooking/Img/logo.png"));
-		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
-		lblLogo.setIcon(icono);
+//		JLabel lblLogo = new JLabel();
+//		lblLogo.setBounds(0, 0, 185, 64);
+//		pArriba.add(lblLogo);
+//		ImageIcon fot = new ImageIcon(Principal.class.getResource("/EasyBooking/Img/logo.png"));
+//		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
+//		lblLogo.setIcon(icono);
 		
 		JDateChooser dChooser_ida = new JDateChooser();
 		dChooser_ida.setBounds(861, 70, 125, 26);
@@ -146,9 +146,9 @@ public class Principal extends JFrame {
 		
 		JLabel lblBuscar = new JLabel("");
 		lblBuscar.setBounds(1048, 112, 38, 31);
-		ImageIcon fotBuscar = new ImageIcon(Principal.class.getResource("/EasyBooking/Img/Buscar.png"));
-		Icon iconoBuscar = new ImageIcon(fotBuscar.getImage().getScaledInstance(lblBuscar.getWidth(), lblBuscar.getHeight(), Image.SCALE_DEFAULT));
-		lblBuscar.setIcon(iconoBuscar);
+		//ImageIcon fotBuscar = new ImageIcon(Principal.class.getResource("/EasyBooking/Img/Buscar.png"));
+		//Icon iconoBuscar = new ImageIcon(fotBuscar.getImage().getScaledInstance(lblBuscar.getWidth(), lblBuscar.getHeight(), Image.SCALE_DEFAULT));
+		//lblBuscar.setIcon(iconoBuscar);
 		pArriba.add(lblBuscar);
 		
 		JPanel pIzquierda= new JPanel();
