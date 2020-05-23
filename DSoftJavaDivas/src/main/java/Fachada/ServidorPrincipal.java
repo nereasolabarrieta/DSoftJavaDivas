@@ -24,6 +24,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	private GestorAutenticacion GAutenticacion;
 	private GestorPago GPago;
 	private GestorVuelos GVuelos;
+	private DAO dao;
 	
 	public ServidorPrincipal() throws RemoteException {
 		super();
@@ -31,6 +32,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		this.GAutenticacion=new GestorAutenticacion();
 		this.GPago=new GestorPago();
 		this.GVuelos=new GestorVuelos();
+		//this.dao= new DAO();
 		// TODO Auto-generated constructor stub
 		
 	}

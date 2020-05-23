@@ -10,11 +10,12 @@ import EasyBooking.LD.Vuelo;
 import Gateway.Gateway;
 import Gateway.GatewayVuelos;
 import Gateway.itfGatewayVuelos;
+import ServiciosExternos.VuelosJSON;
 
 public class GestorVuelos {
 	
-	private itfDAO DAO;
-	private itfGatewayVuelos gateVuelos;
+	private static itfDAO DAO;
+	private static itfGatewayVuelos gateVuelos;
 	private Gateway gateGeneral;
 	
 	public GestorVuelos()
@@ -27,8 +28,10 @@ public class GestorVuelos {
 		
 		gateVuelos.Buscar_vuelos("Bilbao", "Tabarnia");
 	}
-	public Set<Aeropuerto> getAeropuerto(){
-		
+	public static Set<Aeropuerto> getAeropuerto()
+	{
+		System.out.println("LEO AEROPUERTOS");
+		DAO.guardarObjeto(gateVuelos.getAeropuertos());
 		return gateVuelos.getAeropuertos();
 		 
 		
@@ -51,7 +54,9 @@ public class GestorVuelos {
 	public static void main(String[] args) {
 		
 		GestorVuelos g = new GestorVuelos();
-		g.getVuelos();
+		//g.getVuelos();
+		System.out.println("main gv");
+		getAeropuerto();
 	
 	}
 	

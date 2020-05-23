@@ -9,6 +9,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
+import AppService.GestorVuelos;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Reserva;
 
@@ -17,22 +18,24 @@ public class DAO implements itfDAO
 	private static PersistenceManager persistentManager;
 	private static Transaction transaction;
 	private static 	PersistenceManagerFactory persistentManagerFactory;
+	private static GestorVuelos gv;
+	
 	public DAO()
 	{
 		persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		persistentManager = persistentManagerFactory.getPersistenceManager();				
 		transaction = persistentManager.currentTransaction();
 	}
-	@Override
 	public void guardarObjeto(Object objeto) 
 	{
-		persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		persistentManager = persistentManagerFactory.getPersistenceManager();				
-		transaction = persistentManager.currentTransaction();
+		//persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		//persistentManager = persistentManagerFactory.getPersistenceManager();				
+		//transaction = persistentManager.currentTransaction();
 		try
         {
 			if(objeto instanceof Aeropuerto)
 			{
+				System.out.println("entro en el if de guardar");
 				List<Aeropuerto> aeropuertos=(List<Aeropuerto>) objeto;
 				for(Aeropuerto a: aeropuertos)
 				{
@@ -66,6 +69,7 @@ public class DAO implements itfDAO
         }
 		catch(Exception ex)
 		{
+			System.out.println("jo hay error");
 			System.err.println("* Exception inserting data into db: " + ex.getMessage());
 		}
 		
@@ -82,8 +86,6 @@ public class DAO implements itfDAO
 		
 		
 	}
-
-	
 
 	@Override
 	public List<Aeropuerto> getAeropuertos() 
