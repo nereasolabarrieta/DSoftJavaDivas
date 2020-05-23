@@ -193,6 +193,9 @@
                      <ant antfile="${basedir}/build.xml">
                         <target name="Buscar"/>
                      </ant>
+                        <ant antfile="${basedir}/build.xml">
+                        <target name="Entrar_Registrar"/>
+                     </ant>
                   </target>
                </configuration>
               </execution>

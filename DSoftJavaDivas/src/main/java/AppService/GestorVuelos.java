@@ -16,7 +16,7 @@ import ServiciosExternos.VuelosJSON;
 public class GestorVuelos {
 	
 	private static itfDAO DAO;
-	private static itfGatewayVuelos gateVuelos;
+	private itfGatewayVuelos gateVuelos;
 	private Gateway gateGeneral;
 	
 	public GestorVuelos()

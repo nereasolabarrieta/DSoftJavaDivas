@@ -8,7 +8,7 @@ import java.util.Set;
 
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Vuelo;
-import EasyBooking.LP.Register;
+
 import Remote.ServiceLocator;
 
 public class Controller {
