@@ -12,18 +12,16 @@ public class Reserva {
 	@PrimaryKey
 	private String codReserva;
 	private Usuario usuario;
-	private Aerolinea aerolinea;
 	private Vuelo vuelo;
 	@Persistent(mappedBy="Lista_Reservas")
 	private Set<Viajero> viajeros;
 
 	
 	
-	public Reserva(String codReserva, Usuario usuario, Set<Viajero> viajeros, Aerolinea aerolinea, Vuelo vuelo ) {
+	public Reserva(String codReserva, Usuario usuario, Set<Viajero> viajeros, Vuelo vuelo ) {
 		super();
 		this.codReserva = codReserva;
 		this.usuario = usuario;
-		this.aerolinea=aerolinea;
 		this.vuelo=vuelo;
 		this.viajeros = viajeros;
 	}
@@ -60,13 +58,7 @@ public class Reserva {
 		this.vuelo = vuelo;
 	}
 	
-	public Aerolinea getAerolinea() {
-		return aerolinea;
-	}
 
-	public void setAerolinea(Aerolinea aerolinea) {
-		this.aerolinea = aerolinea;
-	}
 
 
 	

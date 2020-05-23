@@ -1,36 +1,28 @@
 package DTO;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
-import EasyBooking.LD.Aerolinea;
+
 import EasyBooking.LD.Aeropuerto;
-import EasyBooking.LD.Avion;
 
 public class VueloDTO implements Serializable
 {
 	private String codVuelo;
 	private Aeropuerto origen;
 	private Aeropuerto destino; 
-	private Aerolinea aerolinea;
-	private double duracion;
-	private Date hora_salida;
-	private Date hora_llegada; 
+	private LocalDateTime hora_salida;
 	private double precio;
 
 	
-	public VueloDTO(String codigo, Aeropuerto origen, Aeropuerto destino,Aerolinea aerolinea, double duracion, Date hora_salida,
-			Date hora_llegada, double precio) 
+	public VueloDTO(String codigo, Aeropuerto origen, Aeropuerto destino, double duracion, LocalDateTime hora_salida, double precio) 
 	{
 		super();
 		this.codVuelo = codigo;
 		this.origen = origen;
 		this.destino = destino;
-		this.duracion = duracion;
 		this.hora_salida = hora_salida;
-		this.hora_llegada = hora_llegada;
 		this.precio = precio;
-		this.aerolinea = aerolinea;
 	}
 
 
@@ -64,46 +56,6 @@ public class VueloDTO implements Serializable
 	}
 
 
-	public Aerolinea getAerolinea() {
-		return aerolinea;
-	}
-
-
-	public void setAerolinea(Aerolinea aerolinea) {
-		this.aerolinea = aerolinea;
-	}
-
-
-	public double getDuracion() {
-		return duracion;
-	}
-
-
-	public void setDuracion(double duracion) {
-		this.duracion = duracion;
-	}
-
-
-	public Date getHora_salida() {
-		return hora_salida;
-	}
-
-
-	public void setHora_salida(Date hora_salida) {
-		this.hora_salida = hora_salida;
-	}
-
-
-	public Date getHora_llegada() {
-		return hora_llegada;
-	}
-
-
-	public void setHora_llegada(Date hora_llegada) {
-		this.hora_llegada = hora_llegada;
-	}
-
-
 	public double getPrecio() {
 		return precio;
 	}
@@ -111,6 +63,16 @@ public class VueloDTO implements Serializable
 
 	public void setPrecio(double precio) {
 		this.precio = precio;
+	}
+
+
+	public LocalDateTime getHora_salida() {
+		return hora_salida;
+	}
+
+
+	public void setHora_salida(LocalDateTime hora_salida) {
+		this.hora_salida = hora_salida;
 	}
 	
 	

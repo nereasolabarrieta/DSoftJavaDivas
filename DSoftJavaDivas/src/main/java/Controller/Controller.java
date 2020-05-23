@@ -3,6 +3,7 @@ package Controller;
 import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Vuelo;
@@ -25,8 +26,8 @@ public class Controller {
 //		return rsl.getService().getVuelos();
 //	}
 
-	public List<Aeropuerto> getAeropuerto() throws RemoteException {
-		return rsl.getService().getAeropuerto();
+	public Set<Aeropuerto> getAeropuertos() throws RemoteException {
+		return rsl.getService().getAeropuertos();
 	}
 
 	public void newReserva(String Aeropuerto_Salida, String Aeropuerto_llegada) throws RemoteException {

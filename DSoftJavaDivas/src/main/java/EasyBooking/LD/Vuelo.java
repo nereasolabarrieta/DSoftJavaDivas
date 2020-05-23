@@ -17,44 +17,25 @@ public class Vuelo {
 	private String codVuelo;
 	private Aeropuerto origen;
 	private Aeropuerto destino; 
-	private Aerolinea aerolinea;
-	private Avion avion; 
-	private double duracion;
-	private Date hora_salida;
-	private LocalDateTime hora_llegada; 
+	private LocalDateTime hora_salida;
 	private long precio;
-	private String fecha;
 
 	
-	public Vuelo(String codigo, Aeropuerto origen, Aeropuerto destino,Aerolinea aerolinea, Avion avion, double duracion, Date hora_salida,
-			LocalDateTime hora_llegada, long precio) {
+	public Vuelo(String codigo, Aeropuerto origen, Aeropuerto destino,  LocalDateTime hora_salida,
+			 long precio) {
 		super();
 		this.codVuelo = codigo;
 		this.origen = origen;
 		this.destino = destino;
-		this.avion = avion;
-		this.duracion = duracion;
 		this.hora_salida = hora_salida;
-		this.hora_llegada = hora_llegada;
 		this.precio = precio;
-		this.aerolinea = aerolinea;
 	}
 
-
-	
-
-	public Vuelo(String codVuelo, Aeropuerto origen, Aeropuerto destino, LocalDateTime hora_llegada, String Fecha,long precio) {
-		super();
-		this.codVuelo = codVuelo;
-		this.origen = origen;
-		this.destino = destino;
-		this.hora_llegada = hora_llegada;
-		this.precio = precio;
-		this.fecha=Fecha;
+	@Override
+	public String toString() {
+		return "Vuelo [codVuelo=" + codVuelo + ", origen=" + origen + ", destino=" + destino + ", hora_salida="
+				+ hora_salida + ", precio=" + precio + "]";
 	}
-
-
-
 
 	public String getCodVuelo() {
 		return codVuelo;
@@ -73,26 +54,7 @@ public class Vuelo {
 	}
 	public void setDestino(Aeropuerto destino) {
 		this.destino = destino;
-	}
-	public Avion getAvion() {
-		return avion;
-	}
-	public void setAvion(Avion avion) {
-		this.avion = avion;
-	}
-	public double getDuracion() {
-		return duracion;
-	}
-	public void setDuracion(double duracion) {
-		this.duracion = duracion;
-	}
-	public Date getHora_salida() {
-		return hora_salida;
-	}
-	public void setHora_salida(Date hora_salida) {
-		this.hora_salida = hora_salida;
-	}
-	
+	}	
 	public long getPrecio() {
 		return precio;
 	}
@@ -100,20 +62,6 @@ public class Vuelo {
 		this.precio = precio;
 	}
 
-	public Aerolinea getAerolinea() {
-		return aerolinea;
-	}
-
-	public void setAerolinea(Aerolinea aerolinea) {
-		this.aerolinea = aerolinea;
-	}
-
-	@Override
-	public String toString() {
-		return "Vuelo [codVuelo=" + codVuelo + ", origen=" + origen + ", destino=" + destino + ", aerolinea="
-				+ aerolinea + ", avion=" + avion + ", duracion=" + duracion + ", hora_salida=" + hora_salida
-				+ ", hora_llegada=" + hora_llegada + ", precio=" + precio + "]";
-	}
 	
 
 	 

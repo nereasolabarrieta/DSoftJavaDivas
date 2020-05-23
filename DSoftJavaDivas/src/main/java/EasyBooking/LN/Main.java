@@ -12,12 +12,7 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
-
-
-import EasyBooking.LD.Aerolinea;
 import EasyBooking.LD.Aeropuerto;
-import EasyBooking.LD.Asiento;
-import EasyBooking.LD.Avion;
 import EasyBooking.LD.Reserva;
 import EasyBooking.LD.Usuario;
 import EasyBooking.LD.Viajero;
@@ -53,12 +48,12 @@ public class Main {
 		    persistentManager.makePersistent(Madrid);
 		    persistentManager.makePersistent(Mallorca);
 		    
-		    Aerolinea Iberia = new Aerolinea("IBE", "IBERIA");
-		    Aerolinea Ryanair = new Aerolinea("RYA", "RYANAIR");
-		    Aerolinea Vueling = new Aerolinea("VLN", "VUELING");
-		    persistentManager.makePersistent(Iberia);
-		    persistentManager.makePersistent(Ryanair);
-		    persistentManager.makePersistent(Vueling);
+//		    Aerolinea Iberia = new Aerolinea("IBE", "IBERIA");
+//		    Aerolinea Ryanair = new Aerolinea("RYA", "RYANAIR");
+//		    Aerolinea Vueling = new Aerolinea("VLN", "VUELING");
+//		    persistentManager.makePersistent(Iberia);
+//		    persistentManager.makePersistent(Ryanair);
+//		    persistentManager.makePersistent(Vueling);
 	
 //		    Usuario usu1 = new Usuario("14231223Y", "Mikel", metodoPago.Paypal, Madrid);
 //		    Usuario usu2 = new Usuario("24231223Y", "Maria", metodoPago.Visa, Mallorca);

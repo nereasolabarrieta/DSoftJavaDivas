@@ -2,7 +2,7 @@ package DTO;
 
 import java.util.Date;
 
-import EasyBooking.LD.Aerolinea;
+
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Vuelo;
 

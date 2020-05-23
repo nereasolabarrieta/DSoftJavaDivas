@@ -1,6 +1,7 @@
 package Gateway;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.ws.rs.core.Response;
@@ -9,6 +10,7 @@ import org.json.simple.parser.JSONParser;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 
 import org.apache.log4j.net.SyslogAppender;
 import org.json.simple.JSONArray;
@@ -127,7 +129,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 				element-> {
 					Aeropuerto origen= new Aeropuerto(element.getAirportArrivalCode(),element.getAirportArrivalCity());
 					Aeropuerto destino= new Aeropuerto(element.getAirportDepartureCode(),element.getAirportDepartureCity());
-					Vuelo v=new Vuelo(element.getCode(), origen, destino,element.getDepartureDate(true),element.getDepartureDate(),element.getPrice());
+					Vuelo v=new Vuelo(element.getCode(), origen, destino,element.getDepartureDate(true),element.getPrice());
 					Lista_vuelos.add(v);
 				});
 		
@@ -148,5 +150,24 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	@Override
+	public Set<Aeropuerto> getAeropuertos() 
+	{
+		filtro= new Flight_parameters();
+		Set<Aeropuerto> Lista_aero=new HashSet();
+		List<VuelosJSON> lista_json=search_flights();
+		lista_json.stream().forEach(element->
+		{
+			Aeropuerto origen= new Aeropuerto(element.getAirportArrivalCode(),element.getAirportArrivalCity());
+			Aeropuerto destino= new Aeropuerto(element.getAirportDepartureCode(),element.getAirportDepartureCity());
+			Lista_aero.add(origen);
+			Lista_aero.add(destino);
+		});
+		return Lista_aero;
+	}
+	
+	
 
 }

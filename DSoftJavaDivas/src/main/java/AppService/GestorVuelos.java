@@ -2,6 +2,7 @@ package AppService;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import DAO.itfDAO;
 import EasyBooking.LD.Aeropuerto;
@@ -26,8 +27,10 @@ public class GestorVuelos {
 		
 		gateVuelos.Buscar_vuelos("Bilbao", "Tabarnia");
 	}
-	public List<Aeropuerto> getAeropuerto(){
-		return null;
+	public Set<Aeropuerto> getAeropuerto(){
+		
+		return gateVuelos.getAeropuertos();
+		 
 		
 	}
 	

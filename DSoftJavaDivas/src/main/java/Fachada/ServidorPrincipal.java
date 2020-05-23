@@ -6,6 +6,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import AppService.GestorAutenticacion;
 import AppService.GestorPago;
@@ -76,7 +77,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 //	}
 
 	@Override
-	public List<Aeropuerto> getAeropuerto() throws RemoteException {
+	public Set<Aeropuerto> getAeropuertos() throws RemoteException {
 		// TODO Auto-generated method stub
 		return GVuelos.getAeropuerto();
 	}

@@ -9,7 +9,6 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
-import EasyBooking.LD.Aerolinea;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Reserva;
 
@@ -43,22 +42,22 @@ public class DAO implements itfDAO
 				
 			}
 			
-			if (objeto instanceof Aerolinea)
-			{
-				List<Aerolinea> aerolineas=(List<Aerolinea>) objeto;
-				for(Aerolinea a: aerolineas)
-				{
-					a= new Aerolinea (a.getCodAerolinea(),a.getNomAerolimea());
-					persistentManager.makePersistent(a);
-				}
-			}
+//			if (objeto instanceof Aerolinea)
+//			{
+//				List<Aerolinea> aerolineas=(List<Aerolinea>) objeto;
+//				for(Aerolinea a: aerolineas)
+//				{
+//					a= new Aerolinea (a.getCodAerolinea(),a.getNomAerolimea());
+//					persistentManager.makePersistent(a);
+//				}
+//			}
 			
 			if (objeto instanceof Reserva)
 			{
 				List<Reserva> reservas=(List<Reserva>) objeto;
 				for(Reserva r: reservas)
 				{
-					r= new Reserva (r.getCodReserva(), r.getUsuario(),r.getViajeros(),r.getAerolinea(),r.getVuelo());
+					r= new Reserva (r.getCodReserva(), r.getUsuario(),r.getViajeros(),r.getVuelo());
 					persistentManager.makePersistent(r);
 				} 
 				
@@ -84,20 +83,7 @@ public class DAO implements itfDAO
 		
 	}
 
-	@Override
-	public List<Aerolinea> getAerolineas() 
-	{
-		// TODO Auto-generated method stub
-		Extent<Aerolinea> extent = persistentManager.getExtent(Aerolinea.class, false);
-		List<Aerolinea> aerolineas = new ArrayList<Aerolinea>();
-		
-		for (Aerolinea p : extent) 
-		{
-		  aerolineas.add(p);
-		}
-		extent.closeAll();
-		return aerolineas;
-	}
+	
 
 	@Override
 	public List<Aeropuerto> getAeropuertos() 

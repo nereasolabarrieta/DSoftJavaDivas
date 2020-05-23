@@ -20,6 +20,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 
 import javax.swing.JTextField;
@@ -37,6 +38,8 @@ import EasyBooking.LD.Aeropuerto;
 import javax.swing.JButton;
 import javax.swing.SpinnerDateModel;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.SwingConstants;
@@ -47,7 +50,7 @@ public class Buscar extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNumViajeros;
 	private JDateChooser datechooser;
-	private ArrayList<Aeropuerto>Lista_Aeropuerto;
+	private Set<Aeropuerto>Lista_Aeropuerto;
 	private Controller controller;
 	/**
 	 * Create the frame.
@@ -55,6 +58,12 @@ public class Buscar extends JFrame {
 	 */
 	public Buscar(Controller controller) {
 		this.controller = controller;
+		try {
+			Lista_Aeropuerto=this.controller.getAeropuertos();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		initComponents();
 		this.setVisible(true);
 		
@@ -91,12 +100,13 @@ public class Buscar extends JFrame {
 		lblNewLabel.setBounds(365, 40, 76, 20);
 		pIzquierda.add(lblNewLabel);
 		
-		JComboBox comboBox = new JComboBox();
-		//Aqui habria que poner el nombre de lso aeropuertos leidos de la BD
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"BIO"}));
-		comboBox.setSelectedIndex(0);
-		comboBox.setBounds(483, 37, 297, 26);
-		pIzquierda.add(comboBox);
+		
+		JComboBox<String> combito =new JComboBox<String>();
+		DefaultComboBoxModel modelito = new DefaultComboBoxModel();
+		combito.setModel(modelito);
+		combito.setSelectedIndex(0);
+		combito.setBounds(483, 37, 297, 26);
+		pIzquierda.add(combito);
 		datechooser = new JDateChooser(null, null, null, new JSpinnerDateEditor());
 		Date objDate= new Date();
 		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
@@ -112,10 +122,13 @@ public class Buscar extends JFrame {
 		lblNewLabel_1.setBounds(365, 99, 81, 20);
 		pIzquierda.add(lblNewLabel_1);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"BCN"}));
-		comboBox_1.setSelectedIndex(0);
+		JComboBox comboBox_1 = new JComboBox<String>();
+		comboBox_1.setModel(modelito);
 		comboBox_1.setBounds(483, 96, 297, 26);
+		Lista_Aeropuerto.stream().forEach(element-> 
+		{
+			modelito.addElement(element.getNomAeropuerto());
+		});
 		pIzquierda.add(comboBox_1);
 		datechooser = new JDateChooser(null, null, null, new JSpinnerDateEditor());
 		datechooser.setDate(objDate);
@@ -179,6 +192,17 @@ public class Buscar extends JFrame {
 		});
 		pIzquierda.add(btnBuscar);
 		
+		JSlider slPrecio = new JSlider();
+		slPrecio.setMajorTickSpacing(1000);
+		slPrecio.setMaximum(1000);
+		slPrecio.setBounds(500, 268, 200, 26);
+		pIzquierda.add(slPrecio);
+		
+		JLabel lblPrecio = new JLabel("Precio max:");
+		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblPrecio.setBounds(365, 280, 112, 14);
+		pIzquierda.add(lblPrecio);
+		
 		JPanel pNorte = new JPanel();
 		pNorte.setBackground(new Color(0, 0, 128));
 		pNorte.setBounds(0, 0, 1278, 163);
@@ -192,7 +216,17 @@ public class Buscar extends JFrame {
 		lblLogo.setIcon(icono);
 		pNorte.add(lblLogo);
 		
-		
 	}
-
+	
+	public static void main(String[] args) {
+		
+		Controller c=null;
+		try {
+			c = new Controller();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Buscar b= new Buscar(c);
+	}
 }
