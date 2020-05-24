@@ -23,19 +23,19 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 	public void LogInUsuario(String email, String contrasena) {
 		 	path = "/Authentication/Log_in";
 		 	client = new RestClient<Usuario>(hostname, port);
-			System.out.println("gatewayyyyyyy");
-	        Response response = null;
+	        System.out.println("Trying POST at " + path);
+
+	        System.out.println(email);
+	        System.out.println(contrasena);
 	        try {
-	        	System.out.println("DENTRO DEL TRY");
 	            response =
 	                    client.makePostRequest(
-	                            client.createInvocationBuilder(path) , new Usuario(null, email, contrasena)
-
-	            );
+	                            client.createInvocationBuilder(path), new Usuario(email, contrasena)
+	                    );
 	        }
 	        catch (Exception e) { e.printStackTrace(); e.toString(); }
-	        client.simplePrint(response);
-		
+	        String reply = response.readEntity(String.class);
+	        System.out.println("RESPONSE" + reply);
 	}
 
 	@Override

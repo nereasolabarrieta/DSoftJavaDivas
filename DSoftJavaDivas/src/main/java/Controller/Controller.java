@@ -21,7 +21,7 @@ public class Controller {
 		
 		rsl = new ServiceLocator();
 		rsl.setService();
-		//new Entrar_Registrar(this);
+//		new Entrar_Registrar(this);
 	}
 	//Falta la implementacion de todos los métodos de la fachada así
 	public List<VueloDTO> getVuelos() throws RemoteException {
@@ -56,8 +56,8 @@ public class Controller {
 		
 	}
 
-	public void Buscar(String origen, String destino, Date fecha) throws RemoteException {
-		rsl.getService().Buscar(origen, destino, fecha);
+	public ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, Date fecha)  throws RemoteException {
+		return rsl.getService().Buscar_vuelos(origen, destino, fecha);
 	}
 
 	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio) throws RemoteException {

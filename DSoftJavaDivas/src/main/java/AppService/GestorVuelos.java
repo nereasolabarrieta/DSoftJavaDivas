@@ -44,8 +44,9 @@ public class GestorVuelos {
 	{
 		
 	}
-	public void Buscar(String origen, String destino, Date fecha)
+	public ArrayList<Vuelo> Buscar(String origen, String destino, Date fecha)
 	{
+		return gateVuelos.Buscar_vuelos(origen, destino, fecha);
 		
 	}
 	

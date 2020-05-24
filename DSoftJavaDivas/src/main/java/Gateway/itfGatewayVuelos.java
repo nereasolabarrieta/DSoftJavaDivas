@@ -16,9 +16,8 @@ public interface itfGatewayVuelos
 {
 	public List<Vuelo> getVuelos();
 	public ArrayList<Aeropuerto>getAeropuertos();
-	public void Buscar(String origen, String destino, Date fecha);
 	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio);
 	public List<VuelosJSON> search_flights();
-	void Buscar_vuelos(String origen, String destino);
+	public ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, Date fecha) ;
 
 }

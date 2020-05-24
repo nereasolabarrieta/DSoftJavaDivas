@@ -12,7 +12,10 @@ import java.awt.ScrollPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Toolkit;
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,6 +33,7 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
 import javax.swing.JSlider;
+import javax.swing.JTable;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
@@ -45,13 +49,25 @@ public class Principal extends JFrame {
 	private JPanel PscrollPane;
 	private ArrayList<Vuelo>Lista_vuelos;
 	private Controller controller;
+	private String origen;
+	private String destino;
+	private Date fecha;
 	/**
 	 * Create the frame.
 	 * @param controller 
+	 * @param objDate 
+	 * @param string 
+	 * @param object 
+	 * @throws RemoteException 
 	 */
 	
-	public Principal(Controller controller) {
+	public Principal(Controller controller, String origen, String destino, Date objDate) throws RemoteException {
 		this.controller = controller;
+		this.destino = destino;
+		this.origen = origen;
+		this.fecha = objDate;
+		Lista_vuelos = controller.Buscar_vuelos(origen, destino, objDate);
+		System.out.println(Lista_vuelos.size());
 		initComponents();
 		this.setVisible(true);
 		
@@ -120,7 +136,7 @@ public class Principal extends JFrame {
 		lblOrigen.setBounds(276, 76, 69, 20);
 		pArriba.add(lblOrigen);
 		
-		JLabel lblAeropuerto_Origen = new JLabel("Madrid");
+		JLabel lblAeropuerto_Origen = new JLabel(origen);
 		lblAeropuerto_Origen.setForeground(Color.WHITE);
 		lblAeropuerto_Origen.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblAeropuerto_Origen.setBounds(360, 77, 69, 20);
@@ -133,7 +149,7 @@ public class Principal extends JFrame {
 		lblDestino.setBounds(475, 76, 93, 20);
 		pArriba.add(lblDestino);
 		
-		JLabel lblAeropuerto_destino = new JLabel("New York");
+		JLabel lblAeropuerto_destino = new JLabel(destino);
 		lblAeropuerto_destino.setForeground(Color.WHITE);
 		lblAeropuerto_destino.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblAeropuerto_destino.setBounds(570, 76, 69, 20);
@@ -219,18 +235,7 @@ public class Principal extends JFrame {
 		slDuracion.setBackground(new Color(0, 0, 128));
 		slDuracion.setBounds(15, 377, 173, 30);
 		pIzquierda.add(slDuracion);
-		
-		JLabel lblAerolinea = new JLabel("Aerolinea:");
-		lblAerolinea.setForeground(Color.WHITE);
-		lblAerolinea.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblAerolinea.setBounds(15, 435, 173, 20);
-		pIzquierda.add(lblAerolinea);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBackground(new Color(255, 255, 255));
-		comboBox.setBounds(15, 461, 173, 30);
-		pIzquierda.add(comboBox);
-		
+			
 		JPanel pCentro = new JPanel();
 		pCentro.setBounds(215, 155, 1063, 529);
 		contentPane.add(pCentro);
@@ -253,7 +258,7 @@ public class Principal extends JFrame {
 
 
 	
-		InsertarJPanel();
+		InsertarJPanel(Lista_vuelos);
 		PscrollPane.repaint();
 		scrollPane.repaint();
 
@@ -269,23 +274,49 @@ public class Principal extends JFrame {
 	/**
 	 * Metodo para insertar el panel de clsJPanelVuelo
 	 */
-	public void InsertarJPanel()
-	{	int x=0;
-		int y=50;
-		for( int i=0; i<10; i++)
-		{
-			JPanelVuelo panel=new JPanelVuelo();
-			panel.setVisible(true);
-			GridBagConstraints gbc_lblFoto = new GridBagConstraints();
-			gbc_lblFoto.ipadx = 1058;
-			gbc_lblFoto.ipady = 265;
-			gbc_lblFoto.gridx = x;
-			gbc_lblFoto.gridy = y;
-			PscrollPane.add(panel, gbc_lblFoto);
+	public void InsertarJPanel(ArrayList<Vuelo> Lista_vuelos)
+	{		
+		System.out.println("aqui llega");
+		String[] columnNames = { "Origen", "Destino", "Precio", ""};
+		DefaultTableModel modelo = new DefaultTableModel(columnNames,0);
+		System.out.println(modelo.getColumnCount());
+		System.out.println(modelo.getRowCount());
+		JTable tabla = new JTable (modelo);
+		Object[] fila = new Object[Lista_vuelos.size()];
+		add(tabla);
+		JButton seleccionar = new JButton("Seleccionar");
+	    for(int i=0;i<Lista_vuelos.size();i++){
+    	
+    
+		fila[i]=Lista_vuelos.get(i).getOrigen().getNomAeropuerto();
+		System.out.println(Lista_vuelos.get(i).getOrigen().getNomAeropuerto());
+		System.out.println(fila[i].toString());
+		fila[i]=Lista_vuelos.get(i).getDestino().getNomAeropuerto();
+		fila[i]=Lista_vuelos.get(i).getPrecio();
+		fila[i]= seleccionar;
+	        modelo.addRow(fila);
+	    }
+	   
+    //CONTADORLISTA es para agregar n Filas, y esa n lo define un contador que va sumando 1, cada vez que 
+    //se agrega una nueva persona (o sea, cada vez que se presiona el jbutton)
 
-			y=y+265;
+	    
+	    scrollPane.add(tabla);
+
+
+		
+//			JPanelVuelo panel=new JPanelVuelo(Lista_vuelos);
+//			panel.setVisible(true);
+//			GridBagConstraints gbc_lblFoto = new GridBagConstraints();
+//			gbc_lblFoto.ipadx = 1058;
+//			gbc_lblFoto.ipady = 265;
+//			gbc_lblFoto.gridx = x;
+//			gbc_lblFoto.gridy = y;
+//			PscrollPane.add(panel);
+//
+//			y=y+265;
 			
-		}
+		
 
 
 	}

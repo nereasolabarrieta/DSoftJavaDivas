@@ -40,6 +40,7 @@ import javax.swing.SpinnerDateModel;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.SwingConstants;
@@ -50,8 +51,10 @@ public class Buscar extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNumViajeros;
 	private JDateChooser datechooser;
-	private ArrayList<Aeropuerto>Lista_Aeropuerto;
+	private List<Aeropuerto> Lista_Aeropuerto;
 	private Controller controller;
+	private JComboBox<String> combito;
+	private JComboBox<String> comboBox_1 ;
 	/**
 	 * Create the frame.
 	 * @param controller 
@@ -62,8 +65,12 @@ public class Buscar extends JFrame {
 		this.controller = controller;
 		System.out.println("HOLA 2");
 		System.out.println("HOLA 3");
-		Lista_Aeropuerto=this.controller.getAeropuertos();
-		//System.out.println("ULTIMO PASO: "+Lista_Aeropuerto.get(0).getNomAeropuerto());
+		Lista_Aeropuerto =this.controller.getAeropuertos()
+			       .stream()
+			       .distinct()
+			       .collect(Collectors.toList());
+	//	Lista_Aeropuerto=this.controller.getAeropuertos();
+		System.out.println("ULTIMO PASO: "+Lista_Aeropuerto.size());
 		initComponents();
 		this.setVisible(true);
 		
@@ -102,11 +109,16 @@ public class Buscar extends JFrame {
 		pIzquierda.add(lblNewLabel);
 		
 		
-		JComboBox<String> combito =new JComboBox<String>();
-		DefaultComboBoxModel modelito = new DefaultComboBoxModel();
-		combito.setModel(modelito);
-	//	combito.setSelectedIndex(0);
+		combito =new JComboBox<String>();
+//		DefaultComboBoxModel<String> modelito = new DefaultComboBoxModel<String>();
+//		combito.setModel(modelito);
+	
 		combito.setBounds(483, 37, 297, 26);
+		Lista_Aeropuerto.stream().forEach(element-> 
+		{
+			combito.addItem(element.getNomAeropuerto());
+//			combito.add(element.getNomAeropuerto());
+		});
 		pIzquierda.add(combito);
 		datechooser = new JDateChooser(null, null, null, new JSpinnerDateEditor());
 		Date objDate= new Date();
@@ -123,13 +135,13 @@ public class Buscar extends JFrame {
 		lblNewLabel_1.setBounds(365, 99, 81, 20);
 		pIzquierda.add(lblNewLabel_1);
 		
-		JComboBox comboBox_1 = new JComboBox<String>();
-		comboBox_1.setModel(modelito);
+		comboBox_1 = new JComboBox<String>();
 		comboBox_1.setBounds(483, 96, 297, 26);
-//		Lista_Aeropuerto.stream().forEach(element-> 
-//		{
-//			modelito.addElement(element.getNomAeropuerto());
-//		});
+		Lista_Aeropuerto.stream().forEach(element-> 
+		{
+			comboBox_1.addItem(element.getNomAeropuerto());
+		});
+		
 		pIzquierda.add(comboBox_1);
 		datechooser = new JDateChooser(null, null, null, new JSpinnerDateEditor());
 		datechooser.setDate(objDate);
@@ -185,7 +197,12 @@ public class Buscar extends JFrame {
 				else
 				{
 					
-					a = new Principal(controller);
+					try {
+						a = new Principal(controller, comboBox_1.getSelectedItem().toString(), combito.getSelectedItem().toString(), objDate);
+					} catch (RemoteException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					a.setVisible(true);
 					
 					

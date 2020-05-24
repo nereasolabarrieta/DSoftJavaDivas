@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -18,7 +19,7 @@ public interface itfFachada extends Remote{
 	public ArrayList<Aeropuerto> getAeropuertos()throws RemoteException;
 	public void newReserva(String Aeropuerto_Salida, String Aeropuerto_llegada)throws RemoteException;
 	public void Pagar(double precio, String cod_vuelo)throws RemoteException;
-	public void Buscar(String origen, String destino, Date fecha)throws RemoteException;
+	public  ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, Date fecha)throws RemoteException;
 	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio)throws RemoteException;
 	public void RegistrarUsuario(String nom, String ape, String email, String password)throws RemoteException;
 	public void LogInUsuario(String email, String contrasena)throws RemoteException;

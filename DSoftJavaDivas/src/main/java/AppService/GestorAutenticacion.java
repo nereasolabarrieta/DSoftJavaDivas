@@ -22,7 +22,6 @@ public class GestorAutenticacion {
 		
 		
 		gateway.RegistrarUsuario(nombre,ape, email, password);
-		Usuario u = new Usuario(nombre, ape, email, password);
 	
 	
 	}

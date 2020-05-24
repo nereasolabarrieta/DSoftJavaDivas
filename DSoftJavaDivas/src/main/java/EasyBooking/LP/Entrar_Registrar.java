@@ -234,8 +234,9 @@ public class Entrar_Registrar extends JFrame {
 
 		
 							String email = txtEmailEntrar.getText();
+							System.out.println(email);
 							String password = txtPasswordEntrar.getText();
-							
+							System.out.println(password);
 							
 							if( email !=null || password !=null )
 							{

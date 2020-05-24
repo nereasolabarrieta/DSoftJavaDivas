@@ -8,6 +8,8 @@ import javax.ws.rs.core.Response;
 
 import org.json.simple.parser.JSONParser;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -81,25 +83,70 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
     }
     return myFlightArray;
 	}
-	
+	public List<VuelosJSON> search_flights_conParametros(Flight_parameters filtro) {
+		 path = "/Airlines/Search_Flights";
+		 client = new RestClient<Flight_parameters>(hostname, port);
+		 System.out.println("Trying POST at " + path + " (Search All Flights message)");
+	        response = null;
+	        try {
+	            response =
+	                    client.makePostRequest(
+	                            client.createInvocationBuilder(path) , filtro
+	                    );
+	        }
+	        catch (Exception e) { 
+	        	e.printStackTrace(); e.toString(); 
+	        	
+	        	}
+	        
+	List<VuelosJSON> myFlightArray = null;
+
+   try
+   {
+   	
+       String json_string = response.readEntity(String.class);
+       JSONParser myParser = new JSONParser();
+       JSONArray flightsArray = (JSONArray) myParser.parse( json_string );
+
+       // Lambda expression to print array
+       flightsArray.stream().forEach(
+               element -> System.out.println(element)
+       );
+
+       // Lambda expression to map JSONObjects inside JSONArray to flight objects
+       myFlightArray = (List) flightsArray.stream()
+               .map( element -> new VuelosJSON( element))
+               .collect(Collectors.toList()
+       );
+
+       System.out.println("\n\n ahora lo que imprime es: ");
+       System.out.println("Number of flights collected:");
+       System.out.println(myFlightArray.size());
+
+
+   } catch (Exception e) { 
+   	System.out.println(" entro al catch");
+   	e.printStackTrace();
+   	e.toString(); 
+   }
+   return myFlightArray;
+	}
 	
 	@Override
-	public void Buscar_vuelos(String origen, String destino) 
+	public ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, Date fecha) 
 	{
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		String strDate = dateFormat.format(fecha);
+		
 		System.out.println("ENTRO EN BUSCAR VUELOS");
 		filtro= new Flight_parameters(origen,destino);
-		List<VuelosJSON> lista_json=search_flights();
+		List<VuelosJSON> lista_json=search_flights_conParametros(filtro);
 		System.out.println("HA LLEGADO AL PASO PREVIO A CONVERTIR EN OBJETOS");
+		
 		ArrayList<Vuelo> lista_vuelos= convertir(lista_json);
 		System.out.println("\n\n\n VOY A IMPRIMIR LOS VUELOS\n\n");
 		lista_vuelos.stream().forEach( element->System.out.println(element));
-		
-	}
-
-	public ArrayList<String>Lista_Aeropuertos()
-	{
-		ArrayList<String>Lista_AER= new ArrayList<>();
-		return Lista_AER;
+		return lista_vuelos;
 	}
 	@Override
 	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio) {
@@ -134,13 +181,6 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 		System.out.println("\n\n\n VOY A IMPRIMIR LOS VUELOS\n\n");
 		lista_vuelos.stream().forEach( element->System.out.println(element));
 		return lista_vuelos;
-	}
-
-
-	@Override
-	public void Buscar(String origen, String destino, Date fecha) {
-		// TODO Auto-generated method stub
-		
 	}
 
 

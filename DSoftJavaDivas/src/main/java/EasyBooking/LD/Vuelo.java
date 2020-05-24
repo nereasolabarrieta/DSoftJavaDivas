@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
 
-public class Vuelo {
+public class Vuelo implements Serializable {
 	@PrimaryKey
 	private String codVuelo;
 	private Aeropuerto origen;

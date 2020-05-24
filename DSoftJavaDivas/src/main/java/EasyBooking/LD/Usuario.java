@@ -4,6 +4,7 @@ import javax.jdo.annotations.PrimaryKey;
 
 import ServiciosExternos.Print;
 
+
 @PersistenceCapable
 public class Usuario implements Print{
 	@PrimaryKey

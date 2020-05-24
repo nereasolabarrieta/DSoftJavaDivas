@@ -58,7 +58,7 @@ public class Pago extends JFrame {
 	}
 	public void initComponents()
 	{
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
+	//	setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
 		setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		setTitle("EasyBooking");
 		setForeground(Color.BLACK);
@@ -81,9 +81,9 @@ public class Pago extends JFrame {
 		JLabel lblLogo = new JLabel();
 		lblLogo.setBounds(0, 0, 185, 64);
 		pArriba.add(lblLogo);
-		ImageIcon fot = new ImageIcon(Principal.class.getResource("/EasyBooking/Img/logo.png"));
-		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
-		lblLogo.setIcon(icono);
+//		ImageIcon fot = new ImageIcon(Principal.class.getResource("/EasyBooking/Img/logo.png"));
+//		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
+//		lblLogo.setIcon(icono);
 		
 		JLabel lblcomoQuieresPagar = new JLabel("\u00BFCOMO QUIERES PAGAR?");
 		lblcomoQuieresPagar.setFont(new Font("Tahoma", Font.BOLD, 18));
