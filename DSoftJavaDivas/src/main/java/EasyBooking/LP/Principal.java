@@ -44,9 +44,11 @@ import java.awt.FlowLayout;
 
 public class Principal extends JFrame {
 
+
+
+	
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
-	private JPanel PscrollPane;
 	private ArrayList<Vuelo>Lista_vuelos;
 	private Controller controller;
 	private String origen;
@@ -240,42 +242,12 @@ public class Principal extends JFrame {
 		pCentro.setBounds(215, 155, 1063, 529);
 		contentPane.add(pCentro);
 		pCentro.setLayout(new BorderLayout(0, 0));
-		
-		PscrollPane = new JPanel();
-		scrollPane = new JScrollPane(PscrollPane);
+		scrollPane = new JScrollPane();
 		pCentro.add(scrollPane, BorderLayout.CENTER);
 		
 		
-		scrollPane.setViewportView(PscrollPane);
-		scrollPane .getViewport().setView(PscrollPane);
-		GridBagLayout gbl_PscrollPane = new GridBagLayout();
-		gbl_PscrollPane.columnWidths = new int[]{0};
-		gbl_PscrollPane.rowHeights = new int[]{0};
-		gbl_PscrollPane.columnWeights = new double[]{Double.MIN_VALUE};
-		gbl_PscrollPane.rowWeights = new double[]{Double.MIN_VALUE};
-		PscrollPane.setLayout(gbl_PscrollPane);
-		
-
 
 	
-		InsertarJPanel(Lista_vuelos);
-		PscrollPane.repaint();
-		scrollPane.repaint();
-
-		
-
-		
-
-		
-		
-		
-		
-	}
-	/**
-	 * Metodo para insertar el panel de clsJPanelVuelo
-	 */
-	public void InsertarJPanel(ArrayList<Vuelo> Lista_vuelos)
-	{		
 		System.out.println("aqui llega");
 		String[] columnNames = { "Origen", "Destino", "Precio", ""};
 		DefaultTableModel modelo = new DefaultTableModel(columnNames,0);
@@ -283,42 +255,21 @@ public class Principal extends JFrame {
 		System.out.println(modelo.getRowCount());
 		JTable tabla = new JTable (modelo);
 		Object[] fila = new Object[Lista_vuelos.size()];
-		add(tabla);
-		JButton seleccionar = new JButton("Seleccionar");
+		
 	    for(int i=0;i<Lista_vuelos.size();i++){
     	
-    
-		fila[i]=Lista_vuelos.get(i).getOrigen().getNomAeropuerto();
-		System.out.println(Lista_vuelos.get(i).getOrigen().getNomAeropuerto());
-		System.out.println(fila[i].toString());
-		fila[i]=Lista_vuelos.get(i).getDestino().getNomAeropuerto();
-		fila[i]=Lista_vuelos.get(i).getPrecio();
-		fila[i]= seleccionar;
+		fila[0]=Lista_vuelos.get(i).getOrigen().getNomAeropuerto().toString();
+		fila[1]=Lista_vuelos.get(i).getDestino().getNomAeropuerto();
+		fila[2]=Lista_vuelos.get(i).getPrecio();
+		
 	        modelo.addRow(fila);
 	    }
 	   
-    //CONTADORLISTA es para agregar n Filas, y esa n lo define un contador que va sumando 1, cada vez que 
-    //se agrega una nueva persona (o sea, cada vez que se presiona el jbutton)
-
-	    
-	    scrollPane.add(tabla);
-
-
+     
+	    scrollPane.setViewportView(tabla);
 		
-//			JPanelVuelo panel=new JPanelVuelo(Lista_vuelos);
-//			panel.setVisible(true);
-//			GridBagConstraints gbc_lblFoto = new GridBagConstraints();
-//			gbc_lblFoto.ipadx = 1058;
-//			gbc_lblFoto.ipady = 265;
-//			gbc_lblFoto.gridx = x;
-//			gbc_lblFoto.gridy = y;
-//			PscrollPane.add(panel);
-//
-//			y=y+265;
-			
 		
-
-
 	}
+
 
 }
