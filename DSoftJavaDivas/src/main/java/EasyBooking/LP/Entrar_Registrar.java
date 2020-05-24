@@ -240,13 +240,24 @@ public class Entrar_Registrar extends JFrame {
 							
 							if( email !=null || password !=null )
 							{
-								try {
-									if(controller.LogInUsuario(email, password))
+								System.out.println("entro al primer if");
+								try 
+								{
+									System.out.println("entro al try");
+									boolean boolControl=controller.LogInUsuario(email, password);
+									System.out.println(boolControl);
+									if(boolControl==true)
 									{
+										System.out.println("entro al segundo if ue");
 										Buscar a = new Buscar(controller);
 										a.setVisible(true);
 										setVisible(false);
 									}
+									else
+									{
+										JOptionPane.showMessageDialog(null,"El usuario no existe");
+									}
+
 								} catch (RemoteException e1) {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();

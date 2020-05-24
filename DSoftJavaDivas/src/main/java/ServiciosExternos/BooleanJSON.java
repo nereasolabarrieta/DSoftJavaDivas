@@ -13,7 +13,7 @@ public class BooleanJSON implements Print{
 
 
 
-	private String content;
+	private Object content;
     private JSONParser parser;
 
     public BooleanJSON(String content) throws ParseException {
@@ -23,11 +23,11 @@ System.out.println("llego al constr");
         System.out.println("1");
         JSONObject json = (JSONObject) parser.parse(content);
         System.out.println("2");
-        this.content = (String) json.get("Resp");
+        this.content = json.get("Result");
         System.out.println("3");
     }
 
-    public String getContent()
+    public Object getContent()
     {
         return content;
     }
@@ -39,8 +39,8 @@ System.out.println("llego al constr");
 
     public boolean getContentBoolean()
     {
-    	System.out.println("LO QUE VOY A PARSEAS VA A SER ESTO ");
-    	boolean resp= Boolean.parseBoolean(content);
+    	System.out.println("LO QUE VOY A PARSEAS VA A SER ESTO ueue ");
+    	boolean resp= ((Boolean)content).booleanValue();
         return resp;
     }
 
