@@ -34,6 +34,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 	
 	public List<VuelosJSON> search_flights() {
 		 path = "/Airlines/Search_Flights";
+		 filtro = new Flight_parameters();
 		 client = new RestClient<Flight_parameters>(hostname, port);
 		 System.out.println("Trying POST at " + path + " (Search All Flights message)");
 	        response = null;
@@ -58,35 +59,20 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
         JSONArray flightsArray = (JSONArray) myParser.parse( json_string );
 
         // Lambda expression to print array
-//        flightsArray.stream().forEach(
-//                element -> System.out.println(element)
-//        );
+        flightsArray.stream().forEach(
+                element -> System.out.println(element)
+        );
 
         // Lambda expression to map JSONObjects inside JSONArray to flight objects
         myFlightArray = (List) flightsArray.stream()
                 .map( element -> new VuelosJSON( element))
                 .collect(Collectors.toList()
         );
-//
-//        System.out.println("\n\n ahora lo que imprime es: ");
-//        System.out.println("Number of flights collected:");
-//        System.out.println(myFlightArray.size());
-//
-//        System.out.println("Print some flight as string");
-//        myFlightArray.get(0).print();
-//
-//        System.out.println("Print some random flight parameters");
-//        System.out.println( myFlightArray.get(0).getAirportArrivalCity() );
-//        System.out.println( myFlightArray.get(0).getAirportArrivalCode() );
-//        System.out.println( myFlightArray.get(0).getAirportDepartureCity() );
-//        System.out.println( myFlightArray.get(0).getAirportDepartureCode() );
-//        System.out.println( myFlightArray.get(0).getCode() );
-//        System.out.println( myFlightArray.get(0).getDepartureDate() );
-//        System.out.println( myFlightArray.get(0).getDepartureDate( true) );
-//        System.out.println( myFlightArray.get(0).getDepartureDate( false) );
-//        System.out.println( myFlightArray.get(0).getFreeSeats());
-//        System.out.println( myFlightArray.get(0).getTotalSeats());
-//        System.out.println( myFlightArray.get(0).getPrice());
+
+        System.out.println("\n\n ahora lo que imprime es: ");
+        System.out.println("Number of flights collected:");
+        System.out.println(myFlightArray.size());
+
 
     } catch (Exception e) { 
     	System.out.println(" entro al catch");
@@ -107,7 +93,6 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 		ArrayList<Vuelo> lista_vuelos= convertir(lista_json);
 		System.out.println("\n\n\n VOY A IMPRIMIR LOS VUELOS\n\n");
 		lista_vuelos.stream().forEach( element->System.out.println(element));
-		
 		
 	}
 
@@ -139,10 +124,16 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 	}
 	
 	@Override
-	public List getVuelos() 
+	public List<Vuelo> getVuelos() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+
+		filtro= new Flight_parameters();
+		List<VuelosJSON> lista_json=search_flights();
+		System.out.println("HA LLEGADO AL PASO PREVIO A CONVERTIR EN OBJETOS");
+		ArrayList<Vuelo> lista_vuelos= convertir(lista_json);
+		System.out.println("\n\n\n VOY A IMPRIMIR LOS VUELOS\n\n");
+		lista_vuelos.stream().forEach( element->System.out.println(element));
+		return lista_vuelos;
 	}
 
 
@@ -160,12 +151,12 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 		filtro= new Flight_parameters();
 		ArrayList<Aeropuerto> Lista_aero=new ArrayList<Aeropuerto>();
 		List<VuelosJSON> lista_json=search_flights();
-		lista_json.stream().forEach(element->
+		List <Vuelo> vuelos = convertir(lista_json);
+		System.out.println("DONDE FALLO");
+		vuelos.stream().forEach(element->
 		{
-			Aeropuerto origen= new Aeropuerto(element.getAirportArrivalCode(),element.getAirportArrivalCity());
-			Aeropuerto destino= new Aeropuerto(element.getAirportDepartureCode(),element.getAirportDepartureCity());
-			Lista_aero.add(origen);
-			Lista_aero.add(destino);
+			Lista_aero.add(element.getOrigen());
+			Lista_aero.add(element.getDestino());
 		});
 		System.out.println("GATEWAY:"+Lista_aero.get(0).getNomAeropuerto());
 		

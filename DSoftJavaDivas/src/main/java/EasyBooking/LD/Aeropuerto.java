@@ -1,10 +1,12 @@
 package EasyBooking.LD;
 
+import java.io.Serializable;
+
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
-public class Aeropuerto {
+public class Aeropuerto implements Serializable {
 	
 	@Override
 	public String toString() {

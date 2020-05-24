@@ -162,6 +162,7 @@ public class Entrar_Registrar extends JFrame {
 							String ape = txtApellido.getText();
 							String email = txtEmail.getText();
 							String password = txtPassword.getText();
+							System.out.println(password);
 							
 							if(nom !=null || ape !=null || email !=null || password !=null )
 							{
@@ -171,7 +172,7 @@ public class Entrar_Registrar extends JFrame {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
-								Principal a = new Principal(controller);
+								Buscar a = new Buscar(controller);
 								a.setVisible(true);
 							}
 							else
@@ -233,7 +234,8 @@ public class Entrar_Registrar extends JFrame {
 
 		
 							String email = txtEmailEntrar.getText();
-							String password = txtPassword.getText();
+							String password = txtPasswordEntrar.getText();
+							
 							
 							if( email !=null || password !=null )
 							{
@@ -243,7 +245,7 @@ public class Entrar_Registrar extends JFrame {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
-								Principal a = new Principal(controller);
+								Buscar a = new Buscar(controller);
 								a.setVisible(true);
 								
 							}

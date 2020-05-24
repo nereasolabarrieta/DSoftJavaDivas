@@ -14,6 +14,7 @@ import AppService.GestorAutenticacion;
 import AppService.GestorPago;
 import AppService.GestorVuelos;
 import DAO.DAO;
+import DTO.VueloDTO;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Usuario;
 import EasyBooking.LD.Vuelo;
@@ -125,6 +126,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	@Override
 	public void LogInUsuario(String email, String contrasena) {
 		// TODO Auto-generated method stub
+		System.out.println("A HACER LOGIN");
 		GAutenticacion.LogInUsuario(email, contrasena);
 	}
 
@@ -142,6 +144,12 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	public void imprime()
 	{
 		System.out.println("LLEGA BIEN A LA FACHADA");
+	}
+
+	@Override
+	public List<VueloDTO> getVuelos() throws RemoteException {
+		List<Vuelo> vuelo = GVuelos.getVuelos();
+		return null;
 	}
 	
 	

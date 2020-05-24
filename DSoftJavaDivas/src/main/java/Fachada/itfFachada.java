@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import DTO.VueloDTO;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Usuario;
 import EasyBooking.LD.Vuelo;
@@ -24,4 +25,5 @@ public interface itfFachada extends Remote{
 	public void newViajero(String dni, String nombre)throws RemoteException;
 	void LogOut()throws RemoteException;
 	void imprime()throws RemoteException;
+	public List<VueloDTO> getVuelos()throws RemoteException;
 }

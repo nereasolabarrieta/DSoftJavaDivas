@@ -23,11 +23,13 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 	public void LogInUsuario(String email, String contrasena) {
 		 	path = "/Authentication/Log_in";
 		 	client = new RestClient<Usuario>(hostname, port);
+			System.out.println("gatewayyyyyyy");
 	        Response response = null;
 	        try {
+	        	System.out.println("DENTRO DEL TRY");
 	            response =
 	                    client.makePostRequest(
-	                            client.createInvocationBuilder(path) , new Usuario(email, contrasena)
+	                            client.createInvocationBuilder(path) , new Usuario(null, email, contrasena)
 
 	            );
 	        }
@@ -64,19 +66,23 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
             password = new PasswordJSON(reply);
         } catch (Exception e) {e.printStackTrace(); e.toString(); }
 
+        long pw = password.getContentNumber();
         path = "/Authentication/Change_password";
-        System.out.println("Trying POST at " + path + " (Change password)");
+        client = new RestClient<Usuario>(hostname, port);
+        System.out.println("Trying PUT at " + path + " (Change password)");
+      
 
         try {
             response =
                     client.makePutRequest(
-                            client.createInvocationBuilder(path), new Usuario(nom, email,password.getContent(),passwordNew)
+                            client.createInvocationBuilder(path), new Usuario(null, email,String.valueOf(pw),passwordNew)
                     );
         }
         catch (Exception e) { e.printStackTrace(); e.toString(); }
 
 
-
+        reply = response.readEntity(String.class);
+        System.out.println("RESPONSE" + reply);
 
 		
 	}

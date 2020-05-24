@@ -25,9 +25,9 @@ public class GestorVuelos {
 		
 	}
 	
-	public void getVuelos(){
+	public List<Vuelo> getVuelos(){
 		
-		gateVuelos.Buscar_vuelos("Bilbao", "Tabarnia");
+		return gateVuelos.getVuelos();
 	}
 	public  ArrayList<Aeropuerto> getAeropuerto()
 	{

@@ -63,14 +63,15 @@ public class Buscar extends JFrame {
 		System.out.println("HOLA 2");
 		System.out.println("HOLA 3");
 		Lista_Aeropuerto=this.controller.getAeropuertos();
-		System.out.println("ULTIMO PASO: "+Lista_Aeropuerto.get(0).getNomAeropuerto());
+		//System.out.println("ULTIMO PASO: "+Lista_Aeropuerto.get(0).getNomAeropuerto());
 		initComponents();
 		this.setVisible(true);
 		
 	}
 	public void initComponents()
 	{
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
+		
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
 		setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		setTitle("EasyBooking");
 		setForeground(Color.BLACK);
@@ -104,7 +105,7 @@ public class Buscar extends JFrame {
 		JComboBox<String> combito =new JComboBox<String>();
 		DefaultComboBoxModel modelito = new DefaultComboBoxModel();
 		combito.setModel(modelito);
-		combito.setSelectedIndex(0);
+	//	combito.setSelectedIndex(0);
 		combito.setBounds(483, 37, 297, 26);
 		pIzquierda.add(combito);
 		datechooser = new JDateChooser(null, null, null, new JSpinnerDateEditor());
@@ -125,10 +126,10 @@ public class Buscar extends JFrame {
 		JComboBox comboBox_1 = new JComboBox<String>();
 		comboBox_1.setModel(modelito);
 		comboBox_1.setBounds(483, 96, 297, 26);
-		Lista_Aeropuerto.stream().forEach(element-> 
-		{
-			modelito.addElement(element.getNomAeropuerto());
-		});
+//		Lista_Aeropuerto.stream().forEach(element-> 
+//		{
+//			modelito.addElement(element.getNomAeropuerto());
+//		});
 		pIzquierda.add(comboBox_1);
 		datechooser = new JDateChooser(null, null, null, new JSpinnerDateEditor());
 		datechooser.setDate(objDate);
@@ -175,7 +176,7 @@ public class Buscar extends JFrame {
 				System.out.println(estado_rdbtn);
 				System.out.println(viajeros);
 				System.out.println();
-			
+				Principal a = null;
 				if(estado_rdbtn=false||viajeros.equals("0"))
 				{
 					JOptionPane.showMessageDialog(null,"Por favor, rellene todos los campos");
@@ -183,9 +184,10 @@ public class Buscar extends JFrame {
 				}
 				else
 				{
-					Principal a = new Principal(controller);
+					
+					a = new Principal(controller);
 					a.setVisible(true);
-					setVisible(false);
+					
 					
 				}
 			}
@@ -211,9 +213,9 @@ public class Buscar extends JFrame {
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setBounds(15, 16, 202, 73);
-		ImageIcon fot = new ImageIcon(Buscar.class.getResource("/EasyBooking/Img/logo.png"));
-		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
-		lblLogo.setIcon(icono);
+//		ImageIcon fot = new ImageIcon(Buscar.class.getResource("/EasyBooking/Img/logo.png"));
+//		Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
+//		lblLogo.setIcon(icono);
 		pNorte.add(lblLogo);
 		
 	}
@@ -229,5 +231,6 @@ public class Buscar extends JFrame {
 			e.printStackTrace();
 		}
 		Buscar b= new Buscar(c);
+		
 	}
 }

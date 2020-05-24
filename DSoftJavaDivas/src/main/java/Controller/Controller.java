@@ -6,9 +6,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import DTO.VueloDTO;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Vuelo;
-
+import EasyBooking.LP.Entrar_Registrar;
 import Remote.ServiceLocator;
 
 public class Controller {
@@ -20,13 +21,13 @@ public class Controller {
 		
 		rsl = new ServiceLocator();
 		rsl.setService();
-		//new Register(this);
+		//new Entrar_Registrar(this);
 	}
 	//Falta la implementacion de todos los métodos de la fachada así
-//	public List<Vuelo> getVuelos() throws RemoteException {
-//		
-//		return rsl.getService().getVuelos();
-//	}
+	public List<VueloDTO> getVuelos() throws RemoteException {
+		
+		return rsl.getService().getVuelos();
+	}
 
 	public ArrayList<Aeropuerto> getAeropuertos() {
 		System.out.println("HOLA 4");
