@@ -50,7 +50,7 @@ public class Entrar_Registrar extends JFrame {
 	
 			e.printStackTrace();
 		}
-		Entrar_Registrar b= new Entrar_Registrar(c);
+		new Entrar_Registrar(c);
 	}
 
 	/**
@@ -241,13 +241,17 @@ public class Entrar_Registrar extends JFrame {
 							if( email !=null || password !=null )
 							{
 								try {
-									controller.LogInUsuario(email, password);
+									if(controller.LogInUsuario(email, password))
+									{
+										Buscar a = new Buscar(controller);
+										a.setVisible(true);
+										setVisible(false);
+									}
 								} catch (RemoteException e1) {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
-								Buscar a = new Buscar(controller);
-								a.setVisible(true);
+								
 								
 							}
 							else

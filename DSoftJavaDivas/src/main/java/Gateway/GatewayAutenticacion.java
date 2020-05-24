@@ -4,38 +4,55 @@ import java.util.Date;
 
 import javax.ws.rs.core.Response;
 
-import EasyBooking.LD.Usuario;
+import org.json.simple.parser.ParseException;
+
+import EasyBooking.LD.User_A;
+import ServiciosExternos.BooleanJSON;
 import ServiciosExternos.PasswordJSON;
 import ServiciosExternos.RestClient;
+import scala.collection.mutable.SynchronizedSet;
 
 public class GatewayAutenticacion extends Gateway implements itfGatewayAutenticacion 
 {
 	private static String port = "5000";
 	private static String hostname = "192.168.6.31";
 	private String path = "/";
-	private RestClient<Usuario> client ;
+	private RestClient<User_A> client ;
 	private Response response;
 	public GatewayAutenticacion()
 	{
 		
 	}
 	@Override
-	public void LogInUsuario(String email, String contrasena) {
+	public boolean LogInUsuario(String email, String password) {
 		 	path = "/Authentication/Log_in";
-		 	client = new RestClient<Usuario>(hostname, port);
+		 	client = new RestClient<User_A>(hostname, port);
 	        System.out.println("Trying POST at " + path);
 
 	        System.out.println(email);
-	        System.out.println(contrasena);
+	        System.out.println(password);
 	        try {
 	            response =
 	                    client.makePostRequest(
-	                            client.createInvocationBuilder(path), new Usuario(email, contrasena)
+	                            client.createInvocationBuilder(path), new User_A(email, password)
 	                    );
 	        }
 	        catch (Exception e) { e.printStackTrace(); e.toString(); }
 	        String reply = response.readEntity(String.class);
+//  System.out.println("aqui si llega");
+//	        boolean respuesta=false;
+//	       
+//	        try {
+//	        	  BooleanJSON resp = new BooleanJSON(reply);
+//	        	  respuesta= resp.getContentBoolean();
+//			} catch (ParseException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			};
+//	        
+	       
 	        System.out.println("RESPONSE" + reply);
+	        return false;
 	}
 
 	@Override
@@ -47,14 +64,14 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 	@Override
 	public void RegistrarUsuario(String nom, String ape, String email, String passwordNew) {
 		path = "/Authentication/Create_user";
-	 	client = new RestClient<Usuario>(hostname, port);
+	 	client = new RestClient<User_A>(hostname, port);
         System.out.println("Trying POST at " + path);
 
         PasswordJSON password = null;
         try {
             response =
                     client.makePostRequest(
-                            client.createInvocationBuilder(path), new Usuario(nom,ape,email)
+                            client.createInvocationBuilder(path), new User_A(nom,ape,email)
                     );
         }
         catch (Exception e) { e.printStackTrace(); e.toString(); }
@@ -68,14 +85,15 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 
         long pw = password.getContentNumber();
         path = "/Authentication/Change_password";
-        client = new RestClient<Usuario>(hostname, port);
+        client = new RestClient<User_A>(hostname, port);
         System.out.println("Trying PUT at " + path + " (Change password)");
       
 
         try {
             response =
                     client.makePutRequest(
-                            client.createInvocationBuilder(path), new Usuario(null, email,String.valueOf(pw),passwordNew)
+                    	
+                            client.createInvocationBuilder(path), new User_A( nom, ape,email,String.valueOf(pw),passwordNew)
                     );
         }
         catch (Exception e) { e.printStackTrace(); e.toString(); }

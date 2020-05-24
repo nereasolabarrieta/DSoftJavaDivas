@@ -125,12 +125,13 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 
 
 	@Override
-	public void LogInUsuario(String email, String contrasena) {
+	public boolean LogInUsuario(String email, String contrasena) {
 		// TODO Auto-generated method stub
 		System.out.println("A HACER LOGIN");
-		GAutenticacion.LogInUsuario(email, contrasena);
+		
 		System.out.println(email);
 		System.out.println(contrasena);
+		return GAutenticacion.LogInUsuario(email, contrasena);
 	}
 
 	@Override

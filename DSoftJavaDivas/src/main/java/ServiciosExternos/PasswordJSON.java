@@ -31,7 +31,7 @@ public class PasswordJSON implements Print
     {
         return Long.parseLong(content);
     }
-
+   
     @Override
     public void print() {
         System.out.println("Content of Simple_pass_result class is: " + this.content);

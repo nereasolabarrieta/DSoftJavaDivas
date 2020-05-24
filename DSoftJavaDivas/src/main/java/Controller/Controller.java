@@ -68,9 +68,9 @@ public class Controller {
 	{
 		rsl.getService().RegistrarUsuario(nom, ape, email, password);
 	}
-	public void LogInUsuario(String email, String contrasena) throws RemoteException
+	public boolean  LogInUsuario(String email, String contrasena) throws RemoteException
 	{
-		rsl.getService().LogInUsuario(email, contrasena);
+		return rsl.getService().LogInUsuario(email, contrasena);
 	}
 
 	

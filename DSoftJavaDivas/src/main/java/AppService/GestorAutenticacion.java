@@ -25,8 +25,8 @@ public class GestorAutenticacion {
 	
 	
 	}
-	public void LogInUsuario(String email, String contrasena){
-		gateway.LogInUsuario(email, contrasena);
+	public boolean LogInUsuario(String email, String contrasena){
+		return gateway.LogInUsuario(email, contrasena);
 	}
 	public void LogOut()
 	{
