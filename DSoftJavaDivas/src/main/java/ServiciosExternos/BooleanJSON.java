@@ -23,7 +23,7 @@ System.out.println("llego al constr");
         System.out.println("1");
         JSONObject json = (JSONObject) parser.parse(content);
         System.out.println("2");
-        this.content = (String) json.get("Result");
+        this.content = (String) json.get("Resp");
         System.out.println("3");
     }
 

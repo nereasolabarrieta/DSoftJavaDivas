@@ -28,9 +28,10 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 		 	path = "/Authentication/Log_in";
 		 	client = new RestClient<User_A>(hostname, port);
 	        System.out.println("Trying POST at " + path);
-
+	        String reply = "";
 	        System.out.println(email);
 	        System.out.println(password);
+	        BooleanJSON resp=null;
 	        try {
 	            response =
 	                    client.makePostRequest(
@@ -38,18 +39,18 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 	                    );
 	        }
 	        catch (Exception e) { e.printStackTrace(); e.toString(); }
-	        String reply = response.readEntity(String.class);
-//  System.out.println("aqui si llega");
-//	        boolean respuesta=false;
-//	       
-//	        try {
-//	        	  BooleanJSON resp = new BooleanJSON(reply);
-//	        	  respuesta= resp.getContentBoolean();
-//			} catch (ParseException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			};
-//	        
+	        reply = response.readEntity(String.class);
+	        System.out.println("aqui si llega");
+	        boolean respuesta=false;
+	       
+	        try {
+	        	  resp = new BooleanJSON(reply);
+	        	  respuesta= resp.getContentBoolean();
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			};
+	        
 	       
 	        System.out.println("RESPONSE" + reply);
 	        return false;
@@ -66,7 +67,7 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 		path = "/Authentication/Create_user";
 	 	client = new RestClient<User_A>(hostname, port);
         System.out.println("Trying POST at " + path);
-
+        String reply = "";
         PasswordJSON password = null;
         try {
             response =
@@ -76,7 +77,7 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
         }
         catch (Exception e) { e.printStackTrace(); e.toString(); }
         System.out.println("HOLAAAAA");
-        String reply = response.readEntity(String.class);
+        reply = response.readEntity(String.class);
         System.out.println("RESPONSE" + reply);
         // Create a JSONObject to parse the respond inside the Simple_pass_result
         try {
