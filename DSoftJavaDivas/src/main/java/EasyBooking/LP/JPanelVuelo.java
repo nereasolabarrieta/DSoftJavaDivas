@@ -5,7 +5,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,37 +16,30 @@ import java.awt.Dimension;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
+import Controller.Controller;
 import EasyBooking.LD.Vuelo;
 
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
 public class JPanelVuelo extends JPanel {
-
+	private Controller controller;
+	private String precio;
+	
 	/**
 	 * Create the panel.
 	 */
-	public JPanelVuelo(ArrayList <Vuelo> Lista_vuelos) {
+	public JPanelVuelo(Controller controller, String origen, String destino, Date objDate, long precio) {
+		
+		this.controller = controller;
+		this.precio = String.valueOf(precio);
+		
+		
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setSize(1064,265);
 		setBackground(Color.WHITE);
 		setForeground(Color.WHITE);
 		setLayout(null);
-
-		JLabel lblHoraSalida = new JLabel("6:05");
-		lblHoraSalida.setFont(new Font("Tahoma", Font.PLAIN, 42));
-		lblHoraSalida.setBounds(280, 92, 181, 36);
-		add(lblHoraSalida);
-
-		JLabel lblHoraLlegada = new JLabel("17:00");
-		lblHoraLlegada.setFont(new Font("Tahoma", Font.PLAIN, 42));
-		lblHoraLlegada.setBounds(411, 73, 201, 75);
-		add(lblHoraLlegada);
-
-		JLabel lblLinea = new JLabel("-");
-		lblLinea.setFont(new Font("Tahoma", Font.PLAIN, 42));
-		lblLinea.setBounds(380, 96, 69, 20);
-		add(lblLinea);
 
 		JPanel panelDeArriba = new JPanel();
 		panelDeArriba.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -52,7 +48,7 @@ public class JPanelVuelo extends JPanel {
 		add(panelDeArriba);
 		panelDeArriba.setLayout(null);
 
-		JLabel lblPrecio = new JLabel("802,20\u20AC");
+		JLabel lblPrecio = new JLabel(this.precio + "€");
 		lblPrecio.setBounds(120, 68, 156, 46);
 		panelDeArriba.add(lblPrecio);
 		lblPrecio.setFont(new Font("Tahoma", Font.BOLD, 38));
@@ -64,32 +60,27 @@ public class JPanelVuelo extends JPanel {
 		btnVerVuelos.setForeground(Color.WHITE);
 		btnVerVuelos.setFont(new Font("Tahoma", Font.BOLD, 18));
 
-		JLabel lblOrigen = new JLabel("Madrid\r\n");
-		lblOrigen.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblOrigen.setBounds(290, 144, 69, 20);
+		JLabel lblOrigen = new JLabel(origen);
+		lblOrigen.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblOrigen.setBounds(165, 93, 112, 44);
 		add(lblOrigen);
 
-		JLabel lblNewYork = new JLabel("New York");
-		lblNewYork.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewYork.setBounds(421, 144, 102, 20);
-		add(lblNewYork);
-//		
-//		JLabel lblLogoCompania = new JLabel("New label");
-//		lblLogoCompania.setIcon(new ImageIcon(JPanelVuelo.class.getResource("/EasyBooking/Img/eDreams.jpg")));
-//		lblLogoCompania.setBounds(15, 72, 181, 91);
-//		add(lblLogoCompania);
-
-		JLabel lblQuedanDisponibles = new JLabel("Quedan        disponibles");
-		lblQuedanDisponibles.setForeground(Color.GRAY);
-		lblQuedanDisponibles.setFont(new Font("Tahoma", Font.ITALIC, 16));
-		lblQuedanDisponibles.setBounds(30, 217, 201, 20);
-		add(lblQuedanDisponibles);
-
-		JLabel lblNumeroDisponible = new JLabel("10");
-		lblNumeroDisponible.setForeground(Color.GRAY);
-		lblNumeroDisponible.setFont(new Font("Tahoma", Font.ITALIC, 16));
-		lblNumeroDisponible.setBounds(96, 217, 69, 20);
-		add(lblNumeroDisponible);
+		JLabel lblDestino = new JLabel(destino);
+		lblDestino.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblDestino.setBounds(303, 89, 172, 52);
+		add(lblDestino);
+		
+		JLabel lblFlecha = new JLabel("-");
+		lblFlecha.setFont(new Font("Tahoma", Font.PLAIN, 45));
+		lblFlecha.setBounds(273, 109, 69, 20);
+		add(lblFlecha);
+		
+//		JLabel lblHoraSalida = new JLabel("16:00");
+//		lblHoraSalida.setFont(new Font("Tahoma", Font.PLAIN, 37));
+//		lblHoraSalida.setBounds(233, 169, 119, 37);
+//		add(lblHoraSalida);
+		this.setVisible(true);
+		
 
 	
 

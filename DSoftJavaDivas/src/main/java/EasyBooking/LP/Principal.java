@@ -51,21 +51,40 @@ public class Principal extends JFrame {
 	private Controller controller;
 	private String origen;
 	private String destino;
+	private String objDate;
 	private ArrayList<Vuelo> Lista_vuelos;
+	private long precio;
 	
 	public Principal(Controller controller, String origen, String destino, Date objDate) throws RemoteException {
-			this.controller = controller;
+		
+		  this.controller = controller;
 			this.destino = destino;
 			this.origen = origen;
-
+			//this.objDate=objDate.format(new Date());
 			Lista_vuelos = controller.Buscar_vuelos(origen, destino, objDate);
+
+			
 			System.out.println(Lista_vuelos.size());
+		
 			initComponents();
 			this.setVisible(true);
 			
+			
 		
 	}
-		
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Principal frame = new Principal(null,null,null,null);
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+
  public void initComponents()
  {
 	 setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
@@ -86,7 +105,7 @@ public class Principal extends JFrame {
 	pArriba.setBackground(new Color(0, 0, 128));
 	contentPane.add(pArriba);
 	pArriba.setLayout(null);
-	
+	PscrollPane=new JPanel();
 //	JLabel lblLogo = new JLabel();
 //	lblLogo.setBounds(0, 0, 185, 64);
 //	pArriba.add(lblLogo);
@@ -246,11 +265,10 @@ public class Principal extends JFrame {
 	PscrollPane.setLayout(gbl_PscrollPane);
 
 
-
-
-		InsertarJPanel();
-		PscrollPane.repaint();
-		scrollPane.repaint();
+	InsertarJPanel();
+	
+	PscrollPane.repaint();
+	scrollPane.repaint();
 
 
 
@@ -261,9 +279,11 @@ public class Principal extends JFrame {
  public void InsertarJPanel()
 		{	int x=0;
 			int y=50;
-			for( int i=0; i<10; i++)
+			for( int i=0; i<Lista_vuelos.size(); i++)
 			{
-				JPanel panel=new JPanel();
+				precio=Lista_vuelos.get(i).getPrecio();
+				
+				JPanelVuelo panel=new JPanelVuelo(controller, origen, destino, null, precio);
 				panel.setVisible(true);
 				GridBagConstraints gbc_lblFoto = new GridBagConstraints();
 				gbc_lblFoto.ipadx = 1058;
@@ -273,6 +293,7 @@ public class Principal extends JFrame {
 				PscrollPane.add(panel, gbc_lblFoto);
 
 				y=y+265;
+				
 
 			}	
 	}

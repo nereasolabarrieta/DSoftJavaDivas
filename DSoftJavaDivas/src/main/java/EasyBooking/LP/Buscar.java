@@ -189,6 +189,7 @@ public class Buscar extends JFrame {
 				System.out.println(viajeros);
 				System.out.println();
 				Principal a = null;
+				JPanelVuelo b = null;
 				if(estado_rdbtn=false||viajeros.equals("0"))
 				{
 					JOptionPane.showMessageDialog(null,"Por favor, rellene todos los campos");
@@ -198,12 +199,16 @@ public class Buscar extends JFrame {
 				{
 					
 					try {
+						
 						a = new Principal(controller, comboBox_1.getSelectedItem().toString(), combito.getSelectedItem().toString(), objDate);
+						
+					   
 					} catch (RemoteException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					a.setVisible(true);
+				
 					
 					
 				}
