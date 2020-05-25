@@ -20,8 +20,25 @@ public class Vuelo implements Serializable {
 	private Aeropuerto destino; 
 	private LocalDateTime hora_salida;
 	private long precio;
+	private long numAsientos;
 
 	
+	public LocalDateTime getHora_salida() {
+		return hora_salida;
+	}
+
+	public void setHora_salida(LocalDateTime hora_salida) {
+		this.hora_salida = hora_salida;
+	}
+
+	public long getNumAsientos() {
+		return numAsientos;
+	}
+
+	public void setNumAsientos(long numAsientos) {
+		this.numAsientos = numAsientos;
+	}
+
 	public Vuelo(String codigo, Aeropuerto origen, Aeropuerto destino,  LocalDateTime hora_salida,
 			 long precio) {
 		super();

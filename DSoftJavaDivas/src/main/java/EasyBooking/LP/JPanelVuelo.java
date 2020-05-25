@@ -75,6 +75,18 @@ public class JPanelVuelo extends JPanel {
 		lblFlecha.setBounds(273, 109, 69, 20);
 		add(lblFlecha);
 		
+//		JLabel lblQuedanDisponibles = new JLabel("Quedan        disponibles");
+//		lblQuedanDisponibles.setForeground(Color.GRAY);
+//		lblQuedanDisponibles.setFont(new Font("Tahoma", Font.ITALIC, 16));
+//		lblQuedanDisponibles.setBounds(30, 217, 201, 20);
+//		add(lblQuedanDisponibles);
+//
+//		JLabel lblNumeroDisponible = new JLabel("10");
+//		lblNumeroDisponible.setForeground(Color.GRAY);
+//		lblNumeroDisponible.setFont(new Font("Tahoma", Font.ITALIC, 16));
+//		lblNumeroDisponible.setBounds(96, 217, 69, 20);
+//		add(lblNumeroDisponible);
+		
 //		JLabel lblHoraSalida = new JLabel("16:00");
 //		lblHoraSalida.setFont(new Font("Tahoma", Font.PLAIN, 37));
 //		lblHoraSalida.setBounds(233, 169, 119, 37);
