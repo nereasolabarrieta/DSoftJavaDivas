@@ -11,3 +11,5 @@ El proyecto denominado Easybooking, es una plataforma para buscar y reservar vue
 4. ant -f build.xml client --> Esto ejecutara la parte cliente, empezando por el controller y creando las pantallas
 5. ant -f build.xml GestorVuelos --> Esto ejecutara el gestor de vuelos
 6. ant -f build.xml Buscar
+7. ant -f build.xml Entrar_Registrar
+ mvn exec:java -Pclient
