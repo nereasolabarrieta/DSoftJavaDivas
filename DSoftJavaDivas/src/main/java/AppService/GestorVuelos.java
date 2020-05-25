@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import DAO.itfDAO;
 import EasyBooking.LD.Aeropuerto;
@@ -50,8 +52,19 @@ public class GestorVuelos {
 		
 	}
 	
-	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio)
+	public void AplicarFiltro(String hora_ida_min, String hora_ida_max, String hora_vuelta_min,String hora_vuelta_max, double min_precio, double max_precio, double min_dur, double max_dur)
 	{
+		if (min_precio == 0) { min_precio =0; }
+		if (max_precio == 0) { max_precio =10000; }
+		if (min_dur == 0) { min_dur =0; }
+		if (max_dur == 0) { max_dur =10; }
+		final double precioMin = min_precio;
+		final double precioMax = max_precio;
+		
+		List<Vuelo>Lista_Vuelos=getVuelos();
+		Stream<Vuelo>vuelos=Lista_Vuelos.stream();
+		Stream<Vuelo>vuelos_filtrados= vuelos.filter(v->(v.getPrecio()>=precioMin) && v.getPrecio()<=precioMax);
+		Lista_Vuelos=vuelos_filtrados.collect(Collectors.toList());
 		
 	}
 	

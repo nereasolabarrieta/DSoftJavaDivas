@@ -20,7 +20,7 @@ public interface itfFachada extends Remote{
 	public void newReserva(String Aeropuerto_Salida, String Aeropuerto_llegada)throws RemoteException;
 	public void Pagar(double precio, String cod_vuelo)throws RemoteException;
 	public  ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, Date fecha)throws RemoteException;
-	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio)throws RemoteException;
+	public void AplicarFiltro(String hora_ida_min, String hora_ida_max, String hora_vuelta_min,String hora_vuelta_max, double min_precio, double max_precio, double min_dur, double max_dur)throws RemoteException;
 	public void RegistrarUsuario(String nom, String ape, String email, String password)throws RemoteException;
 	public boolean LogInUsuario(String email, String contrasena)throws RemoteException;
 	public void newViajero(String dni, String nombre)throws RemoteException;

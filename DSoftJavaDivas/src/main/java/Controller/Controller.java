@@ -60,8 +60,8 @@ public class Controller {
 		return rsl.getService().Buscar_vuelos(origen, destino, fecha);
 	}
 
-	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio) throws RemoteException {
-		rsl.getService().AplicarFiltro(origen, destino, fecha, min_precio, max_precio);
+	public void AplicarFiltro(String hora_ida_min, String hora_ida_max, String hora_vuelta_min,String hora_vuelta_max, double min_precio, double max_precio, double min_dur, double max_dur) throws RemoteException {
+		rsl.getService().AplicarFiltro(hora_ida_min, hora_ida_max, hora_vuelta_min,hora_vuelta_max, min_precio, max_precio, min_dur,max_dur);
 	}
 	
 	public void RegistrarUsuario(String nom, String ape, String email, String password) throws RemoteException
