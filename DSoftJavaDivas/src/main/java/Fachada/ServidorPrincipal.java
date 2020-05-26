@@ -92,12 +92,12 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		}
 	}
 
-//	@Override
-//	public List<Vuelo> getVuelos() throws RemoteException {
-//		// TODO Auto-generated method stub
-//		
-//		return GVuelos.getVuelos();
-//	}
+	@Override
+	public List<Vuelo> getVuelos() throws RemoteException {
+		// TODO Auto-generated method stub
+		
+		return GVuelos.getVuelos();
+	}
 
 
 	public  HashSet<Aeropuerto> getAeropuertos() throws RemoteException {
@@ -125,9 +125,9 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	}
 
 	@Override
-	public void AplicarFiltro(String hora_ida_min, String hora_ida_max, String hora_vuelta_min,String hora_vuelta_max, double min_precio, double max_precio, double min_dur, double max_dur) {
+	public List<Vuelo> AplicarFiltro(String hora_ida_min, String hora_ida_max, double min_precio, double max_precio, String origen, String destino, Date fecha) {
 		// TODO Auto-generated method stub
-		GVuelos.AplicarFiltro(hora_ida_min, hora_ida_max, hora_vuelta_min,hora_vuelta_max, min_precio, max_precio, min_dur,max_dur);
+		return GVuelos.AplicarFiltro(hora_ida_min, hora_ida_max, min_precio, max_precio,origen, destino, fecha);
 	}
 
 	@Override
@@ -160,11 +160,11 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		System.out.println("LLEGA BIEN A LA FACHADA");
 	}
 
-	@Override
-	public List<VueloDTO> getVuelos() throws RemoteException {
-		List<Vuelo> vuelo = GVuelos.getVuelos();
-		return null;
-	}
+//	@Override
+//	public List<VueloDTO> getVuelos() throws RemoteException {
+//		List<Vuelo> vuelo = GVuelos.getVuelos();
+//		return null;
+//	}
 	
 	
 

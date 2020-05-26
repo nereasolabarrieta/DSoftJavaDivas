@@ -67,5 +67,14 @@
 					<arg value="${server.Name}"/> 
 				</java>
 		    </target>
+	<target name="Principal" description="Runs the Buscar">
+				<java classname="EasyBooking.LP.Principal" classpathref="full.classpath" fork="true">
+					<jvmarg value="-Djava.security.policy=${policy.file.client}"/>	
+					<jvmarg value="-Dlog4j.configuration=${log4j.file}"/>
+					<arg value="${server.IP}"/> 
+					<arg value="${server.port}"/> 
+					<arg value="${server.Name}"/> 
+				</java>
+		    </target>
 
 </project>
