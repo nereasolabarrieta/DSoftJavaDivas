@@ -36,4 +36,17 @@ public class Aeropuerto implements Serializable {
 		this.nomAeropuerto = nomAeropuerto;
 	}
 
+	public boolean equals( Object aero ) {
+		if (aero == null) return false;
+
+		Aeropuerto aerop = (Aeropuerto)aero;
+		if (this.getCodAeropuerto().equals(aerop.getCodAeropuerto()) )
+		return true;
+
+		return false;
+		}
+
+		public int hashCode() {
+		return this.getCodAeropuerto().hashCode();
+		}
 }

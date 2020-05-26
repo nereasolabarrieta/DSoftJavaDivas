@@ -9,9 +9,11 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
+import AppService.GestorAutenticacion;
 import AppService.GestorVuelos;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Reserva;
+import Gateway.GatewayAutenticacion;
 
 public class DAO implements itfDAO
 {
@@ -19,13 +21,18 @@ public class DAO implements itfDAO
 	private static Transaction transaction;
 	private static 	PersistenceManagerFactory persistentManagerFactory;
 	private static GestorVuelos gv;
+	private static final DAO INSTANCE = new DAO();
 	
-	public DAO()
-	{
+	private DAO(){}
+	
+	public static DAO getInstance() {
+		
 		persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		persistentManager = persistentManagerFactory.getPersistenceManager();				
 		transaction = persistentManager.currentTransaction();
-	}
+    	return INSTANCE;
+    }
+	
 	public void guardarObjeto(Object objeto) 
 	{
 		//persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");

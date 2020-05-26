@@ -2,6 +2,7 @@ package AppService;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -11,6 +12,7 @@ import DAO.itfDAO;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Vuelo;
 import Gateway.Gateway;
+import Gateway.GatewayPago;
 import Gateway.GatewayVuelos;
 import Gateway.itfGatewayVuelos;
 import ServiciosExternos.VuelosJSON;
@@ -18,25 +20,27 @@ import ServiciosExternos.VuelosJSON;
 public class GestorVuelos {
 	
 	private static itfDAO DAO;
-	private itfGatewayVuelos gateVuelos;
+	private static itfGatewayVuelos gateVuelos;
 	private Gateway gateGeneral;
+	private static final GestorVuelos INSTANCE = new GestorVuelos();
 	
-	public GestorVuelos()
-	{
-		gateVuelos = new GatewayVuelos();
-		
-	}
+	private GestorVuelos(){}
 	
+	 public static GestorVuelos getInstance() {
+		 gateVuelos =GatewayVuelos.getInstance();
+	    	return INSTANCE;
+	    }
+	
+	//gateVuelos = new GatewayVuelos();
 	public List<Vuelo> getVuelos(){
 		
 		return gateVuelos.getVuelos();
 	}
-	public  ArrayList<Aeropuerto> getAeropuerto()
+	public  HashSet<Aeropuerto> getAeropuerto()
 	{
-		System.out.println("LEO AEROPUERTOS");
+	
 		//DAO.guardarObjeto(gateVuelos.getAeropuertos());
-		ArrayList<Aeropuerto> lista= gateVuelos.getAeropuertos();
-		 System.out.println("GESTOR"+lista.get(0).getNomAeropuerto());
+		HashSet<Aeropuerto> lista= gateVuelos.getAeropuertos();
 		 
 		 return lista;
 		

@@ -24,22 +24,40 @@ import EasyBooking.LD.Vuelo;
 public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada {
 
 	private static final long serialVersionUID = 1L;
-	private GestorAutenticacion GAutenticacion;
-	private GestorPago GPago;
-	private GestorVuelos GVuelos=null;
+	private static GestorAutenticacion GAutenticacion;
+	private static GestorPago GPago;
+	private static GestorVuelos GVuelos=null;
 	private DAO dao;
+	private static  ServidorPrincipal INSTANCE=null;
 	
-	public ServidorPrincipal() throws RemoteException {
-		super();
-		System.out.println("ey estoy en el constructor y ahora voy a hacer los appservice jeeee");
-		this.GAutenticacion=new GestorAutenticacion();
-		this.GPago=new GestorPago();
-		this.GVuelos=new GestorVuelos();
-		//this.dao= new DAO();
-		// TODO Auto-generated constructor stub
-		
-	}
+//	
+//	public ServidorPrincipal() throws RemoteException {
+//		super();
+//		
+//		this.GAutenticacion= GestorAutenticacion.getInstance();
+//		this.GPago=GestorPago.getInstance();
+//		this.GVuelos= GestorVuelos.getInstance();
+//		//this.dao= new DAO();
+//		// TODO Auto-generated constructor stub
+//		
+//	}
 
+	private ServidorPrincipal() throws RemoteException {
+		this.GAutenticacion= GestorAutenticacion.getInstance();
+		this.GPago=GestorPago.getInstance();
+		this.GVuelos= GestorVuelos.getInstance();
+	}
+	
+	public static ServidorPrincipal getInstance() throws RemoteException {
+		synchronized(ServidorPrincipal.class) {
+		if (INSTANCE == null) {
+				INSTANCE = new ServidorPrincipal();
+				}
+		}
+		 return INSTANCE;
+	}
+	
+	
 	public static void main (String[] args) {
 		// TODO Auto-generated method stub
 
@@ -48,7 +66,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		String serviceName = "EasyBooking";
 		itfFachada objServer = null;
 		try {
-			objServer = new ServidorPrincipal();
+			objServer =  ServidorPrincipal.getInstance();
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -82,13 +100,9 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 //	}
 
 
-	public  ArrayList<Aeropuerto> getAeropuertos() throws RemoteException {
-		// TODO Auto-generated method stub
-		System.out.println("HOLA 5");
-		//Set<Aeropuerto> lista = new HashSet<Aeropuerto>();
-		ArrayList<Aeropuerto> lista=GVuelos.getAeropuerto();
-		System.out.println("SERVIDOR_PRINC " + lista.size());
-		return lista;
+	public  HashSet<Aeropuerto> getAeropuertos() throws RemoteException {
+				
+		return GVuelos.getAeropuerto();
 	}
 
 	@Override
@@ -125,12 +139,8 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 
 
 	@Override
-	public boolean LogInUsuario(String email, String contrasena) {
-		// TODO Auto-generated method stub
-		System.out.println("A HACER LOGIN");
-		
-		System.out.println(email);
-		System.out.println(contrasena);
+	public boolean LogInUsuario(String email, String contrasena) 
+	{
 		return GAutenticacion.LogInUsuario(email, contrasena);
 	}
 

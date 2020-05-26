@@ -6,6 +6,7 @@ import javax.ws.rs.core.Response;
 
 import org.json.simple.parser.ParseException;
 
+import AppService.GestorAutenticacion;
 import EasyBooking.LD.User_A;
 import ServiciosExternos.BooleanJSON;
 import ServiciosExternos.PasswordJSON;
@@ -19,10 +20,14 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 	private String path = "/";
 	private RestClient<User_A> client ;
 	private Response response;
-	public GatewayAutenticacion()
-	{
-		
-	}
+	private static final GatewayAutenticacion INSTANCE = new GatewayAutenticacion();
+	
+	private GatewayAutenticacion(){}
+	
+	public static GatewayAutenticacion getInstance() {
+    	return INSTANCE;
+    }
+	
 	@Override
 	public boolean LogInUsuario(String email, String password) {
 		 	path = "/Authentication/Log_in";
@@ -46,7 +51,7 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 	        try {
 	        	  resp = new BooleanJSON(reply);
 	        	  respuesta= resp.getContentBoolean();
-	        	  System.out.println("eeeeeeeeeeeee que me lo esta haciendo mal" + respuesta);
+	        	  System.out.println("eeeeeeeeeeeee que me lo esta haciendo mal, o no?" + respuesta);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -10,14 +10,17 @@ import Gateway.itfGatewayAutenticacion;
 public class GestorAutenticacion {
 	
 	itfDAO DAO;
-	itfGatewayAutenticacion gateway;
+	private static itfGatewayAutenticacion gateway;
 	Gateway general;
+	private static final GestorAutenticacion INSTANCE = new GestorAutenticacion();
 	
-	public GestorAutenticacion()
-	{
-		gateway = new GatewayAutenticacion();
-		
-	}
+	private GestorAutenticacion(){}
+	
+	
+    public static GestorAutenticacion getInstance() {
+    	gateway =GatewayAutenticacion.getInstance();
+    	return INSTANCE;
+    }
 	public void RegistrarUsuario(String nombre, String ape, String email, String password){
 		
 		

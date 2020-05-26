@@ -2,6 +2,7 @@ package Gateway;
 
 import javax.ws.rs.core.Response;
 
+import AppService.GestorPago;
 import EasyBooking.LD.Pago_Usuario;
 import EasyBooking.LD.Usuario;
 import ServiciosExternos.RestClient;
@@ -12,7 +13,12 @@ public class GatewayPago extends Gateway implements itfGatewayPago
 	private static String hostname = "192.168.6.31";
 	private String path = "/";
 	private RestClient<Pago_Usuario> client ;
+	private static final GatewayPago INSTANCE = new GatewayPago();
 
+	private GatewayPago(){}
+	 public static GatewayPago getInstance(){
+	    	return INSTANCE;
+	    }
 	
 	@Override
 	public void Pagar(String email, double cantidad_total, String concepto) {

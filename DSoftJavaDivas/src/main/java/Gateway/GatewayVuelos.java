@@ -31,8 +31,14 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 	private RestClient<Flight_parameters> client ;
 	private Response response;
 	private Flight_parameters filtro;
+	private static final GatewayVuelos INSTANCE = new GatewayVuelos();
 
 	
+	private GatewayVuelos(){}
+	
+	public static GatewayVuelos getInstance() {
+    	return INSTANCE;
+    }
 	
 	public List<VuelosJSON> search_flights() {
 		 path = "/Airlines/Search_Flights";
@@ -108,10 +114,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
        JSONParser myParser = new JSONParser();
        JSONArray flightsArray = (JSONArray) myParser.parse( json_string );
 
-       // Lambda expression to print array
-       flightsArray.stream().forEach(
-               element -> System.out.println(element)
-       );
+
 
        // Lambda expression to map JSONObjects inside JSONArray to flight objects
        myFlightArray = (List) flightsArray.stream()
@@ -185,11 +188,11 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 
 
 	@Override
-	public ArrayList<Aeropuerto> getAeropuertos() 
+	public HashSet<Aeropuerto> getAeropuertos() 
 	{
 		System.out.println("ENTRO A AEROPUERTOS");
 		filtro= new Flight_parameters();
-		ArrayList<Aeropuerto> Lista_aero=new ArrayList<Aeropuerto>();
+		HashSet<Aeropuerto> Lista_aero=new HashSet<Aeropuerto>();
 		List<VuelosJSON> lista_json=search_flights();
 		List <Vuelo> vuelos = convertir(lista_json);
 		System.out.println("DONDE FALLO");
@@ -198,7 +201,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 			Lista_aero.add(element.getOrigen());
 			Lista_aero.add(element.getDestino());
 		});
-		System.out.println("GATEWAY:"+Lista_aero.get(0).getNomAeropuerto());
+		
 		
 		return Lista_aero;
 	}
