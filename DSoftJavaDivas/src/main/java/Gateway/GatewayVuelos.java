@@ -42,7 +42,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 	
 	public List<VuelosJSON> search_flights() {
 		 path = "/Airlines/Search_Flights";
-		 filtro = new Flight_parameters();
+		
 		 client = new RestClient<Flight_parameters>(hostname, port);
 		 System.out.println("Trying POST at " + path + " (Search All Flights message)");
 	        response = null;
@@ -89,7 +89,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
     }
     return myFlightArray;
 	}
-	public List<VuelosJSON> search_flights_conParametros(Flight_parameters filtro) {
+	public List<VuelosJSON> search_flights_conParametros( ) {
 		 path = "/Airlines/Search_Flights";
 		 client = new RestClient<Flight_parameters>(hostname, port);
 		 System.out.println("Trying POST at " + path + " (Search All Flights message)");
@@ -138,12 +138,12 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 	@Override
 	public ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, Date fecha) 
 	{
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd hh:mm:ss");
 		String strDate = dateFormat.format(fecha);
 		
 		System.out.println("LA FECHA QUE envio ES"+strDate);
 		filtro= new Flight_parameters(origen,destino,strDate);
-		List<VuelosJSON> lista_json=search_flights_conParametros(filtro);
+		List<VuelosJSON> lista_json=search_flights_conParametros();
 		
 		ArrayList<Vuelo> lista_vuelos= convertir(lista_json);
 		lista_vuelos.stream().forEach( element->System.out.println(element));
