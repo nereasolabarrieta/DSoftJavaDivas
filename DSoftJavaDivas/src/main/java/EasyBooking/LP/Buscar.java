@@ -34,6 +34,7 @@ import com.toedter.calendar.JSpinnerDateEditor;
 
 import Controller.Controller;
 import EasyBooking.LD.Aeropuerto;
+import EasyBooking.LD.Vuelo;
 
 import javax.swing.JButton;
 import javax.swing.SpinnerDateModel;
@@ -54,6 +55,7 @@ public class Buscar extends JFrame {
 	private Controller controller;
 	private JComboBox<String> combito;
 	private JComboBox<String> comboBox_1;
+	private List<Vuelo> Lista_vuelos;
 
 	/**
 	 * Create the frame.
@@ -136,10 +138,7 @@ public class Buscar extends JFrame {
 		});
 
 		pIzquierda.add(comboBox_1);
-		datechooser = new JDateChooser(null, null, null, new JSpinnerDateEditor());
-		datechooser.setDate(objDate);
-		datechooser.setBounds(800, 145, 175, 26);
-		pIzquierda.add(datechooser);
+
 		
 		JButton btnBuscar = new JButton("BUSCAR");
 		btnBuscar.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -148,13 +147,21 @@ public class Buscar extends JFrame {
 
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				String origen=comboBox_1.getSelectedItem().toString();
+				String destino=combito.getSelectedItem().toString();
 				Principal a = null;
 				
 					try {
-
-						a = new Principal(controller, comboBox_1.getSelectedItem().toString(),
-								combito.getSelectedItem().toString(), objDate);
+						Lista_vuelos = controller.Buscar_vuelos(origen, destino, objDate);
+						
+						if(Lista_vuelos.size()==0)
+						{
+							JOptionPane.showMessageDialog(null,"No existe ningún vuelo en esas fechas. ");
+						}else
+						{
+						a = new Principal(controller, origen,
+								destino, objDate);
+						}
 
 					} catch (RemoteException e) {
 						// TODO Auto-generated catch block

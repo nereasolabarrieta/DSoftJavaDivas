@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import Controller.Controller;
@@ -297,8 +298,17 @@ public class Principal extends JFrame {
 			double precioMax= Double.parseDouble(textFieldMaxPrecio.getText());
 			System.out.println(precioMax);
 			Lista_vuelos = controller.AplicarFiltro(comboBoxMinIda.getSelectedItem().toString(), comboBoxMaxIda.getSelectedItem().toString(), precioMin, precioMax, textFieldOrigen.getText(),textFieldDestino.getText(), dChooser_ida.getDate());
+			System.out.println("HONEA NO LLEGO");
+			if(Lista_vuelos.size()==0)
+			{
+				JOptionPane.showMessageDialog(null,"No existe ningún vuelo en esas fechas. ");
+			}else
+			{
 			InsertarJPanel(Lista_vuelos);
+			System.out.println("LORTU DET:" + Lista_vuelos.size());
 			
+			System.out.println(Lista_vuelos.get(2).getOrigen() + " " + Lista_vuelos.get(2).getDestino() );
+			}
 			PscrollPane.repaint();
 			scrollPane.repaint();
 			
