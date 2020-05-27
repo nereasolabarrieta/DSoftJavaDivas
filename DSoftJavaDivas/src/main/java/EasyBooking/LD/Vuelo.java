@@ -40,13 +40,14 @@ public class Vuelo implements Serializable {
 	}
 
 	public Vuelo(String codigo, Aeropuerto origen, Aeropuerto destino,  LocalDateTime hora_salida,
-			 long precio) {
+			 long precio, long l) {
 		super();
 		this.codVuelo = codigo;
 		this.origen = origen;
 		this.destino = destino;
 		this.hora_salida = hora_salida;
 		this.precio = precio;
+		this.numAsientos =l;
 	}
 
 	@Override

@@ -78,7 +78,7 @@ public class Buscar extends JFrame {
 
 	public void initComponents() {
 
-		// setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("src/main/java/EasyBooking/Img/Avion.jpg"));
 		setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		setTitle("EasyBooking");
 		setForeground(Color.BLACK);
@@ -92,9 +92,8 @@ public class Buscar extends JFrame {
 		contentPane.setLayout(null);
 		this.setLocationRelativeTo(null);
 
-		ButtonGroup grupoIda = new ButtonGroup();
-
-		JPanel pIzquierda = new JPanel();
+	
+		JPanelConFondo pIzquierda = new JPanelConFondo("src/main/java/EasyBooking/Img/Vuelo.jpg");
 		pIzquierda.setForeground(new Color(255, 255, 255));
 		pIzquierda.setBackground(Color.WHITE);
 		pIzquierda.setBounds(0, 163, 1278, 521);
@@ -105,18 +104,15 @@ public class Buscar extends JFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel.setBackground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(365, 40, 76, 20);
+		lblNewLabel.setBounds(365, 81, 76, 20);
 		pIzquierda.add(lblNewLabel);
 
 		combito = new JComboBox<String>();
-		// DefaultComboBoxModel<String> modelito = new
-		// DefaultComboBoxModel<String>();
-		// combito.setModel(modelito);
+		
 
-		combito.setBounds(483, 37, 297, 26);
+		combito.setBounds(483, 78, 297, 26);
 		Lista_Aeropuerto.stream().forEach(element -> {
 			combito.addItem(element.getNomAeropuerto());
-			// combito.add(element.getNomAeropuerto());
 		});
 		pIzquierda.add(combito);
 		datechooser = new JDateChooser(null, null, null, new JSpinnerDateEditor());
@@ -124,17 +120,17 @@ public class Buscar extends JFrame {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		sdf.format(objDate);
 		datechooser.setDate(objDate);
-		datechooser.setBounds(800, 37, 175, 26);
+		datechooser.setBounds(800, 78, 175, 26);
 		pIzquierda.add(datechooser);
 
 		JLabel lblNewLabel_1 = new JLabel("Destino:");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1.setBounds(365, 99, 81, 20);
+		lblNewLabel_1.setBounds(365, 148, 81, 20);
 		pIzquierda.add(lblNewLabel_1);
 
 		comboBox_1 = new JComboBox<String>();
-		comboBox_1.setBounds(483, 96, 297, 26);
+		comboBox_1.setBounds(483, 145, 297, 26);
 		Lista_Aeropuerto.stream().forEach(element -> {
 			comboBox_1.addItem(element.getNomAeropuerto());
 		});
@@ -142,41 +138,33 @@ public class Buscar extends JFrame {
 		pIzquierda.add(comboBox_1);
 		datechooser = new JDateChooser(null, null, null, new JSpinnerDateEditor());
 		datechooser.setDate(objDate);
-		datechooser.setBounds(800, 96, 175, 26);
+		datechooser.setBounds(800, 145, 175, 26);
 		pIzquierda.add(datechooser);
+		
+		JButton btnBuscar = new JButton("BUSCAR");
+		btnBuscar.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnBuscar.setBackground(Color.WHITE);
+		btnBuscar.setBounds(562, 327, 164, 29);
 
-		JButton btnBuscar = new JButton("Buscar");
-		btnBuscar.setForeground(new Color(255, 255, 255));
-		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnBuscar.setBackground(new Color(0, 0, 128));
-		btnBuscar.setBounds(849, 405, 126, 43);
-//		btnBuscar.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				
-//				System.out.println(estado_rdbtn);
-//			
-//				System.out.println();
-//				Principal a = null;
-//				JPanelVuelo b = null;
-//				if (estado_rdbtn = false || viajeros.equals("0")) {
-//					JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos");
-//					return;
-//				} else {
-//
-//					try {
-//
-//						a = new Principal(controller, comboBox_1.getSelectedItem().toString(),
-//								combito.getSelectedItem().toString(), objDate);
-//
-//					} catch (RemoteException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//					a.setVisible(true);
-//
-//				}
-//			}
-//		});
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Principal a = null;
+				
+					try {
+
+						a = new Principal(controller, comboBox_1.getSelectedItem().toString(),
+								combito.getSelectedItem().toString(), objDate);
+
+					} catch (RemoteException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					
+					a.setVisible(true);
+
+				}
+			}
+		});
 		pIzquierda.add(btnBuscar);
 
 		JPanel pNorte = new JPanel();
@@ -187,13 +175,23 @@ public class Buscar extends JFrame {
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setBounds(15, 16, 202, 73);
-		// ImageIcon fot = new
-		// ImageIcon(Buscar.class.getResource("/EasyBooking/Img/logo.png"));
-		// Icon icono = new
-		// ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(),
-		// lblLogo.getHeight(), Image.SCALE_DEFAULT));
-		// lblLogo.setIcon(icono);
+		
+
+		ImageIcon fot = new ImageIcon("src/main/java/EasyBooking/Img/logo.png");
+
+		Icon icono = new ImageIcon(
+				fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
+		lblLogo.setIcon(icono);
 		pNorte.add(lblLogo);
+		
+		JLabel lblBuscar = new JLabel("BUSCAR VUELOS");
+		lblBuscar.setForeground(Color.WHITE);
+		lblBuscar.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblBuscar.setBounds(570, 77, 150, 20);
+		pNorte.add(lblBuscar);
+		
+	
+		
 
 	}
 

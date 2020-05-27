@@ -144,10 +144,8 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 		System.out.println("ENTRO EN BUSCAR VUELOS");
 		filtro= new Flight_parameters(origen,destino);
 		List<VuelosJSON> lista_json=search_flights_conParametros(filtro);
-		System.out.println("HA LLEGADO AL PASO PREVIO A CONVERTIR EN OBJETOS");
 		
 		ArrayList<Vuelo> lista_vuelos= convertir(lista_json);
-		System.out.println("\n\n\n VOY A IMPRIMIR LOS VUELOS\n\n");
 		lista_vuelos.stream().forEach( element->System.out.println(element));
 		return lista_vuelos;
 	}
@@ -165,7 +163,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 				element-> {
 					Aeropuerto origen= new Aeropuerto(element.getAirportArrivalCode(),element.getAirportArrivalCity());
 					Aeropuerto destino= new Aeropuerto(element.getAirportDepartureCode(),element.getAirportDepartureCity());
-					Vuelo v=new Vuelo(element.getCode(), origen, destino,element.getDepartureDate(true),element.getPrice());
+					Vuelo v=new Vuelo(element.getCode(), origen, destino,element.getDepartureDate(true),element.getPrice(), element.getFreeSeats());
 					Lista_vuelos.add(v);
 				});
 		

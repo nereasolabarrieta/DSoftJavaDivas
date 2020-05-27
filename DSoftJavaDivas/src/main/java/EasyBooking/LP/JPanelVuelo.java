@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
@@ -23,17 +25,17 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
 public class JPanelVuelo extends JPanel {
-	private Controller controller;
-	private String precio;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private DateTimeFormatter formatter;
 	
 	/**
 	 * Create the panel.
 	 */
-	public JPanelVuelo(Controller controller, String origen, String destino, Date objDate, long precio) {
-		
-		this.controller = controller;
-		this.precio = String.valueOf(precio);
-		
+	public JPanelVuelo(String origen, String destino, long precio, long asientos, LocalDateTime hora) {
 		
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setSize(1064,265);
@@ -47,8 +49,10 @@ public class JPanelVuelo extends JPanel {
 		panelDeArriba.setBounds(682, 0, 382, 265);
 		add(panelDeArriba);
 		panelDeArriba.setLayout(null);
+		
+		String precioVuelo = Long.toString(precio);
 
-		JLabel lblPrecio = new JLabel(this.precio + "€");
+		JLabel lblPrecio = new JLabel(precioVuelo + "€");
 		lblPrecio.setBounds(120, 68, 156, 46);
 		panelDeArriba.add(lblPrecio);
 		lblPrecio.setFont(new Font("Tahoma", Font.BOLD, 38));
@@ -75,22 +79,28 @@ public class JPanelVuelo extends JPanel {
 		lblFlecha.setBounds(273, 109, 69, 20);
 		add(lblFlecha);
 		
-//		JLabel lblQuedanDisponibles = new JLabel("Quedan        disponibles");
-//		lblQuedanDisponibles.setForeground(Color.GRAY);
-//		lblQuedanDisponibles.setFont(new Font("Tahoma", Font.ITALIC, 16));
-//		lblQuedanDisponibles.setBounds(30, 217, 201, 20);
-//		add(lblQuedanDisponibles);
-//
-//		JLabel lblNumeroDisponible = new JLabel("10");
-//		lblNumeroDisponible.setForeground(Color.GRAY);
-//		lblNumeroDisponible.setFont(new Font("Tahoma", Font.ITALIC, 16));
-//		lblNumeroDisponible.setBounds(96, 217, 69, 20);
-//		add(lblNumeroDisponible);
+		JLabel lblQuedanDisponibles = new JLabel("Quedan        disponibles");
+		lblQuedanDisponibles.setForeground(Color.GRAY);
+		lblQuedanDisponibles.setFont(new Font("Tahoma", Font.ITALIC, 16));
+		lblQuedanDisponibles.setBounds(30, 217, 201, 20);
+		add(lblQuedanDisponibles);
 		
-//		JLabel lblHoraSalida = new JLabel("16:00");
-//		lblHoraSalida.setFont(new Font("Tahoma", Font.PLAIN, 37));
-//		lblHoraSalida.setBounds(233, 169, 119, 37);
-//		add(lblHoraSalida);
+		String numAsientos = Long.toString(asientos);
+
+		JLabel lblNumeroDisponible = new JLabel(numAsientos);
+		lblNumeroDisponible.setForeground(Color.GRAY);
+		lblNumeroDisponible.setFont(new Font("Tahoma", Font.ITALIC, 16));
+		lblNumeroDisponible.setBounds(96, 217, 69, 20);
+		add(lblNumeroDisponible);
+		
+		formatter = DateTimeFormatter.ISO_DATE_TIME;
+		
+		String formattedDateTime = hora.format(formatter);
+		
+		JLabel lblHoraSalida = new JLabel(formattedDateTime);
+		lblHoraSalida.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblHoraSalida.setBounds(233, 169, 140, 37);
+		add(lblHoraSalida);
 		this.setVisible(true);
 		
 

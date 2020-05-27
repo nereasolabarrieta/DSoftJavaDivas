@@ -2,54 +2,43 @@ package EasyBooking.LP;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Image;
 import java.util.List;
-import java.awt.ScrollPane;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
-
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import com.toedter.calendar.JDayChooser;
-
 import Controller.Controller;
 import EasyBooking.LD.Vuelo;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.SwingConstants;
-import javax.swing.JSeparator;
-import javax.swing.JSlider;
-import javax.swing.JTable;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
-import javax.swing.JScrollBar;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.FlowLayout;
 import javax.swing.JTextField;
 
 public class Principal extends JFrame {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JPanel PscrollPane;
@@ -59,22 +48,21 @@ public class Principal extends JFrame {
 	private String objDate;
 	private List<Vuelo> Lista_vuelos;
 	private long precio;
+	private long numAsientos;
+	private LocalDateTime hora;
 	private JTextField textFieldMinPrecio;
 	private JTextField textFieldMaxPrecio;
 	private JTextField textFieldOrigen;
 	private JTextField textFieldDestino;
-	private int contador=0;
 	
 	public Principal(Controller controller, String origen, String destino, Date objDate) throws RemoteException {
 		
-//		  this.controller = controller;
-//			this.destino = destino;
-//			this.origen = origen;
-//			this.objDate=objDate.format(new Date());
-//			Lista_vuelos = controller.Buscar_vuelos(origen, destino, objDate);
-			Lista_vuelos = new ArrayList<Vuelo>();
+		  this.controller = controller;
+			this.destino = destino;
+			this.origen = origen;
+			Lista_vuelos = controller.Buscar_vuelos(origen, destino, objDate);
 			
-			//System.out.println(Lista_vuelos.size());
+			System.out.println(Lista_vuelos.size());
 		
 			initComponents();
 			this.setVisible(true);
@@ -97,7 +85,8 @@ public class Principal extends JFrame {
 
  public void initComponents()
  {
-	 setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
+	setIconImage(Toolkit.getDefaultToolkit().getImage("src/main/java/EasyBooking/Img/Avion.jpg"));
+	setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 	setTitle("EasyBooking");
 	setForeground(Color.BLACK);
 	setBackground(Color.BLACK);
@@ -148,9 +137,9 @@ public class Principal extends JFrame {
 	
 	JLabel lblBuscar = new JLabel("");
 	lblBuscar.setBounds(1048, 112, 38, 31);
-	//ImageIcon fotBuscar = new ImageIcon(Principal.class.getResource("/EasyBooking/Img/Buscar.png"));
-	//Icon iconoBuscar = new ImageIcon(fotBuscar.getImage().getScaledInstance(lblBuscar.getWidth(), lblBuscar.getHeight(), Image.SCALE_DEFAULT));
-	//lblBuscar.setIcon(iconoBuscar);
+	ImageIcon fotBuscar = new ImageIcon("src/main/java/EasyBooking/Img/Buscar.png");
+	Icon iconoBuscar = new ImageIcon(fotBuscar.getImage().getScaledInstance(lblBuscar.getWidth(), lblBuscar.getHeight(), Image.SCALE_DEFAULT));
+	lblBuscar.setIcon(iconoBuscar);
 	pArriba.add(lblBuscar);
 	
 	JPanel pIzquierda= new JPanel();
@@ -208,7 +197,7 @@ public class Principal extends JFrame {
 	lblA.setBounds(25, 355, 69, 20);
 	pIzquierda.add(lblA);
 	
-	JComboBox comboBoxMinIda = new JComboBox();
+	JComboBox<String> comboBoxMinIda = new JComboBox<String>();
 	comboBoxMinIda.setBounds(72, 316, 116, 26);
 	comboBoxMinIda.addItem("00:00");comboBoxMinIda.addItem("01:00");comboBoxMinIda.addItem("02:00");comboBoxMinIda.addItem("03:00");
 	comboBoxMinIda.addItem("04:00");comboBoxMinIda.addItem("05:00");comboBoxMinIda.addItem("06:00");comboBoxMinIda.addItem("07:00");
@@ -220,7 +209,7 @@ public class Principal extends JFrame {
 	
 	pIzquierda.add(comboBoxMinIda);
 	
-	JComboBox comboBoxMaxIda = new JComboBox();
+	JComboBox<String> comboBoxMaxIda = new JComboBox<String>();
 	comboBoxMaxIda.setBounds(72, 352, 116, 26);
 	comboBoxMaxIda.addItem("01:00");comboBoxMaxIda.addItem("02:00");comboBoxMaxIda.addItem("03:00");
 	comboBoxMaxIda.addItem("04:00");comboBoxMaxIda.addItem("05:00");comboBoxMaxIda.addItem("06:00");comboBoxMaxIda.addItem("07:00");
@@ -251,54 +240,29 @@ public class Principal extends JFrame {
 	textFieldDestino.setBounds(72, 134, 117, 26);
 	pIzquierda.add(textFieldDestino);
 	textFieldDestino.setColumns(10);
-	//	JLabel lblLogo = new JLabel();
-	//	lblLogo.setBounds(0, 0, 185, 64);
-	//	pArriba.add(lblLogo);
-	//	ImageIcon fot = new ImageIcon(Principal.class.getResource("/EasyBooking/Img/logo.png"));
-	//	Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
-	//	lblLogo.setIcon(icono);
+	JLabel lblLogo = new JLabel();
+	
+
+	ImageIcon fot = new ImageIcon("src/main/java/EasyBooking/Img/logo.png");
+	lblLogo.setBounds(15, 16, 202, 73);
+	Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
+	lblLogo.setIcon(icono);
+	pArriba.add(lblLogo);
 		
-		JDateChooser dChooser_ida = new JDateChooser();
-		dChooser_ida.setBounds(49, 432, 125, 26);
-		pIzquierda.add(dChooser_ida);
-		dChooser_ida.setDate(objDate);
+	JDateChooser dChooser_ida = new JDateChooser();
+	dChooser_ida.setBounds(49, 432, 125, 26);
+	pIzquierda.add(dChooser_ida);
+	dChooser_ida.setDate(objDate);
 		
-		JLabel lblFecha = new JLabel("Fecha");
-		lblFecha.setForeground(Color.WHITE);
-		lblFecha.setBounds(15, 401, 69, 20);
-		pIzquierda.add(lblFecha);
+	JLabel lblFecha = new JLabel("Fecha");
+	lblFecha.setForeground(Color.WHITE);
+	lblFecha.setBounds(15, 401, 69, 20);
+	pIzquierda.add(lblFecha);
 		
-		JButton btnBuscar = new JButton("BUSCAR");
-		btnBuscar.setBounds(25, 474, 139, 29);
-		btnBuscar.setBackground(new Color(255, 255, 255));
-		btnBuscar.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent arg0) 
-			{
-			try 
-			{
-				double precioMin= Double.parseDouble(textFieldMinPrecio.getText());
-				System.out.println(precioMin);
-				double precioMax= Double.parseDouble(textFieldMaxPrecio.getText());
-				System.out.println(precioMax);
-				controller.AplicarFiltro(comboBoxMinIda.getSelectedItem().toString(), comboBoxMaxIda.getSelectedItem().toString(), precioMin, precioMax, textFieldOrigen.getText(),textFieldDestino.getText(), dChooser_ida.getDate());
-				InsertarJPanel(Lista_vuelos);
-				
-				PscrollPane.repaint();
-				scrollPane.repaint();
-				
-			} catch (NumberFormatException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (RemoteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			}
-		});
-		pIzquierda.add(btnBuscar);
-	System.out.println(comboBoxMinIda.getSelectedItem().toString());
+	JButton btnBuscar = new JButton("BUSCAR");
+	btnBuscar.setBounds(25, 474, 139, 29);
+	btnBuscar.setBackground(new Color(255, 255, 255));
+		
 		
 	JPanel pCentro = new JPanel();
 	pCentro.setBounds(215, 155, 1063, 529);
@@ -316,32 +280,57 @@ public class Principal extends JFrame {
 	gbl_PscrollPane.rowWeights = new double[]{Double.MIN_VALUE};
 	PscrollPane.setLayout(gbl_PscrollPane);
 
-
-	//InsertarJPanel(Lista_vuelos);
+	System.out.println("VOY A INSTERTAR JPANEL");
+	InsertarJPanel(Lista_vuelos);
 	
 	PscrollPane.repaint();
 	scrollPane.repaint();
 
-
-
-
-
+	btnBuscar.addActionListener(new ActionListener() 
+	{
+		public void actionPerformed(ActionEvent arg0) 
+		{
+		try 
+		{
+			double precioMin= Double.parseDouble(textFieldMinPrecio.getText());
+			System.out.println(precioMin);
+			double precioMax= Double.parseDouble(textFieldMaxPrecio.getText());
+			System.out.println(precioMax);
+			Lista_vuelos = controller.AplicarFiltro(comboBoxMinIda.getSelectedItem().toString(), comboBoxMaxIda.getSelectedItem().toString(), precioMin, precioMax, textFieldOrigen.getText(),textFieldDestino.getText(), dChooser_ida.getDate());
+			InsertarJPanel(Lista_vuelos);
+			
+			PscrollPane.repaint();
+			scrollPane.repaint();
+			
+		} catch (NumberFormatException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+	});
+	pIzquierda.add(btnBuscar);
 
 }
  public void InsertarJPanel(List<Vuelo>vuelos)
 		{	int x=0;
 			int y=50;
-			if (contador==0)
+			int tam = vuelos.size();
+			System.out.println("TAM " + tam);
+			
+			for( int i=0; i<tam; i++)
 			{
-				System.out.println("primera vez");
-			}
-			else
-			{
-			for( int i=0; i<vuelos.size(); i++)
-			{
+				System.out.println("aqui est0y");
 				precio=Lista_vuelos.get(i).getPrecio();
-				
-				JPanelVuelo panel=new JPanelVuelo(controller, origen, destino, null, precio);
+				System.out.println(precio);
+				numAsientos=Lista_vuelos.get(i).getNumAsientos();
+				System.out.println(numAsientos);
+				hora=Lista_vuelos.get(i).getHora_salida();
+				System.out.println(hora);
+				JPanelVuelo panel=new JPanelVuelo(origen, destino, precio, numAsientos, hora);
 				panel.setVisible(true);
 				GridBagConstraints gbc_lblFoto = new GridBagConstraints();
 				gbc_lblFoto.ipadx = 1058;
@@ -349,11 +338,10 @@ public class Principal extends JFrame {
 				gbc_lblFoto.gridx = x;
 				gbc_lblFoto.gridy = y;
 				PscrollPane.add(panel, gbc_lblFoto);
-
+	
 				y=y+265;
 			}
-			contador ++;
 
-			}	
+	
 	}
 }
