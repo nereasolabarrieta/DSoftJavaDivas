@@ -351,7 +351,7 @@ public class Principal extends JFrame {
 	
 				y=y+265;
 			}
-
-	
 	}
+ 
+ 
 }

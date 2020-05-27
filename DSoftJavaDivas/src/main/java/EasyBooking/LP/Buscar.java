@@ -56,6 +56,7 @@ public class Buscar extends JFrame {
 	private JComboBox<String> combito;
 	private JComboBox<String> comboBox_1;
 	private List<Vuelo> Lista_vuelos;
+	Date objDate;
 
 	/**
 	 * Create the frame.
@@ -118,7 +119,7 @@ public class Buscar extends JFrame {
 		});
 		pIzquierda.add(combito);
 		datechooser = new JDateChooser(null, null, null, new JSpinnerDateEditor());
-		Date objDate = new Date();
+		objDate = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		sdf.format(objDate);
 		datechooser.setDate(objDate);
@@ -147,29 +148,7 @@ public class Buscar extends JFrame {
 
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String origen=comboBox_1.getSelectedItem().toString();
-				String destino=combito.getSelectedItem().toString();
-				Principal a = null;
-				
-					try {
-						Lista_vuelos = controller.Buscar_vuelos(origen, destino, objDate);
-						
-						if(Lista_vuelos.size()==0)
-						{
-							JOptionPane.showMessageDialog(null,"No existe ningún vuelo en esas fechas. ");
-						}else
-						{
-						a = new Principal(controller, origen,
-								destino, objDate);
-						}
-
-					} catch (RemoteException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					
-					a.setVisible(true);
-
-				}
+				Buscar_vuelos();
 			}
 		});
 		pIzquierda.add(btnBuscar);
@@ -213,5 +192,35 @@ public class Buscar extends JFrame {
 		}
 		Buscar b = new Buscar(c);
 
+	}
+	
+	public void Buscar_vuelos()
+	{
+		String origen=comboBox_1.getSelectedItem().toString();
+		String destino=combito.getSelectedItem().toString();
+		Principal a = null;
+		
+			try {
+				Lista_vuelos = controller.Buscar_vuelos(origen, destino, objDate);
+				
+				if(Lista_vuelos.size()==0)
+				{
+					JOptionPane.showMessageDialog(null,"No existe ningún vuelo en esas fechas. ");
+				}else
+				{
+					
+				a = new Principal(controller, origen,
+						destino, objDate);
+				this.setVisible(false);
+				}
+
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			
+			a.setVisible(true);
+			this.setVisible(false);
+
+		}
 	}
 }

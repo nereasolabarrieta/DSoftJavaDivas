@@ -11,7 +11,7 @@ import ServiciosExternos.Print;
 
 public class Flight_parameters implements Print {
 	
-	 private String airport_departure_name;
+	 	private String airport_departure_name;
 	    private String airport_arrival_name;
 	    private int free_seats;
 	    private double price;

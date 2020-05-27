@@ -67,9 +67,9 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
         JSONArray flightsArray = (JSONArray) myParser.parse( json_string );
 
         // Lambda expression to print array
-        flightsArray.stream().forEach(
-                element -> System.out.println(element)
-        );
+//        flightsArray.stream().forEach(
+//                element -> System.out.println(element)
+//        );
 
         // Lambda expression to map JSONObjects inside JSONArray to flight objects
         myFlightArray = (List) flightsArray.stream()
@@ -141,8 +141,8 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
 		String strDate = dateFormat.format(fecha);
 		
-		System.out.println("ENTRO EN BUSCAR VUELOS");
-		filtro= new Flight_parameters(origen,destino);
+		System.out.println("LA FECHA QUE envio ES"+strDate);
+		filtro= new Flight_parameters(origen,destino,strDate);
 		List<VuelosJSON> lista_json=search_flights_conParametros(filtro);
 		
 		ArrayList<Vuelo> lista_vuelos= convertir(lista_json);
@@ -163,6 +163,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 				element-> {
 					Aeropuerto origen= new Aeropuerto(element.getAirportArrivalCode(),element.getAirportArrivalCity());
 					Aeropuerto destino= new Aeropuerto(element.getAirportDepartureCode(),element.getAirportDepartureCity());
+					System.out.println("EN ESTE FORMATO" +element.getDepartureDate());
 					Vuelo v=new Vuelo(element.getCode(), origen, destino,element.getDepartureDate(true),element.getPrice(), element.getFreeSeats());
 					Lista_vuelos.add(v);
 				});
@@ -188,12 +189,11 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 	@Override
 	public HashSet<Aeropuerto> getAeropuertos() 
 	{
-		System.out.println("ENTRO A AEROPUERTOS");
+
 		filtro= new Flight_parameters();
 		HashSet<Aeropuerto> Lista_aero=new HashSet<Aeropuerto>();
 		List<VuelosJSON> lista_json=search_flights();
 		List <Vuelo> vuelos = convertir(lista_json);
-		System.out.println("DONDE FALLO");
 		vuelos.stream().forEach(element->
 		{
 			Lista_aero.add(element.getOrigen());
