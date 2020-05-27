@@ -307,7 +307,7 @@ public class Principal extends JFrame {
 			InsertarJPanel(Lista_vuelos);
 			System.out.println("LORTU DET:" + Lista_vuelos.size());
 			
-			System.out.println(Lista_vuelos.get(2).getOrigen() + " " + Lista_vuelos.get(2).getDestino() );
+			System.out.println("Origen: " + Lista_vuelos.get(2).getOrigen() + " " + Lista_vuelos.get(2).getDestino() );
 			}
 			PscrollPane.repaint();
 			scrollPane.repaint();

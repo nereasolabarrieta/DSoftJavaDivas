@@ -74,14 +74,8 @@ public class GestorVuelos {
 		//Stream<Vuelo>vuelos=Lista_Vuelos.stream();
 		Stream<Vuelo>vuelos_filtrados= Lista_Vuelos.stream().filter(v->(v.getPrecio()>=precioMin) && v.getPrecio()<=precioMax);
 		vuelos_filtrados= Lista_Vuelos.stream().filter(v->(v.getOrigen().equals(origen)));
-		Lista_Vuelos=vuelos_filtrados.collect(Collectors.toList());
-		System.out.println( "PROBAK :METODOTIK IRTETEN: Vuelo kopurua=" + (Lista_Vuelos.size()));
 		vuelos_filtrados= Lista_Vuelos.stream().filter(v->(v.getDestino().equals(destino)));
-		Lista_Vuelos=vuelos_filtrados.collect(Collectors.toList());
-		System.out.println( "METODOTIK IRTETEN: Vuelo kopurua=" + (Lista_Vuelos.size()));
 		vuelos_filtrados= Lista_Vuelos.stream().filter(v->(fecha.after(java.sql.Timestamp.valueOf(v.toString()))&& fecha.equals(java.sql.Timestamp.valueOf(v.toString()))));
-		Lista_Vuelos=vuelos_filtrados.collect(Collectors.toList());
-		System.out.println( "METODOTIK IRTETEN: Vuelo kopurua=" + (Lista_Vuelos.size()));
 		vuelos_filtrados=Lista_Vuelos.stream().filter(v->(v.getHora_salida().getHour()>=hora_min_comparar) && v.getHora_salida().getHour()<=hora_max_comparar);
 		
 		Lista_Vuelos=vuelos_filtrados.collect(Collectors.toList());
