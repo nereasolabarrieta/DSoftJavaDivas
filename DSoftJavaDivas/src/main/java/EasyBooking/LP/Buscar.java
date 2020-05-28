@@ -121,8 +121,12 @@ public class Buscar extends JFrame {
 		datechooser = new JDateChooser(null, null, null, new JSpinnerDateEditor());
 		objDate = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		sdf.format(objDate);
+//		datechooser.setDate(objDate);
 		sdf.format(objDate);
 		datechooser.setDate(objDate);
+		
+
 		datechooser.setBounds(800, 78, 175, 26);
 		pIzquierda.add(datechooser);
 
@@ -196,13 +200,17 @@ public class Buscar extends JFrame {
 	
 	public void Buscar_vuelos()
 	{
-		String origen=comboBox_1.getSelectedItem().toString();
-		String destino=combito.getSelectedItem().toString();
+		objDate=datechooser.getDate();
+		String origen=combito.getSelectedItem().toString();
+	
+		String destino=comboBox_1.getSelectedItem().toString();
+	
 		Principal a = null;
 		
 			try {
 				Lista_vuelos = controller.Buscar_vuelos(origen, destino, objDate);
-				
+				System.out.println("HONEI BEITU:" + objDate);
+				System.out.println(Lista_vuelos.get(1).getHora_salida());
 				if(Lista_vuelos.size()==0)
 				{
 					JOptionPane.showMessageDialog(null,"No existe ningún vuelo en esas fechas. ");

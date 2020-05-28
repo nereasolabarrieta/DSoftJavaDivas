@@ -55,6 +55,9 @@ public class Principal extends JFrame {
 	private JTextField textFieldMaxPrecio;
 	private JTextField textFieldOrigen;
 	private JTextField textFieldDestino;
+	private JComboBox<String> comboBoxMinIda;
+	private JComboBox<String> comboBoxMaxIda;
+	private JDateChooser dChooser_ida;
 	
 	public Principal(Controller controller, String origen, String destino, Date objDate) throws RemoteException {
 		
@@ -198,7 +201,7 @@ public class Principal extends JFrame {
 	lblA.setBounds(25, 355, 69, 20);
 	pIzquierda.add(lblA);
 	
-	JComboBox<String> comboBoxMinIda = new JComboBox<String>();
+	comboBoxMinIda = new JComboBox<String>();
 	comboBoxMinIda.setBounds(72, 316, 116, 26);
 	comboBoxMinIda.addItem("00:00");comboBoxMinIda.addItem("01:00");comboBoxMinIda.addItem("02:00");comboBoxMinIda.addItem("03:00");
 	comboBoxMinIda.addItem("04:00");comboBoxMinIda.addItem("05:00");comboBoxMinIda.addItem("06:00");comboBoxMinIda.addItem("07:00");
@@ -210,7 +213,7 @@ public class Principal extends JFrame {
 	
 	pIzquierda.add(comboBoxMinIda);
 	
-	JComboBox<String> comboBoxMaxIda = new JComboBox<String>();
+	comboBoxMaxIda = new JComboBox<String>();
 	comboBoxMaxIda.setBounds(72, 352, 116, 26);
 	comboBoxMaxIda.addItem("01:00");comboBoxMaxIda.addItem("02:00");comboBoxMaxIda.addItem("03:00");
 	comboBoxMaxIda.addItem("04:00");comboBoxMaxIda.addItem("05:00");comboBoxMaxIda.addItem("06:00");comboBoxMaxIda.addItem("07:00");
@@ -250,7 +253,7 @@ public class Principal extends JFrame {
 	lblLogo.setIcon(icono);
 	pArriba.add(lblLogo);
 		
-	JDateChooser dChooser_ida = new JDateChooser();
+	dChooser_ida = new JDateChooser();
 	dChooser_ida.setBounds(49, 432, 125, 26);
 	pIzquierda.add(dChooser_ida);
 	dChooser_ida.setDate(objDate);
@@ -291,6 +294,14 @@ public class Principal extends JFrame {
 	{
 		public void actionPerformed(ActionEvent arg0) 
 		{
+Buscar();
+		}
+	});
+	pIzquierda.add(btnBuscar);
+
+}
+ public void Buscar()
+ {
 		try 
 		{
 			double precioMin= Double.parseDouble(textFieldMinPrecio.getText());
@@ -320,11 +331,7 @@ public class Principal extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		}
-	});
-	pIzquierda.add(btnBuscar);
-
-}
+ }
  public void InsertarJPanel(List<Vuelo>vuelos)
 		{	int x=0;
 			int y=50;
