@@ -5,6 +5,7 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -79,6 +80,11 @@ public class Vuelo implements Serializable {
 	}
 	public void setPrecio(long precio) {
 		this.precio = precio;
+	}
+
+	public void setHora_salida(LocalDate ldt) {
+		// TODO Auto-generated method stub
+		this.hora_salida = hora_salida;
 	}
 
 	

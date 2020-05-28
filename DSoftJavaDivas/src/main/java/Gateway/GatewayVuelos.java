@@ -10,6 +10,11 @@ import org.json.simple.parser.JSONParser;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -89,6 +94,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
     }
     return myFlightArray;
 	}
+	@SuppressWarnings("unchecked")
 	public List<VuelosJSON> search_flights_conParametros( ) {
 		 path = "/Airlines/Search_Flights";
 		 client = new RestClient<Flight_parameters>(hostname, port);
@@ -163,8 +169,14 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 				element-> {
 					Aeropuerto origen= new Aeropuerto(element.getAirportArrivalCode(),element.getAirportArrivalCity());
 					Aeropuerto destino= new Aeropuerto(element.getAirportDepartureCode(),element.getAirportDepartureCity());
-					System.out.println("EN ESTE FORMATO" +element.getDepartureDate());
+					System.out.println("EN ESTE FORMATOOOOO" +element.getDepartureDate());
 					Vuelo v=new Vuelo(element.getCode(), origen, destino,element.getDepartureDate(true),element.getPrice(), element.getFreeSeats());
+//					LocalDateTime localDateTime = v.getHora_salida();
+//					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//					String formattedDateTime = localDateTime.format(formatter);
+//					LocalDate ldt = LocalDate.parse(formattedDateTime, formatter);
+//					v.setHora_salida(ldt);
+//					System.out.println("tooooooodo esto pa na" + ldt);
 					Lista_vuelos.add(v);
 				});
 		

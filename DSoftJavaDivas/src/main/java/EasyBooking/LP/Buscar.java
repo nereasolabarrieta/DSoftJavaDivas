@@ -121,9 +121,7 @@ public class Buscar extends JFrame {
 		pIzquierda.add(combito);
 		datechooser = new JDateChooser(null, null, null, new JSpinnerDateEditor());
 		objDate = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//		sdf.format(objDate);
-//		datechooser.setDate(objDate);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		sdf.format(objDate);
 		datechooser.setDate(objDate);
 		
@@ -205,17 +203,15 @@ public class Buscar extends JFrame {
 		String origen=combito.getSelectedItem().toString();
 	
 		String destino=comboBox_1.getSelectedItem().toString();
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String fecha = dateFormat.format(objDate);
+		System.out.println("eeeeeeee queueue en buscar ya esta mal" + fecha);
 		
 //		String fecha =(año+"/"+mes+"/"+dia+" 00:00:00");
 		Principal a = null;
 		
 			try {
-
-				System.out.println(objDate);
 				Lista_vuelos = controller.Buscar_vuelos(origen, destino, fecha);
-				System.out.println("HONEI BEITU:" + objDate);
 				
 				if(Lista_vuelos.size()==0)
 				{
