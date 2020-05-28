@@ -136,13 +136,13 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 	}
 	
 	@Override
-	public ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, Date fecha) 
+	public ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, String fecha) 
 	{
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd hh:mm:ss");
-		String strDate = dateFormat.format(fecha);
+//		DateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd hh:mm:ss");
+//		String strDate = dateFormat.format(fecha);
 		
-		System.out.println("LA FECHA QUE envio ES"+strDate);
-		filtro= new Flight_parameters(origen,destino,strDate);
+		System.out.println("LA FECHA QUE envio ES"+fecha);
+		filtro= new Flight_parameters(origen,destino,fecha);
 		List<VuelosJSON> lista_json=search_flights_conParametros();
 		
 		ArrayList<Vuelo> lista_vuelos= convertir(lista_json);

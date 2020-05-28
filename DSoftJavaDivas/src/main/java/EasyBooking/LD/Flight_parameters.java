@@ -29,6 +29,8 @@ public class Flight_parameters implements Print {
 	        this.airport_departure_name = airport_departure_name;
 	        this.airport_arrival_name = airport_arrival_name;
 	        this.departure_date = fecha;
+	        this.free_seats=0;
+	        this.price=100000000;
 	    }
 
 

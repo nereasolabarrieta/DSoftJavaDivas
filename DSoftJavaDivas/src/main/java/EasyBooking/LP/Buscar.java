@@ -21,6 +21,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import javax.swing.JTextField;
@@ -204,13 +205,18 @@ public class Buscar extends JFrame {
 		String origen=combito.getSelectedItem().toString();
 	
 		String destino=comboBox_1.getSelectedItem().toString();
-	
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd");
+		String fecha = dateFormat.format(objDate);
+		
+//		String fecha =(año+"/"+mes+"/"+dia+" 00:00:00");
 		Principal a = null;
 		
 			try {
-				Lista_vuelos = controller.Buscar_vuelos(origen, destino, objDate);
+
+				System.out.println(objDate);
+				Lista_vuelos = controller.Buscar_vuelos(origen, destino, fecha);
 				System.out.println("HONEI BEITU:" + objDate);
-				System.out.println(Lista_vuelos.get(1).getHora_salida());
+				
 				if(Lista_vuelos.size()==0)
 				{
 					JOptionPane.showMessageDialog(null,"No existe ningún vuelo en esas fechas. ");
@@ -218,7 +224,7 @@ public class Buscar extends JFrame {
 				{
 					
 				a = new Principal(controller, origen,
-						destino, objDate);
+						destino, fecha);
 				this.setVisible(false);
 				}
 

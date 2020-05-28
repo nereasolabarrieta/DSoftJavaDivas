@@ -59,7 +59,7 @@ public class Principal extends JFrame {
 	private JComboBox<String> comboBoxMaxIda;
 	private JDateChooser dChooser_ida;
 	
-	public Principal(Controller controller, String origen, String destino, Date objDate) throws RemoteException {
+	public Principal(Controller controller, String origen, String destino, String objDate) throws RemoteException {
 		
 		  this.controller = controller;
 			this.destino = destino;

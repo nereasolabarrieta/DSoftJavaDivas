@@ -45,7 +45,7 @@ public class Controller {
 
 	}
 
-	public ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, Date fecha) throws RemoteException {
+	public ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, String fecha) throws RemoteException {
 		return rsl.getService().Buscar_vuelos(origen, destino, fecha);
 	}
 

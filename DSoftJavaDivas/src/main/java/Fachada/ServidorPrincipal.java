@@ -118,7 +118,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	}
 
 	@Override
-	public  ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, Date fecha) {
+	public  ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, String fecha) {
 		// TODO Auto-generated method stub
 		
 		return GVuelos.Buscar(origen, destino, fecha);
