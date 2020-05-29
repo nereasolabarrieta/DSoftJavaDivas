@@ -124,6 +124,11 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		return GVuelos.Buscar(origen, destino, fecha);
 	}
 
+	public  ArrayList<Vuelo>Aplicar_filtros(String origen, String destino,double precio, int viajeros, String fecha)throws RemoteException
+	{
+		return GVuelos.Aplicar_filtros(origen, destino,precio, viajeros, fecha);
+	}
+	
 	@Override
 	public List<Vuelo> AplicarFiltro(String hora_ida_min, String hora_ida_max, double min_precio, double max_precio, String origen, String destino, Date fecha) {
 		// TODO Auto-generated method stub

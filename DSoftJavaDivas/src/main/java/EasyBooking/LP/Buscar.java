@@ -54,10 +54,10 @@ public class Buscar extends JFrame {
 	private JDateChooser datechooser;
 	private List<Aeropuerto> Lista_Aeropuerto;
 	private Controller controller;
-	private JComboBox<String> combito;
-	private JComboBox<String> comboBox_1;
+	private JComboBox<String> Combo_Origen;
+	private JComboBox<String> Combo_destino;
 	private List<Vuelo> Lista_vuelos;
-	Date objDate;
+	private Date objDate;
 
 	/**
 	 * Create the frame.
@@ -74,7 +74,7 @@ public class Buscar extends JFrame {
 			e.printStackTrace();
 		}
 		// Lista_Aeropuerto=this.controller.getAeropuertos();
-		System.out.println("ULTIMO PASO: " + Lista_Aeropuerto.size());
+	
 		initComponents();
 		this.setVisible(true);
 
@@ -111,14 +111,14 @@ public class Buscar extends JFrame {
 		lblNewLabel.setBounds(365, 81, 76, 20);
 		pIzquierda.add(lblNewLabel);
 
-		combito = new JComboBox<String>();
+		Combo_Origen = new JComboBox<String>();
 		
 
-		combito.setBounds(483, 78, 297, 26);
+		Combo_Origen.setBounds(483, 78, 297, 26);
 		Lista_Aeropuerto.stream().forEach(element -> {
-			combito.addItem(element.getNomAeropuerto());
+			Combo_Origen.addItem(element.getNomAeropuerto());
 		});
-		pIzquierda.add(combito);
+		pIzquierda.add(Combo_Origen);
 		datechooser = new JDateChooser(null, null, null, new JSpinnerDateEditor());
 		objDate = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -135,13 +135,13 @@ public class Buscar extends JFrame {
 		lblNewLabel_1.setBounds(365, 148, 81, 20);
 		pIzquierda.add(lblNewLabel_1);
 
-		comboBox_1 = new JComboBox<String>();
-		comboBox_1.setBounds(483, 145, 297, 26);
+		Combo_destino = new JComboBox<String>();
+		Combo_destino.setBounds(483, 145, 297, 26);
 		Lista_Aeropuerto.stream().forEach(element -> {
-			comboBox_1.addItem(element.getNomAeropuerto());
+			Combo_destino.addItem(element.getNomAeropuerto());
 		});
 
-		pIzquierda.add(comboBox_1);
+		pIzquierda.add(Combo_destino);
 
 		
 		JButton btnBuscar = new JButton("BUSCAR");
@@ -200,14 +200,13 @@ public class Buscar extends JFrame {
 	public void Buscar_vuelos()
 	{
 		objDate=datechooser.getDate();
-		String origen=combito.getSelectedItem().toString();
+		String origen=Combo_Origen.getSelectedItem().toString();
 	
-		String destino=comboBox_1.getSelectedItem().toString();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String destino=Combo_destino.getSelectedItem().toString();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		String fecha = dateFormat.format(objDate);
-		System.out.println("eeeeeeee queueue en buscar ya esta mal" + fecha);
-		
-//		String fecha =(año+"/"+mes+"/"+dia+" 00:00:00");
+		fecha= fecha+" 00:00:00";
+
 		Principal a = null;
 		
 			try {

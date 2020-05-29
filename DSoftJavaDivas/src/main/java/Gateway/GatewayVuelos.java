@@ -82,9 +82,6 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
                 .collect(Collectors.toList()
         );
 
-        System.out.println("\n\n ahora lo que imprime es: ");
-        System.out.println("Number of flights collected:");
-        System.out.println(myFlightArray.size());
 
 
     } catch (Exception e) { 
@@ -128,13 +125,9 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
                .collect(Collectors.toList()
        );
 
-       System.out.println("\n\n ahora lo que imprime es: ");
-       System.out.println("Number of flights collected:");
-       System.out.println(myFlightArray.size());
-
 
    } catch (Exception e) { 
-   	System.out.println(" entro al catch");
+  
    	e.printStackTrace();
    	e.toString(); 
    }
@@ -144,10 +137,8 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 	@Override
 	public ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, String fecha) 
 	{
-//		DateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd hh:mm:ss");
-//		String strDate = dateFormat.format(fecha);
-		
-		System.out.println("LA FECHA QUE envio ES"+fecha);
+
+
 		filtro= new Flight_parameters(origen,destino,fecha);
 		List<VuelosJSON> lista_json=search_flights_conParametros();
 		
@@ -169,7 +160,6 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 				element-> {
 					Aeropuerto origen= new Aeropuerto(element.getAirportArrivalCode(),element.getAirportArrivalCity());
 					Aeropuerto destino= new Aeropuerto(element.getAirportDepartureCode(),element.getAirportDepartureCity());
-					System.out.println("EN ESTE FORMATOOOOO" +element.getDepartureDate());
 					Vuelo v=new Vuelo(element.getCode(), origen, destino,element.getDepartureDate(true),element.getPrice(), element.getFreeSeats());
 //					LocalDateTime localDateTime = v.getHora_salida();
 //					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -190,9 +180,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 
 		filtro= new Flight_parameters();
 		List<VuelosJSON> lista_json=search_flights();
-		System.out.println("HA LLEGADO AL PASO PREVIO A CONVERTIR EN OBJETOS");
 		ArrayList<Vuelo> lista_vuelos= convertir(lista_json);
-		System.out.println("\n\n\n VOY A IMPRIMIR LOS VUELOS\n\n");
 		lista_vuelos.stream().forEach( element->System.out.println(element));
 		return lista_vuelos;
 	}
@@ -214,6 +202,17 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos
 		
 		
 		return Lista_aero;
+	}
+
+	@Override
+	public ArrayList<Vuelo> Aplicar_filtros(String origen, String destino, double precio, int viajeros, String fecha) {
+		
+		filtro= new Flight_parameters(origen,destino,viajeros,precio,fecha);	
+		List<VuelosJSON> lista_json=search_flights();
+		ArrayList<Vuelo> lista_vuelos= convertir(lista_json);
+		lista_vuelos.stream().forEach( element->System.out.println(element));
+		return lista_vuelos;
+		
 	}
 	
 	

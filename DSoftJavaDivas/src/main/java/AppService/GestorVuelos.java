@@ -53,7 +53,11 @@ public class GestorVuelos {
 	public ArrayList<Vuelo> Buscar(String origen, String destino, String fecha)
 	{
 		return gateVuelos.Buscar_vuelos(origen, destino, fecha);
-		
+	}
+	
+	public  ArrayList<Vuelo>Aplicar_filtros(String origen, String destino,double precio, int viajeros, String fecha)
+	{
+		return gateVuelos.Aplicar_filtros( origen,  destino, precio,  viajeros,  fecha);
 	}
 	
 	public List<Vuelo> AplicarFiltro(String hora_ida_min, String hora_ida_max, double min_precio, double max_precio, String origen, String destino, Date fecha)

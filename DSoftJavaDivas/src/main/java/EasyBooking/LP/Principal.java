@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Image;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -23,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import Controller.Controller;
+import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Vuelo;
 
 import com.toedter.calendar.JDateChooser;
@@ -48,16 +51,18 @@ public class Principal extends JFrame {
 	private String destino;
 	private String objDate;
 	private List<Vuelo> Lista_vuelos;
+	private List<Aeropuerto> Lista_Aeropuerto;
 	private long precio;
 	private long numAsientos;
 	private LocalDateTime hora;
-	private JTextField textFieldMinPrecio;
-	private JTextField textFieldMaxPrecio;
-	private JTextField textFieldOrigen;
-	private JTextField textFieldDestino;
+	private JTextField txtPrecio;
 	private JComboBox<String> comboBoxMinIda;
 	private JComboBox<String> comboBoxMaxIda;
 	private JDateChooser dChooser_ida;
+	private JComboBox combo_Origen;
+	private JComboBox combo_destino;
+	private JTextField txtViajeros;
+	private Date fecha_calendar ;
 	
 	public Principal(Controller controller, String origen, String destino, String objDate) throws RemoteException {
 		
@@ -65,7 +70,7 @@ public class Principal extends JFrame {
 			this.destino = destino;
 			this.origen = origen;
 			Lista_vuelos = controller.Buscar_vuelos(origen, destino, objDate);
-			
+			Lista_Aeropuerto = this.controller.getAeropuertos().stream().distinct().collect(Collectors.toList());
 			System.out.println(Lista_vuelos.size());
 		
 			initComponents();
@@ -120,24 +125,12 @@ public class Principal extends JFrame {
 	lblOrigen.setBounds(458, 76, 69, 20);
 	pArriba.add(lblOrigen);
 	
-	JLabel lblAeropuerto_Origen = new JLabel(origen);
-	lblAeropuerto_Origen.setForeground(Color.WHITE);
-	lblAeropuerto_Origen.setFont(new Font("Tahoma", Font.PLAIN, 16));
-	lblAeropuerto_Origen.setBounds(542, 77, 69, 20);
-	pArriba.add(lblAeropuerto_Origen);
-	
 	JLabel lblDestino = new JLabel("Destino: ");
 	lblDestino.setHorizontalAlignment(SwingConstants.RIGHT);
 	lblDestino.setForeground(Color.WHITE);
 	lblDestino.setFont(new Font("Tahoma", Font.BOLD, 17));
 	lblDestino.setBounds(733, 76, 93, 20);
 	pArriba.add(lblDestino);
-	
-	JLabel lblAeropuerto_destino = new JLabel(destino);
-	lblAeropuerto_destino.setForeground(Color.WHITE);
-	lblAeropuerto_destino.setFont(new Font("Tahoma", Font.PLAIN, 16));
-	lblAeropuerto_destino.setBounds(841, 77, 69, 20);
-	pArriba.add(lblAeropuerto_destino);
 	
 	JLabel lblBuscar = new JLabel("");
 	lblBuscar.setBounds(1048, 112, 38, 31);
@@ -147,7 +140,7 @@ public class Principal extends JFrame {
 	pArriba.add(lblBuscar);
 	
 	JPanel pIzquierda= new JPanel();
-	pIzquierda.setBounds(0, 155, 218, 529);
+	pIzquierda.setBounds(0, 155, 218, 546);
 	pIzquierda.setBackground(new Color(0, 0, 128));
 	contentPane.add(pIzquierda);
 	pIzquierda.setLayout(null);
@@ -162,47 +155,37 @@ public class Principal extends JFrame {
 	JLabel lblPrecio = new JLabel("Precio:");
 	lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 17));
 	lblPrecio.setForeground(new Color(255, 255, 255));
-	lblPrecio.setBounds(15, 178, 69, 20);
+	lblPrecio.setBounds(15, 71, 69, 20);
 	pIzquierda.add(lblPrecio);
 	
 	JLabel lblFiltro_ida = new JLabel("Hora de ida:");
 	lblFiltro_ida.setForeground(Color.WHITE);
 	lblFiltro_ida.setFont(new Font("Tahoma", Font.PLAIN, 17));
-	lblFiltro_ida.setBounds(15, 284, 117, 20);
+	lblFiltro_ida.setBounds(10, 183, 117, 20);
 	pIzquierda.add(lblFiltro_ida);
-	
-	JLabel lblMinPrecio = new JLabel("Min");
-	lblMinPrecio.setForeground(Color.WHITE);
-	lblMinPrecio.setBounds(25, 214, 69, 20);
-	pIzquierda.add(lblMinPrecio);
 	
 	JLabel lblMaxPrecio = new JLabel("Max");
 	lblMaxPrecio.setForeground(Color.WHITE);
-	lblMaxPrecio.setBounds(25, 250, 69, 20);
+	lblMaxPrecio.setBounds(25, 115, 69, 20);
 	pIzquierda.add(lblMaxPrecio);
 	
-	textFieldMinPrecio = new JTextField();
-	textFieldMinPrecio.setBounds(72, 214, 117, 26);
-	pIzquierda.add(textFieldMinPrecio);
-	textFieldMinPrecio.setColumns(10);
-	
-	textFieldMaxPrecio = new JTextField();
-	textFieldMaxPrecio.setBounds(72, 250, 116, 26);
-	pIzquierda.add(textFieldMaxPrecio);
-	textFieldMaxPrecio.setColumns(10);
+	txtPrecio = new JTextField();
+	txtPrecio.setBounds(72, 115, 116, 26);
+	pIzquierda.add(txtPrecio);
+	txtPrecio.setColumns(10);
 	
 	JLabel lblDe = new JLabel("De");
 	lblDe.setForeground(Color.WHITE);
-	lblDe.setBounds(25, 319, 69, 20);
+	lblDe.setBounds(15, 235, 69, 20);
 	pIzquierda.add(lblDe);
 	
 	JLabel lblA = new JLabel("A");
 	lblA.setForeground(Color.WHITE);
-	lblA.setBounds(25, 355, 69, 20);
+	lblA.setBounds(15, 267, 69, 20);
 	pIzquierda.add(lblA);
 	
 	comboBoxMinIda = new JComboBox<String>();
-	comboBoxMinIda.setBounds(72, 316, 116, 26);
+	comboBoxMinIda.setBounds(72, 232, 116, 26);
 	comboBoxMinIda.addItem("00:00");comboBoxMinIda.addItem("01:00");comboBoxMinIda.addItem("02:00");comboBoxMinIda.addItem("03:00");
 	comboBoxMinIda.addItem("04:00");comboBoxMinIda.addItem("05:00");comboBoxMinIda.addItem("06:00");comboBoxMinIda.addItem("07:00");
 	comboBoxMinIda.addItem("08:00");comboBoxMinIda.addItem("09:00");comboBoxMinIda.addItem("10:00");comboBoxMinIda.addItem("11:00");
@@ -214,7 +197,7 @@ public class Principal extends JFrame {
 	pIzquierda.add(comboBoxMinIda);
 	
 	comboBoxMaxIda = new JComboBox<String>();
-	comboBoxMaxIda.setBounds(72, 352, 116, 26);
+	comboBoxMaxIda.setBounds(72, 266, 116, 26);
 	comboBoxMaxIda.addItem("01:00");comboBoxMaxIda.addItem("02:00");comboBoxMaxIda.addItem("03:00");
 	comboBoxMaxIda.addItem("04:00");comboBoxMaxIda.addItem("05:00");comboBoxMaxIda.addItem("06:00");comboBoxMaxIda.addItem("07:00");
 	comboBoxMaxIda.addItem("08:00");comboBoxMaxIda.addItem("09:00");comboBoxMaxIda.addItem("10:00");comboBoxMaxIda.addItem("11:00");
@@ -223,27 +206,6 @@ public class Principal extends JFrame {
 	comboBoxMaxIda.addItem("20:00");comboBoxMaxIda.addItem("21:00");comboBoxMaxIda.addItem("22:00");comboBoxMaxIda.addItem("23:00");
 	comboBoxMaxIda.addItem("23:59");
 	pIzquierda.add(comboBoxMaxIda);
-	
-	JLabel lblOrigen_1 = new JLabel("Origen");
-	lblOrigen_1.setForeground(Color.WHITE);
-	lblOrigen_1.setBackground(Color.WHITE);
-	lblOrigen_1.setBounds(15, 83, 69, 20);
-	pIzquierda.add(lblOrigen_1);
-	
-	textFieldOrigen = new JTextField();
-	textFieldOrigen.setBounds(73, 80, 116, 26);
-	pIzquierda.add(textFieldOrigen);
-	textFieldOrigen.setColumns(10);
-	
-	JLabel lblDestino_1 = new JLabel("Destino");
-	lblDestino_1.setForeground(Color.WHITE);
-	lblDestino_1.setBounds(15, 137, 69, 20);
-	pIzquierda.add(lblDestino_1);
-	
-	textFieldDestino = new JTextField();
-	textFieldDestino.setBounds(72, 134, 117, 26);
-	pIzquierda.add(textFieldDestino);
-	textFieldDestino.setColumns(10);
 	JLabel lblLogo = new JLabel();
 	
 
@@ -252,19 +214,45 @@ public class Principal extends JFrame {
 	Icon icono = new ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
 	lblLogo.setIcon(icono);
 	pArriba.add(lblLogo);
+	
+
+	combo_Origen = new JComboBox<String>();
+	combo_Origen.setBackground(new Color(255, 255, 255));
+	combo_Origen.setBounds(527, 76, 142, 20);
+	pArriba.add(combo_Origen);
+
+	combo_destino = new JComboBox<String>();
+	combo_destino.setBounds(836, 76, 142, 20);
+	pArriba.add(combo_destino);
+
+	for(int i=0; i<Lista_Aeropuerto.size();i++)
+	{
+		combo_Origen.addItem(Lista_Aeropuerto.get(i).getNomAeropuerto());
+		if(Lista_Aeropuerto.get(i).getNomAeropuerto().equals(origen))
+		{
+			combo_Origen.setSelectedIndex(i);
+		}
+		combo_destino.addItem(Lista_Aeropuerto.get(i).getNomAeropuerto());
+		if(Lista_Aeropuerto.get(i).getNomAeropuerto().equals(destino))
+		{
+			combo_destino.setSelectedIndex(i);
+		}
+	}
+	
 		
 	dChooser_ida = new JDateChooser();
-	dChooser_ida.setBounds(49, 432, 125, 26);
+	dChooser_ida.setBounds(72, 335, 125, 26);
 	pIzquierda.add(dChooser_ida);
 	dChooser_ida.setDate(objDate);
+	
 		
 	JLabel lblFecha = new JLabel("Fecha");
 	lblFecha.setForeground(Color.WHITE);
-	lblFecha.setBounds(15, 401, 69, 20);
+	lblFecha.setBounds(15, 335, 69, 20);
 	pIzquierda.add(lblFecha);
 		
 	JButton btnBuscar = new JButton("BUSCAR");
-	btnBuscar.setBounds(25, 474, 139, 29);
+	btnBuscar.setBounds(35, 455, 139, 50);
 	btnBuscar.setBackground(new Color(255, 255, 255));
 		
 		
@@ -285,7 +273,7 @@ public class Principal extends JFrame {
 	PscrollPane.setLayout(gbl_PscrollPane);
 
 	System.out.println("VOY A INSTERTAR JPANEL");
-	InsertarJPanel(Lista_vuelos);
+	InsertarJPanel();
 	
 	PscrollPane.repaint();
 	scrollPane.repaint();
@@ -294,48 +282,111 @@ public class Principal extends JFrame {
 	{
 		public void actionPerformed(ActionEvent arg0) 
 		{
-Buscar();
+			Buscar();
 		}
 	});
 	pIzquierda.add(btnBuscar);
+	
+	JLabel lblViajeros = new JLabel("Viajeros");
+	lblViajeros.setForeground(new Color(255, 255, 255));
+	lblViajeros.setBounds(10, 398, 46, 14);
+	pIzquierda.add(lblViajeros);
+	
+	txtViajeros = new JTextField("1");
+	txtViajeros.setBounds(74, 395, 38, 20);
+	pIzquierda.add(txtViajeros);
+	txtViajeros.setColumns(10);
 
 }
+// public void Buscar()
+// {
+//		try 
+//		{
+//			double precioMin= Double.parseDouble(textFieldMinPrecio.getText());
+//			System.out.println(precioMin);
+//			double precioMax= Double.parseDouble(textFieldMaxPrecio.getText());
+//			System.out.println(precioMax);
+//			Lista_vuelos = controller.AplicarFiltro(comboBoxMinIda.getSelectedItem().toString(), comboBoxMaxIda.getSelectedItem().toString(), precioMin, precioMax, textFieldOrigen.getText(),textFieldDestino.getText(), dChooser_ida.getDate());
+//			System.out.println("HONEA NO LLEGO");
+//			if(Lista_vuelos.size()==0)
+//			{
+//				JOptionPane.showMessageDialog(null,"No existe ningún vuelo en esas fechas. ");
+//			}else
+//			{
+//			InsertarJPanel(Lista_vuelos);
+//			System.out.println("LORTU DET:" + Lista_vuelos.size());
+//			
+//			System.out.println("Origen: " + Lista_vuelos.get(2).getOrigen() + " " + Lista_vuelos.get(2).getDestino() );
+//			}
+//			PscrollPane.repaint();
+//			scrollPane.repaint();
+//			
+//		} catch (NumberFormatException e) 
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (RemoteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+// }
+ 
  public void Buscar()
  {
-		try 
-		{
-			double precioMin= Double.parseDouble(textFieldMinPrecio.getText());
-			System.out.println(precioMin);
-			double precioMax= Double.parseDouble(textFieldMaxPrecio.getText());
-			System.out.println(precioMax);
-			Lista_vuelos = controller.AplicarFiltro(comboBoxMinIda.getSelectedItem().toString(), comboBoxMaxIda.getSelectedItem().toString(), precioMin, precioMax, textFieldOrigen.getText(),textFieldDestino.getText(), dChooser_ida.getDate());
-			System.out.println("HONEA NO LLEGO");
-			if(Lista_vuelos.size()==0)
-			{
-				JOptionPane.showMessageDialog(null,"No existe ningún vuelo en esas fechas. ");
-			}else
-			{
-			InsertarJPanel(Lista_vuelos);
-			System.out.println("LORTU DET:" + Lista_vuelos.size());
-			
-			System.out.println("Origen: " + Lista_vuelos.get(2).getOrigen() + " " + Lista_vuelos.get(2).getDestino() );
-			}
-			PscrollPane.repaint();
-			scrollPane.repaint();
-			
-		} catch (NumberFormatException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	 Double precio=0.0;
+	
+	 String newOrigen= combo_Origen.getSelectedItem().toString();
+	 String newDestino= combo_destino.getSelectedItem().toString();
+	 int viajeros=1;
+	 
+	 try{
+		 viajeros=Integer.parseInt(txtViajeros.getText()) ;
+	 }catch(Exception e)
+	 {
+		 JOptionPane.showMessageDialog(null,"Introduce el numero de viajeros que desee:");
+		 txtViajeros.setText("1");
+		 return;
+	 }
+	 if (txtPrecio.getText()==null) precio=10000000.00;
+	 else
+	 {
+		 try{
+			 precio= Double.parseDouble(txtPrecio.getText()) ;
+		 }catch(Exception e)
+		 {
+			 JOptionPane.showMessageDialog(null,"Introduce el precio maximo que este dipuesto a pagar:");
+			 txtPrecio.setText("");
+			 return;
+		 }
+	 }
+	 
+	 fecha_calendar=dChooser_ida.getDate();
+	 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	 String fecha = dateFormat.format(fecha_calendar);
+	 fecha= fecha+" 00:00:00";
+	 
+	 try {
+		 System.out.println(newOrigen);
+		 Lista_vuelos=controller.Aplicar_filtros(newOrigen, newDestino, precio, viajeros, fecha);
+		 
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		repaint();
+		InsertarJPanel();
+		
+	
+	
+	  
+ 
  }
- public void InsertarJPanel(List<Vuelo>vuelos)
-		{	int x=0;
+ 
+ public void InsertarJPanel()
+		{	
+	 		int x=0;
 			int y=50;
-			int tam = vuelos.size();
+			int tam = Lista_vuelos.size();
 			System.out.println("TAM " + tam);
 			
 			for( int i=0; i<tam; i++)
@@ -358,7 +409,6 @@ Buscar();
 	
 				y=y+265;
 			}
+			repaint();
 	}
- 
- 
 }
