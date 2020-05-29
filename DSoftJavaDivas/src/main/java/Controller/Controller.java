@@ -39,8 +39,8 @@ public class Controller {
 		rsl.getService().newReserva(Aeropuerto_Salida, Aeropuerto_llegada);
 	}
 
-	public void Pagar(double precio, String cod_vuelo) throws RemoteException {
-		rsl.getService().Pagar(precio, cod_vuelo);
+	public void Pagar(double precio, String email, String concepto) throws RemoteException {
+		rsl.getService().Pagar(precio, email, concepto);
 
 	}
 

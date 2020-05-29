@@ -63,13 +63,16 @@ public class Principal extends JFrame {
 	private JComboBox combo_destino;
 	private JTextField txtViajeros;
 	private Date fecha_calendar;
+	private String emailP;
 
-	public Principal(Controller controller, String origen, String destino, String objDate) throws RemoteException {
+	public Principal(Controller controller, String origen, String destino, String objDate, String email) throws RemoteException {
 
 		this.controller = controller;
 		this.destino = destino;
 		this.origen = origen;
 		this.objDate = objDate;
+		emailP=email;
+		
 		Lista_vuelos = controller.Buscar_vuelos(origen, destino, objDate);
 		Lista_Aeropuerto = this.controller.getAeropuertos().stream().distinct().collect(Collectors.toList());
 		System.out.println(Lista_vuelos.size());
@@ -376,7 +379,7 @@ public class Principal extends JFrame {
 			System.out.println(numAsientos);
 			hora = Lista_vuelos.get(i).getHora_salida();
 			System.out.println(hora);
-			JPanelVuelo panel = new JPanelVuelo(controller, origen, destino, precio, numAsientos, hora);
+			JPanelVuelo panel = new JPanelVuelo(controller, origen, destino, precio, numAsientos, hora, emailP);
 			panel.setVisible(true);
 			GridBagConstraints gbc_lblFoto = new GridBagConstraints();
 			gbc_lblFoto.ipadx = 1058;

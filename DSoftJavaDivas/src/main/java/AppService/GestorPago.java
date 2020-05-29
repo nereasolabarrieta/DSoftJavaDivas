@@ -18,7 +18,8 @@ public class GestorPago {
 		return INSTANCE;
 	}
 
-	public void Pagar(double precio, String cod_vuelo) {
-
+	public void Pagar(double precio, String email, String concepto) 
+	{
+		gateway.Pagar(email, precio, concepto);
 	}
 }

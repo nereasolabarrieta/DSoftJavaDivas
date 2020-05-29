@@ -58,15 +58,18 @@ public class Buscar extends JFrame {
 	private JComboBox<String> Combo_destino;
 	private List<Vuelo> Lista_vuelos;
 	private Date objDate;
+	private static String email_buscar;
 
 	/**
 	 * Create the frame.
 	 * 
 	 * @param controller
+	 * @param email 
 	 */
-	public Buscar(Controller controller) {
+	public Buscar(Controller controller, String email) {
 
 		this.controller = controller;
+		email_buscar=email;
 		try {
 			Lista_Aeropuerto = this.controller.getAeropuertos().stream().distinct().collect(Collectors.toList());
 		} catch (RemoteException e) {
@@ -193,7 +196,7 @@ public class Buscar extends JFrame {
 			
 			e.printStackTrace();
 		}
-		Buscar b = new Buscar(c);
+		Buscar b = new Buscar(c, email_buscar);
 
 	}
 	
@@ -219,7 +222,7 @@ public class Buscar extends JFrame {
 				{
 					
 				a = new Principal(controller, origen,
-						destino, fecha);
+						destino, fecha, email_buscar);
 				this.setVisible(false);
 				}
 

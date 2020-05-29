@@ -105,9 +105,9 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	}
 
 	@Override
-	public void Pagar(double precio, String cod_vuelo) throws RemoteException {
+	public void Pagar(double precio, String email, String concepto) throws RemoteException {
 		// TODO Auto-generated method stub
-		GPago.Pagar(precio, cod_vuelo);
+		GPago.Pagar(precio, email, concepto);
 	}
 
 	@Override

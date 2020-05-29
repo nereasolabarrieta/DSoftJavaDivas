@@ -21,6 +21,7 @@ import java.awt.List;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.awt.Color;
 
 import javax.swing.ButtonGroup;
@@ -45,23 +46,29 @@ public class Pago extends JFrame {
 	private JTextField txtA;
 	private JTextField txtDebeCoincidirCon;
 	private JTextField txtCvv;
+	private Choice choiceCaducidadAnyo;
+	private Choice choiceCaducidad;
 	private Controller controller;
 	private String origen;
 	private String destino;
+	private String email;
 	private long precio;
 	private String Date;
+	private JTextField textFieldConcepto;
+	
 
 	/**
 	 * Create the frame.
 	 * 
 	 * @param controller
 	 */
-	public Pago(Controller controller, String origen, String destino, long precio, String Date) {
+	public Pago(Controller controller, String origen, String destino, long precio, String Date, String email) {
 		this.controller = controller;
 		this.destino=destino;
 		this.origen=origen;
 		this.precio=precio;
 		this.Date=Date;
+		this.email=email;
 		
 		initComponents();
 		this.setVisible(true);
@@ -157,12 +164,16 @@ public class Pago extends JFrame {
 
 		ButtonGroup bttnPago = new ButtonGroup();
 
-		JRadioButton rdbtnTarjetaCredito = new JRadioButton("Tarjeta de credito o debito");
-		rdbtnTarjetaCredito.setBackground(new Color(255, 255, 255));
-		rdbtnTarjetaCredito.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		rdbtnTarjetaCredito.setBounds(79, 219, 263, 29);
-		contentPane.add(rdbtnTarjetaCredito);
-
+//		JRadioButton rdbtnTarjetaCredito = new JRadioButton("Tarjeta de credito o debito");
+//		rdbtnTarjetaCredito.setBackground(new Color(255, 255, 255));
+//		rdbtnTarjetaCredito.setFont(new Font("Tahoma", Font.PLAIN, 19));
+//		rdbtnTarjetaCredito.setBounds(79, 219, 263, 29);
+//		contentPane.add(rdbtnTarjetaCredito);
+		JLabel lblTarjetaCredito = new JLabel("Tarjeta de credito o debito");
+		lblTarjetaCredito.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		lblTarjetaCredito.setBounds(79, 219, 263, 29);
+		contentPane.add(lblTarjetaCredito);
+		
 		JLabel lblNmeroDeTarjeta = new JLabel("Numero de tarjeta");
 		lblNmeroDeTarjeta.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNmeroDeTarjeta.setBounds(136, 267, 206, 20);
@@ -202,25 +213,15 @@ public class Pago extends JFrame {
 		contentPane.add(txtCvv);
 		txtCvv.setColumns(10);
 
-		JRadioButton rdbtnPaypal = new JRadioButton("Paypal");
-		rdbtnPaypal.setBackground(new Color(255, 255, 255));
-		rdbtnPaypal.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		rdbtnPaypal.setBounds(79, 502, 92, 29);
-		contentPane.add(rdbtnPaypal);
-
-		bttnPago.add(rdbtnPaypal);
-		bttnPago.add(rdbtnTarjetaCredito);
-
-		JButton btnPagar = new JButton("Pagar");
-		btnPagar.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnPagar.setIcon(null);
-		btnPagar.setSelectedIcon(null);
-		btnPagar.setBackground(new Color(0, 0, 128));
-		btnPagar.setForeground(Color.WHITE);
-		btnPagar.setBounds(581, 604, 115, 29);
-		contentPane.add(btnPagar);
-
-		Choice choiceCaducidad = new Choice();
+//		JRadioButton rdbtnPaypal = new JRadioButton("Paypal");
+//		rdbtnPaypal.setBackground(new Color(255, 255, 255));
+//		rdbtnPaypal.setFont(new Font("Tahoma", Font.PLAIN, 19));
+//		rdbtnPaypal.setBounds(79, 502, 92, 29);
+//		contentPane.add(rdbtnPaypal);
+//
+//		bttnPago.add(rdbtnPaypal);
+//		bttnPago.add(rdbtnTarjetaCredito);
+		choiceCaducidad = new Choice();
 		choiceCaducidad.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		choiceCaducidad.setBounds(136, 459, 64, 25);
 		choiceCaducidad.add("1");
@@ -248,7 +249,7 @@ public class Pago extends JFrame {
 //		lblFotoPaypal.setBounds(171, 502, 98, 35);
 //		contentPane.add(lblFotoPaypal);
 
-		Choice choiceCaducidadAnyo = new Choice();
+		choiceCaducidadAnyo = new Choice();
 		choiceCaducidadAnyo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		choiceCaducidadAnyo.setBounds(217, 459, 82, 26);
 		choiceCaducidadAnyo.add("2020");
@@ -278,11 +279,52 @@ public class Pago extends JFrame {
 		lblTodaTuInformacion.setBounds(601, 203, 387, 64);
 		contentPane.add(lblTodaTuInformacion);
 		lblTodaTuInformacion.setForeground(Color.BLACK);
+		
 
 //		JLabel lblCandado = new JLabel();
 //		lblCandado.setIcon(new ImageIcon(Principal.class.getResource("/EasyBooking/Img/candado.png")));
 //		lblCandado.setBounds(881, 219, 37, 35);
 //		contentPane.add(lblCandado);
 
+		JButton btnPagar = new JButton("Pagar");
+		btnPagar.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnPagar.setIcon(null);
+		btnPagar.setSelectedIcon(null);
+		btnPagar.setBackground(new Color(0, 0, 128));
+		btnPagar.setForeground(Color.WHITE);
+		btnPagar.setBounds(581, 604, 115, 29);
+		btnPagar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				String numTarjeta = txtA.getText();
+				String nomTitular = txtDebeCoincidirCon.getText();
+				String caducidad = choiceCaducidad.getItem(0);
+				String caducidadAnyo = choiceCaducidadAnyo.getItem(0);
+				String concepto = textFieldConcepto.getText();
+
+				if (numTarjeta != null || nomTitular != null || caducidad != null || caducidadAnyo != null|| concepto != null) {
+					try {
+						controller.Pagar(precio, email, concepto);
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					Buscar a = new Buscar(controller, email);
+					a.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+				}
+			}
+		});
+		contentPane.add(btnPagar);
+		
+		JLabel lblConcepto = new JLabel("Concepto");
+		lblConcepto.setBounds(601, 267, 69, 20);
+		contentPane.add(lblConcepto);
+		
+		textFieldConcepto = new JTextField();
+		textFieldConcepto.setBounds(601, 303, 341, 104);
+		textFieldConcepto.add(textFieldConcepto);
+		textFieldConcepto.setColumns(10);
 	}
 }

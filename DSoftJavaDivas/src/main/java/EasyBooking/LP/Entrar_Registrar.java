@@ -153,7 +153,7 @@ public class Entrar_Registrar extends JFrame {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					Buscar a = new Buscar(controller);
+					Buscar a = new Buscar(controller, email);
 					a.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, "Rellene todos los campos");
@@ -187,7 +187,7 @@ public class Entrar_Registrar extends JFrame {
 						System.out.println(boolControl);
 						if (boolControl == true) {
 
-							Buscar a = new Buscar(controller);
+							Buscar a = new Buscar(controller, email);
 							a.setVisible(true);
 							setVisible(false);
 						} else {

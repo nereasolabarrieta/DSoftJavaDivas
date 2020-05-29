@@ -8,7 +8,7 @@ public class Pago_Usuario implements Print {
 	private String email;
 	private double cantidad_total;
 	private String concepto;
-	private double currency;
+	private double currency=1000000;
 
 	public Pago_Usuario(String nomUsuario, String ape, String email, double cantidad_total, String concepto,
 			double currency) {
@@ -30,7 +30,7 @@ public class Pago_Usuario implements Print {
 		this.nomUsuario = nomUsuario;
 		this.ape = ape;
 		this.email = email;
-		this.currency = currency;
+		this.currency = currency-cantidad_total;
 	}
 
 	public Pago_Usuario(String email, double currency) {

@@ -13,7 +13,6 @@ public class GatewayPago extends Gateway implements itfGatewayPago {
 	private String path = "/";
 	private RestClient<Pago_Usuario> client;
 	private static final GatewayPago INSTANCE = new GatewayPago();
-
 	private GatewayPago() {
 	}
 

@@ -39,16 +39,18 @@ public class JPanelVuelo extends JPanel {
 	private long precio;
 	private LocalDateTime hora;
 	private long asientos;
+	private String emailJP;
 	/**
 	 * Create the panel.
 	 */
-	public JPanelVuelo(Controller controller, String origen, String destino, long precio, long asientos, LocalDateTime hora) {
+	public JPanelVuelo(Controller controller, String origen, String destino, long precio, long asientos, LocalDateTime hora, String email) {
 		this.controller=controller;
 		this.destino=destino;
 		this.origen=origen;
 		this.precio=precio;
 		this.hora=hora;
 		this.asientos=asientos;
+		emailJP= email;
 		InsertarJPanelVuelo();
 		
 
@@ -125,7 +127,7 @@ public class JPanelVuelo extends JPanel {
 
 		btnVerVuelos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Pago a = new Pago(controller, origen, destino, precio, formattedDateTime);
+				Pago a = new Pago(controller, origen, destino, precio, formattedDateTime, emailJP);
 				a.setVisible(true);
 			}
 		});
