@@ -55,6 +55,7 @@ public class Pago extends JFrame {
 	private long precio;
 	private String Date;
 	private JTextField textFieldConcepto;
+	private JTextField textField;
 	
 
 	/**
@@ -280,6 +281,15 @@ public class Pago extends JFrame {
 		contentPane.add(lblTodaTuInformacion);
 		lblTodaTuInformacion.setForeground(Color.BLACK);
 		
+		
+		JLabel lblConcepto = new JLabel("Concepto");
+		lblConcepto.setBounds(601, 267, 69, 20);
+		contentPane.add(lblConcepto);
+		
+		textFieldConcepto = new JTextField();
+		textFieldConcepto.setBounds(601, 303, 341, 104);
+		textFieldConcepto.setColumns(10);
+		
 
 //		JLabel lblCandado = new JLabel();
 //		lblCandado.setIcon(new ImageIcon(Principal.class.getResource("/EasyBooking/Img/candado.png")));
@@ -297,34 +307,37 @@ public class Pago extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				String numTarjeta = txtA.getText();
+				System.out.println("NUMTARJETA:" + numTarjeta);
 				String nomTitular = txtDebeCoincidirCon.getText();
-				String caducidad = choiceCaducidad.getItem(0);
-				String caducidadAnyo = choiceCaducidadAnyo.getItem(0);
-				String concepto = textFieldConcepto.getText();
+				System.out.println("NOMTITULAR:" + nomTitular);
+				String concepto = textField.getText();
+				String codigoS= txtCvv.getText();
+				System.out.println(precio);
+				System.out.println(concepto);
 
-				if (numTarjeta != null || nomTitular != null || caducidad != null || caducidadAnyo != null|| concepto != null) {
+				if (numTarjeta == null || nomTitular == null || concepto == null || codigoS==null) {
+					JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+				} else {
+					
 					try {
+						System.out.println("jejejejpuedo");
 						controller.Pagar(precio, email, concepto);
+						System.out.println(" que he pagado");
+
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					Buscar a = new Buscar(controller, email);
 					a.setVisible(true);
-				} else {
-					JOptionPane.showMessageDialog(null, "Rellene todos los campos");
 				}
 			}
 		});
 		contentPane.add(btnPagar);
 		
-		JLabel lblConcepto = new JLabel("Concepto");
-		lblConcepto.setBounds(601, 267, 69, 20);
-		contentPane.add(lblConcepto);
-		
-		textFieldConcepto = new JTextField();
-		textFieldConcepto.setBounds(601, 303, 341, 104);
-		textFieldConcepto.add(textFieldConcepto);
-		textFieldConcepto.setColumns(10);
+		textField = new JTextField();
+		textField.setBounds(601, 303, 341, 26);
+		contentPane.add(textField);
+		textField.setColumns(10);
 	}
 }

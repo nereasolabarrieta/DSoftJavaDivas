@@ -4,6 +4,7 @@ import javax.ws.rs.core.Response;
 
 import AppService.GestorPago;
 import EasyBooking.LD.Pago_Usuario;
+import EasyBooking.LD.User_A;
 import EasyBooking.LD.Usuario;
 import ServiciosExternos.RestClient;
 
@@ -23,12 +24,17 @@ public class GatewayPago extends Gateway implements itfGatewayPago {
 	@Override
 	public void Pagar(String email, double cantidad_total, String concepto) {
 		// TODO Auto-generated method stub
+		String emailPago=email;
+		double cantPago=cantidad_total;
+		String conceptoPago = concepto;
+		System.out.println(email + cantPago + conceptoPago);
 		path = "/Payments/Make_payment";
 		client = new RestClient<Pago_Usuario>(hostname, port);
-
+		//Pago_Usuario pu ;
 		try {
 			client.simplePrint(client.makePostRequest(client.createInvocationBuilder(path),
-					new Pago_Usuario(email, cantidad_total, concepto)));
+					new Pago_Usuario(emailPago, cantPago, conceptoPago)));
+			updateCurrency(emailPago,100000);
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.toString();
@@ -49,6 +55,30 @@ public class GatewayPago extends Gateway implements itfGatewayPago {
 			e.printStackTrace();
 			e.toString();
 		}
+
+	}
+	
+	public void RegistrarUsuarioPago(String nom, String ape, String email, double currency)
+	{
+		String nomusu= nom;
+		String apeusu=ape;
+		String emailusu=email;
+		double currencyusu=currency;
+		
+		System.out.println(nomusu + apeusu + emailusu+ currencyusu);
+		
+		  path = "/Payments/Create_user";
+		  client = new RestClient<Pago_Usuario>(hostname, port);
+	        try {
+	            client.simplePrint(
+	                    client.makePostRequest(
+	                            client.createInvocationBuilder(path) , new Pago_Usuario(nom, ape, email, currency)
+	                    )
+	            );
+	        }
+	        catch (Exception e) { e.printStackTrace(); e.toString(); }
+
+	        System.out.println("Now that we have a user with currency we can perform a payment with success");
 
 	}
 

@@ -30,7 +30,6 @@ public class RestClient<T extends Print> {
 		WebTarget requestController = this.webTarget.path(resource_URL);
 		Invocation.Builder invocationBuilder = requestController.request(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON);
-
 		System.out.println("Java Client preparing Jersey request call to " + String.format("http://%s:%s%s",
 				webTarget.getUri().getHost(), webTarget.getUri().getPort(), webTarget.getUri().getRawPath()));
 

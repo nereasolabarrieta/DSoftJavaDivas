@@ -22,4 +22,10 @@ public class GestorPago {
 	{
 		gateway.Pagar(email, precio, concepto);
 	}
+
+	public void RegistrarUsuarioPago(String nom, String ape, String email, double currency) 
+	{
+		// TODO Auto-generated method stub
+		gateway.RegistrarUsuarioPago(nom, ape, email, currency);
+	}
 }

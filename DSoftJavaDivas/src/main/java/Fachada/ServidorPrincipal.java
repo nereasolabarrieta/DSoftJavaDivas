@@ -155,6 +155,13 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		System.out.println("LLEGA BIEN A LA FACHADA");
 	}
 
+	@Override
+	public void RegistrarUsuarioPago(String nom, String ape, String email, double currency) {
+		
+		GPago.RegistrarUsuarioPago(nom, ape, email, currency);
+		
+	}
+
 	// @Override
 	// public List<VueloDTO> getVuelos() throws RemoteException {
 	// List<Vuelo> vuelo = GVuelos.getVuelos();

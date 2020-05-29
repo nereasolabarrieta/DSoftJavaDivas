@@ -91,7 +91,7 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 			e.printStackTrace();
 			e.toString();
 		}
-
+		System.out.println(password);
 		long pw = password.getContentNumber();
 		path = "/Authentication/Change_password";
 		client = new RestClient<User_A>(hostname, port);
