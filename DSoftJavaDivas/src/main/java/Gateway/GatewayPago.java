@@ -34,7 +34,6 @@ public class GatewayPago extends Gateway implements itfGatewayPago {
 		try {
 			client.simplePrint(client.makePostRequest(client.createInvocationBuilder(path),
 					new Pago_Usuario(emailPago, cantPago, conceptoPago)));
-			updateCurrency(emailPago,100000);
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.toString();
@@ -72,7 +71,7 @@ public class GatewayPago extends Gateway implements itfGatewayPago {
 	        try {
 	            client.simplePrint(
 	                    client.makePostRequest(
-	                            client.createInvocationBuilder(path) , new Pago_Usuario(nom, ape, email, currency)
+	                            client.createInvocationBuilder(path) , new Pago_Usuario(nomusu, apeusu, emailusu, currencyusu)
 	                    )
 	            );
 	        }
