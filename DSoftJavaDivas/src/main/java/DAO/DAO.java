@@ -15,120 +15,104 @@ import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Reserva;
 import Gateway.GatewayAutenticacion;
 
-public class DAO implements itfDAO
-{
+public class DAO implements itfDAO {
 	private static PersistenceManager persistentManager;
 	private static Transaction transaction;
-	private static 	PersistenceManagerFactory persistentManagerFactory;
+	private static PersistenceManagerFactory persistentManagerFactory;
 	private static GestorVuelos gv;
 	private static final DAO INSTANCE = new DAO();
-	
-	private DAO(){}
-	
+
+	private DAO() {
+	}
+
 	public static DAO getInstance() {
-		
+
 		persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		persistentManager = persistentManagerFactory.getPersistenceManager();				
+		persistentManager = persistentManagerFactory.getPersistenceManager();
 		transaction = persistentManager.currentTransaction();
-    	return INSTANCE;
-    }
-	
-	public void guardarObjeto(Object objeto) 
-	{
-		//persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		//persistentManager = persistentManagerFactory.getPersistenceManager();				
-		//transaction = persistentManager.currentTransaction();
-		try
-        {
-			if(objeto instanceof Aeropuerto)
-			{
+		return INSTANCE;
+	}
+
+	public void guardarObjeto(Object objeto) {
+		// persistentManagerFactory =
+		// JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		// persistentManager = persistentManagerFactory.getPersistenceManager();
+		// transaction = persistentManager.currentTransaction();
+		try {
+			if (objeto instanceof Aeropuerto) {
 				System.out.println("entro en el if de guardar");
-				List<Aeropuerto> aeropuertos=(List<Aeropuerto>) objeto;
-				for(Aeropuerto a: aeropuertos)
-				{
-					a= new Aeropuerto (a.getCodAeropuerto(),a.getNomAeropuerto());
+				List<Aeropuerto> aeropuertos = (List<Aeropuerto>) objeto;
+				for (Aeropuerto a : aeropuertos) {
+					a = new Aeropuerto(a.getCodAeropuerto(), a.getNomAeropuerto());
 					persistentManager.makePersistent(a);
 				}
-				
-			}
-			
-//			if (objeto instanceof Aerolinea)
-//			{
-//				List<Aerolinea> aerolineas=(List<Aerolinea>) objeto;
-//				for(Aerolinea a: aerolineas)
-//				{
-//					a= new Aerolinea (a.getCodAerolinea(),a.getNomAerolimea());
-//					persistentManager.makePersistent(a);
-//				}
-//			}
-			
-			if (objeto instanceof Reserva)
-			{
-				List<Reserva> reservas=(List<Reserva>) objeto;
-				for(Reserva r: reservas)
-				{
-					r= new Reserva (r.getCodReserva(), r.getUsuario(),r.getViajeros(),r.getVuelo());
-					persistentManager.makePersistent(r);
-				} 
-				
+
 			}
 
-        }
-		catch(Exception ex)
-		{
+			// if (objeto instanceof Aerolinea)
+			// {
+			// List<Aerolinea> aerolineas=(List<Aerolinea>) objeto;
+			// for(Aerolinea a: aerolineas)
+			// {
+			// a= new Aerolinea (a.getCodAerolinea(),a.getNomAerolimea());
+			// persistentManager.makePersistent(a);
+			// }
+			// }
+
+			if (objeto instanceof Reserva) {
+				List<Reserva> reservas = (List<Reserva>) objeto;
+				for (Reserva r : reservas) {
+					r = new Reserva(r.getCodReserva(), r.getUsuario(), r.getViajeros(), r.getVuelo());
+					persistentManager.makePersistent(r);
+				}
+
+			}
+
+		} catch (Exception ex) {
 			System.out.println("jo hay error");
 			System.err.println("* Exception inserting data into db: " + ex.getMessage());
 		}
-		
-		finally
-		{		    
-			if (transaction.isActive()) 
-			{
-		        transaction.rollback();
-		    }
-		    
-		    //persistentManager.close();
+
+		finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+
+			// persistentManager.close();
 		}
 
-		
-		
 	}
 
 	@Override
-	public List<Aeropuerto> getAeropuertos() 
-	{
+	public List<Aeropuerto> getAeropuertos() {
 		// TODO Auto-generated method stub
 		Extent<Aeropuerto> extent = persistentManager.getExtent(Aeropuerto.class, false);
 		List<Aeropuerto> aeropuertos = new ArrayList<Aeropuerto>();
-		
-		for (Aeropuerto p : extent) 
-		{
-		  aeropuertos.add(p);
+
+		for (Aeropuerto p : extent) {
+			aeropuertos.add(p);
 		}
 		extent.closeAll();
 		return aeropuertos;
 	}
 
 	@Override
-	public List<Reserva> getReservas() 
-	{
+	public List<Reserva> getReservas() {
 		// TODO Auto-generated method stub
 		Extent<Reserva> extent = persistentManager.getExtent(Reserva.class, false);
 		List<Reserva> reservas = new ArrayList<Reserva>();
-		
-		for (Reserva p : extent) 
-		{
-		  reservas.add(p);
+
+		for (Reserva p : extent) {
+			reservas.add(p);
 		}
 		extent.closeAll();
 		return reservas;
 	}
 
 	@Override
-	public void cerrarConexion() 
-	{
+	public void cerrarConexion() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -8,31 +8,31 @@ import Gateway.GatewayAutenticacion;
 import Gateway.itfGatewayAutenticacion;
 
 public class GestorAutenticacion {
-	
+
 	itfDAO DAO;
 	private static itfGatewayAutenticacion gateway;
 	Gateway general;
 	private static final GestorAutenticacion INSTANCE = new GestorAutenticacion();
-	
-	private GestorAutenticacion(){}
-	
-	
-    public static GestorAutenticacion getInstance() {
-    	gateway =GatewayAutenticacion.getInstance();
-    	return INSTANCE;
-    }
-	public void RegistrarUsuario(String nombre, String ape, String email, String password){
-		
-		
-		gateway.RegistrarUsuario(nombre,ape, email, password);
-	
-	
+
+	private GestorAutenticacion() {
 	}
-	public boolean LogInUsuario(String email, String contrasena){
+
+	public static GestorAutenticacion getInstance() {
+		gateway = GatewayAutenticacion.getInstance();
+		return INSTANCE;
+	}
+
+	public void RegistrarUsuario(String nombre, String ape, String email, String password) {
+
+		gateway.RegistrarUsuario(nombre, ape, email, password);
+
+	}
+
+	public boolean LogInUsuario(String email, String contrasena) {
 		return gateway.LogInUsuario(email, contrasena);
 	}
-	public void LogOut()
-	{
-		
+
+	public void LogOut() {
+
 	}
 }

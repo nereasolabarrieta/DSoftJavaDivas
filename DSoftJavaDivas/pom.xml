@@ -290,15 +290,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.2.1</version>
                 
-                 <configuration>
-                    <mainClass>EasyBooking.LN.mainCliente</mainClass>
-                    <systemProperties>
-                        <systemProperty>
-                            <key>log4j.configuration</key>
-                            <value>file:${config.files.dir}/log4j.properties</value>
-                        </systemProperty>
-                    </systemProperties>
-                </configuration>
+
             </plugin>
             
 

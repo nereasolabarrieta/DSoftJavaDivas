@@ -186,7 +186,7 @@ public class Entrar_Registrar extends JFrame {
 						boolean boolControl = controller.LogInUsuario(email, password);
 						System.out.println(boolControl);
 						if (boolControl == true) {
-							
+
 							Buscar a = new Buscar(controller);
 							a.setVisible(true);
 							setVisible(false);

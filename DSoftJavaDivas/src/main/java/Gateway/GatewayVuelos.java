@@ -28,193 +28,168 @@ import EasyBooking.LD.Flight_parameters;
 import ServiciosExternos.RestClient;
 import ServiciosExternos.VuelosJSON;
 
-public class GatewayVuelos extends Gateway implements itfGatewayVuelos
-{
+public class GatewayVuelos extends Gateway implements itfGatewayVuelos {
 	private static String port = "5002";
 	private static String hostname = "192.168.6.31";
 	private String path = "/";
-	private RestClient<Flight_parameters> client ;
+	private RestClient<Flight_parameters> client;
 	private Response response;
 	private Flight_parameters filtro;
 	private static final GatewayVuelos INSTANCE = new GatewayVuelos();
 
-	
-	private GatewayVuelos(){}
-	
+	private GatewayVuelos() {
+	}
+
 	public static GatewayVuelos getInstance() {
-    	return INSTANCE;
-    }
-	
+		return INSTANCE;
+	}
+
 	public List<VuelosJSON> search_flights() {
-		 path = "/Airlines/Search_Flights";
-		
-		 client = new RestClient<Flight_parameters>(hostname, port);
-		 System.out.println("Trying POST at " + path + " (Search All Flights message)");
-	        response = null;
-	        try {
-	            response =
-	                    client.makePostRequest(
-	                            client.createInvocationBuilder(path) , filtro
-	                    );
-	        }
-	        catch (Exception e) { 
-	        	e.printStackTrace(); e.toString(); 
-	        	
-	        	}
-	        
-	List<VuelosJSON> myFlightArray = null;
+		path = "/Airlines/Search_Flights";
 
-    try
-    {
-    	
-        String json_string = response.readEntity(String.class);
-        JSONParser myParser = new JSONParser();
-        JSONArray flightsArray = (JSONArray) myParser.parse( json_string );
+		client = new RestClient<Flight_parameters>(hostname, port);
+		System.out.println("Trying POST at " + path + " (Search All Flights message)");
+		response = null;
+		try {
+			response = client.makePostRequest(client.createInvocationBuilder(path), filtro);
+		} catch (Exception e) {
+			e.printStackTrace();
+			e.toString();
 
-        // Lambda expression to print array
-//        flightsArray.stream().forEach(
-//                element -> System.out.println(element)
-//        );
+		}
 
-        // Lambda expression to map JSONObjects inside JSONArray to flight objects
-        myFlightArray = (List) flightsArray.stream()
-                .map( element -> new VuelosJSON( element))
-                .collect(Collectors.toList()
-        );
+		List<VuelosJSON> myFlightArray = null;
 
+		try {
 
+			String json_string = response.readEntity(String.class);
+			JSONParser myParser = new JSONParser();
+			JSONArray flightsArray = (JSONArray) myParser.parse(json_string);
 
-    } catch (Exception e) { 
-    	System.out.println(" entro al catch");
-    	e.printStackTrace();
-    	e.toString(); 
-    }
-    return myFlightArray;
+			// Lambda expression to print array
+			// flightsArray.stream().forEach(
+			// element -> System.out.println(element)
+			// );
+
+			// Lambda expression to map JSONObjects inside JSONArray to flight
+			// objects
+			myFlightArray = (List) flightsArray.stream().map(element -> new VuelosJSON(element))
+					.collect(Collectors.toList());
+
+		} catch (Exception e) {
+			System.out.println(" entro al catch");
+			e.printStackTrace();
+			e.toString();
+		}
+		return myFlightArray;
 	}
+
 	@SuppressWarnings("unchecked")
-	public List<VuelosJSON> search_flights_conParametros( ) {
-		 path = "/Airlines/Search_Flights";
-		 client = new RestClient<Flight_parameters>(hostname, port);
-		 System.out.println("Trying POST at " + path + " (Search All Flights message)");
-	        response = null;
-	        try {
-	            response =
-	                    client.makePostRequest(
-	                            client.createInvocationBuilder(path) , filtro
-	                    );
-	        }
-	        catch (Exception e) { 
-	        	e.printStackTrace(); e.toString(); 
-	        	
-	        	}
-	        
-	List<VuelosJSON> myFlightArray = null;
+	public List<VuelosJSON> search_flights_conParametros() {
+		path = "/Airlines/Search_Flights";
+		client = new RestClient<Flight_parameters>(hostname, port);
+		System.out.println("Trying POST at " + path + " (Search All Flights message)");
+		response = null;
+		try {
+			response = client.makePostRequest(client.createInvocationBuilder(path), filtro);
+		} catch (Exception e) {
+			e.printStackTrace();
+			e.toString();
 
-   try
-   {
-   	
-       String json_string = response.readEntity(String.class);
-       JSONParser myParser = new JSONParser();
-       JSONArray flightsArray = (JSONArray) myParser.parse( json_string );
+		}
 
+		List<VuelosJSON> myFlightArray = null;
 
+		try {
 
-       // Lambda expression to map JSONObjects inside JSONArray to flight objects
-       myFlightArray = (List) flightsArray.stream()
-               .map( element -> new VuelosJSON( element))
-               .collect(Collectors.toList()
-       );
+			String json_string = response.readEntity(String.class);
+			JSONParser myParser = new JSONParser();
+			JSONArray flightsArray = (JSONArray) myParser.parse(json_string);
 
+			// Lambda expression to map JSONObjects inside JSONArray to flight
+			// objects
+			myFlightArray = (List) flightsArray.stream().map(element -> new VuelosJSON(element))
+					.collect(Collectors.toList());
 
-   } catch (Exception e) { 
-  
-   	e.printStackTrace();
-   	e.toString(); 
-   }
-   return myFlightArray;
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			e.toString();
+		}
+		return myFlightArray;
 	}
-	
+
 	@Override
-	public ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, String fecha) 
-	{
+	public ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, String fecha) {
 
+		filtro = new Flight_parameters(origen, destino, fecha);
+		List<VuelosJSON> lista_json = search_flights_conParametros();
 
-		filtro= new Flight_parameters(origen,destino,fecha);
-		List<VuelosJSON> lista_json=search_flights_conParametros();
-		
-		ArrayList<Vuelo> lista_vuelos= convertir(lista_json);
-		lista_vuelos.stream().forEach( element->System.out.println(element));
+		ArrayList<Vuelo> lista_vuelos = convertir(lista_json);
+		lista_vuelos.stream().forEach(element -> System.out.println(element));
 		return lista_vuelos;
 	}
+
 	@Override
 	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
+	public ArrayList<Vuelo> convertir(List<VuelosJSON> json) {
+		ArrayList<Vuelo> Lista_vuelos = new ArrayList();
+		json.stream().forEach(element -> {
+			Aeropuerto origen = new Aeropuerto(element.getAirportArrivalCode(), element.getAirportArrivalCity());
+			Aeropuerto destino = new Aeropuerto(element.getAirportDepartureCode(), element.getAirportDepartureCity());
+			Vuelo v = new Vuelo(element.getCode(), origen, destino, element.getDepartureDate(true), element.getPrice(),
+					element.getFreeSeats());
+			// LocalDateTime localDateTime = v.getHora_salida();
+			// DateTimeFormatter formatter =
+			// DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			// String formattedDateTime = localDateTime.format(formatter);
+			// LocalDate ldt = LocalDate.parse(formattedDateTime, formatter);
+			// v.setHora_salida(ldt);
+			// System.out.println("tooooooodo esto pa na" + ldt);
+			Lista_vuelos.add(v);
+		});
 
-	public ArrayList<Vuelo> convertir(List<VuelosJSON> json)
-	{
-		ArrayList<Vuelo>Lista_vuelos= new ArrayList();
-		json.stream().forEach(
-				element-> {
-					Aeropuerto origen= new Aeropuerto(element.getAirportArrivalCode(),element.getAirportArrivalCity());
-					Aeropuerto destino= new Aeropuerto(element.getAirportDepartureCode(),element.getAirportDepartureCity());
-					Vuelo v=new Vuelo(element.getCode(), origen, destino,element.getDepartureDate(true),element.getPrice(), element.getFreeSeats());
-//					LocalDateTime localDateTime = v.getHora_salida();
-//					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//					String formattedDateTime = localDateTime.format(formatter);
-//					LocalDate ldt = LocalDate.parse(formattedDateTime, formatter);
-//					v.setHora_salida(ldt);
-//					System.out.println("tooooooodo esto pa na" + ldt);
-					Lista_vuelos.add(v);
-				});
-		
-		
 		return Lista_vuelos;
 	}
-	
-	@Override
-	public List<Vuelo> getVuelos() 
-	{
 
-		filtro= new Flight_parameters();
-		List<VuelosJSON> lista_json=search_flights();
-		ArrayList<Vuelo> lista_vuelos= convertir(lista_json);
-		lista_vuelos.stream().forEach( element->System.out.println(element));
+	@Override
+	public List<Vuelo> getVuelos() {
+
+		filtro = new Flight_parameters();
+		List<VuelosJSON> lista_json = search_flights();
+		ArrayList<Vuelo> lista_vuelos = convertir(lista_json);
+		lista_vuelos.stream().forEach(element -> System.out.println(element));
 		return lista_vuelos;
 	}
 
-
 	@Override
-	public HashSet<Aeropuerto> getAeropuertos() 
-	{
+	public HashSet<Aeropuerto> getAeropuertos() {
 
-		filtro= new Flight_parameters();
-		HashSet<Aeropuerto> Lista_aero=new HashSet<Aeropuerto>();
-		List<VuelosJSON> lista_json=search_flights();
-		List <Vuelo> vuelos = convertir(lista_json);
-		vuelos.stream().forEach(element->
-		{
+		filtro = new Flight_parameters();
+		HashSet<Aeropuerto> Lista_aero = new HashSet<Aeropuerto>();
+		List<VuelosJSON> lista_json = search_flights();
+		List<Vuelo> vuelos = convertir(lista_json);
+		vuelos.stream().forEach(element -> {
 			Lista_aero.add(element.getOrigen());
 			Lista_aero.add(element.getDestino());
 		});
-		
-		
+
 		return Lista_aero;
 	}
 
 	@Override
 	public ArrayList<Vuelo> Aplicar_filtros(String origen, String destino, double precio, int viajeros, String fecha) {
-		
-		filtro= new Flight_parameters(origen,destino,viajeros,precio,fecha);	
-		List<VuelosJSON> lista_json=search_flights();
-		ArrayList<Vuelo> lista_vuelos= convertir(lista_json);
-		lista_vuelos.stream().forEach( element->System.out.println(element));
+
+		filtro = new Flight_parameters(origen, destino, viajeros, precio, fecha);
+		List<VuelosJSON> lista_json = search_flights();
+		ArrayList<Vuelo> lista_vuelos = convertir(lista_json);
+		lista_vuelos.stream().forEach(element -> System.out.println(element));
 		return lista_vuelos;
-		
+
 	}
-	
-	
 
 }

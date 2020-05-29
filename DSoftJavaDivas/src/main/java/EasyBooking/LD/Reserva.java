@@ -8,21 +8,19 @@ import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 public class Reserva {
-	
+
 	@PrimaryKey
 	private String codReserva;
 	private Usuario usuario;
 	private Vuelo vuelo;
-	@Persistent(mappedBy="Lista_Reservas")
+	@Persistent(mappedBy = "Lista_Reservas")
 	private Set<Viajero> viajeros;
 
-	
-	
-	public Reserva(String codReserva, Usuario usuario, Set<Viajero> viajeros, Vuelo vuelo ) {
+	public Reserva(String codReserva, Usuario usuario, Set<Viajero> viajeros, Vuelo vuelo) {
 		super();
 		this.codReserva = codReserva;
 		this.usuario = usuario;
-		this.vuelo=vuelo;
+		this.vuelo = vuelo;
 		this.viajeros = viajeros;
 	}
 
@@ -57,10 +55,5 @@ public class Reserva {
 	public void setVuelo(Vuelo vuelo) {
 		this.vuelo = vuelo;
 	}
-	
 
-
-
-	
-	
 }

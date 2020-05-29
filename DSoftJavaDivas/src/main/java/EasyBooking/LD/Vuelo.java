@@ -13,17 +13,15 @@ import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
-
 public class Vuelo implements Serializable {
 	@PrimaryKey
 	private String codVuelo;
 	private Aeropuerto origen;
-	private Aeropuerto destino; 
+	private Aeropuerto destino;
 	private LocalDateTime hora_salida;
 	private long precio;
 	private long numAsientos;
 
-	
 	public LocalDateTime getHora_salida() {
 		return hora_salida;
 	}
@@ -40,15 +38,14 @@ public class Vuelo implements Serializable {
 		this.numAsientos = numAsientos;
 	}
 
-	public Vuelo(String codigo, Aeropuerto origen, Aeropuerto destino,  LocalDateTime hora_salida,
-			 long precio, long l) {
+	public Vuelo(String codigo, Aeropuerto origen, Aeropuerto destino, LocalDateTime hora_salida, long precio, long l) {
 		super();
 		this.codVuelo = codigo;
 		this.origen = origen;
 		this.destino = destino;
 		this.hora_salida = hora_salida;
 		this.precio = precio;
-		this.numAsientos =l;
+		this.numAsientos = l;
 	}
 
 	@Override
@@ -60,24 +57,31 @@ public class Vuelo implements Serializable {
 	public String getCodVuelo() {
 		return codVuelo;
 	}
+
 	public void setCodVuelo(String codVuelo) {
 		this.codVuelo = codVuelo;
 	}
+
 	public Aeropuerto getOrigen() {
 		return origen;
 	}
+
 	public void setOrigen(Aeropuerto origen) {
 		this.origen = origen;
 	}
+
 	public Aeropuerto getDestino() {
 		return destino;
 	}
+
 	public void setDestino(Aeropuerto destino) {
 		this.destino = destino;
-	}	
+	}
+
 	public long getPrecio() {
 		return precio;
 	}
+
 	public void setPrecio(long precio) {
 		this.precio = precio;
 	}
@@ -87,7 +91,4 @@ public class Vuelo implements Serializable {
 		this.hora_salida = hora_salida;
 	}
 
-	
-
-	 
 }

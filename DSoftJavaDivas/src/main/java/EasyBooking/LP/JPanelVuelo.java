@@ -25,20 +25,20 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
 public class JPanelVuelo extends JPanel {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private DateTimeFormatter formatter;
-	
+
 	/**
 	 * Create the panel.
 	 */
 	public JPanelVuelo(String origen, String destino, long precio, long asientos, LocalDateTime hora) {
-		
+
 		setBorder(new LineBorder(new Color(0, 0, 0)));
-		setSize(1064,265);
+		setSize(1064, 265);
 		setBackground(Color.WHITE);
 		setForeground(Color.WHITE);
 		setLayout(null);
@@ -49,7 +49,7 @@ public class JPanelVuelo extends JPanel {
 		panelDeArriba.setBounds(682, 0, 382, 265);
 		add(panelDeArriba);
 		panelDeArriba.setLayout(null);
-		
+
 		String precioVuelo = Long.toString(precio);
 
 		JLabel lblPrecio = new JLabel(precioVuelo + "€");
@@ -73,18 +73,18 @@ public class JPanelVuelo extends JPanel {
 		lblDestino.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblDestino.setBounds(303, 89, 172, 52);
 		add(lblDestino);
-		
+
 		JLabel lblFlecha = new JLabel("-");
 		lblFlecha.setFont(new Font("Tahoma", Font.PLAIN, 45));
 		lblFlecha.setBounds(273, 109, 69, 20);
 		add(lblFlecha);
-		
+
 		JLabel lblQuedanDisponibles = new JLabel("Quedan        disponibles");
 		lblQuedanDisponibles.setForeground(Color.GRAY);
 		lblQuedanDisponibles.setFont(new Font("Tahoma", Font.ITALIC, 16));
 		lblQuedanDisponibles.setBounds(30, 217, 201, 20);
 		add(lblQuedanDisponibles);
-		
+
 		String numAsientos = Long.toString(asientos);
 
 		JLabel lblNumeroDisponible = new JLabel(numAsientos);
@@ -92,19 +92,16 @@ public class JPanelVuelo extends JPanel {
 		lblNumeroDisponible.setFont(new Font("Tahoma", Font.ITALIC, 16));
 		lblNumeroDisponible.setBounds(96, 217, 69, 20);
 		add(lblNumeroDisponible);
-		
+
 		formatter = DateTimeFormatter.ISO_DATE_TIME;
-		
+
 		String formattedDateTime = hora.format(formatter);
-		
+
 		JLabel lblHoraSalida = new JLabel(formattedDateTime);
 		lblHoraSalida.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblHoraSalida.setBounds(233, 169, 140, 37);
 		add(lblHoraSalida);
 		this.setVisible(true);
-		
-
-	
 
 	}
-	}
+}
