@@ -5,6 +5,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -31,12 +33,29 @@ public class JPanelVuelo extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private DateTimeFormatter formatter;
-
+	private Controller controller;
+	private String origen;
+	private String destino;
+	private long precio;
+	private LocalDateTime hora;
+	private long asientos;
 	/**
 	 * Create the panel.
 	 */
-	public JPanelVuelo(String origen, String destino, long precio, long asientos, LocalDateTime hora) {
+	public JPanelVuelo(Controller controller, String origen, String destino, long precio, long asientos, LocalDateTime hora) {
+		this.controller=controller;
+		this.destino=destino;
+		this.origen=origen;
+		this.precio=precio;
+		this.hora=hora;
+		this.asientos=asientos;
+		InsertarJPanelVuelo();
+		
 
+	}
+	
+	public void InsertarJPanelVuelo()
+	{
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setSize(1064, 265);
 		setBackground(Color.WHITE);
@@ -102,6 +121,14 @@ public class JPanelVuelo extends JPanel {
 		lblHoraSalida.setBounds(233, 169, 140, 37);
 		add(lblHoraSalida);
 		this.setVisible(true);
+		
+
+		btnVerVuelos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Pago a = new Pago(controller, origen, destino, precio, formattedDateTime);
+				a.setVisible(true);
+			}
+		});
 
 	}
 }

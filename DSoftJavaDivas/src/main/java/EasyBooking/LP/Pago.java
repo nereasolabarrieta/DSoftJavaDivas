@@ -46,21 +46,30 @@ public class Pago extends JFrame {
 	private JTextField txtDebeCoincidirCon;
 	private JTextField txtCvv;
 	private Controller controller;
+	private String origen;
+	private String destino;
+	private long precio;
+	private String Date;
 
 	/**
 	 * Create the frame.
 	 * 
 	 * @param controller
 	 */
-	public Pago(Controller controller) {
+	public Pago(Controller controller, String origen, String destino, long precio, String Date) {
 		this.controller = controller;
+		this.destino=destino;
+		this.origen=origen;
+		this.precio=precio;
+		this.Date=Date;
+		
 		initComponents();
 		this.setVisible(true);
 
 	}
 
 	public void initComponents() {
-		// setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/EasyBooking/Img/Avion.jpg")));
+		
 		setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		setTitle("EasyBooking");
 		setForeground(Color.BLACK);
@@ -83,12 +92,7 @@ public class Pago extends JFrame {
 		JLabel lblLogo = new JLabel();
 		lblLogo.setBounds(0, 0, 185, 64);
 		pArriba.add(lblLogo);
-		// ImageIcon fot = new
-		// ImageIcon(Principal.class.getResource("/EasyBooking/Img/logo.png"));
-		// Icon icono = new
-		// ImageIcon(fot.getImage().getScaledInstance(lblLogo.getWidth(),
-		// lblLogo.getHeight(), Image.SCALE_DEFAULT));
-		// lblLogo.setIcon(icono);
+
 
 		JLabel lblcomoQuieresPagar = new JLabel("\u00BFCOMO QUIERES PAGAR?");
 		lblcomoQuieresPagar.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -98,7 +102,7 @@ public class Pago extends JFrame {
 
 		JPanel pDerecha = new JPanel();
 		pDerecha.setBackground(new Color(0, 0, 128));
-		pDerecha.setBounds(1060, 155, 218, 529);
+		pDerecha.setBounds(990, 155, 288, 529);
 		contentPane.add(pDerecha);
 		pDerecha.setLayout(null);
 
@@ -113,32 +117,27 @@ public class Pago extends JFrame {
 		lblBiobcn.setBounds(67, 100, 130, 49);
 		pDerecha.add(lblBiobcn);
 
-		JLabel lblHoraIda = new JLabel("15:40");
-		lblHoraIda.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblHoraIda.setForeground(new Color(255, 255, 255));
-		lblHoraIda.setBounds(28, 156, 69, 20);
-		pDerecha.add(lblHoraIda);
-
-		JLabel lblHoraVuelta = new JLabel("16:45");
-		lblHoraVuelta.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblHoraVuelta.setForeground(new Color(255, 255, 255));
-		lblHoraVuelta.setBounds(149, 156, 69, 20);
-		pDerecha.add(lblHoraVuelta);
-
-		JLabel lblPrecio = new JLabel("229,30");
+		JLabel lblFecha = new JLabel(Date);
+		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblFecha.setForeground(new Color(255, 255, 255));
+		lblFecha.setBounds(38, 165, 218, 20);
+		pDerecha.add(lblFecha);
+		
+		String precioVuelo = Long.toString(precio);
+		JLabel lblPrecio = new JLabel(precioVuelo + "€");
 		lblPrecio.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblPrecio.setForeground(new Color(255, 255, 255));
 		lblPrecio.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPrecio.setBounds(66, 216, 85, 20);
 		pDerecha.add(lblPrecio);
 
-		JLabel lblBio = new JLabel("BIO");
+		JLabel lblBio = new JLabel(origen);
 		lblBio.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblBio.setForeground(Color.WHITE);
 		lblBio.setBounds(28, 120, 69, 20);
 		pDerecha.add(lblBio);
 
-		JLabel lblBcn = new JLabel("BCN");
+		JLabel lblBcn = new JLabel(destino);
 		lblBcn.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblBcn.setForeground(Color.WHITE);
 		lblBcn.setBounds(149, 120, 69, 20);
@@ -239,15 +238,15 @@ public class Pago extends JFrame {
 		choiceCaducidad.add("12");
 		contentPane.add(choiceCaducidad);
 
-		JLabel lblFotoTarjeta = new JLabel();
-		lblFotoTarjeta.setIcon(new ImageIcon(Principal.class.getResource("/EasyBooking/Img/tarjeta.png")));
-		lblFotoTarjeta.setBounds(341, 203, 168, 60);
-		contentPane.add(lblFotoTarjeta);
+//		JLabel lblFotoTarjeta = new JLabel();
+//		lblFotoTarjeta.setIcon(new ImageIcon(Principal.class.getResource("/EasyBooking/Img/tarjeta.png")));
+//		lblFotoTarjeta.setBounds(341, 203, 168, 60);
+//		contentPane.add(lblFotoTarjeta);
 
-		JLabel lblFotoPaypal = new JLabel();
-		lblFotoPaypal.setIcon(new ImageIcon(Principal.class.getResource("/EasyBooking/Img/PayPal.png")));
-		lblFotoPaypal.setBounds(171, 502, 98, 35);
-		contentPane.add(lblFotoPaypal);
+//		JLabel lblFotoPaypal = new JLabel();
+//		lblFotoPaypal.setIcon(new ImageIcon(Principal.class.getResource("/EasyBooking/Img/PayPal.png")));
+//		lblFotoPaypal.setBounds(171, 502, 98, 35);
+//		contentPane.add(lblFotoPaypal);
 
 		Choice choiceCaducidadAnyo = new Choice();
 		choiceCaducidadAnyo.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -280,10 +279,10 @@ public class Pago extends JFrame {
 		contentPane.add(lblTodaTuInformacion);
 		lblTodaTuInformacion.setForeground(Color.BLACK);
 
-		JLabel lblCandado = new JLabel();
-		lblCandado.setIcon(new ImageIcon(Principal.class.getResource("/EasyBooking/Img/candado.png")));
-		lblCandado.setBounds(881, 219, 37, 35);
-		contentPane.add(lblCandado);
+//		JLabel lblCandado = new JLabel();
+//		lblCandado.setIcon(new ImageIcon(Principal.class.getResource("/EasyBooking/Img/candado.png")));
+//		lblCandado.setBounds(881, 219, 37, 35);
+//		contentPane.add(lblCandado);
 
 	}
 }
