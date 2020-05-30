@@ -47,7 +47,7 @@ public class JPanelVuelo extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public JPanelVuelo(Controller controller, String origen, String destino, long precio, long asientos, LocalDateTime hora, String email, int viajeros) {
+	public JPanelVuelo(Controller controller, String origen, String destino, long precio, long asientos, LocalDateTime hora, String email) {
 		this.controller=controller;
 		this.destino=destino;
 		this.origen=origen;
@@ -55,7 +55,6 @@ public class JPanelVuelo extends JPanel {
 		this.hora=hora;
 		this.asientos=asientos;
 		emailJP= email;
-		this.viajeros = viajeros;
 		InsertarJPanelVuelo();
 		
 
@@ -134,6 +133,8 @@ public class JPanelVuelo extends JPanel {
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
+				String name = JOptionPane.showInputDialog("Introduzca numero de viajeros");
+				viajeros = Integer.parseInt(name);
 				Pago a = new Pago(controller, origen, destino, precio, formattedDateTime, emailJP, viajeros);
 				a.setVisible(true);
 			}

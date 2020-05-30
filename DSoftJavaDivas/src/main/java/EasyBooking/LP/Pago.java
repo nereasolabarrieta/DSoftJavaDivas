@@ -1,73 +1,59 @@
 package EasyBooking.LP;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-
-import Controller.Controller;
-import EasyBooking.LD.Reserva;
-
-import javax.swing.JTable;
-import javax.swing.JRadioButton;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JTextField;
-import javax.swing.JToggleButton;
-import java.awt.Choice;
-import java.awt.List;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
-import java.time.LocalDateTime;
-import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Image;
-
-import javax.swing.SwingConstants;
-import javax.swing.JList;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
-import java.awt.Component;
-import javax.swing.Box;
-import javax.swing.JTextArea;
+import Controller.Controller;
+import EasyBooking.LD.Viajero;
 
 public class Pago extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
 	private JPanel PscrollPane;
 	private JTextField txtA;
 	private JTextField txtDebeCoincidirCon;
-	private JTextField txtCvv;
-	private Choice choiceCaducidadAnyo;
-	private Choice choiceCaducidad;
+
 	private Controller controller;
 	private String origen;
 	private String destino;
 	private String email;
 	private long precio;
+	private long total;
 	private String Date;
 	private JTextField textFieldConcepto;
-	private JTextField textField;
 	private JButton btnCerrarSesion;
 	private int numViajeros;
-	private JPanel pViajeros;
-	
-
+	private JTextField arrayNombres[];
+	private JTextField arrayDnis[];
+	private List<Viajero> viajeros;
 	/**
 	 * Create the frame.
 	 * 
@@ -81,6 +67,7 @@ public class Pago extends JFrame {
 		this.Date=Date;
 		this.email=email;
 		this.numViajeros = numViajeros;
+		System.out.println(numViajeros);
 		initComponents();
 		this.setVisible(true);
 
@@ -139,7 +126,7 @@ public class Pago extends JFrame {
 		lblIda.setForeground(new Color(255, 255, 255));
 		lblIda.setBounds(28, 84, 69, 20);
 		pDerecha.add(lblIda);
-
+		
 		JLabel lblBiobcn = new JLabel("     _____    ");
 		lblBiobcn.setForeground(new Color(255, 255, 255));
 		lblBiobcn.setBounds(67, 100, 130, 49);
@@ -151,7 +138,7 @@ public class Pago extends JFrame {
 		lblFecha.setBounds(38, 165, 218, 20);
 		pDerecha.add(lblFecha);
 		
-		long total = precio * numViajeros;
+		total = precio * numViajeros;
 		String precioVuelo = Long.toString(total);
 		
 		
@@ -214,82 +201,21 @@ public class Pago extends JFrame {
 		txtDebeCoincidirCon.setBounds(300, 80, 206, 20);
 		pUsuario.add(txtDebeCoincidirCon);
 
-//		JLabel lblFechaDeCaducidad = new JLabel("Fecha de caducidad");
-//		lblFechaDeCaducidad.setFont(new Font("Tahoma", Font.PLAIN, 16));
-//		lblFechaDeCaducidad.setBounds(50, 130, 162, 20);
-//		pUsuario.add(lblFechaDeCaducidad);
-
-//		JLabel lblCdigoDeSeguridad = new JLabel("Codigo de seguridad");
-//		lblCdigoDeSeguridad.setFont(new Font("Tahoma", Font.PLAIN, 16));
-//		lblCdigoDeSeguridad.setBounds(300, 130, 206, 20);
-//		pUsuario.add(lblCdigoDeSeguridad);
-//
-//		txtCvv = new JTextField();
-//		txtCvv.setForeground(Color.BLACK);
-//		txtCvv.setBounds(450, 130, 206, 20);
-//		pUsuario.add(txtCvv);
-		
-
-//		choiceCaducidad = new Choice();
-//		choiceCaducidad.setFont(new Font("Tahoma", Font.PLAIN, 16));
-//		choiceCaducidad.setBounds(200, 459, 64, 25);
-//		choiceCaducidad.add("1");
-//		choiceCaducidad.add("2");
-//		choiceCaducidad.add("3");
-//		choiceCaducidad.add("4");
-//		choiceCaducidad.add("5");
-//		choiceCaducidad.add("6");
-//		choiceCaducidad.add("7");
-//		choiceCaducidad.add("8");
-//		choiceCaducidad.add("9");
-//		choiceCaducidad.add("9");
-//		choiceCaducidad.add("10");
-//		choiceCaducidad.add("11");
-//		choiceCaducidad.add("12");
-//		pUsuario.add(choiceCaducidad);
-//
-//		choiceCaducidadAnyo = new Choice();
-//		choiceCaducidadAnyo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-//		choiceCaducidadAnyo.setBounds(217, 459, 82, 26);
-//		choiceCaducidadAnyo.add("2020");
-//		choiceCaducidadAnyo.add("2021");
-//		choiceCaducidadAnyo.add("2022");
-//		choiceCaducidadAnyo.add("2023");
-//		choiceCaducidadAnyo.add("2024");
-//		choiceCaducidadAnyo.add("2025");
-//		choiceCaducidadAnyo.add("2026");
-//		choiceCaducidadAnyo.add("2027");
-//		choiceCaducidadAnyo.add("2028");
-//		choiceCaducidadAnyo.add("2029");
-//		choiceCaducidadAnyo.add("2030");
-//		choiceCaducidadAnyo.add("2031");
-//		choiceCaducidadAnyo.add("2032");
-//		choiceCaducidadAnyo.add("2033");
-//		choiceCaducidadAnyo.add("2034");
-//		choiceCaducidadAnyo.add("2035");
-//		choiceCaducidadAnyo.add("2036");
-//		choiceCaducidadAnyo.add("2037");
-//		choiceCaducidadAnyo.add("2038");
-//		choiceCaducidadAnyo.add("2039");
-//		choiceCaducidadAnyo.add("2040");
-//		pUsuario.add(choiceCaducidadAnyo);
-
-		
-		
 		JLabel lblConcepto = new JLabel("Concepto");
 		lblConcepto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblConcepto.setBounds(50, 130, 162, 20);
 		pUsuario.add(lblConcepto);
 		
 		textFieldConcepto = new JTextField();
-		textFieldConcepto.setBounds(300, 130, 256, 20);
+		textFieldConcepto.setBounds(300, 130, 206, 20);
 		pUsuario.add(textFieldConcepto);
 
 		JButton btnPagar = new JButton("Pagar");
 		btnPagar.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnPagar.setBackground(new Color(0, 0, 128));
 		btnPagar.setForeground(Color.WHITE);
-		btnPagar.setBounds(1100, 604, 115, 29);
+		btnPagar.setBounds(50, 300, 115, 29);
+		pDerecha.add(btnPagar);
 		btnPagar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -297,17 +223,29 @@ public class Pago extends JFrame {
 			
 				String nomTitular = txtDebeCoincidirCon.getText();
 			
-				String concepto = textField.getText();
-				String codigoS= txtCvv.getText();
-	
+				String concepto = textFieldConcepto.getText();
+				
+				viajeros = new ArrayList<Viajero>();
+				for(int i=0; i<numViajeros; i++){
+					String nombre = arrayNombres[i].getText();
+					String dni = arrayDnis[i].getText();
+					Viajero v = new Viajero(nombre,dni);
+					viajeros.add(v);
+					System.out.println(nombre);
+					System.out.println(dni);
+				}
 
-				if (numTarjeta == null || nomTitular == null || concepto == null || codigoS==null) {
+				if (numTarjeta == null || nomTitular == null || concepto == null ) {
 					JOptionPane.showMessageDialog(null, "Rellene todos los campos");
 				} else {
 					
 					try {
 					
-						controller.Pagar(precio, email, concepto);
+						controller.Pagar(total, email, concepto);
+//						for(Viajero v: viajeros)
+//						{
+//							controller.GuardarObjeto(v);
+//						}
 					
 
 					} catch (RemoteException e1) {
@@ -319,16 +257,17 @@ public class Pago extends JFrame {
 				}
 			}
 		});
-		pDerecha.add(btnPagar);
-		pViajeros = new JPanel();
-		pViajeros.setBackground(Color.WHITE);
-		pViajeros.setBounds(0, 318, 990, 422);
-		contentPane.add(pViajeros);
-		pViajeros.setLayout(null);
-	
-		PscrollPane = new JPanel();
+		
+		JPanel pCentro = new JPanel();
+		pCentro.setBounds(0, 318, 990, 422);
+		contentPane.add(pCentro);
+		pCentro.setLayout(new BorderLayout(0, 0));
 		scrollPane = new JScrollPane();
-		pViajeros.add(scrollPane);
+		pCentro.add(scrollPane, BorderLayout.CENTER);
+		
+		PscrollPane = new JPanel();
+	
+		scrollPane.setViewportView(PscrollPane);
 		scrollPane.getViewport().setView(PscrollPane);
 		GridBagLayout gbl_PscrollPane = new GridBagLayout();
 		gbl_PscrollPane.columnWidths = new int[] { 0 };
@@ -347,44 +286,55 @@ public class Pago extends JFrame {
 	
 	public void InsertarCamposViajeros() {
 		int x = 0;
-		int y = 50;
-
+		int y = 0;;
+		
+		arrayNombres = new JTextField[numViajeros];
+		arrayDnis = new JTextField[numViajeros];
 		for (int i = 0; i < numViajeros; i++) {
 			
+			JPanel panel = new JPanel();
+			panel.setSize(990, 160);
+			panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+			panel.setBackground(Color.WHITE);
+			panel.setForeground(Color.WHITE);
+			panel.setLayout(null);
 			
-
-			JLabel lblViajero = new JLabel("DATOS VIAJERO " + i);
-			lblViajero.setBounds(120, 68, 156, 46);
-			pViajeros.add(lblViajero);
-			lblViajero.setFont(new Font("Tahoma", Font.BOLD, 26));
+			int num = i+1;
+			JLabel lblViajero = new JLabel("DATOS VIAJERO " + num);
+			lblViajero.setBounds(50, 10, 300, 20);
+			lblViajero.setFont(new Font("Tahoma", Font.BOLD, 20));
+			panel.add(lblViajero);
+		
 
 			JLabel lblOrigen = new JLabel("Nombre:");
 			lblOrigen.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			lblOrigen.setBounds(165, 93, 112, 44);
-			pViajeros.add(lblOrigen);
+			lblOrigen.setBounds(50, 50, 162, 20);
+			panel.add(lblOrigen);
 
 			JLabel lblDestino = new JLabel("DNI:");
 			lblDestino.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			lblDestino.setBounds(165, 200, 172, 52);
-			pViajeros.add(lblDestino);
+			lblDestino.setBounds(50, 100, 162, 20);
+			panel.add(lblDestino);
 
-			JTextField txtNom = new JTextField();
-			txtNom.setFont(new Font("Tahoma", Font.PLAIN, 30));
-			txtNom.setBounds(300, 93, 112, 44);
-			pViajeros.add(txtNom);
+			arrayNombres[i] = new JTextField();
+			arrayNombres[i].setFont(new Font("Tahoma", Font.PLAIN, 14));
+			arrayNombres[i].setBounds(300, 50, 206, 20);
+			panel.add(arrayNombres[i]);
 			
-			JTextField txtDni = new JTextField();
-			txtDni.setFont(new Font("Tahoma", Font.PLAIN, 30));
-			txtDni.setBounds(300, 200, 112, 44);
-			pViajeros.add(txtDni);
+			arrayDnis[i] = new JTextField();
+			arrayDnis[i].setFont(new Font("Tahoma", Font.PLAIN, 14));
+			arrayDnis[i].setBounds(300, 100, 206, 20);
+			panel.add(arrayDnis[i]);
+			
+			panel.setVisible(true);
 			GridBagConstraints gbc_lblFoto = new GridBagConstraints();
 			gbc_lblFoto.ipadx = 990;
-			gbc_lblFoto.ipady = 422;
+			gbc_lblFoto.ipady = 170;
 			gbc_lblFoto.gridx = x;
 			gbc_lblFoto.gridy = y;
-			PscrollPane.add(pViajeros, gbc_lblFoto);
+			PscrollPane.add(panel, gbc_lblFoto);
 
-			y = y + 100;
+			y = y + 50;
 		}
 		repaint();
 	}
