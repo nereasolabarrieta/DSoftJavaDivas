@@ -43,6 +43,7 @@ public class JPanelVuelo extends JPanel {
 	private LocalDateTime hora;
 	private long asientos;
 	private String emailJP;
+	private int viajeros;
 	/**
 	 * Create the panel.
 	 */
@@ -54,6 +55,7 @@ public class JPanelVuelo extends JPanel {
 		this.hora=hora;
 		this.asientos=asientos;
 		emailJP= email;
+		this.viajeros = viajeros;
 		InsertarJPanelVuelo();
 		
 
@@ -95,12 +97,12 @@ public class JPanelVuelo extends JPanel {
 
 		JLabel lblDestino = new JLabel(destino);
 		lblDestino.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblDestino.setBounds(303, 89, 172, 52);
+		lblDestino.setBounds(283, 89, 192, 52);
 		add(lblDestino);
 
 		JLabel lblFlecha = new JLabel("-");
 		lblFlecha.setFont(new Font("Tahoma", Font.PLAIN, 45));
-		lblFlecha.setBounds(273, 109, 69, 20);
+		lblFlecha.setBounds(277, 109, 69, 20);
 		add(lblFlecha);
 
 		JLabel lblQuedanDisponibles = new JLabel("Quedan        disponibles");
@@ -132,7 +134,7 @@ public class JPanelVuelo extends JPanel {
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				Pago a = new Pago(controller, origen, destino, precio, formattedDateTime, emailJP);
+				Pago a = new Pago(controller, origen, destino, precio, formattedDateTime, emailJP, viajeros);
 				a.setVisible(true);
 			}
 		});

@@ -303,10 +303,8 @@ public class Principal extends JFrame {
 		gbl_PscrollPane.rowWeights = new double[] { Double.MIN_VALUE };
 		PscrollPane.setLayout(gbl_PscrollPane);
 
-		InsertarJPanel();
-
-		PscrollPane.repaint();
-		scrollPane.repaint();
+		
+		
 
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -317,13 +315,18 @@ public class Principal extends JFrame {
 
 		JLabel lblViajeros = new JLabel("Viajeros");
 		lblViajeros.setForeground(new Color(255, 255, 255));
-		lblViajeros.setBounds(10, 398, 46, 14);
+		lblViajeros.setBounds(10, 398, 55, 14);
 		pIzquierda.add(lblViajeros);
 
-		txtViajeros = new JTextField("1");
-		txtViajeros.setBounds(74, 395, 38, 20);
+		txtViajeros = new JTextField();
+		txtViajeros.setText("1");
+		txtViajeros.setBounds(80, 395, 38, 20);
 		pIzquierda.add(txtViajeros);
 		txtViajeros.setColumns(10);
+		
+		InsertarJPanel();
+		PscrollPane.repaint();
+		scrollPane.repaint();
 
 	}
 
@@ -377,6 +380,10 @@ public class Principal extends JFrame {
 		int x = 0;
 		int y = 50;
 		int tam = Lista_vuelos.size();
+		
+		System.out.println("GET TEXT" + txtViajeros.getText());
+		int viajeros=Integer.parseInt(txtViajeros.getText());
+		System.out.println("viajeros" + viajeros);
 
 		for (int i = 0; i < tam; i++) {
 
@@ -385,7 +392,7 @@ public class Principal extends JFrame {
 			numAsientos = Lista_vuelos.get(i).getNumAsientos();
 
 			hora = Lista_vuelos.get(i).getHora_salida();
-			int viajeros=Integer.parseInt(txtViajeros.getText());
+			
 
 			JPanelVuelo panel = new JPanelVuelo(controller, origen, destino, precio, numAsientos, hora, emailP, viajeros);
 			panel.setVisible(true);
