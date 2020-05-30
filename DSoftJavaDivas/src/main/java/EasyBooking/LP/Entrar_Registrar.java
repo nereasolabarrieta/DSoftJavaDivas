@@ -149,7 +149,7 @@ public class Entrar_Registrar extends JFrame {
 				if (nom != null || ape != null || email != null || password != null) {
 					try {
 						controller.RegistrarUsuario(nom, ape, email, password);
-						controller.RegistrarUsuarioPago(nom, ape, email, 10000);
+						controller.RegistrarUsuarioPago(nom, ape, email, 1000);
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
