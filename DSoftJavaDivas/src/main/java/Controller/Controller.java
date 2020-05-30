@@ -72,5 +72,14 @@ public class Controller {
 	public void RegistrarUsuarioPago(String nom, String ape, String email, double currency) throws RemoteException {
 		rsl.getService().RegistrarUsuarioPago(nom, ape, email, currency);
 	}
-
+	
+	public void GuardarObjeto(Object obj)
+	{
+		try {
+			rsl.getService().GuardarObjeto(obj);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

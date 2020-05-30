@@ -3,7 +3,10 @@ package EasyBooking.LP;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,7 +46,7 @@ public class JPanelVuelo extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public JPanelVuelo(Controller controller, String origen, String destino, long precio, long asientos, LocalDateTime hora, String email) {
+	public JPanelVuelo(Controller controller, String origen, String destino, long precio, long asientos, LocalDateTime hora, String email, int viajeros) {
 		this.controller=controller;
 		this.destino=destino;
 		this.origen=origen;
@@ -125,8 +128,10 @@ public class JPanelVuelo extends JPanel {
 		this.setVisible(true);
 		
 
-		btnVerVuelos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		btnVerVuelos.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
 				Pago a = new Pago(controller, origen, destino, precio, formattedDateTime, emailJP);
 				a.setVisible(true);
 			}

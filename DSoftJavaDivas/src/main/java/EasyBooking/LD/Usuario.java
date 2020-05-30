@@ -1,19 +1,19 @@
 package EasyBooking.LD;
 
+import java.io.Serializable;
+
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
 import ServiciosExternos.Print;
 
 @PersistenceCapable
-public class Usuario implements Print {
+public class Usuario implements Print, Serializable {
 	@PrimaryKey
 	private String ape;
 	private String nomUsuario;
 	private String email;
 	private String password;
-	private String newPassword;
-	private metodoPago metodoPago;
 	private Aeropuerto aeropuerto;
 
 	public Usuario(String email, String contrasena) {
@@ -28,12 +28,32 @@ public class Usuario implements Print {
 		this.nomUsuario = nomUsuario;
 		this.setEmail(email);
 	}
+	
+	public Usuario(String nomUsuario, String ape, String email, String password, Aeropuerto a)
+	{
+		super();
+		this.nomUsuario=nomUsuario;
+		this.ape=ape;
+		this.email=email;
+		this.password=password;
+		this.aeropuerto=a;
+	}
 
 	public Usuario(String nomUsuario, String email, String password, String newPassword) {
 		super();
 		this.setEmail(email);
 		this.setPassword(password);
-		this.setNewPassword(newPassword);
+	}
+
+	public Usuario(String nomUsuario, String ape, String email, String password, String codAeropuerto) 
+	{
+		// TODO Auto-generated constructor stub
+		super();
+		this.nomUsuario=nomUsuario;
+		this.ape=ape;
+		this.email=email;
+		this.password=password;
+		//this.aeropuerto.setCodAeropuerto(codAeropuerto);
 	}
 
 	public String getNomUsuario() {
@@ -42,14 +62,6 @@ public class Usuario implements Print {
 
 	public void setNomUsuario(String nomUsuario) {
 		this.nomUsuario = nomUsuario;
-	}
-
-	public metodoPago getMetodoPago() {
-		return metodoPago;
-	}
-
-	public void setMetodoPago(metodoPago metodoPago) {
-		this.metodoPago = metodoPago;
 	}
 
 	public Aeropuerto getAeropuerto() {
@@ -76,13 +88,6 @@ public class Usuario implements Print {
 		this.email = email;
 	}
 
-	public String getNewPassword() {
-		return newPassword;
-	}
-
-	public void setNewPassword(String newPassword) {
-		this.newPassword = newPassword;
-	}
 
 	public String getApe() {
 		return ape;

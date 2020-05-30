@@ -10,6 +10,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
+import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Transaction;
+
 import AppService.GestorAutenticacion;
 import AppService.GestorPago;
 import AppService.GestorVuelos;
@@ -28,6 +33,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	private DAO dao;
 	private static ServidorPrincipal INSTANCE = null;
 
+
 	//
 	// public ServidorPrincipal() throws RemoteException {
 	// super();
@@ -40,7 +46,9 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	//
 	// }
 
-	private ServidorPrincipal() throws RemoteException {
+	private ServidorPrincipal() throws RemoteException 
+	{
+		
 //		this.GAutenticacion = GestorAutenticacion.getInstance();
 //		this.GPago = GestorPago.getInstance();
 //		this.GVuelos = GestorVuelos.getInstance();
@@ -55,9 +63,9 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		return INSTANCE;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		// TODO Auto-generated method stub
-
 		String ip = "127.0.0.1";
 		String port = "1099";
 		String serviceName = "EasyBooking";
@@ -84,15 +92,16 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 			System.err.println("- Exception running the server: " + e.getMessage());
 			e.printStackTrace();
 		}
+		
 	}
 
 	@Override
 	public List<Vuelo> getVuelos() throws RemoteException {
 		// TODO Auto-generated method stub
-
+		
 		return GestorVuelos.getInstance().getVuelos();
 	}
-
+	
 	public HashSet<Aeropuerto> getAeropuertos() throws RemoteException {
 
 		return GestorVuelos.getInstance().getAeropuerto();
@@ -161,6 +170,14 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		GestorPago.getInstance().RegistrarUsuarioPago(nom, ape, email, currency);
 		
 	}
+
+	@Override
+	public void GuardarObjeto(Object obj)throws RemoteException 
+	{
+		DAO.getInstance().guardarObjeto(obj);
+		// TODO Auto-generated method stub	
+	}
+	
 
 	// @Override
 	// public List<VueloDTO> getVuelos() throws RemoteException {

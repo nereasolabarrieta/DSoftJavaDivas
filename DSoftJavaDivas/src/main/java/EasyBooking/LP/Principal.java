@@ -385,8 +385,9 @@ public class Principal extends JFrame {
 			numAsientos = Lista_vuelos.get(i).getNumAsientos();
 
 			hora = Lista_vuelos.get(i).getHora_salida();
+			int viajeros=Integer.parseInt(txtViajeros.getText());
 
-			JPanelVuelo panel = new JPanelVuelo(controller, origen, destino, precio, numAsientos, hora, emailP);
+			JPanelVuelo panel = new JPanelVuelo(controller, origen, destino, precio, numAsientos, hora, emailP, viajeros);
 			panel.setVisible(true);
 			GridBagConstraints gbc_lblFoto = new GridBagConstraints();
 			gbc_lblFoto.ipadx = 1058;

@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 
 import Controller.Controller;
 import EasyBooking.LD.Aeropuerto;
+import EasyBooking.LD.Usuario;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -144,12 +145,28 @@ public class Entrar_Registrar extends JFrame {
 				String ape = txtApellido.getText();
 				String email = txtEmail.getText();
 				String password = txtPassword.getText();
-			
+				String nomAeropuerto =aeropuerto.getSelectedItem().toString();
+				String codAeropuerto="";
+				System.out.println(nomAeropuerto);
+				for (Aeropuerto a: Lista_Aeropuerto )
+				{
+					System.out.println(a.getNomAeropuerto());
+					if(a.getNomAeropuerto()==nomAeropuerto)
+					{
+						System.out.println("entro");
+						codAeropuerto=a.getCodAeropuerto();
+					}
+				}
+				System.out.println(codAeropuerto);
 
 				if (nom != null || ape != null || email != null || password != null) {
 					try {
 						controller.RegistrarUsuario(nom, ape, email, password);
 						controller.RegistrarUsuarioPago(nom, ape, email, 1000);
+						Aeropuerto a= new Aeropuerto (codAeropuerto,nomAeropuerto);
+						Usuario u = new Usuario (nom, ape, email, password, a);
+						controller.GuardarObjeto(u);
+						//controller
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

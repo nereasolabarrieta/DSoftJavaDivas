@@ -29,4 +29,5 @@ public interface itfFachada extends Remote{
 	void imprime()throws RemoteException;
 	public List<Vuelo> getVuelos()throws RemoteException;
 	public void RegistrarUsuarioPago(String nom, String ape, String email, double currency)throws RemoteException;
+	public void GuardarObjeto(Object obj) throws RemoteException;
 }

@@ -13,6 +13,7 @@ import AppService.GestorAutenticacion;
 import AppService.GestorVuelos;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Reserva;
+import EasyBooking.LD.Usuario;
 import Gateway.GatewayAutenticacion;
 
 public class DAO implements itfDAO {
@@ -33,6 +34,7 @@ public class DAO implements itfDAO {
 		return INSTANCE;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void guardarObjeto(Object objeto) {
 		// persistentManagerFactory =
 		// JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
@@ -49,26 +51,23 @@ public class DAO implements itfDAO {
 
 			}
 
-			// if (objeto instanceof Aerolinea)
-			// {
-			// List<Aerolinea> aerolineas=(List<Aerolinea>) objeto;
-			// for(Aerolinea a: aerolineas)
-			// {
-			// a= new Aerolinea (a.getCodAerolinea(),a.getNomAerolimea());
-			// persistentManager.makePersistent(a);
-			// }
-			// }
-
 			if (objeto instanceof Reserva) {
 				List<Reserva> reservas = (List<Reserva>) objeto;
 				for (Reserva r : reservas) {
 					r = new Reserva(r.getCodReserva(), r.getUsuario(), r.getViajeros(), r.getVuelo());
 					persistentManager.makePersistent(r);
 				}
+			}	
+			if (objeto instanceof Usuario) 
+			{
+				System.out.println(((Usuario) objeto).getAeropuerto().getCodAeropuerto());
+					objeto = new Usuario(((Usuario) objeto).getNomUsuario(), ((Usuario) objeto).getApe(), ((Usuario) objeto).getEmail(), ((Usuario) objeto).getPassword(), ((Usuario) objeto).getAeropuerto());
+					persistentManager.makePersistent(objeto);
+
 
 			}
 
-		} catch (Exception ex) {
+			} catch (Exception ex) {
 			
 			System.err.println("* Exception inserting data into db: " + ex.getMessage());
 		}

@@ -1,5 +1,6 @@
 package EasyBooking.LN;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -12,6 +13,8 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import org.apache.log4j.BasicConfigurator;
+
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Reserva;
 import EasyBooking.LD.Usuario;
@@ -19,6 +22,7 @@ import EasyBooking.LD.Viajero;
 import EasyBooking.LD.Vuelo;
 import EasyBooking.LD.metodoPago;
 import EasyBooking.LP.Servidor;
+import Fachada.ServidorPrincipal;
 
 
 
@@ -31,13 +35,13 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		//Insert data in the DB
-		persistentManager = persistentManagerFactory.getPersistenceManager();				
-		transaction = persistentManager.currentTransaction();		
-		SelectNombreViajeros();
-		Servidor s = new Servidor();
-		s.setVisible(true);
+		//SelectNombreViajeros();
+		try {
+			ServidorPrincipal s = ServidorPrincipal.getInstance();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	

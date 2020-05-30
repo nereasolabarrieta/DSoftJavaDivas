@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controller.Controller;
+import EasyBooking.LD.Reserva;
 
 import javax.swing.JTable;
 import javax.swing.JRadioButton;
@@ -22,6 +23,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
+import java.time.LocalDateTime;
 import java.awt.Color;
 
 import javax.swing.ButtonGroup;
@@ -329,6 +331,7 @@ public class Pago extends JFrame {
 					try {
 					
 						controller.Pagar(precio, email, concepto);
+						controller.GuardarObjeto(r);
 					
 
 					} catch (RemoteException e1) {
