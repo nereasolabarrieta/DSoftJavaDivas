@@ -22,9 +22,9 @@ import EasyBooking.LD.Vuelo;
 public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada {
 
 	private static final long serialVersionUID = 1L;
-	private static GestorAutenticacion GAutenticacion;
-	private static GestorPago GPago;
-	private static GestorVuelos GVuelos = null;
+//	private static GestorAutenticacion GAutenticacion;
+//	private static GestorPago GPago;
+//	private static GestorVuelos GVuelos = null;
 	private DAO dao;
 	private static ServidorPrincipal INSTANCE = null;
 
@@ -41,9 +41,9 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	// }
 
 	private ServidorPrincipal() throws RemoteException {
-		this.GAutenticacion = GestorAutenticacion.getInstance();
-		this.GPago = GestorPago.getInstance();
-		this.GVuelos = GestorVuelos.getInstance();
+//		this.GAutenticacion = GestorAutenticacion.getInstance();
+//		this.GPago = GestorPago.getInstance();
+//		this.GVuelos = GestorVuelos.getInstance();
 	}
 
 	public static ServidorPrincipal getInstance() throws RemoteException {
@@ -90,59 +90,59 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	public List<Vuelo> getVuelos() throws RemoteException {
 		// TODO Auto-generated method stub
 
-		return GVuelos.getVuelos();
+		return GestorVuelos.getInstance().getVuelos();
 	}
 
 	public HashSet<Aeropuerto> getAeropuertos() throws RemoteException {
 
-		return GVuelos.getAeropuerto();
+		return GestorVuelos.getInstance().getAeropuerto();
 	}
 
 	@Override
 	public void newReserva(String Aeropuerto_Salida, String Aeropuerto_llegada) throws RemoteException {
 		// TODO Auto-generated method stub
-		GVuelos.newReserva(Aeropuerto_Salida, Aeropuerto_llegada);
+		GestorVuelos.getInstance().newReserva(Aeropuerto_Salida, Aeropuerto_llegada);
 	}
 
 	@Override
 	public void Pagar(double precio, String email, String concepto) throws RemoteException {
 		// TODO Auto-generated method stub
-		GPago.Pagar(precio, email, concepto);
+		GestorPago.getInstance().Pagar(precio, email, concepto);
 	}
 
 	@Override
 	public ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, String fecha) {
 		// TODO Auto-generated method stub
 
-		return GVuelos.Buscar(origen, destino, fecha);
+		return GestorVuelos.getInstance().Buscar(origen, destino, fecha);
 	}
 
 	public ArrayList<Vuelo> Aplicar_filtros(String origen, String destino, double precio, int viajeros, String fecha)
 			throws RemoteException {
-		return GVuelos.Aplicar_filtros(origen, destino, precio, viajeros, fecha);
+		return GestorVuelos.getInstance().Aplicar_filtros(origen, destino, precio, viajeros, fecha);
 	}
 
 	@Override
 	public List<Vuelo> AplicarFiltro(String hora_ida_min, String hora_ida_max, double min_precio, double max_precio,
 			String origen, String destino, Date fecha) {
 		// TODO Auto-generated method stub
-		return GVuelos.AplicarFiltro(hora_ida_min, hora_ida_max, min_precio, max_precio, origen, destino, fecha);
+		return GestorVuelos.getInstance().AplicarFiltro(hora_ida_min, hora_ida_max, min_precio, max_precio, origen, destino, fecha);
 	}
 
 	@Override
 	public void RegistrarUsuario(String nombre, String ape, String email, String password) {
 		// TODO Auto-generated method stub
-		GAutenticacion.RegistrarUsuario(nombre, ape, email, password);
+		GestorAutenticacion.getInstance().RegistrarUsuario(nombre, ape, email, password);
 	}
 
 	@Override
 	public boolean LogInUsuario(String email, String contrasena) {
-		return GAutenticacion.LogInUsuario(email, contrasena);
+		return GestorAutenticacion.getInstance().LogInUsuario(email, contrasena);
 	}
 
 	@Override
 	public void LogOut() {
-		GAutenticacion.LogOut();
+		GestorAutenticacion.getInstance().LogOut();
 
 	}
 
@@ -158,7 +158,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	@Override
 	public void RegistrarUsuarioPago(String nom, String ape, String email, double currency) {
 		
-		GPago.RegistrarUsuarioPago(nom, ape, email, currency);
+		GestorPago.getInstance().RegistrarUsuarioPago(nom, ape, email, currency);
 		
 	}
 

@@ -27,7 +27,6 @@ public class GatewayPago extends Gateway implements itfGatewayPago {
 		String emailPago=email;
 		double cantPago=cantidad_total;
 		String conceptoPago = concepto;
-		System.out.println(email + cantPago + conceptoPago);
 		path = "/Payments/Make_payment";
 		client = new RestClient<Pago_Usuario>(hostname, port);
 		//Pago_Usuario pu ;
@@ -64,7 +63,6 @@ public class GatewayPago extends Gateway implements itfGatewayPago {
 		String emailusu=email;
 		double currencyusu=currency;
 		
-		System.out.println(nomusu + apeusu + emailusu+ currencyusu);
 		
 		  path = "/Payments/Create_user";
 		  client = new RestClient<Pago_Usuario>(hostname, port);

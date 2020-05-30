@@ -34,8 +34,6 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 		client = new RestClient<User_A>(hostname, port);
 		System.out.println("Trying POST at " + path);
 		String reply = "";
-		System.out.println(email);
-		System.out.println(password);
 		BooleanJSON resp = null;
 		try {
 			response = client.makePostRequest(client.createInvocationBuilder(path), new User_A(email, password));
@@ -44,20 +42,16 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 			e.toString();
 		}
 		reply = response.readEntity(String.class);
-		System.out.println("aqui si llega");
 		boolean respuesta = false;
 
 		try {
 			resp = new BooleanJSON(reply);
 			respuesta = resp.getContentBoolean();
-			System.out.println("eeeeeeeeeeeee que me lo esta haciendo mal, o no?" + respuesta);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		;
 
-		System.out.println("RESPONSE" + reply);
 		return respuesta;
 	}
 
@@ -80,18 +74,14 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 			e.printStackTrace();
 			e.toString();
 		}
-		System.out.println("HOLAAAAA");
 		reply = response.readEntity(String.class);
-		System.out.println("RESPONSE" + reply);
-		// Create a JSONObject to parse the respond inside the
-		// Simple_pass_result
+
 		try {
 			password = new PasswordJSON(reply);
 		} catch (Exception e) {
 			e.printStackTrace();
 			e.toString();
 		}
-		System.out.println(password);
 		long pw = password.getContentNumber();
 		path = "/Authentication/Change_password";
 		client = new RestClient<User_A>(hostname, port);
@@ -107,7 +97,6 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 		}
 
 		reply = response.readEntity(String.class);
-		System.out.println("RESPONSE" + reply);
 
 	}
 

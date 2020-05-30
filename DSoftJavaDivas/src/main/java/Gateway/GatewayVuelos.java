@@ -77,7 +77,6 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos {
 					.collect(Collectors.toList());
 
 		} catch (Exception e) {
-			System.out.println(" entro al catch");
 			e.printStackTrace();
 			e.toString();
 		}
@@ -126,7 +125,6 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos {
 		List<VuelosJSON> lista_json = search_flights_conParametros();
 
 		ArrayList<Vuelo> lista_vuelos = convertir(lista_json);
-		lista_vuelos.stream().forEach(element -> System.out.println(element));
 		return lista_vuelos;
 	}
 
@@ -162,7 +160,6 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos {
 		filtro = new Flight_parameters();
 		List<VuelosJSON> lista_json = search_flights();
 		ArrayList<Vuelo> lista_vuelos = convertir(lista_json);
-		lista_vuelos.stream().forEach(element -> System.out.println(element));
 		return lista_vuelos;
 	}
 
@@ -187,7 +184,6 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos {
 		filtro = new Flight_parameters(origen, destino, viajeros, precio, fecha);
 		List<VuelosJSON> lista_json = search_flights();
 		ArrayList<Vuelo> lista_vuelos = convertir(lista_json);
-		lista_vuelos.stream().forEach(element -> System.out.println(element));
 		return lista_vuelos;
 
 	}
