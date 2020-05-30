@@ -331,7 +331,6 @@ public class Pago extends JFrame {
 					try {
 					
 						controller.Pagar(precio, email, concepto);
-						controller.GuardarObjeto(r);
 					
 
 					} catch (RemoteException e1) {
