@@ -59,6 +59,7 @@ public class Buscar extends JFrame {
 	private List<Vuelo> Lista_vuelos;
 	private Date objDate;
 	private static String email_buscar;
+	private JButton btnCerrarSesion;
 
 	/**
 	 * Create the frame.
@@ -181,6 +182,13 @@ public class Buscar extends JFrame {
 		lblBuscar.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblBuscar.setBounds(570, 77, 150, 20);
 		pNorte.add(lblBuscar);
+		
+		btnCerrarSesion = new JButton("Cerrar Sesion");
+		btnCerrarSesion.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnCerrarSesion.setBackground(Color.WHITE);
+		btnCerrarSesion.setForeground(Color.BLACK);
+		btnCerrarSesion.setBounds(1113, 16, 150, 29);
+		pNorte.add(btnCerrarSesion);
 		
 	
 		

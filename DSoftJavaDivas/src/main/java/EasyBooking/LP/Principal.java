@@ -64,18 +64,19 @@ public class Principal extends JFrame {
 	private JTextField txtViajeros;
 	private Date fecha_calendar;
 	private String emailP;
+	private JButton btnCerrarSesion;
 
-	public Principal(Controller controller, String origen, String destino, String objDate, String email) throws RemoteException {
+	public Principal(Controller controller, String origen, String destino, String objDate, String email)
+			throws RemoteException {
 
 		this.controller = controller;
 		this.destino = destino;
 		this.origen = origen;
 		this.objDate = objDate;
-		emailP=email;
-		
+		emailP = email;
+
 		Lista_vuelos = controller.Buscar_vuelos(origen, destino, objDate);
 		Lista_Aeropuerto = this.controller.getAeropuertos().stream().distinct().collect(Collectors.toList());
-		System.out.println(Lista_vuelos.size());
 
 		initComponents();
 		this.setVisible(true);
@@ -245,6 +246,13 @@ public class Principal extends JFrame {
 		combo_destino = new JComboBox<String>();
 		combo_destino.setBounds(836, 76, 142, 20);
 		pArriba.add(combo_destino);
+		
+		btnCerrarSesion = new JButton("Cerrar Sesion");
+		btnCerrarSesion.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnCerrarSesion.setForeground(Color.BLACK);
+		btnCerrarSesion.setBackground(Color.WHITE);
+		btnCerrarSesion.setBounds(1070, 26, 142, 29);
+		pArriba.add(btnCerrarSesion);
 
 		for (int i = 0; i < Lista_Aeropuerto.size(); i++) {
 			combo_Origen.addItem(Lista_Aeropuerto.get(i).getNomAeropuerto());
@@ -260,7 +268,7 @@ public class Principal extends JFrame {
 		dChooser_ida = new JDateChooser();
 		dChooser_ida.setBounds(72, 335, 125, 26);
 		pIzquierda.add(dChooser_ida);
-		System.out.println("ZER DAO DATAN :" + objDate);
+
 		java.util.Date fechaParseada;
 		try {
 			fechaParseada = new SimpleDateFormat("yyyy/MM/dd").parse(objDate);
@@ -369,16 +377,15 @@ public class Principal extends JFrame {
 		int x = 0;
 		int y = 50;
 		int tam = Lista_vuelos.size();
-		System.out.println("TAM " + tam);
 
 		for (int i = 0; i < tam; i++) {
-			System.out.println("aqui est0y");
+
 			precio = Lista_vuelos.get(i).getPrecio();
-			System.out.println(precio);
+
 			numAsientos = Lista_vuelos.get(i).getNumAsientos();
-			System.out.println(numAsientos);
+
 			hora = Lista_vuelos.get(i).getHora_salida();
-			System.out.println(hora);
+
 			JPanelVuelo panel = new JPanelVuelo(controller, origen, destino, precio, numAsientos, hora, emailP);
 			panel.setVisible(true);
 			GridBagConstraints gbc_lblFoto = new GridBagConstraints();

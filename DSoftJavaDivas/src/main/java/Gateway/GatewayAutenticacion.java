@@ -32,7 +32,7 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 	public boolean LogInUsuario(String email, String password) {
 		path = "/Authentication/Log_in";
 		client = new RestClient<User_A>(hostname, port);
-		System.out.println("Trying POST at " + path);
+		
 		String reply = "";
 		BooleanJSON resp = null;
 		try {
@@ -65,7 +65,7 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 	public void RegistrarUsuario(String nom, String ape, String email, String passwordNew) {
 		path = "/Authentication/Create_user";
 		client = new RestClient<User_A>(hostname, port);
-		System.out.println("Trying POST at " + path);
+	
 		String reply = "";
 		PasswordJSON password = null;
 		try {
@@ -85,7 +85,7 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 		long pw = password.getContentNumber();
 		path = "/Authentication/Change_password";
 		client = new RestClient<User_A>(hostname, port);
-		System.out.println("Trying PUT at " + path + " (Change password)");
+		
 
 		try {
 			response = client.makePutRequest(

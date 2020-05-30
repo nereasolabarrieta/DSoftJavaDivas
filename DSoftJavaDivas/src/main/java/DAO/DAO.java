@@ -40,7 +40,7 @@ public class DAO implements itfDAO {
 		// transaction = persistentManager.currentTransaction();
 		try {
 			if (objeto instanceof Aeropuerto) {
-				System.out.println("entro en el if de guardar");
+			
 				List<Aeropuerto> aeropuertos = (List<Aeropuerto>) objeto;
 				for (Aeropuerto a : aeropuertos) {
 					a = new Aeropuerto(a.getCodAeropuerto(), a.getNomAeropuerto());
@@ -69,7 +69,7 @@ public class DAO implements itfDAO {
 			}
 
 		} catch (Exception ex) {
-			System.out.println("jo hay error");
+			
 			System.err.println("* Exception inserting data into db: " + ex.getMessage());
 		}
 

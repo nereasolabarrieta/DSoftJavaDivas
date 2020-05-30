@@ -47,7 +47,7 @@ public class GatewayPago extends Gateway implements itfGatewayPago {
 			e.toString();
 		}
 
-		// P_User pu ;
+		
 		try {
 			client.simplePrint(client.makePostRequest(client.createInvocationBuilder(path),
 					new P_User(emailPago, cantPago, conceptoPago)));
@@ -84,8 +84,7 @@ public class GatewayPago extends Gateway implements itfGatewayPago {
 			e.toString();
 		}
 
-		System.out.println("Now that we have a user with currency we can perform a payment with success");
-
+		
 	}
 
 }

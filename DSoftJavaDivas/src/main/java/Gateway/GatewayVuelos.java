@@ -48,7 +48,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos {
 		path = "/Airlines/Search_Flights";
 
 		client = new RestClient<Flight_parameters>(hostname, port);
-		System.out.println("Trying POST at " + path + " (Search All Flights message)");
+		
 		response = null;
 		try {
 			response = client.makePostRequest(client.createInvocationBuilder(path), filtro);
@@ -66,13 +66,6 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos {
 			JSONParser myParser = new JSONParser();
 			JSONArray flightsArray = (JSONArray) myParser.parse(json_string);
 
-			// Lambda expression to print array
-			// flightsArray.stream().forEach(
-			// element -> System.out.println(element)
-			// );
-
-			// Lambda expression to map JSONObjects inside JSONArray to flight
-			// objects
 			myFlightArray = (List) flightsArray.stream().map(element -> new VuelosJSON(element))
 					.collect(Collectors.toList());
 
@@ -87,7 +80,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos {
 	public List<VuelosJSON> search_flights_conParametros() {
 		path = "/Airlines/Search_Flights";
 		client = new RestClient<Flight_parameters>(hostname, port);
-		System.out.println("Trying POST at " + path + " (Search All Flights message)");
+		
 		response = null;
 		try {
 			response = client.makePostRequest(client.createInvocationBuilder(path), filtro);
@@ -141,13 +134,7 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos {
 			Aeropuerto destino = new Aeropuerto(element.getAirportDepartureCode(), element.getAirportDepartureCity());
 			Vuelo v = new Vuelo(element.getCode(), origen, destino, element.getDepartureDate(true), element.getPrice(),
 					element.getFreeSeats());
-			// LocalDateTime localDateTime = v.getHora_salida();
-			// DateTimeFormatter formatter =
-			// DateTimeFormatter.ofPattern("yyyy-MM-dd");
-			// String formattedDateTime = localDateTime.format(formatter);
-			// LocalDate ldt = LocalDate.parse(formattedDateTime, formatter);
-			// v.setHora_salida(ldt);
-			// System.out.println("tooooooodo esto pa na" + ldt);
+	
 			Lista_vuelos.add(v);
 		});
 

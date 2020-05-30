@@ -144,7 +144,7 @@ public class Entrar_Registrar extends JFrame {
 				String ape = txtApellido.getText();
 				String email = txtEmail.getText();
 				String password = txtPassword.getText();
-				System.out.println(password);
+			
 
 				if (nom != null || ape != null || email != null || password != null) {
 					try {
@@ -177,15 +177,15 @@ public class Entrar_Registrar extends JFrame {
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String email = txtEmailEntrar.getText();
-				System.out.println(email);
+			
 				String password = txtPasswordEntrar.getText();
-				System.out.println(password);
+			
 
 				if (email != null || password != null) {
-					System.out.println("entro al primer if");
+					
 					try {
 						boolean boolControl = controller.LogInUsuario(email, password);
-						System.out.println(boolControl);
+					
 						if (boolControl == true) {
 
 							Buscar a = new Buscar(controller, email);
@@ -213,7 +213,7 @@ public class Entrar_Registrar extends JFrame {
 		btnEntrar.setBackground(Color.WHITE);
 		btnRegistrar.setBackground(new Color(12, 183, 242));
 		panel2.setVisible(false);
-		System.out.println(contadorRegistrar);
+		
 		if (contadorEntrar != 0) {
 			contentPane.remove(panel2);
 		}
@@ -285,7 +285,7 @@ public class Entrar_Registrar extends JFrame {
 	public void PanelEntrar() {
 		btnRegistrar.setBackground(Color.WHITE);
 		btnEntrar.setBackground(new Color(12, 183, 242));
-		System.out.println(contadorEntrar);
+	
 		if (contadorRegistrar != 0) {
 			contentPane.remove(panel1);
 		}

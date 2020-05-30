@@ -12,14 +12,14 @@ public class BooleanJSON implements Print {
 	private JSONParser parser;
 
 	public BooleanJSON(String content) throws ParseException {
-		System.out.println("llego al constr");
+		
 		// We need to parse the input as data is coming from python
 		this.parser = new JSONParser();
-		System.out.println("1");
+
 		JSONObject json = (JSONObject) parser.parse(content);
-		System.out.println("2");
+	
 		this.content = json.get("Result");
-		System.out.println("3");
+	
 	}
 
 	public Object getContent() {
@@ -31,7 +31,7 @@ public class BooleanJSON implements Print {
 	}
 
 	public boolean getContentBoolean() {
-		System.out.println("LO QUE VOY A PARSEAS VA A SER ESTO ueue ");
+	
 		boolean resp = ((Boolean) content).booleanValue();
 		return resp;
 	}

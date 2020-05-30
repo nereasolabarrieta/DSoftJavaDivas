@@ -56,6 +56,7 @@ public class Pago extends JFrame {
 	private String Date;
 	private JTextField textFieldConcepto;
 	private JTextField textField;
+	private JButton btnCerrarSesion;
 	
 
 	/**
@@ -107,6 +108,13 @@ public class Pago extends JFrame {
 		lblcomoQuieresPagar.setForeground(Color.WHITE);
 		lblcomoQuieresPagar.setBounds(520, 43, 238, 72);
 		pArriba.add(lblcomoQuieresPagar);
+		
+		btnCerrarSesion = new JButton("Cerrar Sesion");
+		btnCerrarSesion.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnCerrarSesion.setForeground(Color.BLACK);
+		btnCerrarSesion.setBackground(Color.WHITE);
+		btnCerrarSesion.setBounds(1058, 16, 150, 29);
+		pArriba.add(btnCerrarSesion);
 
 		JPanel pDerecha = new JPanel();
 		pDerecha.setBackground(new Color(0, 0, 128));
@@ -307,22 +315,21 @@ public class Pago extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				String numTarjeta = txtA.getText();
-				System.out.println("NUMTARJETA:" + numTarjeta);
+			
 				String nomTitular = txtDebeCoincidirCon.getText();
-				System.out.println("NOMTITULAR:" + nomTitular);
+			
 				String concepto = textField.getText();
 				String codigoS= txtCvv.getText();
-				System.out.println(precio);
-				System.out.println(concepto);
+	
 
 				if (numTarjeta == null || nomTitular == null || concepto == null || codigoS==null) {
 					JOptionPane.showMessageDialog(null, "Rellene todos los campos");
 				} else {
 					
 					try {
-						System.out.println("jejejejpuedo");
+					
 						controller.Pagar(precio, email, concepto);
-						System.out.println(" que he pagado");
+					
 
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
