@@ -1,5 +1,6 @@
 package AppService;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -10,6 +11,9 @@ import java.util.stream.Stream;
 
 import DAO.itfDAO;
 import EasyBooking.LD.Aeropuerto;
+import EasyBooking.LD.Reserva;
+import EasyBooking.LD.Usuario;
+import EasyBooking.LD.Viajero;
 import EasyBooking.LD.Vuelo;
 import Gateway.Gateway;
 import Gateway.GatewayPago;
@@ -19,44 +23,70 @@ import ServiciosExternos.VuelosJSON;
 
 public class GestorVuelos {
 
-	private static itfDAO DAO;
-	private static itfGatewayVuelos gateVuelos;
-	private Gateway gateGeneral;
 	private static final GestorVuelos INSTANCE = new GestorVuelos();
 
 	private GestorVuelos() {
 	}
 
 	public static GestorVuelos getInstance() {
-		gateVuelos = GatewayVuelos.getInstance();
 		return INSTANCE;
 	}
 
 	// gateVuelos = new GatewayVuelos();
 	public List<Vuelo> getVuelos() {
 
-		return gateVuelos.getVuelos();
+		return GatewayVuelos.getInstance().getVuelos();
 	}
 
 	public HashSet<Aeropuerto> getAeropuerto() {
 
 		// DAO.guardarObjeto(gateVuelos.getAeropuertos());
-		HashSet<Aeropuerto> lista = gateVuelos.getAeropuertos();
+		HashSet<Aeropuerto> lista =GatewayVuelos.getInstance().getAeropuertos();
 
 		return lista;
 
 	}
 
-	public void newReserva(String Aeropuerto_Salida, String Aeropuerto_llegada) {
+	public void newReserva(String codVuelo,String origen, String destino, long precio, long asientos, LocalDateTime date, String email,
+			Set<Viajero> viajeros)  {
+		Usuario usuario = null;
+		Aeropuerto destinoAeropuerto = null;
+		Aeropuerto origenAeropuerto = null;
+		List <Usuario> usuarios = DAO.DAO.getInstance().getUsuarios();
+		for (Usuario u: usuarios){
+			if (u.getEmail().equals(email))
+			{
+				usuario = new Usuario(u.getNomUsuario(), u.getApe(), u.getEmail(), u.getPassword());
+			}
+		}
+		List <Aeropuerto> aeropuertos = DAO.DAO.getInstance().getAeropuertos();
+		for(Aeropuerto a: aeropuertos)
+		{
+			if(a.getNomAeropuerto().equals(origen))
+			{
+				origenAeropuerto =new Aeropuerto(a.getCodAeropuerto(), a.getNomAeropuerto());
+			}
+			if(a.getNomAeropuerto().equals(destino))
+			{
+				destinoAeropuerto =new Aeropuerto(a.getCodAeropuerto(), a.getNomAeropuerto());
+			}
+		}
+		Vuelo v = new Vuelo(codVuelo,origenAeropuerto, destinoAeropuerto, date, precio, asientos);
+		
 
+		double valor = Math.random();
+		String codReserva = String.valueOf(valor);
+		
+		Reserva r = new Reserva(codReserva, usuario, viajeros, v);
+		DAO.DAO.getInstance().guardarObjeto(r);
 	}
 
 	public ArrayList<Vuelo> Buscar(String origen, String destino, String fecha) {
-		return gateVuelos.Buscar_vuelos(origen, destino, fecha);
+		return GatewayVuelos.getInstance().Buscar_vuelos(origen, destino, fecha);
 	}
 
 	public ArrayList<Vuelo> Aplicar_filtros(String origen, String destino, double precio, int viajeros, String fecha) {
-		return gateVuelos.Aplicar_filtros(origen, destino, precio, viajeros, fecha);
+		return GatewayVuelos.getInstance().Aplicar_filtros(origen, destino, precio, viajeros, fecha);
 	}
 
 	public List<Vuelo> AplicarFiltro(String hora_ida_min, String hora_ida_max, double min_precio, double max_precio,

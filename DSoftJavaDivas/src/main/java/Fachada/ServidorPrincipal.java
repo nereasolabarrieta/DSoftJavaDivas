@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -22,29 +23,13 @@ import DAO.DAO;
 import DTO.VueloDTO;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Usuario;
+import EasyBooking.LD.Viajero;
 import EasyBooking.LD.Vuelo;
 
 public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada {
 
 	private static final long serialVersionUID = 1L;
-//	private static GestorAutenticacion GAutenticacion;
-//	private static GestorPago GPago;
-//	private static GestorVuelos GVuelos = null;
-	private DAO dao;
 	private static ServidorPrincipal INSTANCE = null;
-
-
-	//
-	// public ServidorPrincipal() throws RemoteException {
-	// super();
-	//
-	// this.GAutenticacion= GestorAutenticacion.getInstance();
-	// this.GPago=GestorPago.getInstance();
-	// this.GVuelos= GestorVuelos.getInstance();
-	// //this.dao= new DAO();
-	// // TODO Auto-generated constructor stub
-	//
-	// }
 
 	private ServidorPrincipal() throws RemoteException 
 	{
@@ -107,11 +92,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		return GestorVuelos.getInstance().getAeropuerto();
 	}
 
-	@Override
-	public void newReserva(String Aeropuerto_Salida, String Aeropuerto_llegada) throws RemoteException {
-		// TODO Auto-generated method stub
-		GestorVuelos.getInstance().newReserva(Aeropuerto_Salida, Aeropuerto_llegada);
-	}
+
 
 	@Override
 	public void Pagar(double precio, String email, String concepto) throws RemoteException {
@@ -156,7 +137,8 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	}
 
 	@Override
-	public void newViajero(String dni, String nombre) {
+	public void newViajero(Viajero v) {
+		GestorPago.getInstance().newViajero(v);
 
 	}
 
@@ -176,6 +158,13 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	{
 		DAO.getInstance().guardarObjeto(obj);
 		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void newReserva(String codVuelo,String origen, String destino, long precio, long asientos, LocalDateTime date, String email,
+			Set<Viajero> viajeros) throws RemoteException {
+		GestorVuelos.getInstance().newReserva(codVuelo, origen, destino, precio, asientos, date, email, viajeros);
+		
 	}
 	
 

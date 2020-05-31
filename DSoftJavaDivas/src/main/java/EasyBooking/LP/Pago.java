@@ -10,8 +10,12 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -27,7 +31,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import Controller.Controller;
+import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Viajero;
+import EasyBooking.LD.Vuelo;
 
 public class Pago extends JFrame {
 
@@ -45,28 +51,32 @@ public class Pago extends JFrame {
 	private String origen;
 	private String destino;
 	private String email;
+	private String codVuelo;
 	private long precio;
 	private long total;
-	private String Date;
+	private LocalDateTime Date;
 	private JTextField textFieldConcepto;
 	private JButton btnCerrarSesion;
 	private int numViajeros;
 	private JTextField arrayNombres[];
 	private JTextField arrayDnis[];
-	private List<Viajero> viajeros;
+	private Set<Viajero> viajeros;
+	private long asientos;
 	/**
 	 * Create the frame.
 	 * 
 	 * @param controller
 	 */
-	public Pago(Controller controller, String origen, String destino, long precio, String Date, String email, int numViajeros) {
+	public Pago(Controller controller, String origen, String destino, long total,  long asientos, LocalDateTime hora, String codVuelo, String emailJP, int viajeros) {
 		this.controller = controller;
 		this.destino=destino;
 		this.origen=origen;
-		this.precio=precio;
-		this.Date=Date;
-		this.email=email;
-		this.numViajeros = numViajeros;
+		this.precio=total;
+		this.Date=hora;
+		this.asientos = asientos;
+		this.email=emailJP;
+		this.numViajeros = viajeros;
+		this.codVuelo = codVuelo;
 		System.out.println(numViajeros);
 		initComponents();
 		this.setVisible(true);
@@ -131,18 +141,17 @@ public class Pago extends JFrame {
 		lblBiobcn.setForeground(new Color(255, 255, 255));
 		lblBiobcn.setBounds(67, 100, 130, 49);
 		pDerecha.add(lblBiobcn);
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+		String formattedDateTime = Date.format(formatter);
 
-		JLabel lblFecha = new JLabel(Date);
+		JLabel lblFecha = new JLabel(formattedDateTime);
 		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblFecha.setForeground(new Color(255, 255, 255));
 		lblFecha.setBounds(38, 165, 218, 20);
 		pDerecha.add(lblFecha);
 		
-		total = precio * numViajeros;
-		String precioVuelo = Long.toString(total);
-		
-		
-		JLabel lblPrecio = new JLabel(precioVuelo + "€");
+		JLabel lblPrecio = new JLabel(precio + "€");
 		lblPrecio.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblPrecio.setForeground(new Color(255, 255, 255));
 		lblPrecio.setHorizontalAlignment(SwingConstants.CENTER);
@@ -225,7 +234,7 @@ public class Pago extends JFrame {
 			
 				String concepto = textFieldConcepto.getText();
 				
-				viajeros = new ArrayList<Viajero>();
+				viajeros = new HashSet<Viajero>();
 				for(int i=0; i<numViajeros; i++){
 					String nombre = arrayNombres[i].getText();
 					String dni = arrayDnis[i].getText();
@@ -242,11 +251,11 @@ public class Pago extends JFrame {
 					try {
 					
 						controller.Pagar(total, email, concepto);
-//						for(Viajero v: viajeros)
-//						{
-//							controller.GuardarObjeto(v);
-//						}
-					
+						controller.newReserva(codVuelo,origen, destino, precio, asientos, Date, email, viajeros);
+						for(Viajero a: viajeros)
+						{
+							controller.newViajero(a);
+						}
 
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
@@ -293,7 +302,7 @@ public class Pago extends JFrame {
 		for (int i = 0; i < numViajeros; i++) {
 			
 			JPanel panel = new JPanel();
-			panel.setSize(990, 160);
+			panel.setSize(990, 422);
 			panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 			panel.setBackground(Color.WHITE);
 			panel.setForeground(Color.WHITE);
@@ -329,7 +338,7 @@ public class Pago extends JFrame {
 			panel.setVisible(true);
 			GridBagConstraints gbc_lblFoto = new GridBagConstraints();
 			gbc_lblFoto.ipadx = 990;
-			gbc_lblFoto.ipady = 170;
+			gbc_lblFoto.ipady = 422;
 			gbc_lblFoto.gridx = x;
 			gbc_lblFoto.gridy = y;
 			PscrollPane.add(panel, gbc_lblFoto);

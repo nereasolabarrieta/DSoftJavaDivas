@@ -380,17 +380,17 @@ public class Principal extends JFrame {
 		int x = 0;
 		int y = 50;
 		int tam = Lista_vuelos.size();
-		
+		String codVuelo;
 		for (int i = 0; i < tam; i++) {
 
 			precio = Lista_vuelos.get(i).getPrecio();
-
+			codVuelo = Lista_vuelos.get(i).getCodVuelo();
 			numAsientos = Lista_vuelos.get(i).getNumAsientos();
 
 			hora = Lista_vuelos.get(i).getHora_salida();
 			
 
-			JPanelVuelo panel = new JPanelVuelo(controller, origen, destino, precio, numAsientos, hora, emailP);
+			JPanelVuelo panel = new JPanelVuelo(controller, origen, destino, precio, numAsientos, hora, emailP, codVuelo);
 			panel.setVisible(true);
 			GridBagConstraints gbc_lblFoto = new GridBagConstraints();
 			gbc_lblFoto.ipadx = 1058;

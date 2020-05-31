@@ -231,15 +231,16 @@ public class Buscar extends JFrame {
 					
 				a = new Principal(controller, origen,
 						destino, fecha, email_buscar);
-				this.setVisible(false);
+				a.setVisible(true);
+				setVisible(false);
 				}
 
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			
-			a.setVisible(true);
-			this.setVisible(false);
+				a.setVisible(true);
+				setVisible(false);
 
 		}
 	}

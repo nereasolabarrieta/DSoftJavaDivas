@@ -1,6 +1,7 @@
 package Controller;
 
 import java.rmi.RemoteException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -9,6 +10,8 @@ import java.util.Set;
 
 import DTO.VueloDTO;
 import EasyBooking.LD.Aeropuerto;
+import EasyBooking.LD.Usuario;
+import EasyBooking.LD.Viajero;
 import EasyBooking.LD.Vuelo;
 import EasyBooking.LP.Entrar_Registrar;
 import Remote.ServiceLocator;
@@ -33,10 +36,6 @@ public class Controller {
 
 		HashSet<Aeropuerto> lista = rsl.getService().getAeropuertos();
 		return lista;
-	}
-
-	public void newReserva(String Aeropuerto_Salida, String Aeropuerto_llegada) throws RemoteException {
-		rsl.getService().newReserva(Aeropuerto_Salida, Aeropuerto_llegada);
 	}
 
 	public void Pagar(double precio, String email, String concepto) throws RemoteException {
@@ -81,5 +80,15 @@ public class Controller {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void newReserva(String codVuelo,String origen, String destino, long precio, long asientos, LocalDateTime date, String email,
+			Set<Viajero> viajeros) throws RemoteException {
+		rsl.getService().newReserva(codVuelo,origen, destino, precio, asientos, date,email,viajeros);
+		
+	}
+	public void newViajero(Viajero v) throws RemoteException
+	{
+		rsl.getService().newViajero(v);
 	}
 }

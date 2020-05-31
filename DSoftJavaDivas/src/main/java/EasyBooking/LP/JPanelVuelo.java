@@ -43,18 +43,20 @@ public class JPanelVuelo extends JPanel {
 	private LocalDateTime hora;
 	private long asientos;
 	private String emailJP;
+	private String codVuelo;
 	private int viajeros;
 	/**
 	 * Create the panel.
 	 */
-	public JPanelVuelo(Controller controller, String origen, String destino, long precio, long asientos, LocalDateTime hora, String email) {
+	public JPanelVuelo(Controller controller, String origen, String destino, long precio, long asientos, LocalDateTime hora, String email, String codVuelo) {
 		this.controller=controller;
 		this.destino=destino;
 		this.origen=origen;
 		this.precio=precio;
 		this.hora=hora;
 		this.asientos=asientos;
-		emailJP= email;
+		this.emailJP= email;
+		this.codVuelo = codVuelo;
 		InsertarJPanelVuelo();
 		
 
@@ -82,8 +84,8 @@ public class JPanelVuelo extends JPanel {
 		panelDeArriba.add(lblPrecio);
 		lblPrecio.setFont(new Font("Tahoma", Font.BOLD, 38));
 
-		JButton btnVerVuelos = new JButton("VER VUELO ");
-		btnVerVuelos.setBounds(120, 127, 156, 36);
+		JButton btnVerVuelos = new JButton("SELECCIONAR");
+		btnVerVuelos.setBounds(120, 127, 170, 36);
 		panelDeArriba.add(btnVerVuelos);
 		btnVerVuelos.setBackground(new Color(0, 0, 128));
 		btnVerVuelos.setForeground(Color.WHITE);
@@ -91,17 +93,17 @@ public class JPanelVuelo extends JPanel {
 
 		JLabel lblOrigen = new JLabel(origen);
 		lblOrigen.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblOrigen.setBounds(165, 93, 112, 44);
+		lblOrigen.setBounds(110, 93, 152, 44);
 		add(lblOrigen);
 
 		JLabel lblDestino = new JLabel(destino);
 		lblDestino.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblDestino.setBounds(283, 89, 192, 52);
+		lblDestino.setBounds(320, 89, 192, 52);
 		add(lblDestino);
 
 		JLabel lblFlecha = new JLabel("-");
 		lblFlecha.setFont(new Font("Tahoma", Font.PLAIN, 45));
-		lblFlecha.setBounds(277, 109, 69, 20);
+		lblFlecha.setBounds(277, 109, 30, 20);
 		add(lblFlecha);
 
 		JLabel lblQuedanDisponibles = new JLabel("Quedan        disponibles");
@@ -135,8 +137,10 @@ public class JPanelVuelo extends JPanel {
 			{
 				String name = JOptionPane.showInputDialog("Introduzca numero de viajeros");
 				viajeros = Integer.parseInt(name);
-				Pago a = new Pago(controller, origen, destino, precio, formattedDateTime, emailJP, viajeros);
+				long total = precio * viajeros;
+				Pago a = new Pago(controller, origen, destino, total, asientos, hora, formattedDateTime, emailJP, viajeros);
 				a.setVisible(true);
+				setVisible(false);
 			}
 		});
 
