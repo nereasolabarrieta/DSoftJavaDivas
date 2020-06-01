@@ -19,9 +19,9 @@ import EasyBooking.LD.Vuelo;
 import Gateway.GatewayAutenticacion;
 
 public class DAO{
-	private static PersistenceManager persistentManager;
-	private static Transaction transaction;
-	private static PersistenceManagerFactory persistentManagerFactory;
+	private static PersistenceManagerFactory persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+	private static PersistenceManager persistentManager= persistentManagerFactory.getPersistenceManager();;
+	private static Transaction transaction= persistentManager.currentTransaction();
 	private static GestorVuelos gv;
 	private static final DAO INSTANCE = new DAO();
 
@@ -30,9 +30,9 @@ public class DAO{
 
 	public static DAO getInstance() {
 
-		persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		persistentManager = persistentManagerFactory.getPersistenceManager();
-		transaction = persistentManager.currentTransaction();
+//		persistentManagerFactory = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+//		persistentManager = persistentManagerFactory.getPersistenceManager();
+//		transaction = persistentManager.currentTransaction();
 		return INSTANCE;
 	}
 
@@ -96,10 +96,7 @@ public class DAO{
 
 	public void cerrarConexion() 
 	{
-		System.out.println("llego");
 		persistentManager.close();
-		System.exit(-1);
-
 	}
 	
 	public Usuario BuscarUsuario(String email)

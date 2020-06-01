@@ -191,6 +191,7 @@ public class Buscar extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					controller.LogOut();
+					System.exit(-1);
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
