@@ -61,14 +61,12 @@ public class DAO implements itfDAO {
 			}
 
 			if (objeto instanceof Reserva) {
-				List<Reserva> reservas = (List<Reserva>) objeto;
-				for (Reserva r : reservas) {
-					r = new Reserva(r.getCodReserva(), r.getUsuario(), r.getViajeros(), r.getVuelo());
-					persistentManager.makePersistent(r);
-				}
-			}	
+					objeto = new Reserva(((Reserva) objeto).getCodReserva(), ((Reserva) objeto).getUsuario(), ((Reserva) objeto).getViajeros(), ((Reserva) objeto).getVuelo());
+					persistentManager.makePersistent(objeto);
+				}	
 			if (objeto instanceof Usuario) 
 			{
+				System.out.println("ey llega al instanceof de usuario");
 				System.out.println(((Usuario) objeto).getAeropuerto().getCodAeropuerto());
 					objeto = new Usuario(((Usuario) objeto).getNomUsuario(), ((Usuario) objeto).getApe(), ((Usuario) objeto).getEmail(), ((Usuario) objeto).getPassword(), ((Usuario) objeto).getAeropuerto());
 					persistentManager.makePersistent(objeto);
