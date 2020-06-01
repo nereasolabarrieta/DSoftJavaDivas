@@ -136,11 +136,11 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 
 	}
 
-	@Override
-	public void newViajero(Viajero v) {
-		GestorPago.getInstance().newViajero(v);
-
-	}
+//	@Override
+//	public void newViajero(Viajero v) {
+//		GestorPago.getInstance().newViajero(v);
+//
+//	}
 
 	public void imprime() {
 		System.out.println("LLEGA BIEN A LA FACHADA");
@@ -161,9 +161,8 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	}
 
 	@Override
-	public void newReserva(String codVuelo,String origen, String destino, long precio, long asientos, LocalDateTime date, String email,
-			Set<Viajero> viajeros) throws RemoteException {
-		GestorVuelos.getInstance().newReserva(codVuelo, origen, destino, precio, asientos, date, email, viajeros);
+	public void newReserva(Vuelo v,  String email,Set<Viajero> viajeros) throws RemoteException {
+		GestorVuelos.getInstance().newReserva(v, email, viajeros);
 		
 	}
 	

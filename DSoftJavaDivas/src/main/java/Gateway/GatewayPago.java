@@ -35,17 +35,15 @@ public class GatewayPago extends Gateway implements itfGatewayPago {
 		double cantPago = cantidad_total;
 		String conceptoPago = concepto;
 		
-
-		
 		path = "/Payments/Make_payment";
 		client = new RestClient<>(hostname, port);
-
-		try {
-			client.simplePrint(client.makeGetRequest(client.createInvocationBuilder(path)));
-		} catch (Exception e) {
-			e.printStackTrace();
-			e.toString();
-		}
+//
+//		try {
+//			client.simplePrint(client.makeGetRequest(client.createInvocationBuilder(path)));
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			e.toString();
+//		}
 
 		
 		try {

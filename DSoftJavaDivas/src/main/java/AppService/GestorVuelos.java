@@ -20,10 +20,12 @@ import Gateway.GatewayPago;
 import Gateway.GatewayVuelos;
 import Gateway.itfGatewayVuelos;
 import ServiciosExternos.VuelosJSON;
+import DAO.*;
 
 public class GestorVuelos {
 
 	private static final GestorVuelos INSTANCE = new GestorVuelos();
+
 
 	private GestorVuelos() {
 	}
@@ -47,39 +49,26 @@ public class GestorVuelos {
 
 	}
 
-	public void newReserva(String codVuelo,String origen, String destino, long precio, long asientos, LocalDateTime date, String email,
-			Set<Viajero> viajeros)  {
+	public void newReserva( Vuelo v, String email,Set<Viajero> viajeros)  {
 		Usuario usuario = null;
-		Aeropuerto destinoAeropuerto = null;
-		Aeropuerto origenAeropuerto = null;
-		List <Usuario> usuarios = DAO.DAO.getInstance().getUsuarios();
-		for (Usuario u: usuarios){
-			if (u.getEmail().equals(email))
-			{
-				usuario = new Usuario(u.getNomUsuario(), u.getApe(), u.getEmail(), u.getPassword());
-			}
-		}
-		List <Aeropuerto> aeropuertos = DAO.DAO.getInstance().getAeropuertos();
-		for(Aeropuerto a: aeropuertos)
-		{
-			if(a.getNomAeropuerto().equals(origen))
-			{
-				origenAeropuerto =new Aeropuerto(a.getCodAeropuerto(), a.getNomAeropuerto());
-			}
-			if(a.getNomAeropuerto().equals(destino))
-			{
-				destinoAeropuerto =new Aeropuerto(a.getCodAeropuerto(), a.getNomAeropuerto());
-			}
-		}
-		Vuelo v = new Vuelo(codVuelo,origenAeropuerto, destinoAeropuerto, date, precio, asientos);
-		
-
-		double valor = Math.random();
+		usuario=DAO.getInstance().BuscarUsuario(email);
+		newViajero(viajeros);
+		double valor = 100*Math.random();
 		String codReserva = String.valueOf(valor);
+		codReserva=codReserva+v.getCodVuelo()+email;
 		
 		Reserva r = new Reserva(codReserva, usuario, viajeros, v);
-		DAO.DAO.getInstance().guardarObjeto(r);
+		DAO.getInstance().guardarObjeto(r);
 	}
+	
+	public void newViajero(Set<Viajero> viajeros)
+	{
+		viajeros.stream().forEach(element->{
+			DAO.getInstance().guardarObjeto(element);
+		});
+		
+	}
+	
 
 	public ArrayList<Vuelo> Buscar(String origen, String destino, String fecha) {
 		return GatewayVuelos.getInstance().Buscar_vuelos(origen, destino, fecha);

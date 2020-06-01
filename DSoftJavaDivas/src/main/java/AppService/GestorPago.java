@@ -27,8 +27,8 @@ public class GestorPago {
 		// TODO Auto-generated method stub
 		GatewayPago.getInstance().RegistrarUsuarioPago(nom, ape, email, currency);
 	}
-	public void newViajero(Viajero v)
-	{
-		DAO.DAO.getInstance().guardarObjeto(v);
-	}
+
+
+	
+	
 }

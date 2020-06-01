@@ -54,7 +54,6 @@ public class Pago extends JFrame {
 	private String codVuelo;
 	private long precio;
 	private long total;
-	private LocalDateTime Date;
 	private JTextField textFieldConcepto;
 	private JButton btnCerrarSesion;
 	private int numViajeros;
@@ -62,22 +61,22 @@ public class Pago extends JFrame {
 	private JTextField arrayDnis[];
 	private Set<Viajero> viajeros;
 	private long asientos;
+	private Vuelo v;
 	/**
 	 * Create the frame.
 	 * 
 	 * @param controller
 	 */
-	public Pago(Controller controller, String origen, String destino, long total,  long asientos, LocalDateTime hora, String codVuelo, String emailJP, int viajeros) {
+	public Pago(Controller controller, Vuelo v , String emailJP, int viajeros) {
 		this.controller = controller;
-		this.destino=destino;
-		this.origen=origen;
-		this.precio=total;
-		this.Date=hora;
-		this.asientos = asientos;
+		this.destino=v.getDestino().getNomAeropuerto();
+		this.origen=v.getOrigen().getNomAeropuerto();
+		long p= v.getPrecio()*viajeros;
+		this.precio=p;
 		this.email=emailJP;
 		this.numViajeros = viajeros;
-		this.codVuelo = codVuelo;
 		System.out.println(numViajeros);
+		this.v=v;
 		initComponents();
 		this.setVisible(true);
 
@@ -141,10 +140,9 @@ public class Pago extends JFrame {
 		lblBiobcn.setForeground(new Color(255, 255, 255));
 		lblBiobcn.setBounds(67, 100, 130, 49);
 		pDerecha.add(lblBiobcn);
-		
-		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
-		String formattedDateTime = Date.format(formatter);
 
+		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+		String formattedDateTime = v.getHora_salida().format(formatter);
 		JLabel lblFecha = new JLabel(formattedDateTime);
 		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblFecha.setForeground(new Color(255, 255, 255));
@@ -251,11 +249,8 @@ public class Pago extends JFrame {
 					try {
 					
 						controller.Pagar(total, email, concepto);
-						controller.newReserva(codVuelo,origen, destino, precio, asientos, Date, email, viajeros);
-						for(Viajero a: viajeros)
-						{
-							controller.newViajero(a);
-						}
+						controller.newReserva(v,email, viajeros);
+
 
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block

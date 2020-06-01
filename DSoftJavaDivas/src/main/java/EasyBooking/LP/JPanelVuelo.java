@@ -45,18 +45,20 @@ public class JPanelVuelo extends JPanel {
 	private String emailJP;
 	private String codVuelo;
 	private int viajeros;
+	private Vuelo vuelo;
 	/**
 	 * Create the panel.
 	 */
-	public JPanelVuelo(Controller controller, String origen, String destino, long precio, long asientos, LocalDateTime hora, String email, String codVuelo) {
+	public JPanelVuelo(Controller controller, Vuelo v, String email) {
 		this.controller=controller;
-		this.destino=destino;
-		this.origen=origen;
-		this.precio=precio;
-		this.hora=hora;
-		this.asientos=asientos;
-		this.emailJP= email;
-		this.codVuelo = codVuelo;
+		this.destino=v.getDestino().getNomAeropuerto();
+		this.origen=v.getOrigen().getNomAeropuerto();
+		this.precio=v.getPrecio();
+		this.hora=v.getHora_salida();
+		this.asientos=v.getNumAsientos();
+		this.emailJP=email;
+		this.codVuelo = v.getCodVuelo();
+		this.vuelo=v;
 		InsertarJPanelVuelo();
 		
 
@@ -137,8 +139,7 @@ public class JPanelVuelo extends JPanel {
 			{
 				String name = JOptionPane.showInputDialog("Introduzca numero de viajeros");
 				viajeros = Integer.parseInt(name);
-				long total = precio * viajeros;
-				Pago a = new Pago(controller, origen, destino, total, asientos, hora, formattedDateTime, emailJP, viajeros);
+				Pago a = new Pago(controller, vuelo, emailJP,viajeros);
 				a.setVisible(true);
 				setVisible(false);
 			}

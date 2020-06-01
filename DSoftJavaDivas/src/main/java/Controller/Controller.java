@@ -82,13 +82,9 @@ public class Controller {
 		}
 	}
 
-	public void newReserva(String codVuelo,String origen, String destino, long precio, long asientos, LocalDateTime date, String email,
-			Set<Viajero> viajeros) throws RemoteException {
-		rsl.getService().newReserva(codVuelo,origen, destino, precio, asientos, date,email,viajeros);
+	public void newReserva(Vuelo v, String email,Set<Viajero> viajeros) throws RemoteException {
+		rsl.getService().newReserva(v, email,viajeros);
 		
 	}
-	public void newViajero(Viajero v) throws RemoteException
-	{
-		rsl.getService().newViajero(v);
-	}
+
 }

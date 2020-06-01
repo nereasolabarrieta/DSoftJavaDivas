@@ -133,5 +133,18 @@ public class DAO implements itfDAO {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public Usuario BuscarUsuario(String email)
+	{
+		List <Usuario> usuarios = getUsuarios();
+		Usuario usuario=null;
+		for (Usuario u: usuarios){
+			if (u.getEmail().equals(email))
+			{
+				usuario = new Usuario(u.getNomUsuario(), u.getApe(), u.getEmail(), u.getPassword());
+			}
+		}
+		return usuario;
+	}
 
 }
