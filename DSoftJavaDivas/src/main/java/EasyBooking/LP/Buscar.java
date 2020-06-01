@@ -187,6 +187,16 @@ public class Buscar extends JFrame {
 		btnCerrarSesion.setBackground(Color.WHITE);
 		btnCerrarSesion.setForeground(Color.BLACK);
 		btnCerrarSesion.setBounds(1113, 16, 150, 29);
+		btnCerrarSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					controller.LogOut();
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 		pNorte.add(btnCerrarSesion);
 		
 	

@@ -18,7 +18,7 @@ import EasyBooking.LD.Viajero;
 import EasyBooking.LD.Vuelo;
 import Gateway.GatewayAutenticacion;
 
-public class DAO implements itfDAO {
+public class DAO{
 	private static PersistenceManager persistentManager;
 	private static Transaction transaction;
 	private static PersistenceManagerFactory persistentManagerFactory;
@@ -82,19 +82,6 @@ public class DAO implements itfDAO {
 
 	}
 
-	@Override
-	public List<Aeropuerto> getAeropuertos() {
-		// TODO Auto-generated method stub
-		Extent<Aeropuerto> extent = persistentManager.getExtent(Aeropuerto.class, false);
-		List<Aeropuerto> aeropuertos = new ArrayList<Aeropuerto>();
-
-		for (Aeropuerto p : extent) {
-			aeropuertos.add(p);
-		}
-		extent.closeAll();
-		return aeropuertos;
-	}
-	@Override
 	public List<Usuario> getUsuarios() {
 		// TODO Auto-generated method stub
 		Extent<Usuario> extent = persistentManager.getExtent(Usuario.class, false);
@@ -106,23 +93,12 @@ public class DAO implements itfDAO {
 		extent.closeAll();
 		return usuarios;
 	}
-	@Override
-	public List<Reserva> getReservas() {
-		// TODO Auto-generated method stub
-		Extent<Reserva> extent = persistentManager.getExtent(Reserva.class, false);
-		List<Reserva> reservas = new ArrayList<Reserva>();
 
-		for (Reserva p : extent) {
-			reservas.add(p);
-		}
-		extent.closeAll();
-		return reservas;
-	}
-
-	@Override
 	public void cerrarConexion() 
 	{
+		System.out.println("llego");
 		persistentManager.close();
+		System.exit(-1);
 
 	}
 	

@@ -252,6 +252,16 @@ public class Principal extends JFrame {
 		btnCerrarSesion.setForeground(Color.BLACK);
 		btnCerrarSesion.setBackground(Color.WHITE);
 		btnCerrarSesion.setBounds(1070, 26, 142, 29);
+		btnCerrarSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					controller.LogOut();
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 		pArriba.add(btnCerrarSesion);
 
 		for (int i = 0; i < Lista_Aeropuerto.size(); i++) {

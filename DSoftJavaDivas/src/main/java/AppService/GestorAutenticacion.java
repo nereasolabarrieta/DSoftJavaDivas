@@ -1,7 +1,6 @@
 package AppService;
 
 import DAO.DAO;
-import DAO.itfDAO;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.User_A;
 import EasyBooking.LD.Usuario;
@@ -31,5 +30,10 @@ public class GestorAutenticacion {
 
 	public boolean LogInUsuario(String email, String contrasena) {
 		return gateway.LogInUsuario(email, contrasena);
+	}
+	
+	public void LogOut() 
+	{
+		DAO.getInstance().cerrarConexion();
 	}
 }

@@ -62,5 +62,11 @@ public class Controller {
 		rsl.getService().newReserva(v, email,viajeros);
 		
 	}
+	
+	public void LogOut() throws RemoteException
+	{
+		rsl.getService().LogOut();
+	}
+
 
 }

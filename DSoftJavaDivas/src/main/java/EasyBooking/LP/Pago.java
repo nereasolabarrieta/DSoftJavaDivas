@@ -121,6 +121,16 @@ public class Pago extends JFrame {
 		btnCerrarSesion.setForeground(Color.BLACK);
 		btnCerrarSesion.setBackground(Color.WHITE);
 		btnCerrarSesion.setBounds(1058, 16, 150, 29);
+		btnCerrarSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					controller.LogOut();
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 		pArriba.add(btnCerrarSesion);
 
 		JPanel pDerecha = new JPanel();

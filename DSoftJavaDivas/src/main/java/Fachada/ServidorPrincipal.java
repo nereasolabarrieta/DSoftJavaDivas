@@ -111,7 +111,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 
 	@Override
 	public void LogOut() {
-		//GestorAutenticacion.getInstance().LogOut();
+		GestorAutenticacion.getInstance().LogOut();
 
 	}
 

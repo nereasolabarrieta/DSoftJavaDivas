@@ -23,6 +23,6 @@ public interface itfFachada extends Remote
 	public  ArrayList<Vuelo>Aplicar_filtros(String origen, String destino,double precio, int viajeros, String fecha)throws RemoteException;
 	public void RegistrarUsuario(String nom, String ape, String email, String password, Aeropuerto a)throws RemoteException;
 	public boolean LogInUsuario(String email, String contrasena)throws RemoteException;
-	void LogOut()throws RemoteException;
+	public void LogOut()throws RemoteException;
 	public void RegistrarUsuarioPago(String nom, String ape, String email, double currency)throws RemoteException;
 }
