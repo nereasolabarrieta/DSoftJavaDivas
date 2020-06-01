@@ -26,8 +26,6 @@ public class ServiceLocator {
 
 			String name = "//" + ip + ":" + port + "/" + serviceName;
 			fachada = (itfFachada) registry.lookup(name);
-			fachada.imprime();
-
 		} catch (Exception e) {
 
 			System.err.println("- Exception running the client: " + e.getMessage());

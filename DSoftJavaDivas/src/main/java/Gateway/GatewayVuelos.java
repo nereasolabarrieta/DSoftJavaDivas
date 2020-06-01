@@ -28,7 +28,7 @@ import EasyBooking.LD.Flight_parameters;
 import ServiciosExternos.RestClient;
 import ServiciosExternos.VuelosJSON;
 
-public class GatewayVuelos extends Gateway implements itfGatewayVuelos {
+public class GatewayVuelos implements itfGatewayVuelos {
 	private static String port = "5002";
 	private static String hostname = "192.168.6.31";
 	private String path = "/";
@@ -121,12 +121,6 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos {
 		return lista_vuelos;
 	}
 
-	@Override
-	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio) {
-		// TODO Auto-generated method stub
-
-	}
-
 	public ArrayList<Vuelo> convertir(List<VuelosJSON> json) {
 		ArrayList<Vuelo> Lista_vuelos = new ArrayList();
 		json.stream().forEach(element -> {
@@ -139,15 +133,6 @@ public class GatewayVuelos extends Gateway implements itfGatewayVuelos {
 		});
 
 		return Lista_vuelos;
-	}
-
-	@Override
-	public List<Vuelo> getVuelos() {
-
-		filtro = new Flight_parameters();
-		List<VuelosJSON> lista_json = search_flights();
-		ArrayList<Vuelo> lista_vuelos = convertir(lista_json);
-		return lista_vuelos;
 	}
 
 	@Override

@@ -20,7 +20,6 @@ import AppService.GestorAutenticacion;
 import AppService.GestorPago;
 import AppService.GestorVuelos;
 import DAO.DAO;
-import DTO.VueloDTO;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Usuario;
 import EasyBooking.LD.Viajero;
@@ -33,10 +32,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 
 	private ServidorPrincipal() throws RemoteException 
 	{
-		
-//		this.GAutenticacion = GestorAutenticacion.getInstance();
-//		this.GPago = GestorPago.getInstance();
-//		this.GVuelos = GestorVuelos.getInstance();
+
 	}
 
 	public static ServidorPrincipal getInstance() throws RemoteException {
@@ -49,8 +45,7 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	}
 
 	public static void main(String[] args) 
-	{
-		// TODO Auto-generated method stub
+	{	
 		String ip = "127.0.0.1";
 		String port = "1099";
 		String serviceName = "EasyBooking";
@@ -79,20 +74,11 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 		}
 		
 	}
-
-	@Override
-	public List<Vuelo> getVuelos() throws RemoteException {
-		// TODO Auto-generated method stub
-		
-		return GestorVuelos.getInstance().getVuelos();
-	}
 	
 	public HashSet<Aeropuerto> getAeropuertos() throws RemoteException {
 
 		return GestorVuelos.getInstance().getAeropuerto();
 	}
-
-
 
 	@Override
 	public void Pagar(double precio, String email, String concepto) throws RemoteException {
@@ -113,13 +99,6 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	}
 
 	@Override
-	public List<Vuelo> AplicarFiltro(String hora_ida_min, String hora_ida_max, double min_precio, double max_precio,
-			String origen, String destino, Date fecha) {
-		// TODO Auto-generated method stub
-		return GestorVuelos.getInstance().AplicarFiltro(hora_ida_min, hora_ida_max, min_precio, max_precio, origen, destino, fecha);
-	}
-
-	@Override
 	public void RegistrarUsuario(String nombre, String ape, String email, String password, Aeropuerto a) {
 		// TODO Auto-generated method stub
 		GestorAutenticacion.getInstance().RegistrarUsuario(nombre, ape, email, password, a);
@@ -132,18 +111,8 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 
 	@Override
 	public void LogOut() {
-		GestorAutenticacion.getInstance().LogOut();
+		//GestorAutenticacion.getInstance().LogOut();
 
-	}
-
-//	@Override
-//	public void newViajero(Viajero v) {
-//		GestorPago.getInstance().newViajero(v);
-//
-//	}
-
-	public void imprime() {
-		System.out.println("LLEGA BIEN A LA FACHADA");
 	}
 
 	@Override
@@ -154,23 +123,10 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	}
 
 	@Override
-	public void GuardarObjeto(Object obj)throws RemoteException 
-	{
-		DAO.getInstance().guardarObjeto(obj);
-		// TODO Auto-generated method stub	
-	}
-
-	@Override
 	public void newReserva(Vuelo v,  String email,Set<Viajero> viajeros) throws RemoteException {
 		GestorVuelos.getInstance().newReserva(v, email, viajeros);
 		
 	}
-	
 
-	// @Override
-	// public List<VueloDTO> getVuelos() throws RemoteException {
-	// List<Vuelo> vuelo = GVuelos.getVuelos();
-	// return null;
-	// }
 
 }

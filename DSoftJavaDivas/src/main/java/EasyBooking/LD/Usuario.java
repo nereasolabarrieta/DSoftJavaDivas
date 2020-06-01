@@ -8,7 +8,7 @@ import javax.jdo.annotations.PrimaryKey;
 import ServiciosExternos.Print;
 
 @PersistenceCapable
-public class Usuario implements Print, Serializable {
+public class Usuario implements Serializable {
 	@PrimaryKey
 	private String ape;
 	private String nomUsuario;
@@ -65,11 +65,5 @@ public class Usuario implements Print, Serializable {
 
 	public void setApe(String ape) {
 		this.ape = ape;
-	}
-
-	@Override
-	public void print() {
-		// TODO Auto-generated method stub
-
 	}
 }

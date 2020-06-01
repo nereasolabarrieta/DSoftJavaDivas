@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import DTO.VueloDTO;
 import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Usuario;
 import EasyBooking.LD.Viajero;
@@ -25,11 +24,6 @@ public class Controller {
 		rsl = new ServiceLocator();
 		rsl.setService();
 		new Entrar_Registrar(this);
-	}
-
-	public List<Vuelo> getVuelos() throws RemoteException {
-
-		return rsl.getService().getVuelos();
 	}
 
 	public HashSet<Aeropuerto> getAeropuertos() throws RemoteException {
@@ -52,14 +46,6 @@ public class Controller {
 		return rsl.getService().Aplicar_filtros(origen, destino, precio, viajeros, fecha);
 	}
 
-	// public List<Vuelo> AplicarFiltro(String hora_ida_min, String
-	// hora_ida_max,
-	// double min_precio, double max_precio, String origen, String destino, Date
-	// fecha) throws RemoteException {
-	// return rsl.getService().AplicarFiltro(hora_ida_min, hora_ida_max,
-	// min_precio, max_precio, origen, destino, fecha);
-	// }
-
 	public void RegistrarUsuario(String nom, String ape, String email, String password, Aeropuerto a) throws RemoteException {
 		rsl.getService().RegistrarUsuario(nom, ape, email, password, a);
 	}
@@ -70,16 +56,6 @@ public class Controller {
 	
 	public void RegistrarUsuarioPago(String nom, String ape, String email, double currency) throws RemoteException {
 		rsl.getService().RegistrarUsuarioPago(nom, ape, email, currency);
-	}
-	
-	public void GuardarObjeto(Object obj)
-	{
-		try {
-			rsl.getService().GuardarObjeto(obj);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	public void newReserva(Vuelo v, String email,Set<Viajero> viajeros) throws RemoteException {

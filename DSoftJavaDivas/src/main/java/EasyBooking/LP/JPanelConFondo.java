@@ -8,9 +8,6 @@ import javax.swing.JPanel;
 
 public class JPanelConFondo extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Image imagen;
 

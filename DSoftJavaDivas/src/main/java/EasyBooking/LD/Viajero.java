@@ -13,11 +13,10 @@ import java.util.Set;
 @PersistenceCapable
 public class Viajero implements Serializable {
 
-	@Persistent(table = "RESERVA_VIAJERO") // Con esto creamos una 3a tabla
-	@Join(column = "VIAJERO_ID") // anyadimos la columna de viajero
-	@Element(column = "RESERVA_ID") // anyadimos la columna de reserva
-	private Set<Reserva> Lista_Reservas; // pero no lo usamos: lo guarda
-											// directamente
+	@Persistent(table = "RESERVA_VIAJERO") 
+	@Join(column = "VIAJERO_ID")
+	@Element(column = "RESERVA_ID") 
+	private Set<Reserva> Lista_Reservas;
 
 	@PrimaryKey
 	private String dniViajero;

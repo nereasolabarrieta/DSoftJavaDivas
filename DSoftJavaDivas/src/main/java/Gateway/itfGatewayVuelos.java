@@ -15,9 +15,7 @@ import ServiciosExternos.VuelosJSON;
 
 public interface itfGatewayVuelos 
 {
-	public List<Vuelo> getVuelos();
 	public HashSet<Aeropuerto> getAeropuertos();
-	public void AplicarFiltro(String origen, String destino, Date fecha, double min_precio, double max_precio);
 	public List<VuelosJSON> search_flights();
 	public ArrayList<Vuelo> Buscar_vuelos(String origen, String destino, String fecha) ;
 	public  ArrayList<Vuelo>Aplicar_filtros(String origen, String destino,double precio, int viajeros, String fecha);

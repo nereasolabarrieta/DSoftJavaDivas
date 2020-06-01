@@ -14,7 +14,7 @@ import ServiciosExternos.PasswordJSON;
 import ServiciosExternos.RestClient;
 import scala.collection.mutable.SynchronizedSet;
 
-public class GatewayAutenticacion extends Gateway implements itfGatewayAutenticacion {
+public class GatewayAutenticacion implements itfGatewayAutenticacion {
 	private static String port = "5000";
 	private static String hostname = "192.168.6.31";
 	private String path = "/";
@@ -54,12 +54,6 @@ public class GatewayAutenticacion extends Gateway implements itfGatewayAutentica
 		}
 
 		return respuesta;
-	}
-
-	@Override
-	public void LogOutUsuario() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override

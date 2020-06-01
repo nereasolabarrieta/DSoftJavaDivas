@@ -146,15 +146,11 @@ public class Entrar_Registrar extends JFrame {
 				String email = txtEmail.getText();
 				String password = txtPassword.getText();
 				String nomAeropuerto =aeropuerto.getSelectedItem().toString();
-				String codAeropuerto="";
-				System.out.println(nomAeropuerto);
 				Aeropuerto aero=null;
 				for (Aeropuerto a: Lista_Aeropuerto )
 				{
-					System.out.println(a.getNomAeropuerto());
 					if(a.getNomAeropuerto().equals(nomAeropuerto))
 					{
-						System.out.println("entro");
 						aero =new Aeropuerto (a.getCodAeropuerto(), a.getNomAeropuerto());
 					}
 				}

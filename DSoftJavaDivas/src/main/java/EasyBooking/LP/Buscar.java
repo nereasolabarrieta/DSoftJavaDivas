@@ -77,8 +77,7 @@ public class Buscar extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// Lista_Aeropuerto=this.controller.getAeropuertos();
-	
+		
 		initComponents();
 		this.setVisible(true);
 
@@ -225,7 +224,7 @@ public class Buscar extends JFrame {
 				
 				if(Lista_vuelos.size()==0)
 				{
-					JOptionPane.showMessageDialog(null,"No existe ningún vuelo en esas fechas. ");
+					JOptionPane.showMessageDialog(null,"No existe ningun vuelo en esas fechas. ");
 				}else
 				{
 					

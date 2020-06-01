@@ -9,7 +9,7 @@ import EasyBooking.LD.User_A;
 import EasyBooking.LD.Usuario;
 import ServiciosExternos.RestClient;
 
-public class GatewayPago extends Gateway implements itfGatewayPago {
+public class GatewayPago implements itfGatewayPago {
 	private static String port = "5001";
 	private static String hostname = "192.168.6.31";
 	private String path = "/";
@@ -37,15 +37,7 @@ public class GatewayPago extends Gateway implements itfGatewayPago {
 		
 		path = "/Payments/Make_payment";
 		client = new RestClient<>(hostname, port);
-//
-//		try {
-//			client.simplePrint(client.makeGetRequest(client.createInvocationBuilder(path)));
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			e.toString();
-//		}
 
-		
 		try {
 			client.simplePrint(client.makePostRequest(client.createInvocationBuilder(path),
 					new P_User(emailPago, cantPago, conceptoPago)));

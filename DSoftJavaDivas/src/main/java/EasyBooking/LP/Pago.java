@@ -75,7 +75,6 @@ public class Pago extends JFrame {
 		this.precio=p;
 		this.email=emailJP;
 		this.numViajeros = viajeros;
-		System.out.println(numViajeros);
 		this.v=v;
 		initComponents();
 		this.setVisible(true);
@@ -238,8 +237,6 @@ public class Pago extends JFrame {
 					String dni = arrayDnis[i].getText();
 					Viajero v = new Viajero(nombre,dni);
 					viajeros.add(v);
-					System.out.println(nombre);
-					System.out.println(dni);
 				}
 
 				if (numTarjeta == null || nomTitular == null || concepto == null ) {

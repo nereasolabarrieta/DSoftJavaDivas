@@ -38,10 +38,6 @@ public class DAO implements itfDAO {
 
 	@SuppressWarnings("unchecked")
 	public void guardarObjeto(Object objeto) {
-		// persistentManagerFactory =
-		// JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		// persistentManager = persistentManagerFactory.getPersistenceManager();
-		// transaction = persistentManager.currentTransaction();
 		try {
 			if (objeto instanceof Aeropuerto) {
 			
@@ -66,7 +62,6 @@ public class DAO implements itfDAO {
 				}	
 			if (objeto instanceof Usuario) 
 			{
-				System.out.println("ey llega al instanceof de usuario");
 				System.out.println(((Usuario) objeto).getAeropuerto().getCodAeropuerto());
 					objeto = new Usuario(((Usuario) objeto).getNomUsuario(), ((Usuario) objeto).getApe(), ((Usuario) objeto).getEmail(), ((Usuario) objeto).getPassword(), ((Usuario) objeto).getAeropuerto());
 					persistentManager.makePersistent(objeto);
@@ -83,8 +78,6 @@ public class DAO implements itfDAO {
 			if (transaction.isActive()) {
 				transaction.rollback();
 			}
-
-			// persistentManager.close();
 		}
 
 	}
@@ -127,8 +120,9 @@ public class DAO implements itfDAO {
 	}
 
 	@Override
-	public void cerrarConexion() {
-		// TODO Auto-generated method stub
+	public void cerrarConexion() 
+	{
+		persistentManager.close();
 
 	}
 	
