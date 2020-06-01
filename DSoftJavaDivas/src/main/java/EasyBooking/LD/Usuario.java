@@ -15,19 +15,6 @@ public class Usuario implements Print, Serializable {
 	private String email;
 	private String password;
 	private Aeropuerto aeropuerto;
-
-	public Usuario(String email, String contrasena) {
-		super();
-		this.email = email;
-		this.password = contrasena;
-	}
-
-	public Usuario(String nomUsuario, String ape, String email) {
-		super();
-		this.ape = ape;
-		this.nomUsuario = nomUsuario;
-		this.setEmail(email);
-	}
 	
 	public Usuario(String nomUsuario, String ape, String email, String password, Aeropuerto a)
 	{
@@ -37,23 +24,6 @@ public class Usuario implements Print, Serializable {
 		this.email=email;
 		this.password=password;
 		this.aeropuerto=a;
-	}
-
-	public Usuario(String nomUsuario, String email, String password, String newPassword) {
-		super();
-		this.setEmail(email);
-		this.setPassword(password);
-	}
-
-	public Usuario(String nomUsuario, String ape, String email, String password, String codAeropuerto) 
-	{
-		// TODO Auto-generated constructor stub
-		super();
-		this.nomUsuario=nomUsuario;
-		this.ape=ape;
-		this.email=email;
-		this.password=password;
-		//this.aeropuerto.setCodAeropuerto(codAeropuerto);
 	}
 
 	public String getNomUsuario() {

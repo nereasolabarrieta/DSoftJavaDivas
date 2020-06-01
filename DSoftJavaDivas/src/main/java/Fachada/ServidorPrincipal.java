@@ -120,9 +120,9 @@ public class ServidorPrincipal extends UnicastRemoteObject implements itfFachada
 	}
 
 	@Override
-	public void RegistrarUsuario(String nombre, String ape, String email, String password) {
+	public void RegistrarUsuario(String nombre, String ape, String email, String password, Aeropuerto a) {
 		// TODO Auto-generated method stub
-		GestorAutenticacion.getInstance().RegistrarUsuario(nombre, ape, email, password);
+		GestorAutenticacion.getInstance().RegistrarUsuario(nombre, ape, email, password, a);
 	}
 
 	@Override

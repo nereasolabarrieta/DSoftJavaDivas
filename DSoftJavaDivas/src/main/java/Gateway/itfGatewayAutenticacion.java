@@ -1,5 +1,6 @@
 package Gateway;
 
+import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.Usuario;
 
 public interface itfGatewayAutenticacion 

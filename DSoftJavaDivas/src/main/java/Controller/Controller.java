@@ -60,8 +60,8 @@ public class Controller {
 	// min_precio, max_precio, origen, destino, fecha);
 	// }
 
-	public void RegistrarUsuario(String nom, String ape, String email, String password) throws RemoteException {
-		rsl.getService().RegistrarUsuario(nom, ape, email, password);
+	public void RegistrarUsuario(String nom, String ape, String email, String password, Aeropuerto a) throws RemoteException {
+		rsl.getService().RegistrarUsuario(nom, ape, email, password, a);
 	}
 
 	public boolean LogInUsuario(String email, String contrasena) throws RemoteException {

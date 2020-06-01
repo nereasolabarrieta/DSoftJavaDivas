@@ -2,6 +2,7 @@ package AppService;
 
 import DAO.DAO;
 import DAO.itfDAO;
+import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.User_A;
 import EasyBooking.LD.Usuario;
 import Gateway.Gateway;
@@ -22,10 +23,10 @@ public class GestorAutenticacion {
 		return INSTANCE;
 	}
 
-	public void RegistrarUsuario(String nombre, String ape, String email, String password) {
+	public void RegistrarUsuario(String nombre, String ape, String email, String password, Aeropuerto a) {
 
 		gateway.RegistrarUsuario(nombre, ape, email, password);
-		Usuario usuario = new Usuario(nombre, ape, email, password);
+		Usuario usuario = new Usuario(nombre, ape, email, password, a);
 		DAO.getInstance().guardarObjeto(usuario);
 
 	}

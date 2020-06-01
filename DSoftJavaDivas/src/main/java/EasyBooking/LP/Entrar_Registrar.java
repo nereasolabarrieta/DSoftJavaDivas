@@ -148,25 +148,21 @@ public class Entrar_Registrar extends JFrame {
 				String nomAeropuerto =aeropuerto.getSelectedItem().toString();
 				String codAeropuerto="";
 				System.out.println(nomAeropuerto);
+				Aeropuerto aero=null;
 				for (Aeropuerto a: Lista_Aeropuerto )
 				{
 					System.out.println(a.getNomAeropuerto());
-					if(a.getNomAeropuerto()==nomAeropuerto)
+					if(a.getNomAeropuerto().equals(nomAeropuerto))
 					{
 						System.out.println("entro");
-						codAeropuerto=a.getCodAeropuerto();
+						aero =new Aeropuerto (a.getCodAeropuerto(), a.getNomAeropuerto());
 					}
 				}
-				System.out.println(codAeropuerto);
 
 				if (nom != null || ape != null || email != null || password != null) {
 					try {
-						controller.RegistrarUsuario(nom, ape, email, password);
+						controller.RegistrarUsuario(nom, ape, email, password, aero);
 						controller.RegistrarUsuarioPago(nom, ape, email, 1000);
-						Aeropuerto a= new Aeropuerto (codAeropuerto,nomAeropuerto);
-						Usuario u = new Usuario (nom, ape, email, password, a);
-						controller.GuardarObjeto(u);
-						//controller
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

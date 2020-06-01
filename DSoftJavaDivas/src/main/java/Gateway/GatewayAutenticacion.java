@@ -7,6 +7,7 @@ import javax.ws.rs.core.Response;
 import org.json.simple.parser.ParseException;
 
 import AppService.GestorAutenticacion;
+import EasyBooking.LD.Aeropuerto;
 import EasyBooking.LD.User_A;
 import ServiciosExternos.BooleanJSON;
 import ServiciosExternos.PasswordJSON;

@@ -55,7 +55,7 @@ public class DAO implements itfDAO {
 			
 			if (objeto instanceof Viajero) {
 				
-				objeto = new Usuario(((Viajero) objeto).getDniViajero(), (((Viajero) objeto).getNomViajero()));
+				objeto = new Viajero(((Viajero) objeto).getDniViajero(), (((Viajero) objeto).getNomViajero()));
 				persistentManager.makePersistent(objeto);
 
 			}
@@ -141,7 +141,7 @@ public class DAO implements itfDAO {
 		for (Usuario u: usuarios){
 			if (u.getEmail().equals(email))
 			{
-				usuario = new Usuario(u.getNomUsuario(), u.getApe(), u.getEmail(), u.getPassword());
+				usuario = new Usuario(u.getNomUsuario(), u.getApe(), u.getEmail(), u.getPassword(), u.getAeropuerto());
 			}
 		}
 		return usuario;
